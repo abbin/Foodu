@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		58C9F3E91C3A403E00594407 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3E81C3A403E00594407 /* main.m */; };
 		58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EB1C3A403E00594407 /* AppDelegate.m */; };
 		58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EE1C3A403E00594407 /* ViewController.m */; };
 		58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F01C3A403E00594407 /* Main.storyboard */; };
 		58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F31C3A403E00594407 /* Assets.xcassets */; };
 		58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F51C3A403E00594407 /* LaunchScreen.storyboard */; };
-		58C9F4011C3A40ED00594407 /* FListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4001C3A40ED00594407 /* FListTableViewController.m */; };
+		58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4071C3A4C3900594407 /* FListViewController.m */; };
+		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
+		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
+		58C9F4B11C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.release.xcconfig"; sourceTree = "<group>"; };
+		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
 		58C9F3E41C3A403E00594407 /* Foodu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C9F3E81C3A403E00594407 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58C9F3EA1C3A403E00594407 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -27,8 +33,15 @@
 		58C9F3F31C3A403E00594407 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58C9F3F61C3A403E00594407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58C9F3F81C3A403E00594407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58C9F3FF1C3A40ED00594407 /* FListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FListTableViewController.h; sourceTree = "<group>"; };
-		58C9F4001C3A40ED00594407 /* FListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FListTableViewController.m; sourceTree = "<group>"; };
+		58C9F4061C3A4C3900594407 /* FListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FListViewController.h; sourceTree = "<group>"; };
+		58C9F4071C3A4C3900594407 /* FListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FListViewController.m; sourceTree = "<group>"; };
+		58C9F4101C3A61F200594407 /* FItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FItem.h; sourceTree = "<group>"; };
+		58C9F4111C3A61F200594407 /* FItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FItem.m; sourceTree = "<group>"; };
+		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
+		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
+		58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg"; sourceTree = "<group>"; };
+		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +49,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3988D154CF887249E48BBE88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */,
+				0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		58C9F3DB1C3A403E00594407 = {
 			isa = PBXGroup;
 			children = (
 				58C9F3E61C3A403E00594407 /* Foodu */,
 				58C9F3E51C3A403E00594407 /* Products */,
+				3988D154CF887249E48BBE88 /* Pods */,
+				CC5A19B8C644861B42B73FD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +86,9 @@
 		58C9F3E61C3A403E00594407 /* Foodu */ = {
 			isa = PBXGroup;
 			children = (
+				58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */,
+				58C9F40C1C3A5F3200594407 /* Models */,
+				58C9F4021C3A41CD00594407 /* Cells */,
 				58C9F3FE1C3A40B400594407 /* ViewControllers */,
 				58C9F3EA1C3A403E00594407 /* AppDelegate.h */,
 				58C9F3EB1C3A403E00594407 /* AppDelegate.m */,
@@ -77,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				58C9F3E81C3A403E00594407 /* main.m */,
+				58C9F4131C3A67A100594407 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -86,10 +115,36 @@
 			children = (
 				58C9F3ED1C3A403E00594407 /* ViewController.h */,
 				58C9F3EE1C3A403E00594407 /* ViewController.m */,
-				58C9F3FF1C3A40ED00594407 /* FListTableViewController.h */,
-				58C9F4001C3A40ED00594407 /* FListTableViewController.m */,
+				58C9F4061C3A4C3900594407 /* FListViewController.h */,
+				58C9F4071C3A4C3900594407 /* FListViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		58C9F4021C3A41CD00594407 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */,
+				58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		58C9F40C1C3A5F3200594407 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58C9F4101C3A61F200594407 /* FItem.h */,
+				58C9F4111C3A61F200594407 /* FItem.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CC5A19B8C644861B42B73FD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,9 +154,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58C9F3FB1C3A403E00594407 /* Build configuration list for PBXNativeTarget "Foodu" */;
 			buildPhases = (
+				28CBB8025289860371642E42 /* Check Pods Manifest.lock */,
 				58C9F3E01C3A403E00594407 /* Sources */,
 				58C9F3E11C3A403E00594407 /* Frameworks */,
 				58C9F3E21C3A403E00594407 /* Resources */,
+				04D3899CD3985B4A417583C4 /* Embed Pods Frameworks */,
+				89D682C5B91EEB558184DC07 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -118,6 +176,7 @@
 		58C9F3DC1C3A403E00594407 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = F;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Paadam;
 				TargetAttributes = {
@@ -151,20 +210,71 @@
 			files = (
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
+				58C9F4B11C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04D3899CD3985B4A417583C4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Foodu/Pods-Foodu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28CBB8025289860371642E42 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		89D682C5B91EEB558184DC07 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Foodu/Pods-Foodu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		58C9F3E01C3A403E00594407 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */,
 				58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
-				58C9F4011C3A40ED00594407 /* FListTableViewController.m in Sources */,
+				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
+				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,7 +318,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Abbin Varghese (7NSQ6MWKUS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Abbin Varghese (7NSQ6MWKUS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -252,7 +363,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Abbin Varghese (76JA3GT3D5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Abbin Varghese (76JA3GT3D5)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -275,8 +387,11 @@
 		};
 		58C9F3FC1C3A403E00594407 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Abbin Varghese (7NSQ6MWKUS)";
+				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
@@ -286,8 +401,11 @@
 		};
 		58C9F3FD1C3A403E00594407 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Abbin Varghese (76JA3GT3D5)";
+				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
@@ -314,6 +432,7 @@
 				58C9F3FD1C3A403E00594407 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
