@@ -17,7 +17,7 @@
 		58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4071C3A4C3900594407 /* FListViewController.m */; };
 		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
 		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
-		58C9F4B11C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */; };
+		ED0E7BFF1C3AD2B7008DB644 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +40,8 @@
 		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
 		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
-		58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg"; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 		58C9F3E61C3A403E00594407 /* Foodu */ = {
 			isa = PBXGroup;
 			children = (
-				58C9F4B01C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg */,
+				ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */,
 				58C9F40C1C3A5F3200594407 /* Models */,
 				58C9F4021C3A41CD00594407 /* Cells */,
 				58C9F3FE1C3A40B400594407 /* ViewControllers */,
@@ -209,8 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
+				ED0E7BFF1C3AD2B7008DB644 /* placeholder.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
-				58C9F4B11C3AA0B900594407 /* a8d8812fa7701ab999ab60c66dbed985-d32m89v.jpg in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

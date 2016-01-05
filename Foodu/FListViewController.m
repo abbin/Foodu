@@ -52,20 +52,19 @@
     if (self.objects.count == 0) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
-    
+//    [query whereKey:@"objectId" equalTo:@"gp1g2Zq4PU"];
     [query orderByDescending:@"createdAt"];
-//    [query whereKey:@"objectId" equalTo:@"XWusrv3R9x"];
     return query;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-                        object:(FItem *)object {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(FItem *)object {
     static NSString *cellIdentifier = @"FlistTableViewCell";
     
     FlistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    PFFile *file = [object.itemImageArray objectAtIndex:0];
-//    cell.itemImageView.file = file;
+    PFFile *file = [object.itemImageArray objectAtIndex:0];
+    cell.itemImageView.file = file;
+    cell.itemImageView.image = [UIImage imageNamed:@"placeholder.png"];
+    [cell.itemImageView loadInBackground];
     return cell;
 }
 

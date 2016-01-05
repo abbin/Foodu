@@ -10,7 +10,6 @@
 
 @interface FlistTableViewCell : PFTableViewCell
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loader;
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
 
 @end

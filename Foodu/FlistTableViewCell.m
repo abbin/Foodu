@@ -11,16 +11,12 @@
 @implementation FlistTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.itemImageView.layer.cornerRadius = 5;
+    self.itemImageView.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    [self.itemImageView loadInBackground:^(UIImage * _Nullable image, NSError * _Nullable error) {
-        if (self.itemImageView.image) {
-            [self.loader stopAnimating];
-        }
-    }];
     // Configure the view for the selected state
 }
 
