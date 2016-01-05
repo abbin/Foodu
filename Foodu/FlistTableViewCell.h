@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+
 @end

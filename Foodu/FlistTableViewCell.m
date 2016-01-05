@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     self.itemImageView.layer.cornerRadius = 5;
     self.itemImageView.layer.masksToBounds = YES;
+    self.ratingLabel.layer.cornerRadius = 2;
+    self.ratingLabel.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -27,7 +27,7 @@
     [super viewDidLoad];
     suss = 0;
     fai = 0;
-    [self refresh:0];
+//    [self refresh:0];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
