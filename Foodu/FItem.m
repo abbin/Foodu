@@ -17,6 +17,7 @@
 @dynamic itemRating;
 @dynamic itemStoreName;
 @dynamic itemImageArray;
+@dynamic itemPrice;
 
 +(void)load{
     [self registerSubclass];

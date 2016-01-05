@@ -18,4 +18,5 @@
 @property (nonatomic,strong) NSString *itemStoreName;
 @property (nonatomic,strong) NSNumber *itemRating;
 @property (nonatomic,strong) NSMutableArray *itemImageArray;
+@property (nonatomic,strong) NSNumber *itemPrice;
 @end

@@ -52,7 +52,6 @@
     if (self.objects.count == 0) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
-//    [query whereKey:@"objectId" equalTo:@"gp1g2Zq4PU"];
     [query orderByDescending:@"createdAt"];
     return query;
 }
@@ -71,5 +70,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [UIScreen mainScreen].bounds.size.height/4;
 }
+
 
 @end
