@@ -8,8 +8,12 @@
 
 #import "FListViewController.h"
 #import "FlistTableViewCell.h"
+#import "FNextTableViewCell.h"
 
 @interface FListViewController ()
+
+@property (nonatomic,strong) UISearchBar *searchBarTop;
+@property (nonatomic,assign) NSInteger numberOfRows;
 
 @end
 
@@ -18,7 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView setContentInset:UIEdgeInsetsMake(20, 0, 50, 0)];
+    self.searchBarTop = [[UISearchBar alloc]initWithFrame:CGRectZero];
+    self.searchBarTop.placeholder = @"Search near by";
+    [self.searchBarTop sizeToFit];
+    self.navigationItem.titleView = self.searchBarTop;
     // Do any additional setup after loading the view.
 }
 
@@ -67,8 +74,23 @@
     return cell;
 }
 
+-(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
+    FNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
+    return cell;
+}
+
+-(void)objectsDidLoad:(NSError *)error{
+    [super objectsDidLoad:error];
+    self.numberOfRows = [self objects].count;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [UIScreen mainScreen].bounds.size.height/4;
+    if (indexPath.row == self.numberOfRows) {
+        return 55;
+    }
+    else{
+        return [UIScreen mainScreen].bounds.size.height/4;
+    }
 }
 
 

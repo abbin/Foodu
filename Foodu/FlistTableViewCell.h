@@ -7,11 +7,13 @@
 //
 
 #import <ParseUI/ParseUI.h>
+#import "TPFloatRatingView.h"
 
-@interface FlistTableViewCell : PFTableViewCell
+@interface FlistTableViewCell : PFTableViewCell<TPFloatRatingViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
-
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet TPFloatRatingView *ratingView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemImageViewWidth;
 
 @end

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
+		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
+		5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */; };
 		58C9F3E91C3A403E00594407 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3E81C3A403E00594407 /* main.m */; };
 		58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EB1C3A403E00594407 /* AppDelegate.m */; };
 		58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EE1C3A403E00594407 /* ViewController.m */; };
@@ -78,6 +80,10 @@
 /* Begin PBXFileReference section */
 		0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.release.xcconfig"; sourceTree = "<group>"; };
 		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
+		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
+		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
+		5861BD301C3D26CE00AE6B96 /* FNextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNextTableViewCell.h; sourceTree = "<group>"; };
+		5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNextTableViewCell.m; sourceTree = "<group>"; };
 		58C9F3E41C3A403E00594407 /* Foodu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C9F3E81C3A403E00594407 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58C9F3EA1C3A403E00594407 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,6 +181,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5861BD261C3CF0C200AE6B96 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */,
+				5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */,
+			);
+			name = Customs;
+			sourceTree = "<group>";
+		};
 		58C9F3DB1C3A403E00594407 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +211,7 @@
 		58C9F3E61C3A403E00594407 /* Foodu */ = {
 			isa = PBXGroup;
 			children = (
+				5861BD261C3CF0C200AE6B96 /* Customs */,
 				ED0E7C001C3C3A43008DB644 /* New Group */,
 				ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */,
 				58C9F40C1C3A5F3200594407 /* Models */,
@@ -237,6 +253,8 @@
 			children = (
 				58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */,
 				58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */,
+				5861BD301C3D26CE00AE6B96 /* FNextTableViewCell.h */,
+				5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -498,12 +516,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */,
 				58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
 				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
+				5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

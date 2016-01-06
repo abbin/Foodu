@@ -409,6 +409,9 @@
         cell = [[PFActivityIndicatorTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                                        reuseIdentifier:cellIdentifier];
         cell.textLabel.text = PFLocalizedString(@"Load more...", @"Load more...");
+        [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+        
+        [cell.textLabel setBackgroundColor:[UIColor redColor]];
     }
 
     cell.animating = self.loading;
