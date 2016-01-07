@@ -22,19 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    for (int i = 0; (i=9999999); i++) {
-//        NSLog(@"%i",(int)[self randomFloatBetween:0 and:3]);
-//    }
     self.searchBarTop = [[UISearchBar alloc]initWithFrame:CGRectZero];
     self.searchBarTop.placeholder = @"Search near by";
     [self.searchBarTop sizeToFit];
     self.navigationItem.titleView = self.searchBarTop;
     // Do any additional setup after loading the view.
-}
-
--(float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
-    float diff = bigNumber - smallNumber;
-    return (((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * diff) + smallNumber;
 }
 
 - (void)didReceiveMemoryWarning {
