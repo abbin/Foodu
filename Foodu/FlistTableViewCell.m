@@ -26,8 +26,7 @@
     self.ratingView.editable = YES;
     self.ratingView.halfRatings = YES;
     self.ratingView.floatRatings = NO;
-
-    
+    NSLog(@"%f",self.itemImageView.frame.size.width);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -71,6 +71,7 @@
     cell.itemImageView.file = file;
     cell.itemImageView.image = [UIImage imageNamed:@"placeholder.png"];
     [cell.itemImageView loadInBackground];
+    
     return cell;
 }
 

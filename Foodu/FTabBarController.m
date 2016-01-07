@@ -11,7 +11,6 @@
 @interface FTabBarController ()
 
 @property (strong, nonatomic) IBOutlet UIView *tabBarView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceBtwButtons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceBtwButtonsTwo;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *distanceBtwButtonsThree;
@@ -32,9 +31,9 @@
     self.distanceBtwButtonsThree.constant = distance;
     
     CALayer *topBorder = [CALayer layer];
-    topBorder.frame = CGRectMake(0.0f, 0.0f, self.containerView.frame.size.width, 0.3f);
+    topBorder.frame = CGRectMake(0.0f, 0.0f, self.tabBarView.frame.size.width, 0.3f);
     topBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
-    [self.containerView.layer addSublayer:topBorder];
+    [self.tabBarView.layer addSublayer:topBorder];
     
     [self.view addSubview:self.tabBarView];
     // Do any additional setup after loading the view.

@@ -28,7 +28,7 @@
     [super viewDidLoad];
     suss = 0;
     fai = 0;
-    //[self refresh:0];
+//    [self refresh:0];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -56,7 +56,7 @@
         NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
 //        NSString *imageName = [NSString stringWithFormat:@"24.jpg"];
         
-        UIImage *img = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:1536 ];
+        UIImage *img = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435];
         
         NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
         NSLog(@"File size is : %.2f MB",(float)imageData.length/1024.0f/1024.0f);

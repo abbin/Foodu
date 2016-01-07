@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
-		582006D51C3E669E00BD0FCD /* 07_plus-512 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 582006D41C3E669E00BD0FCD /* 07_plus-512 2.png */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -85,7 +84,6 @@
 		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
-		582006D41C3E669E00BD0FCD /* 07_plus-512 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07_plus-512 2.png"; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		5861BD301C3D26CE00AE6B96 /* FNextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNextTableViewCell.h; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 				5861BD261C3CF0C200AE6B96 /* Customs */,
 				ED0E7C001C3C3A43008DB644 /* New Group */,
 				ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */,
-				582006D41C3E669E00BD0FCD /* 07_plus-512 2.png */,
 				58C9F40C1C3A5F3200594407 /* Models */,
 				58C9F4021C3A41CD00594407 /* Cells */,
 				58C9F3FE1C3A40B400594407 /* ViewControllers */,
@@ -445,7 +442,6 @@
 				ED0E7C661C3C3A86008DB644 /* 47.jpg in Resources */,
 				ED0E7C5A1C3C3A86008DB644 /* 35.jpg in Resources */,
 				ED0E7C461C3C3A86008DB644 /* 15.jpg in Resources */,
-				582006D51C3E669E00BD0FCD /* 07_plus-512 2.png in Resources */,
 				ED0E7C501C3C3A86008DB644 /* 25.jpg in Resources */,
 				ED0E7C441C3C3A86008DB644 /* 13.jpg in Resources */,
 				ED0E7C391C3C3A86008DB644 /* 2.jpg in Resources */,
