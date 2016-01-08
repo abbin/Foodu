@@ -22,11 +22,10 @@
     self.ratingView.contentMode = UIViewContentModeScaleAspectFill;
     self.ratingView.maxRating = 5;
     self.ratingView.minRating = 1;
-    self.ratingView.rating = 2.5;
+    self.ratingView.rating = 2.8;
     self.ratingView.editable = YES;
     self.ratingView.halfRatings = YES;
     self.ratingView.floatRatings = NO;
-    NSLog(@"%f",self.itemImageView.frame.size.width);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

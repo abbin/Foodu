@@ -7,6 +7,7 @@ target 'Foodu' do
 
 pod 'Parse'
 pod 'ParseUI'
+pod 'pop', '~> 1.0'
 
 end
 
