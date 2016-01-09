@@ -21,7 +21,8 @@
 		58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4071C3A4C3900594407 /* FListViewController.m */; };
 		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
 		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
-		ED0E7BFF1C3AD2B7008DB644 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */; };
+		ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660641C417A2B00F8C8BC /* FRestaurants.m */; };
+		ED0660681C417C5400F8C8BC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660671C417C5400F8C8BC /* FImages.m */; };
 		ED0E7C381C3C3A86008DB644 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C011C3C3A86008DB644 /* 1.jpg */; };
 		ED0E7C391C3C3A86008DB644 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C021C3C3A86008DB644 /* 2.jpg */; };
 		ED0E7C3A1C3C3A86008DB644 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C031C3C3A86008DB644 /* 3.jpg */; };
@@ -77,6 +78,9 @@
 		ED0E7C6C1C3C3A86008DB644 /* 53.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C351C3C3A86008DB644 /* 53.jpg */; };
 		ED0E7C6D1C3C3A86008DB644 /* 54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C361C3C3A86008DB644 /* 54.jpg */; };
 		ED0E7C6E1C3C3A86008DB644 /* 55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C371C3C3A86008DB644 /* 55.jpg */; };
+		ED5888451C40EFCA00922C9A /* FUser.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5888441C40EFCA00922C9A /* FUser.m */; };
+		ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5888471C40F18900922C9A /* FUserDefaults.m */; };
+		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,7 +112,10 @@
 		58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
 		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		ED0660631C417A2B00F8C8BC /* FRestaurants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurants.h; sourceTree = "<group>"; };
+		ED0660641C417A2B00F8C8BC /* FRestaurants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurants.m; sourceTree = "<group>"; };
+		ED0660661C417C5400F8C8BC /* FImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImages.h; sourceTree = "<group>"; };
+		ED0660671C417C5400F8C8BC /* FImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImages.m; sourceTree = "<group>"; };
 		ED0E7C011C3C3A86008DB644 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		ED0E7C021C3C3A86008DB644 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		ED0E7C031C3C3A86008DB644 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -164,6 +171,12 @@
 		ED0E7C351C3C3A86008DB644 /* 53.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 53.jpg; sourceTree = "<group>"; };
 		ED0E7C361C3C3A86008DB644 /* 54.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 54.jpg; sourceTree = "<group>"; };
 		ED0E7C371C3C3A86008DB644 /* 55.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 55.jpg; sourceTree = "<group>"; };
+		ED5888431C40EFCA00922C9A /* FUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUser.h; sourceTree = "<group>"; };
+		ED5888441C40EFCA00922C9A /* FUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUser.m; sourceTree = "<group>"; };
+		ED5888461C40F18900922C9A /* FUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUserDefaults.h; sourceTree = "<group>"; };
+		ED5888471C40F18900922C9A /* FUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUserDefaults.m; sourceTree = "<group>"; };
+		ED58884C1C410B2600922C9A /* FSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpViewController.h; sourceTree = "<group>"; };
+		ED58884D1C410B2600922C9A /* FSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +243,6 @@
 			children = (
 				5861BD261C3CF0C200AE6B96 /* Customs */,
 				ED0E7C001C3C3A43008DB644 /* New Group */,
-				ED0E7BFE1C3AD2B7008DB644 /* placeholder.png */,
 				58C9F40C1C3A5F3200594407 /* Models */,
 				58C9F4021C3A41CD00594407 /* Cells */,
 				58C9F3FE1C3A40B400594407 /* ViewControllers */,
@@ -257,6 +269,7 @@
 		58C9F3FE1C3A40B400594407 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED58884B1C410AE300922C9A /* First Launch */,
 				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
 				58C9F3ED1C3A403E00594407 /* ViewController.h */,
 				58C9F3EE1C3A403E00594407 /* ViewController.m */,
@@ -280,8 +293,11 @@
 		58C9F40C1C3A5F3200594407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				58C9F4101C3A61F200594407 /* FItem.h */,
-				58C9F4111C3A61F200594407 /* FItem.m */,
+				ED0660621C4179F000F8C8BC /* parse Objects */,
+				ED5888431C40EFCA00922C9A /* FUser.h */,
+				ED5888441C40EFCA00922C9A /* FUser.m */,
+				ED5888461C40F18900922C9A /* FUserDefaults.h */,
+				ED5888471C40F18900922C9A /* FUserDefaults.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -292,6 +308,19 @@
 				CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED0660621C4179F000F8C8BC /* parse Objects */ = {
+			isa = PBXGroup;
+			children = (
+				58C9F4101C3A61F200594407 /* FItem.h */,
+				58C9F4111C3A61F200594407 /* FItem.m */,
+				ED0660631C417A2B00F8C8BC /* FRestaurants.h */,
+				ED0660641C417A2B00F8C8BC /* FRestaurants.m */,
+				ED0660661C417C5400F8C8BC /* FImages.h */,
+				ED0660671C417C5400F8C8BC /* FImages.m */,
+			);
+			name = "parse Objects";
 			sourceTree = "<group>";
 		};
 		ED0E7C001C3C3A43008DB644 /* New Group */ = {
@@ -354,6 +383,15 @@
 				ED0E7C371C3C3A86008DB644 /* 55.jpg */,
 			);
 			name = "New Group";
+			sourceTree = "<group>";
+		};
+		ED58884B1C410AE300922C9A /* First Launch */ = {
+			isa = PBXGroup;
+			children = (
+				ED58884C1C410B2600922C9A /* FSignUpViewController.h */,
+				ED58884D1C410B2600922C9A /* FSignUpViewController.m */,
+			);
+			name = "First Launch";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -456,7 +494,6 @@
 				ED0E7C3D1C3C3A86008DB644 /* 6.jpg in Resources */,
 				ED0E7C411C3C3A86008DB644 /* 10.jpg in Resources */,
 				ED0E7C481C3C3A86008DB644 /* 17.jpg in Resources */,
-				ED0E7BFF1C3AD2B7008DB644 /* placeholder.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				ED0E7C691C3C3A86008DB644 /* 50.jpg in Resources */,
 				ED0E7C5F1C3C3A86008DB644 /* 40.jpg in Resources */,
@@ -537,11 +574,16 @@
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */,
 				58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */,
+				ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */,
+				ED5888451C40EFCA00922C9A /* FUser.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
+				ED0660681C417C5400F8C8BC /* FImages.m in Sources */,
+				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
 				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
 				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
+				ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */,
 			);

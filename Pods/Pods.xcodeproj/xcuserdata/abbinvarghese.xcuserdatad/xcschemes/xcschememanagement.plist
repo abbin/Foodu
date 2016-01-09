@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>pop.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -32,7 +37,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5C68BB268553B0142780F85D636FDD58</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>72A8497C1567A099FBA233B786407009</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8ADBFC999666AA2FC8E1DF47EAE2D195</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -34,6 +34,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 - (id)initWithCoder:(NSCoder *)aCoder
 {
     self = [super initWithCoder:aCoder];
@@ -67,7 +71,7 @@
     static NSString *cellIdentifier = @"FlistTableViewCell";
     
     FlistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    PFFile *file = [object.itemImageArray objectAtIndex:0];
+    PFFile *file = object.itemImage.thumbNail2x;
     cell.itemImageView.file = file;
     cell.itemImageView.image = [UIImage imageNamed:@"placeholder.png"];
     [cell.itemImageView loadInBackground];

@@ -19,6 +19,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Parse setApplicationId:@"wBGcuTVQCTJdoZyTHaCt27Y3dOMnnvu2u1phaIlB"
                   clientKey:@"dvuxpBbJ4LgT8Ix8XxFr6Lyi4KxT2F5XVEUIoC3P"];
+    
+    if ([FUserDefaults isFirstLaunch]) {
+        
+    }
+    else{
+        
+    }
     return YES;
 }
 

@@ -14,9 +14,8 @@
 
 @property (nonatomic,strong) NSString *itemTitle;
 @property (nonatomic,strong) NSString *itemDescription;
-@property (nonatomic,strong) PFGeoPoint *itemLocation;
-@property (nonatomic,strong) NSString *itemStoreName;
+@property (nonatomic,strong) FRestaurants *restaurent;
 @property (nonatomic,strong) NSNumber *itemRating;
-@property (nonatomic,strong) NSMutableArray *itemImageArray;
+@property (nonatomic,strong) FImages *itemImage;
 @property (nonatomic,strong) NSNumber *itemPrice;
 @end

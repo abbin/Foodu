@@ -14,8 +14,12 @@
     self.containerView.layer.cornerRadius = 5;
     self.containerView.layer.masksToBounds = YES;
     
-    self.itemImageViewWidth.constant = (4*[UIScreen mainScreen].bounds.size.height/4)/3;
-
+    if (IS_IPad) {
+        self.itemImageViewWidth.constant = (16*[UIScreen mainScreen].bounds.size.height/4)/9;
+    }
+    else{
+        self.itemImageViewWidth.constant = (4*[UIScreen mainScreen].bounds.size.height/4)/3;
+    }
     self.ratingView.delegate = self;
     self.ratingView.emptySelectedImage = [UIImage imageNamed:@"StarEmpty"];
     self.ratingView.fullSelectedImage = [UIImage imageNamed:@"StarFull"];

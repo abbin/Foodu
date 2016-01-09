@@ -13,10 +13,9 @@
 
 @dynamic itemTitle;
 @dynamic itemDescription;
-@dynamic itemLocation;
+@dynamic restaurent;
 @dynamic itemRating;
-@dynamic itemStoreName;
-@dynamic itemImageArray;
+@dynamic itemImage;
 @dynamic itemPrice;
 
 +(void)load{

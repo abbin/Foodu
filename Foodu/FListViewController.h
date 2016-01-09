@@ -9,6 +9,6 @@
 #import <ParseUI/ParseUI.h>
 #import <Parse/Parse.h>
 
-@interface FListViewController : PFQueryTableViewController
+@interface FListViewController : PFQueryTableViewController<PFLogInViewControllerDelegate>
 
 @end

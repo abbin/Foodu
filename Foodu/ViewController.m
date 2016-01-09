@@ -12,8 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *sus;
 @property (weak, nonatomic) IBOutlet UILabel *fail;
 
-
-
 @end
 
 @implementation ViewController
@@ -28,8 +26,7 @@
     [super viewDidLoad];
     suss = 0;
     fai = 0;
-//    [self refresh:0];
-    // Do any additional setup after loading the view, typically from a nib.
+  //   [self refresh:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,40 +34,62 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 -(void)refresh:(int)i{
     i++;
     int size = 0;
+    
     float lat = [self randomFloatBetween:8 and:12];
     float lon = [self randomFloatBetween:74 and:77];
     
     FItem *spotObj = [FItem object];
     spotObj.itemTitle = @"Sample Title";
     spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
-    spotObj.itemStoreName = @"Balaji's Restaurent and Cafe";
+    FRestaurants *restaurent = [FRestaurants object];
+    restaurent.name = @"Balaji's Restaurent and Cafe";
+    restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
+    spotObj.restaurent = restaurent;
     spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
-    spotObj.itemLocation = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
     spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
-    NSMutableArray *imageArray = [[NSMutableArray alloc]init];
-//    int num = [self randomFloatBetween:1 and:5];
-    for (int k = 0; k<1; k++) {
+    
+    NSMutableArray *imageArray2X = [[NSMutableArray alloc]init];
+    NSMutableArray *imageArray3X = [[NSMutableArray alloc]init];
+    
+    int num = [self randomFloatBetween:1 and:5];
+    for (int k = 0; k<num; k++) {
         NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-//        NSString *imageName = [NSString stringWithFormat:@"24.jpg"];
         
         UIImage *img = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435];
         
         NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
-        NSLog(@"File size is : %.2f MB",(float)imageData.length/1024.0f/1024.0f);
+        
+        UIImage *img2 = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435*2];
+        
+        NSData *imageData2 = UIImageJPEGRepresentation(img2, 0.0);
+        
+        NSLog(@"File size 2X : %.2f MB",(float)imageData.length/1024.0f/1024.0f);
+        NSLog(@"File size 3X : %.2f MB",(float)imageData2.length/1024.0f/1024.0f);
+        
         size = size + imageData.length/1024.0f/1024.0f;
         if (imageData==nil) {
             [self refresh:i];
         }
         else{
             PFFile *imageFile = [PFFile fileWithData:imageData];
-            [imageArray addObject:imageFile];
+            [imageArray2X addObject:imageFile];
+            PFFile *imageFile2 = [PFFile fileWithData:imageData2];
+            [imageArray3X addObject:imageFile2];
         }
     }
     
-    spotObj.itemImageArray = imageArray;
+    FImages * image = [FImages object];
+    image.iOS2X = imageArray2X;
+    image.iOS3X = imageArray3X;
+    image.thumbNail2x = [imageArray2X objectAtIndex:0];
+    image.thumbNail3x = [imageArray3X objectAtIndex:0];
+    spotObj.itemImage = image;
+    
+    
     [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             suss++;
