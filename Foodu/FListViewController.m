@@ -71,11 +71,13 @@
     static NSString *cellIdentifier = @"FlistTableViewCell";
     
     FlistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    PFFile *file = object.itemImage.thumbNail2x;
+    PFFile *file = object.thumbNail2x;
     cell.itemImageView.file = file;
     cell.itemImageView.image = [UIImage imageNamed:@"placeholder.png"];
     [cell.itemImageView loadInBackground];
     
+    cell.titleLabel.text = object.itemTitle;
+    cell.locationLabel.text = object.itemAddress;
     return cell;
 }
 

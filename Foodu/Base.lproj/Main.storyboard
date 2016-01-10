@@ -130,7 +130,9 @@
                                     <outlet property="containerView" destination="xyO-at-xgB" id="zIN-IM-ngy"/>
                                     <outlet property="itemImageView" destination="uG7-5e-OK7" id="L4L-Xn-cue"/>
                                     <outlet property="itemImageViewWidth" destination="f8Z-0a-Jlt" id="2g7-7P-hPd"/>
+                                    <outlet property="locationLabel" destination="Gq0-ez-l9T" id="3ZH-dr-KrR"/>
                                     <outlet property="ratingView" destination="NSR-uS-akM" id="xEt-gl-uM9"/>
+                                    <outlet property="titleLabel" destination="7I8-DM-Vw5" id="vGd-TN-3zx"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PFTableViewCell" rowHeight="60" id="tBD-x6-hnq" customClass="FNextTableViewCell">

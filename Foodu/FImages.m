@@ -15,8 +15,7 @@
 @dynamic iOS3X;
 @dynamic android2X;
 @dynamic android3X;
-@dynamic thumbNail2x;
-@dynamic thumbNail3x;
+
 
 +(void)load{
     [self registerSubclass];

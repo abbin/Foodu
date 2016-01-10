@@ -26,7 +26,7 @@
     [super viewDidLoad];
     suss = 0;
     fai = 0;
-  //   [self refresh:0];
+   [self refresh:0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,10 +45,13 @@
     FItem *spotObj = [FItem object];
     spotObj.itemTitle = @"Sample Title";
     spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
+    
     FRestaurants *restaurent = [FRestaurants object];
     restaurent.name = @"Balaji's Restaurent and Cafe";
     restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
+    
     spotObj.restaurent = restaurent;
+    
     spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
     spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
     
@@ -85,23 +88,34 @@
     FImages * image = [FImages object];
     image.iOS2X = imageArray2X;
     image.iOS3X = imageArray3X;
-    image.thumbNail2x = [imageArray2X objectAtIndex:0];
-    image.thumbNail3x = [imageArray3X objectAtIndex:0];
+    spotObj.thumbNail2x = [imageArray2X objectAtIndex:0];
+    spotObj.thumbNail3x = [imageArray3X objectAtIndex:0];
     spotObj.itemImage = image;
     
     
-    [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            suss++;
-            self.sus.text = [NSString stringWithFormat:@"%i",suss];
-            
-            [self refresh:i];
-        }
-        else{
-            fai++;
-            self.fail.text = [NSString stringWithFormat:@"%i",fai];
-        }
-    }];
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    CLLocation *loc = [[CLLocation alloc]initWithLatitude:restaurent.location.latitude longitude:restaurent.location.longitude]; //insert your coordinates
+    
+    [ceo reverseGeocodeLocation:loc
+              completionHandler:^(NSArray *placemarks, NSError *error) {
+                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                  
+                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                  spotObj.itemAddress = locatedAt;
+                  [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                      if (succeeded) {
+                          suss++;
+                          self.sus.text = [NSString stringWithFormat:@"%i",suss];
+                          
+                          [self refresh:i];
+                      }
+                      else{
+                          fai++;
+                          self.fail.text = [NSString stringWithFormat:@"%i",fai];
+                      }
+                  }];
+              }
+     ];
 }
 
 -(UIImage*)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width

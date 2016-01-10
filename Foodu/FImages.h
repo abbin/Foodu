@@ -16,7 +16,5 @@
 @property(nonatomic ,strong) NSArray *iOS2X;
 @property(nonatomic ,strong) NSArray *android3X;
 @property(nonatomic ,strong) NSArray *android2X;
-@property(nonatomic, strong) PFFile *thumbNail2x;
-@property(nonatomic, strong) PFFile *thumbNail3x;
 
 @end

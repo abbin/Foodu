@@ -17,6 +17,9 @@
 @dynamic itemRating;
 @dynamic itemImage;
 @dynamic itemPrice;
+@dynamic thumbNail2x;
+@dynamic thumbNail3x;
+@dynamic itemAddress;
 
 +(void)load{
     [self registerSubclass];
