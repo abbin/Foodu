@@ -12,6 +12,7 @@
 
 + (NSString *)parseClassName;
 
+@property(nonatomic ,strong) NSArray *originals;
 @property(nonatomic ,strong) NSArray *iOS3X;
 @property(nonatomic ,strong) NSArray *iOS2X;
 @property(nonatomic ,strong) NSArray *android3X;

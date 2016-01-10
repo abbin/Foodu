@@ -26,7 +26,7 @@
 }
 
 +(NSString *)parseClassName{
-    return @"items";
+    return @"item";
 }
 
 @end

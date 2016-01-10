@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -17,8 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Parse setApplicationId:@"wBGcuTVQCTJdoZyTHaCt27Y3dOMnnvu2u1phaIlB"
-                  clientKey:@"dvuxpBbJ4LgT8Ix8XxFr6Lyi4KxT2F5XVEUIoC3P"];
+    [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
+    [Parse setApplicationId:@"CIVcFfruMyun8nJoxBeygmXoQdJVX1vx9r4b1yI8"
+                  clientKey:@"dxmmeSEcllLOk6vbSbdZ8ZL0MmN3g93KO90S06uA"];
     
     if ([FUserDefaults isFirstLaunch]) {
         

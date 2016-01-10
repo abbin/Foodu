@@ -56,9 +56,9 @@
     spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
     
     NSMutableArray *imageArray2X = [[NSMutableArray alloc]init];
-    NSMutableArray *imageArray3X = [[NSMutableArray alloc]init];
+//    NSMutableArray *imageArray3X = [[NSMutableArray alloc]init];
     
-    int num = [self randomFloatBetween:1 and:5];
+    int num = 3; //[self randomFloatBetween:1 and:5];
     for (int k = 0; k<num; k++) {
         NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
         
@@ -66,12 +66,12 @@
         
         NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
         
-        UIImage *img2 = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435*2];
-        
-        NSData *imageData2 = UIImageJPEGRepresentation(img2, 0.0);
-        
-        NSLog(@"File size 2X : %.2f MB",(float)imageData.length/1024.0f/1024.0f);
-        NSLog(@"File size 3X : %.2f MB",(float)imageData2.length/1024.0f/1024.0f);
+//        UIImage *img2 = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435*2];
+//        
+//        NSData *imageData2 = UIImageJPEGRepresentation(img2, 0.0);
+//        
+//        NSLog(@"File size 2X : %.2f MB",(float)imageData.length/1024.0f/1024.0f);
+//        NSLog(@"File size 3X : %.2f MB",(float)imageData2.length/1024.0f/1024.0f);
         
         size = size + imageData.length/1024.0f/1024.0f;
         if (imageData==nil) {
@@ -80,17 +80,18 @@
         else{
             PFFile *imageFile = [PFFile fileWithData:imageData];
             [imageArray2X addObject:imageFile];
-            PFFile *imageFile2 = [PFFile fileWithData:imageData2];
-            [imageArray3X addObject:imageFile2];
+//            PFFile *imageFile2 = [PFFile fileWithData:imageData2];
+//            [imageArray3X addObject:imageFile2];
         }
     }
     
-    FImages * image = [FImages object];
-    image.iOS2X = imageArray2X;
-    image.iOS3X = imageArray3X;
-    spotObj.thumbNail2x = [imageArray2X objectAtIndex:0];
-    spotObj.thumbNail3x = [imageArray3X objectAtIndex:0];
-    spotObj.itemImage = image;
+//    FImages * image = [FImages object];
+//    image.originals = imageArray2X;
+//    image.iOS2X = imageArray2X;
+//    image.iOS3X = imageArray3X;
+//    spotObj.thumbNail2x = [imageArray2X objectAtIndex:0];
+//    spotObj.thumbNail3x = [imageArray3X objectAtIndex:0];
+    spotObj.itemImage = imageArray2X;
     
     
     CLGeocoder *ceo = [[CLGeocoder alloc]init];
@@ -113,6 +114,7 @@
                           fai++;
                           self.fail.text = [NSString stringWithFormat:@"%i",fai];
                       }
+
                   }];
               }
      ];

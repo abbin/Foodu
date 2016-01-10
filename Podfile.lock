@@ -1,5 +1,6 @@
 PODS:
   - Bolts/Tasks (1.5.1)
+  - GoogleMaps (1.11.1)
   - Parse (1.11.0):
     - Bolts/Tasks (~> 1.5)
   - ParseUI (1.1.7):
@@ -8,12 +9,14 @@ PODS:
   - pop (1.0.8)
 
 DEPENDENCIES:
+  - GoogleMaps
   - Parse
   - ParseUI
   - pop (~> 1.0)
 
 SPEC CHECKSUMS:
   Bolts: a12663244b1d3351c738882e71902fc74db54f64
+  GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
   Parse: 886af46a0a677402f6374bb97ac212e795f70afe
   ParseUI: c2bcdfbb00330e464b5b773266ae221697a3bb7b
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
