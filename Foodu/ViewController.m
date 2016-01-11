@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <malloc/malloc.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *sus;
@@ -19,11 +20,14 @@
 {
     int suss;
     int fai;
-    NSArray *restArray;
+    NSMutableArray *restArray;
+    NSMutableArray *avgArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    restArray = [[NSMutableArray alloc]init];
+    avgArray = [[NSMutableArray alloc]init];
     suss = 0;
     fai = 0;
    [self refresh:0];
@@ -36,88 +40,113 @@
 
 
 -(void)refresh:(int)i{
+      NSLog(@"***********");
     i++;
-    int size = 0;
-    
+    __block float size = 0;
+    NSDate *dateOne = [NSDate date];
     float lat = [self randomFloatBetween:8 and:12];
     float lon = [self randomFloatBetween:74 and:77];
     
-    FItem *spotObj = [FItem object];
-    spotObj.itemTitle = @"Sample Title";
-    spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
-    
-    FRestaurants *restaurent = [FRestaurants object];
-    restaurent.name = @"Balaji's Restaurent and Cafe";
-    restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
-    
-    spotObj.restaurent = restaurent;
-    
-    spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
-    spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
-    
-    NSMutableArray *imageArray2X = [[NSMutableArray alloc]init];
-//    NSMutableArray *imageArray3X = [[NSMutableArray alloc]init];
-    
-    int num = 3; //[self randomFloatBetween:1 and:5];
-    for (int k = 0; k<num; k++) {
-        NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-        
-        UIImage *img = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435];
-        
-        NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
-        
-//        UIImage *img2 = [self imageWithImage:[UIImage imageNamed:imageName] scaledToWidth:435*2];
-//        
-//        NSData *imageData2 = UIImageJPEGRepresentation(img2, 0.0);
-//        
-//        NSLog(@"File size 2X : %.2f MB",(float)imageData.length/1024.0f/1024.0f);
-//        NSLog(@"File size 3X : %.2f MB",(float)imageData2.length/1024.0f/1024.0f);
-        
-        size = size + imageData.length/1024.0f/1024.0f;
-        if (imageData==nil) {
-            [self refresh:i];
-        }
-        else{
-            PFFile *imageFile = [PFFile fileWithData:imageData];
-            [imageArray2X addObject:imageFile];
-//            PFFile *imageFile2 = [PFFile fileWithData:imageData2];
-//            [imageArray3X addObject:imageFile2];
-        }
-    }
-    
-//    FImages * image = [FImages object];
-//    image.originals = imageArray2X;
-//    image.iOS2X = imageArray2X;
-//    image.iOS3X = imageArray3X;
-//    spotObj.thumbNail2x = [imageArray2X objectAtIndex:0];
-//    spotObj.thumbNail3x = [imageArray3X objectAtIndex:0];
-    spotObj.itemImage = imageArray2X;
-    
-    
-    CLGeocoder *ceo = [[CLGeocoder alloc]init];
-    CLLocation *loc = [[CLLocation alloc]initWithLatitude:restaurent.location.latitude longitude:restaurent.location.longitude]; //insert your coordinates
-    
-    [ceo reverseGeocodeLocation:loc
-              completionHandler:^(NSArray *placemarks, NSError *error) {
-                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                  
-                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-                  spotObj.itemAddress = locatedAt;
-                  [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                      if (succeeded) {
-                          suss++;
-                          self.sus.text = [NSString stringWithFormat:@"%i",suss];
-                          
-                          [self refresh:i];
-                      }
-                      else{
-                          fai++;
-                          self.fail.text = [NSString stringWithFormat:@"%i",fai];
-                      }
+    __block NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+    __block UIImage *img = [UIImage imageNamed:imageName];
+    __block NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
+    size = size+(float)imageData.length/1024.0f/1024.0f;
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    FImages *imageObj = [FImages object];
+    imageObj.original = imageFile;
+//    [imageObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded) {
+            imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+            img = [UIImage imageNamed:imageName];
+            imageData = UIImageJPEGRepresentation(img, 0.0);
+            size = size+(float)imageData.length/1024.0f/1024.0f;
+            PFFile *imageFile2 = [PFFile fileWithData:imageData];
+            FImages *imageObj2 = [FImages object];
+            imageObj2.original = imageFile2;
+//            [imageObj2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                if (succeeded) {
+                    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+                    img = [UIImage imageNamed:imageName];
+                    imageData = UIImageJPEGRepresentation(img, 0.0);
+                    size = size+(float)imageData.length/1024.0f/1024.0f;
+                    PFFile *imageFile3 = [PFFile fileWithData:imageData];
+                    FImages *imageObj3 = [FImages object];
+                    imageObj3.original = imageFile3;
+//                    [imageObj3 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                        if (succeeded) {
+                            NSArray *imageArray = [NSArray arrayWithObjects:imageObj,imageObj2,imageObj3, nil];
+                            
+                            FItem *spotObj = [FItem object];
+                            spotObj.itemImageArray = imageArray;
+                            spotObj.itemTitle = @"Sample Title";
+                            spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
+                            
+                            FRestaurants *restaurent = [FRestaurants object];
+                            restaurent.name = @"Balaji's Restaurent and Cafe";
+                            restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
+                            
+                            spotObj.restaurent = restaurent;
+                            
+                            spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
+                            spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
+                            
+//                            CLGeocoder *ceo = [[CLGeocoder alloc]init];
+//                            CLLocation *loc = [[CLLocation alloc]initWithLatitude:restaurent.location.latitude longitude:restaurent.location.longitude]; //insert your coordinates
+//                            [ceo reverseGeocodeLocation:loc
+//                                      completionHandler:^(NSArray *placemarks, NSError *error) {
+//                                          if (error) {
+//                                              fai++;
+//                                              self.fail.text = [NSString stringWithFormat:@"%i",fai];
+//                                              [self refresh:i];
+//                                          }
+//                                          else{
+//                                              CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//                                              
+//                                              NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                                              spotObj.itemAddress = @"Blah Blah";
+                                              [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                                  if (succeeded) {
+                                                      suss++;
+                                                      self.sus.text = [NSString stringWithFormat:@"%i",suss];
+                                                      NSDate *dateTwo = [NSDate date];
+                                                      NSTimeInterval distanceBetweenDates = [dateTwo timeIntervalSinceDate:dateOne];
+                                                      NSNumber *num = [NSNumber numberWithInteger:distanceBetweenDates];
+                                                      NSNumber *num2 = [NSNumber numberWithFloat:size];
+                                                      size = 0;
+                                                      [restArray addObject:num];
+                                                      [avgArray addObject:num2];
+                                                      NSLog(@"avgSIze = %@", [avgArray valueForKeyPath:@"@avg.floatValue"]);
+                                                      NSLog(@"avgTime = %@", [restArray valueForKeyPath:@"@avg.floatValue"]);
+                                                      [self refresh:i];
+                                                  }
+                                                  else{
+                                                      fai++;
+                                                      self.fail.text = [NSString stringWithFormat:@"%i",fai];
+                                                      [self refresh:i];
+                                                  }
+                                                  
+                                              }];
+//                                          }
+//                                      }
+//                             ];
+//                        }
+//                        else{
+//                            NSLog(@"%@",error.description);
+//                        }
+//                    }];
 
-                  }];
-              }
-     ];
+//                }
+//                else{
+//                    NSLog(@"%@",error.description);
+//                }
+//            }];
+//        }
+//        else{
+//            NSLog(@"%@",error.description);
+//        }
+//    }];
+    
+    
 }
 
 -(UIImage*)imageWithImage: (UIImage*) sourceImage scaledToWidth: (float) i_width

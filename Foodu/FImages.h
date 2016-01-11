@@ -12,10 +12,10 @@
 
 + (NSString *)parseClassName;
 
-@property(nonatomic ,strong) NSArray *originals;
-@property(nonatomic ,strong) NSArray *iOS3X;
-@property(nonatomic ,strong) NSArray *iOS2X;
-@property(nonatomic ,strong) NSArray *android3X;
-@property(nonatomic ,strong) NSArray *android2X;
+@property(nonatomic ,strong) PFFile *original;
+@property(nonatomic ,strong) PFFile *iOS3X;
+@property(nonatomic ,strong) PFFile *iOS2X;
+@property(nonatomic ,strong) PFFile *android3X;
+@property(nonatomic ,strong) PFFile *android2X;
 
 @end

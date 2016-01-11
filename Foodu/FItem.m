@@ -15,7 +15,7 @@
 @dynamic itemDescription;
 @dynamic restaurent;
 @dynamic itemRating;
-@dynamic itemImage;
+@dynamic itemImageArray;
 @dynamic itemPrice;
 @dynamic thumbNail2x;
 @dynamic thumbNail3x;
@@ -26,7 +26,7 @@
 }
 
 +(NSString *)parseClassName{
-    return @"item";
+    return @"items";
 }
 
 @end
