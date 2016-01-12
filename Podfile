@@ -9,6 +9,7 @@ pod 'Parse'
 pod 'ParseUI'
 pod 'pop', '~> 1.0'
 pod 'GoogleMaps'
+pod "UPStackMenu"
 
 end
 

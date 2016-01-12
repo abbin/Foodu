@@ -53,79 +53,75 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-//    POPSpringAnimation *basicAnimation = [POPSpringAnimation animation];
-//    basicAnimation.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
-//    basicAnimation.springBounciness=2;    // value between 0-20 default at 4
-//    basicAnimation.springSpeed=40;
-//    basicAnimation.toValue=[NSValue valueWithCGPoint:self.pinButton.center];
-//    [self.backView pop_addAnimation:basicAnimation forKey:@"WhatEverNameYouWant"];
-//    self.backView.backgroundColor = [UIColor grapeFruit];
-//    [self.pinImageView setImage:[UIImage imageNamed:@"pinSelected"]];
+
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
-    [self setSelectedIndex:0];
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.backView.center = self.homeButton.center;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     [self.geoListImageView setImage:[UIImage imageNamed:@"geoList"]];
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarks"]];
     [self.profileImageView setImage:[UIImage imageNamed:@"profile"]];
     
-    POPSpringAnimation *basicAnimation = [POPSpringAnimation animation];
-    basicAnimation.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
-    basicAnimation.springBounciness=7;    // value between 0-20 default at 4
-    basicAnimation.springSpeed=40;
-    basicAnimation.toValue=[NSValue valueWithCGPoint:self.homeButton.center];
-    [self.backView pop_addAnimation:basicAnimation forKey:@"WhatEverNameYouWant"];
     self.backView.backgroundColor = [UIColor mint];
     [self.homeImageView setImage:[UIImage imageNamed:@"homeSelected"]];
+    
+    [self setSelectedIndex:0];
 }
 
 - (IBAction)geoListButtonClicked:(UIButton *)sender {
-    [self setSelectedIndex:1];
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarks"]];
     [self.profileImageView setImage:[UIImage imageNamed:@"profile"]];
     [self.homeImageView setImage:[UIImage imageNamed:@"home"]];
     
-    POPSpringAnimation *basicAnimation = [POPSpringAnimation animation];
-    basicAnimation.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
-    basicAnimation.springBounciness=7;    // value between 0-20 default at 4
-    basicAnimation.springSpeed=40;
-    basicAnimation.toValue=[NSValue valueWithCGPoint:self.geoListButton.center];
-    [self.backView pop_addAnimation:basicAnimation forKey:@"WhatEverNameYouWant"];
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.backView.center = self.geoListButton.center;
+    } completion:^(BOOL finished) {
+        
+    }];
     
     self.backView.backgroundColor = [UIColor pinkRose];
     [self.geoListImageView setImage:[UIImage imageNamed:@"geoListSelected"]];
+    
+    [self setSelectedIndex:1];
 }
 
 - (IBAction)bookMarkButtonCLiked:(UIButton *)sender {
-    [self setSelectedIndex:2];
     [self.geoListImageView setImage:[UIImage imageNamed:@"geoList"]];
     [self.profileImageView setImage:[UIImage imageNamed:@"profile"]];
     [self.homeImageView setImage:[UIImage imageNamed:@"home"]];
     
-    POPSpringAnimation *basicAnimation = [POPSpringAnimation animation];
-    basicAnimation.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
-    basicAnimation.springBounciness=7;    // value between 0-20 default at 4
-    basicAnimation.springSpeed=40;
-    basicAnimation.toValue=[NSValue valueWithCGPoint:self.bookMarkButton.center];
-    [self.backView pop_addAnimation:basicAnimation forKey:@"WhatEverNameYouWant"];
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.backView.center = self.bookMarkButton.center;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     self.backView.backgroundColor = [UIColor sunFlower];
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarkSelected"]];
+    
+    [self setSelectedIndex:2];
 }
 
 - (IBAction)profileButtonClicked:(UIButton *)sender {
-    [self setSelectedIndex:3];
     [self.geoListImageView setImage:[UIImage imageNamed:@"geoList"]];
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarks"]];
     [self.homeImageView setImage:[UIImage imageNamed:@"home"]];
     
-    POPSpringAnimation *basicAnimation = [POPSpringAnimation animation];
-    basicAnimation.property = [POPAnimatableProperty propertyWithName:kPOPViewCenter];
-    basicAnimation.springBounciness=2;    // value between 0-20 default at 4
-    basicAnimation.springSpeed=40;
-    basicAnimation.toValue=[NSValue valueWithCGPoint:self.profileButton.center];
-    [self.backView pop_addAnimation:basicAnimation forKey:@"WhatEverNameYouWant"];
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.backView.center = self.profileButton.center;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     self.backView.backgroundColor = [UIColor lavender];
     [self.profileImageView setImage:[UIImage imageNamed:@"profileSelected"]];
+    
+    [self setSelectedIndex:3];
 }
 
 @end

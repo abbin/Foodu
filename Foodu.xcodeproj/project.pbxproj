@@ -21,6 +21,7 @@
 		58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4071C3A4C3900594407 /* FListViewController.m */; };
 		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
 		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
+		58D623351C45284500C226D9 /* camera-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D623341C45284500C226D9 /* camera-512.png */; };
 		ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660641C417A2B00F8C8BC /* FRestaurants.m */; };
 		ED0660681C417C5400F8C8BC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660671C417C5400F8C8BC /* FImages.m */; };
 		ED0E7C381C3C3A86008DB644 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C011C3C3A86008DB644 /* 1.jpg */; };
@@ -111,6 +112,7 @@
 		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
 		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
+		58D623341C45284500C226D9 /* camera-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-512.png"; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0660631C417A2B00F8C8BC /* FRestaurants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurants.h; sourceTree = "<group>"; };
 		ED0660641C417A2B00F8C8BC /* FRestaurants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurants.m; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				58D623341C45284500C226D9 /* camera-512.png */,
 				5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */,
 				5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */,
 				58846B621C3E9230006CFBFB /* UIColor+FColours.h */,
@@ -497,6 +500,7 @@
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				ED0E7C691C3C3A86008DB644 /* 50.jpg in Resources */,
 				ED0E7C5F1C3C3A86008DB644 /* 40.jpg in Resources */,
+				58D623351C45284500C226D9 /* camera-512.png in Resources */,
 				ED0E7C6A1C3C3A86008DB644 /* 51.jpg in Resources */,
 				ED0E7C5B1C3C3A86008DB644 /* 36.jpg in Resources */,
 				ED0E7C581C3C3A86008DB644 /* 33.jpg in Resources */,

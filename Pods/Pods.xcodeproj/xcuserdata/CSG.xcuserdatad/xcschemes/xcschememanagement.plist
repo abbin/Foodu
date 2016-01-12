@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UPStackMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5C68BB268553B0142780F85D636FDD58</key>
+		<key>56302766ECC06186D474D9F30892251F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8ADBFC999666AA2FC8E1DF47EAE2D195</key>
+		<key>5D12E007239880707787187677849FAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>CD2B367A6ADAD06EE4F327DD0F8F1B6E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF7F12DD78B3DE01A91E252D140F7F6D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

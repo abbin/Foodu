@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C562DFED81FB0BF1C422CE0E'
-               BlueprintName = 'Parse'
+               BlueprintIdentifier = 'DBBDCFE9824CC8C89EA0F201'
+               BlueprintName = 'UPStackMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libParse.a'>
+               BuildableName = 'libUPStackMenu.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

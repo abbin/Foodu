@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <pop/POP.h>
+#import "UPStackMenu.h"
 
-@interface FTabBarController : UITabBarController
+@interface FTabBarController : UITabBarController<UPStackMenuDelegate>
 
 @end
