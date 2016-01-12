@@ -12,17 +12,10 @@
 
 + (UIColor *) colorFromHexString:(NSString *)hexString;
 
-+(UIColor*)grapeFruit;
-+(UIColor*)bitterSweet;
-+(UIColor*)sunFlower;
-+(UIColor*)grass;
-+(UIColor*)mint;
-+(UIColor*)aqua;
-+(UIColor*)blueJeans;
-+(UIColor*)lavender;
-+(UIColor*)pinkRose;
-
-
-+(UIColor*)randomColour;
++(UIColor*)PinRed;
++(UIColor*)HomeGreen;
++(UIColor*)ProfileBlue;
++(UIColor*)GeoListPink;
++(UIColor*)BookMarkBrown;
 
 @end

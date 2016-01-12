@@ -34,84 +34,25 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
-+(UIColor *)blueJeans{
-    return [UIColor colorFromHexString:@"#4A89DC"];
++(UIColor *)PinRed{
+    return [UIColor colorFromHexString:@"#a91816"];
 }
 
-+(UIColor *)grapeFruit{
-    return [UIColor colorFromHexString:@"#DA4453"];
++(UIColor *)HomeGreen{
+    return [UIColor colorFromHexString:@"#16a961"];
 }
 
-+(UIColor *)bitterSweet{
-    return [UIColor colorFromHexString:@"#E9573F"];
++(UIColor *)GeoListPink{
+    return [UIColor colorFromHexString:@"#a9165d"];
 }
 
-+(UIColor *)sunFlower{
-    return [UIColor colorFromHexString:@"#F6BB42"];
++(UIColor *)BookMarkBrown{
+    return [UIColor colorFromHexString:@"#a96116"];
 }
 
-+(UIColor *)grass{
-    return [UIColor colorFromHexString:@"#8CC152"];
++(UIColor *)ProfileBlue{
+    return [UIColor colorFromHexString:@"#165ea9"];
 }
-
-+(UIColor *)mint{
-    return [UIColor colorFromHexString:@"#37BC9B"];
-}
-
-+(UIColor *)aqua{
-    return [UIColor colorFromHexString:@"#3BAFDA"];
-}
-
-+(UIColor *)pinkRose{
-    return [UIColor colorFromHexString:@"#D770AD"];
-}
-
-+(UIColor *)lavender{
-    return [UIColor colorFromHexString:@"#967ADC"];
-}
-
-+(UIColor *)randomColour{
-    int rand = [self randomFloatBetween:0 and:9];
-    switch (rand) {
-        case 0:
-            return [UIColor grapeFruit];
-            break;
-        case 1:
-            return [UIColor bitterSweet];
-            break;
-        case 2:
-            return [UIColor sunFlower];
-            break;
-        case 3:
-            return [UIColor grass];
-            break;
-        case 4:
-            return [UIColor mint];
-            break;
-        case 5:
-            return [UIColor aqua];
-            break;
-        case 6:
-            return [UIColor blueJeans];
-            break;
-        case 7:
-            return [UIColor lavender];
-            break;
-        case 8:
-            return [UIColor pinkRose];
-            break;
-            
-        default:
-            return nil;
-            break;
-    }
-}
-
-+ (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
-    float diff = bigNumber - smallNumber;
-    return (((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * diff) + smallNumber;
-}
-
 
 
 @end

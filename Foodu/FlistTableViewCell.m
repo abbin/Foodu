@@ -14,6 +14,9 @@
     self.containerView.layer.cornerRadius = 5;
     self.containerView.layer.masksToBounds = YES;
     
+//    self.containerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    self.containerView.layer.borderWidth = 0.5f;
+    
     if (IS_IPad) {
         self.itemImageViewWidth.constant = (16*[UIScreen mainScreen].bounds.size.height/4)/9;
     }
