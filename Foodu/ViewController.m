@@ -30,7 +30,7 @@
     avgArray = [[NSMutableArray alloc]init];
     suss = 0;
     fai = 0;
-   [self refresh];
+  // [self refresh];
 }
 
 - (void)didReceiveMemoryWarning {
