@@ -96,11 +96,11 @@
 }
 -(void)saveObjWith2:(PFFile*)obj1 :(PFFile*)obj2 :(PFFile*)obj3{
     FImages *imageObj = [FImages object];
-    imageObj.original = obj1;
+    imageObj.itemImage = obj1;
     FImages *imageObj2 = [FImages object];
-    imageObj2.original = obj2;
+    imageObj2.itemImage = obj2;
     FImages *imageObj3 = [FImages object];
-    imageObj3.original = obj3;
+    imageObj3.itemImage = obj3;
     
     if (obj1 == nil || obj2 == nil || obj3 == nil) {
         

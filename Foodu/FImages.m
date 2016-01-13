@@ -15,7 +15,7 @@
 @dynamic iOS3X;
 @dynamic android2X;
 @dynamic android3X;
-@dynamic original;
+@dynamic itemImage;
 
 +(void)load{
     [self registerSubclass];
