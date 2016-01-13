@@ -38,7 +38,7 @@
     self.tabBarView.frame = CGRectMake(0.0,
                                        self.view.frame.size.height - self.tabBarView.frame.size.height,
                                        [UIScreen mainScreen].bounds.size.width,
-                                       55);
+                                       44);
     
     CALayer *topBorder = [CALayer layer];
     topBorder.frame = CGRectMake(0.0f, 0.0f, self.tabBarView.frame.size.width, 0.3f);
@@ -46,25 +46,20 @@
     [self.tabBarView.layer addSublayer:topBorder];
     [self.view addSubview:self.tabBarView];
 
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 54, 54)];
-    [self.contentView setBackgroundColor:[UIColor blackColor]];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 43, 43)];
+    [self.contentView setBackgroundColor:[UIColor whiteColor]];
     UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pin"]];
     [icon setContentMode:UIViewContentModeScaleAspectFit];
-    [icon setFrame:CGRectInset(self.contentView.frame, 15, 15)];
+    [icon setFrame:CGRectInset(self.contentView.frame,10, 10)];
     [self.contentView addSubview:icon];
     
     self.stack = [[UPStackMenu alloc] initWithContentView:self.contentView];
-    [self.stack setCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/5/2, [UIScreen mainScreen].bounds.size.height-27.5)];
+    [self.stack setCenter:CGPointMake([UIScreen mainScreen].bounds.size.width/5/2, [UIScreen mainScreen].bounds.size.height-21)];
     [self.stack setDelegate:self];
     
-    UPStackMenuItem *squareItem = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"camera"] highlightedImage:nil title:@""];
-    UPStackMenuItem *circleItem = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"gallery"] highlightedImage:nil title:@""];
-    squareItem.layer.cornerRadius = 5;
-    circleItem.layer.cornerRadius = 5;
-    NSMutableArray *items = [[NSMutableArray alloc] initWithObjects:squareItem, circleItem, nil];
-    [items enumerateObjectsUsingBlock:^(UPStackMenuItem *item, NSUInteger idx, BOOL *stop) {
-        [item setTitleColor:[UIColor whiteColor]];
-    }];
+    UPStackMenuItem *camera = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"camera"] highlightedImage:nil title:@""];
+    UPStackMenuItem *gallery = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"gallery"] highlightedImage:nil title:@""];
+    NSMutableArray *items = [[NSMutableArray alloc] initWithObjects: gallery, camera, nil];
 
     [self.stack setAnimationType:UPStackMenuAnimationType_progressive];
     [self.stack setStackPosition:UPStackMenuStackPosition_up];
@@ -80,6 +75,112 @@
 - (void)stackMenu:(UPStackMenu *)menu didTouchItem:(UPStackMenuItem *)item atIndex:(NSUInteger)index
 {
     [self.stack closeStack];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [self dude];
+}
+
+-(void)dude{
+    NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+    UIImage *img = [UIImage imageNamed:imageName];
+    NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    
+    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+    img = [UIImage imageNamed:imageName];
+    imageData = UIImageJPEGRepresentation(img, 0.0);
+    PFFile *imageFile4 = [PFFile fileWithData:imageData];
+    
+    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+    img = [UIImage imageNamed:imageName];
+    imageData = UIImageJPEGRepresentation(img, 0.0);
+    PFFile *imageFile2 = [PFFile fileWithData:imageData];
+    
+    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
+    img = [UIImage imageNamed:imageName];
+    imageData = UIImageJPEGRepresentation(img, 0.0);
+    PFFile *imageFile3 = [PFFile fileWithData:imageData];
+    
+    FImages *imageObj = [FImages object];
+    imageObj.itemImage = imageFile;
+    FImages *imageObj2 = [FImages object];
+    imageObj2.itemImage = imageFile2;
+    FImages *imageObj3 = [FImages object];
+    imageObj3.itemImage = imageFile3;
+    FImages *imageObj4 = [FImages object];
+    imageObj4.itemImage = imageFile4;
+    
+//    [imageObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded) {
+//            NSLog(@"first susses");
+//            [imageObj2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                if (succeeded) {
+//                    NSLog(@"Second susses");
+//                    [imageObj3 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                        if (succeeded) {
+//                            NSLog(@"third susses");
+//                            [imageObj4 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                                if (succeeded) {
+//                                    NSLog(@"final susses");
+                                    NSArray *imageArray = [NSArray arrayWithObjects:imageObj,imageObj2,imageObj3,imageObj4, nil];
+                                    
+                                    FItem *spotObj = [FItem object];
+                                    spotObj.itemImageArray = imageArray;
+                                    spotObj.itemTitle = @"Sample Title";
+                                    spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
+                                    
+                                    float lat = [self randomFloatBetween:8 and:12];
+                                    float lon = [self randomFloatBetween:74 and:77];
+                                    
+                                    FRestaurants *restaurent = [FRestaurants object];
+                                    restaurent.name = @"Balaji's Restaurent and Cafe";
+                                    restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
+                                    
+                                    spotObj.restaurent = restaurent;
+                                    
+                                    spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
+                                    spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
+                                    spotObj.itemAddress = @"Blah Blah";
+                                    
+                                    [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                        if (succeeded) {
+                                            NSLog(@"Dude susses");
+                                            [self dude];
+                                        }
+                                        else{
+                                            NSLog(@"Final Failed");
+                                        }
+                                        
+                                    }];
+                                    
+//                                }
+//                                else{
+//                                    NSLog(@"forth Failed");
+//                                }
+//                            }];
+//                        }
+//                        else{
+//                            NSLog(@"Third Failed");
+//                        }
+//                    }];
+//                }
+//                else{
+//                    NSLog(@"Second Failed");
+//                }
+//            }];
+//        }
+//        else{
+//            NSLog(@"First Failed");
+//        }
+//    }];
+
+}
+
+- (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {
+    float diff = bigNumber - smallNumber;
+    return (((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * diff) + smallNumber;
 }
 
 - (void)didReceiveMemoryWarning {
