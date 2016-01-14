@@ -11,10 +11,8 @@
 
 @implementation FImages
 
-@dynamic iOS2X;
-@dynamic iOS3X;
-@dynamic android2X;
-@dynamic android3X;
+@dynamic thumbnail1x;
+@dynamic thumbnail2x;
 @dynamic itemImage;
 
 +(void)load{

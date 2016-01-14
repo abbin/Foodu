@@ -13,9 +13,7 @@
 + (NSString *)parseClassName;
 
 @property(nonatomic ,strong) PFFile *itemImage;
-@property(nonatomic ,strong) PFFile *iOS3X;
-@property(nonatomic ,strong) PFFile *iOS2X;
-@property(nonatomic ,strong) PFFile *android3X;
-@property(nonatomic ,strong) PFFile *android2X;
+@property(nonatomic ,strong) PFFile *thumbnail1x;
+@property(nonatomic ,strong) PFFile *thumbnail2x;
 
 @end

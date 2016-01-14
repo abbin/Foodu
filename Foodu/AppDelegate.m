@@ -19,8 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
-    [Parse setApplicationId:@"Ph3YlcRPtxvK4Y8yDAARLosc5lvu4ErH8XZm6aX7"
-                  clientKey:@"72eStasjT6E0ck01GW1wxha4aJZmQxq95XABK8fP"];
+    [Parse setApplicationId:@"Ek7p6c9ec9QEjoqrIiR2rFpWjUai4BLOTgQRnt4s"
+                  clientKey:@"RlKnbRS6qyrtNML5ZVQETyOdbTWDHJxswLv6foal"];
     
     if ([FUserDefaults isFirstLaunch]) {
         

@@ -16,6 +16,6 @@
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSMutableArray *phoneNumber;
 @property (nonatomic, strong) NSMutableArray *workingHours;
-@property (nonatomic, strong) NSDictionary *address;
+@property (nonatomic, strong) NSString *address;
 
 @end

@@ -14,12 +14,9 @@
 
 @property (nonatomic,strong) NSString *itemTitle;
 @property (nonatomic,strong) NSString *itemDescription;
-@property (nonatomic,strong) NSString *itemAddress;
 @property (nonatomic,strong) FRestaurants *restaurent;
 @property (nonatomic,strong) NSNumber *itemRating;
 @property (nonatomic,strong) NSArray *itemImageArray;
 @property (nonatomic,strong) NSNumber *itemPrice;
-@property(nonatomic, strong) PFFile *thumbNail2x;
-@property(nonatomic, strong) PFFile *thumbNail3x;
 
 @end

@@ -79,7 +79,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self dude];
+    //[self dude];
 }
 
 -(void)dude{
@@ -112,69 +112,111 @@
     FImages *imageObj4 = [FImages object];
     imageObj4.itemImage = imageFile4;
     
-//    [imageObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (succeeded) {
-//            NSLog(@"first susses");
-//            [imageObj2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//                if (succeeded) {
-//                    NSLog(@"Second susses");
-//                    [imageObj3 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//                        if (succeeded) {
-//                            NSLog(@"third susses");
-//                            [imageObj4 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//                                if (succeeded) {
-//                                    NSLog(@"final susses");
-                                    NSArray *imageArray = [NSArray arrayWithObjects:imageObj,imageObj2,imageObj3,imageObj4, nil];
-                                    
-                                    FItem *spotObj = [FItem object];
-                                    spotObj.itemImageArray = imageArray;
-                                    spotObj.itemTitle = @"Sample Title";
-                                    spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
-                                    
+    
+    [imageObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"first susses");
+            [PFCloud callFunctionInBackground:@"sliceImages"
+                               withParameters:@{@"imgObjID": imageObj.objectId}
+                                        block:^(NSNumber *ratings, NSError *error) {
+                                            if (!error) {
+                                                NSLog(@"first Slice finished");
+                                            }
+                                        }];
+            [imageObj2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Second susses");
+                    [PFCloud callFunctionInBackground:@"sliceImages"
+                                       withParameters:@{@"imgObjID": imageObj2.objectId}
+                                                block:^(NSNumber *ratings, NSError *error) {
+                                                    if (!error) {
+                                                        NSLog(@"second Slice finished");
+                                                    }
+                                                }];
+                    [imageObj3 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (succeeded) {
+                            NSLog(@"third susses");
+                            [PFCloud callFunctionInBackground:@"sliceImages"
+                                               withParameters:@{@"imgObjID": imageObj3.objectId}
+                                                        block:^(NSNumber *ratings, NSError *error) {
+                                                            if (!error) {
+                                                                NSLog(@"third Slice finished");
+                                                            }
+                                                        }];
+                            [imageObj4 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                if (succeeded) {
+                                    NSLog(@"final susses");
+                                    [PFCloud callFunctionInBackground:@"sliceImages"
+                                                       withParameters:@{@"imgObjID": imageObj4.objectId}
+                                                                block:^(NSNumber *ratings, NSError *error) {
+                                                                    if (!error) {
+                                                                        NSLog(@"final Slice finished");
+                                                                    }
+                                                                }];
                                     float lat = [self randomFloatBetween:8 and:12];
                                     float lon = [self randomFloatBetween:74 and:77];
+                                    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+                                    CLLocation *loc = [[CLLocation alloc]initWithLatitude:lat longitude:lon]; //insert your coordinates
                                     
-                                    FRestaurants *restaurent = [FRestaurants object];
-                                    restaurent.name = @"Balaji's Restaurent and Cafe";
-                                    restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
-                                    
-                                    spotObj.restaurent = restaurent;
-                                    
-                                    spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
-                                    spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
-                                    spotObj.itemAddress = @"Blah Blah";
-                                    
-                                    [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                                        if (succeeded) {
-                                            NSLog(@"Dude susses");
-                                            [self dude];
-                                        }
-                                        else{
-                                            NSLog(@"Final Failed");
-                                        }
-                                        
-                                    }];
-                                    
-//                                }
-//                                else{
-//                                    NSLog(@"forth Failed");
-//                                }
-//                            }];
-//                        }
-//                        else{
-//                            NSLog(@"Third Failed");
-//                        }
-//                    }];
-//                }
-//                else{
-//                    NSLog(@"Second Failed");
-//                }
-//            }];
-//        }
-//        else{
-//            NSLog(@"First Failed");
-//        }
-//    }];
+                                    [ceo reverseGeocodeLocation:loc
+                                              completionHandler:^(NSArray *placemarks, NSError *error) {
+                                                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                                                  //String to hold address
+                                                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                                                  
+                                                  NSArray *imageArray = [NSArray arrayWithObjects:imageObj,imageObj2,imageObj3,imageObj4, nil];
+                                                  
+                                                  FItem *spotObj = [FItem object];
+                                                  spotObj.itemImageArray = imageArray;
+                                                  spotObj.itemTitle = @"Sample Title";
+                                                  spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
+                                                  
+                                                  
+                                                  
+                                                  FRestaurants *restaurent = [FRestaurants object];
+                                                  restaurent.name = @"Balaji's Restaurent and Cafe";
+                                                  restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
+                                                  restaurent.address = locatedAt;
+                                                  
+                                                  
+                                                  spotObj.restaurent = restaurent;
+                                                  
+                                                  spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
+                                                  spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
+                                                  
+                                                  [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                                                      if (succeeded) {
+                                                          NSLog(@"Dude susses");
+                                                          [self dude];
+                                                      }
+                                                      else{
+                                                          NSLog(@"Final Failed");
+                                                      }
+                                                      
+                                                  }];
+                                              }
+                                     ];
+    
+                                }
+                                else{
+                                    NSLog(@"forth Failed");
+                                }
+                            }];
+                        }
+                        else{
+                            NSLog(@"Third Failed");
+                        }
+                    }];
+                }
+                else{
+                    NSLog(@"Second Failed");
+                }
+            }];
+        }
+        else{
+            NSLog(@"First Failed");
+        }
+    }];
 
 }
 

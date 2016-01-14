@@ -66,8 +66,10 @@
 }
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query includeKey:@"itemImageArray"];
+    [query includeKey:@"restaurent"];
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if (self.objects.count == 0) {
@@ -81,13 +83,11 @@
     static NSString *cellIdentifier = @"FlistTableViewCell";
     
     FlistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    PFFile *file = object.thumbNail2x;
-//    cell.itemImageView.file = file;
-//    cell.itemImageView.image = [UIImage imageNamed:@"placeholder.png"];
-//    [cell.itemImageView loadInBackground];
-    
+    FImages *imageObj = object.itemImageArray[0];
+    cell.itemImageView.file = imageObj.thumbnail1x;
     cell.titleLabel.text = object.itemTitle;
-    cell.locationLabel.text = object.itemAddress;
+    cell.locationLabel.text = object.restaurent.address;
+    [cell.itemImageView loadInBackground];
     return cell;
 }
 
