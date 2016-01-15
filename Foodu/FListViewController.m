@@ -87,7 +87,7 @@
     cell.itemImageView.file = imageObj.thumbnail1x;
     cell.titleLabel.text = object.itemTitle;
     cell.locationLabel.text = object.restaurent.address;
-    cell.itemImageView.image = [UIImage imageNamed:@"lazy-load-placeholder.png"];
+    cell.itemImageView.image = [UIImage imageNamed:@"loading"];
     [cell.itemImageView loadInBackground];
     return cell;
 }
