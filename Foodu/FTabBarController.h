@@ -10,6 +10,6 @@
 #import <pop/POP.h>
 #import "UPStackMenu.h"
 
-@interface FTabBarController : UITabBarController<UPStackMenuDelegate>
+@interface FTabBarController : UITabBarController<UPStackMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end

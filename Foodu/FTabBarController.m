@@ -72,9 +72,35 @@
 
 }
 
+-(void)stackMenuWillOpen:(UPStackMenu *)menu{
+    
+}
+
+-(void)stackMenuDidClose:(UPStackMenu *)menu{
+
+}
+
 - (void)stackMenu:(UPStackMenu *)menu didTouchItem:(UPStackMenuItem *)item atIndex:(NSUInteger)index
 {
     [self.stack closeStack];
+    if (index == 0) {
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        [picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+        // creating overlayView
+        UIView* overlayView = [[UIView alloc] initWithFrame:picker.view.frame];
+        // letting png transparency be
+        overlayView.backgroundColor = [UIColor clearColor];
+        [overlayView.layer setOpaque:NO];
+        overlayView.opaque = NO;
+        
+//        picker.showsCameraControls = YES;
+//        picker.cameraOverlayView = overlayView;
+        [self presentModalViewController:picker animated:YES];
+    }
+    else{
+        
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -242,7 +268,6 @@
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarks"]];
     [self.profileImageView setImage:[UIImage imageNamed:@"profile"]];
     
-//    self.backView.backgroundColor = [UIColor HomeGreen];
     [self.homeImageView setImage:[UIImage imageNamed:@"homeSelected"]];
     
     [self setSelectedIndex:0];
@@ -260,7 +285,6 @@
         
     }];
     
-//    self.backView.backgroundColor = [UIColor GeoListPink];
     [self.geoListImageView setImage:[UIImage imageNamed:@"geoListSelected"]];
     
     [self setSelectedIndex:1];
@@ -278,7 +302,6 @@
         
     }];
     
-//    self.backView.backgroundColor = [UIColor BookMarkBrown];
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarkSelected"]];
     
     [self setSelectedIndex:2];
@@ -296,7 +319,6 @@
         
     }];
     
-//    self.backView.backgroundColor = [UIColor ProfileBlue];
     [self.profileImageView setImage:[UIImage imageNamed:@"profileSelected"]];
     
     [self setSelectedIndex:3];

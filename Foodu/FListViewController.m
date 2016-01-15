@@ -87,14 +87,15 @@
     cell.itemImageView.file = imageObj.thumbnail1x;
     cell.titleLabel.text = object.itemTitle;
     cell.locationLabel.text = object.restaurent.address;
+    cell.itemImageView.image = [UIImage imageNamed:@"lazy-load-placeholder.png"];
     [cell.itemImageView loadInBackground];
     return cell;
 }
 
--(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
-    FNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
-    return cell;
-}
+//-(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
+//    FNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
+//    return cell;
+//}
 
 -(void)objectsDidLoad:(NSError *)error{
     [super objectsDidLoad:error];
