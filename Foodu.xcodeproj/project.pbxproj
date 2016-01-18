@@ -21,7 +21,10 @@
 		58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4071C3A4C3900594407 /* FListViewController.m */; };
 		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
 		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
+		58C9F9601C4CB4F100EEA449 /* FImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */; };
 		58D623351C45284500C226D9 /* camera-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D623341C45284500C226D9 /* camera-512.png */; };
+		58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */; };
+		58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */; };
 		58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */; };
 		ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660641C417A2B00F8C8BC /* FRestaurants.m */; };
 		ED0660681C417C5400F8C8BC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0660671C417C5400F8C8BC /* FImages.m */; };
@@ -113,7 +116,13 @@
 		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		58C9F4171C3A6F7900594407 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
 		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
+		58C9F95E1C4CB4F100EEA449 /* FImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePicker.h; sourceTree = "<group>"; };
+		58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePicker.m; sourceTree = "<group>"; };
 		58D623341C45284500C226D9 /* camera-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-512.png"; sourceTree = "<group>"; };
+		58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+UICollectionView_Convenience.h"; sourceTree = "<group>"; };
+		58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+UICollectionView_Convenience.m"; sourceTree = "<group>"; };
+		58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+NSIndexSet_Convenience.h"; sourceTree = "<group>"; };
+		58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+NSIndexSet_Convenience.m"; sourceTree = "<group>"; };
 		58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lazy-load-placeholder.png"; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0660631C417A2B00F8C8BC /* FRestaurants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurants.h; sourceTree = "<group>"; };
@@ -217,10 +226,16 @@
 			isa = PBXGroup;
 			children = (
 				58D623341C45284500C226D9 /* camera-512.png */,
+				58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */,
+				58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */,
+				58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */,
+				58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */,
 				5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */,
 				5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */,
 				58846B621C3E9230006CFBFB /* UIColor+FColours.h */,
 				58846B631C3E9230006CFBFB /* UIColor+FColours.m */,
+				58C9F95E1C4CB4F100EEA449 /* FImagePicker.h */,
+				58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */,
 			);
 			name = Customs;
 			sourceTree = "<group>";
@@ -579,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C9F9601C4CB4F100EEA449 /* FImagePicker.m in Sources */,
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				58C9F4081C3A4C3900594407 /* FListViewController.m in Sources */,
 				58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */,
@@ -591,8 +607,10 @@
 				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
 				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
 				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
+				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
 				ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
+				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

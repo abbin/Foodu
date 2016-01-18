@@ -92,10 +92,19 @@
     return cell;
 }
 
-//-(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
-//    FNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
-//    return cell;
-//}
+-(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
+    FNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
+    cell.cellActivityIndicator.hidden = !self.loading;
+    if (self.loading) {
+        [cell.cellActivityIndicator startAnimating];
+        cell.nextLabel.text = @"Loading...";
+    }
+    else{
+        [cell.cellActivityIndicator stopAnimating];
+        cell.nextLabel.text = @"Load More...";
+    }
+    return cell;
+}
 
 -(void)objectsDidLoad:(NSError *)error{
     [super objectsDidLoad:error];

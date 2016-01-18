@@ -10,5 +10,6 @@
 
 @interface FNextTableViewCell : PFTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nextLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *cellActivityIndicator;
 
 @end
