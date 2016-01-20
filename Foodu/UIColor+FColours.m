@@ -54,5 +54,9 @@
     return [UIColor colorFromHexString:@"#165ea9"];
 }
 
++(UIColor *)TableBackground{
+    return [UIColor colorFromHexString:@"#E9E9E9"];
+}
+
 
 @end

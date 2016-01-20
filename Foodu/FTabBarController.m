@@ -9,6 +9,7 @@
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
 #import "FImagePicker.h"
+#include <Photos/Photos.h>
 
 @interface FTabBarController ()
 
@@ -202,10 +203,14 @@
 
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-    if (self.imagePicker == nil) {
-        self.imagePicker = [[FImagePicker alloc]initWithFrame:self.view.frame];
+    if ([PHPhotoLibrary authorizationStatus]==PHAuthorizationStatusAuthorized) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *vc = [storyboard instantiateViewControllerWithIdentifier:@"FImagePickerControllerNav"];
+        [self presentViewController:vc animated:YES completion:nil];
     }
-    [self.imagePicker showInView:self.view];
+    else{
+
+    }
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {

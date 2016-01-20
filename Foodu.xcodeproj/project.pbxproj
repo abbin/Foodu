@@ -12,6 +12,9 @@
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
+		58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */; };
+		58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */; };
+		58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26171C4FB2EA009AA930 /* FImagePickerController.m */; };
 		58C9F3E91C3A403E00594407 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3E81C3A403E00594407 /* main.m */; };
 		58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EB1C3A403E00594407 /* AppDelegate.m */; };
 		58C9F3EF1C3A403E00594407 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EE1C3A403E00594407 /* ViewController.m */; };
@@ -22,7 +25,6 @@
 		58C9F4121C3A61F200594407 /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4111C3A61F200594407 /* FItem.m */; };
 		58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */; };
 		58C9F9601C4CB4F100EEA449 /* FImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */; };
-		58D623351C45284500C226D9 /* camera-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D623341C45284500C226D9 /* camera-512.png */; };
 		58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */; };
 		58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */; };
 		58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */; };
@@ -99,6 +101,11 @@
 		5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNextTableViewCell.m; sourceTree = "<group>"; };
 		58846B621C3E9230006CFBFB /* UIColor+FColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FColours.h"; sourceTree = "<group>"; };
 		58846B631C3E9230006CFBFB /* UIColor+FColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FColours.m"; sourceTree = "<group>"; };
+		58AD26021C4F5385009AA930 /* FImagePickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePickerCollectionViewCell.h; sourceTree = "<group>"; };
+		58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePickerCollectionViewCell.m; sourceTree = "<group>"; };
+		58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePickerCollectionViewCell.xib; sourceTree = "<group>"; };
+		58AD26161C4FB2EA009AA930 /* FImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePickerController.h; sourceTree = "<group>"; };
+		58AD26171C4FB2EA009AA930 /* FImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePickerController.m; sourceTree = "<group>"; };
 		58C9F3E41C3A403E00594407 /* Foodu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C9F3E81C3A403E00594407 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58C9F3EA1C3A403E00594407 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,7 +125,6 @@
 		58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
 		58C9F95E1C4CB4F100EEA449 /* FImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePicker.h; sourceTree = "<group>"; };
 		58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePicker.m; sourceTree = "<group>"; };
-		58D623341C45284500C226D9 /* camera-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-512.png"; sourceTree = "<group>"; };
 		58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+UICollectionView_Convenience.h"; sourceTree = "<group>"; };
 		58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+UICollectionView_Convenience.m"; sourceTree = "<group>"; };
 		58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+NSIndexSet_Convenience.h"; sourceTree = "<group>"; };
@@ -225,7 +231,6 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
-				58D623341C45284500C226D9 /* camera-512.png */,
 				58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */,
 				58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */,
 				58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */,
@@ -238,6 +243,15 @@
 				58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */,
 			);
 			name = Customs;
+			sourceTree = "<group>";
+		};
+		58AD26191C4FB444009AA930 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				58AD26161C4FB2EA009AA930 /* FImagePickerController.h */,
+				58AD26171C4FB2EA009AA930 /* FImagePickerController.m */,
+			);
+			name = ImagePicker;
 			sourceTree = "<group>";
 		};
 		58C9F3DB1C3A403E00594407 = {
@@ -289,6 +303,7 @@
 		58C9F3FE1C3A40B400594407 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				58AD26191C4FB444009AA930 /* ImagePicker */,
 				ED58884B1C410AE300922C9A /* First Launch */,
 				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
 				58C9F3ED1C3A403E00594407 /* ViewController.h */,
@@ -306,6 +321,9 @@
 				58C9F4181C3A6F7900594407 /* FlistTableViewCell.m */,
 				5861BD301C3D26CE00AE6B96 /* FNextTableViewCell.h */,
 				5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */,
+				58AD26021C4F5385009AA930 /* FImagePickerCollectionViewCell.h */,
+				58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */,
+				58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -516,10 +534,10 @@
 				58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */,
 				ED0E7C411C3C3A86008DB644 /* 10.jpg in Resources */,
 				ED0E7C481C3C3A86008DB644 /* 17.jpg in Resources */,
+				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				ED0E7C691C3C3A86008DB644 /* 50.jpg in Resources */,
 				ED0E7C5F1C3C3A86008DB644 /* 40.jpg in Resources */,
-				58D623351C45284500C226D9 /* camera-512.png in Resources */,
 				ED0E7C6A1C3C3A86008DB644 /* 51.jpg in Resources */,
 				ED0E7C5B1C3C3A86008DB644 /* 36.jpg in Resources */,
 				ED0E7C581C3C3A86008DB644 /* 33.jpg in Resources */,
@@ -608,9 +626,11 @@
 				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
 				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
+				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
 				ED0660651C417A2B00F8C8BC /* FRestaurants.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
+				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 				5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

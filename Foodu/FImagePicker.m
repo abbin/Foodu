@@ -11,6 +11,7 @@
 #import "FImagePicker.h"
 #import "AppDelegate.h"
 #include <Photos/Photos.h>
+#import "FImagePickerCollectionViewCell.h"
 
 @interface FImagePicker ()
 
@@ -35,19 +36,12 @@ static CGSize AssetGridThumbnailSize;
         self.innerView = [[UIView alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height/2)];
         self.innerView.backgroundColor = [UIColor whiteColor];
         
-        
-        
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
         self.pickerCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 50, self.innerView.frame.size.width, self.innerView.frame.size.height-50) collectionViewLayout:layout];
         [self.pickerCollectionView setDataSource:self];
         [self.pickerCollectionView setDelegate:self];
-        [self.pickerCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellIdentifier"];
-        [self.pickerCollectionView setBackgroundColor:[UIColor whiteColor]];
+        [self.pickerCollectionView setBackgroundColor:[UIColor TableBackground]];
         [self.innerView addSubview:self.pickerCollectionView];
-        
-        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-        tapGestureRecognizer.delegate = self;
-        [self addGestureRecognizer:tapGestureRecognizer];
         
         self.imageManager = [[PHCachingImageManager alloc] init];
         if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
@@ -62,6 +56,15 @@ static CGSize AssetGridThumbnailSize;
         CGSize cellSize = ((UICollectionViewFlowLayout *)layout).itemSize;
         AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
         [self.pickerCollectionView reloadData];
+        
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+        tapGestureRecognizer.delegate = self;
+        [self addGestureRecognizer:tapGestureRecognizer];
+        
+        
+        
+        [self.pickerCollectionView registerNib:[UINib nibWithNibName:@"FImagePickerCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"FImagePickerCollectionViewCell"];
     }
     return self;
 }
@@ -77,7 +80,8 @@ static CGSize AssetGridThumbnailSize;
     self.supView = view;
     [self updateCachedAssets];
     
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.supView setTransform:CGAffineTransformMakeScale(0.95, 0.95)];
         self.innerView.layer.position = CGPointMake(self.innerView.layer.position.x, self.innerView.layer.position.y - self.innerView.frame.size.height);
         self.supView.alpha = 0.5;
     } completion:^(BOOL finished) {
@@ -87,7 +91,8 @@ static CGSize AssetGridThumbnailSize;
 
 - (void) handleTapFrom: (UITapGestureRecognizer *)recognizer
 {
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.supView setTransform:CGAffineTransformMakeScale(1, 1)];
         self.innerView.layer.position = CGPointMake(self.innerView.layer.position.x, self.innerView.layer.position.y + self.innerView.frame.size.height);
         self.supView.alpha = 1;
     } completion:^(BOOL finished) {
@@ -107,9 +112,7 @@ static CGSize AssetGridThumbnailSize;
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cellIdentifier" forIndexPath:indexPath];
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:cell.frame];
-    [cell addSubview:imageView];
+    FImagePickerCollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"FImagePickerCollectionViewCell" forIndexPath:indexPath];
     PHAsset *asset = self.assetsFetchResults[indexPath.item];
     [self.imageManager requestImageForAsset:asset
                                  targetSize:AssetGridThumbnailSize
@@ -117,7 +120,7 @@ static CGSize AssetGridThumbnailSize;
                                     options:nil
                               resultHandler:^(UIImage *result, NSDictionary *info) {
                                   
-                                  imageView.image = result;
+                                  cell.cellImageVIew.image = result;
                                   
                               }];
 

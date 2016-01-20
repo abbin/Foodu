@@ -17,5 +17,6 @@
 +(UIColor*)ProfileBlue;
 +(UIColor*)GeoListPink;
 +(UIColor*)BookMarkBrown;
++(UIColor *)TableBackground;
 
 @end
