@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
+		5823BFBC1C58A6B100DEBD18 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5823BFB91C58A6B100DEBD18 /* UIImage+FixOrientation.m */; };
+		5823BFBF1C58C0BA00DEBD18 /* button_record-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */; };
+		5823BFC31C58E59700DEBD18 /* FCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5823BFC11C58E59700DEBD18 /* FCameraViewController.m */; };
+		5823BFC41C58E59700DEBD18 /* FCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5823BFC21C58E59700DEBD18 /* FCameraViewController.xib */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD311C3D26CE00AE6B96 /* FNextTableViewCell.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -95,6 +99,12 @@
 		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
+		5823BFB81C58A6B100DEBD18 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		5823BFB91C58A6B100DEBD18 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record-512.png"; sourceTree = "<group>"; };
+		5823BFC01C58E59700DEBD18 /* FCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCameraViewController.h; sourceTree = "<group>"; };
+		5823BFC11C58E59700DEBD18 /* FCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCameraViewController.m; sourceTree = "<group>"; };
+		5823BFC21C58E59700DEBD18 /* FCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCameraViewController.xib; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		5861BD301C3D26CE00AE6B96 /* FNextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNextTableViewCell.h; sourceTree = "<group>"; };
@@ -228,17 +238,54 @@
 			name = "Tab Bar Controller";
 			sourceTree = "<group>";
 		};
-		5861BD261C3CF0C200AE6B96 /* Customs */ = {
+		5823BFB41C589E5D00DEBD18 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
 				58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */,
 				58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */,
 				58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */,
 				58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */,
+			);
+			name = ImagePicker;
+			sourceTree = "<group>";
+		};
+		5823BFB51C589E7400DEBD18 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
 				5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */,
 				5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */,
+			);
+			name = Rating;
+			sourceTree = "<group>";
+		};
+		5823BFB61C589E9300DEBD18 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
 				58846B621C3E9230006CFBFB /* UIColor+FColours.h */,
 				58846B631C3E9230006CFBFB /* UIColor+FColours.m */,
+			);
+			name = Colors;
+			sourceTree = "<group>";
+		};
+		5823BFB71C589EA900DEBD18 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				5823BFB81C58A6B100DEBD18 /* UIImage+FixOrientation.h */,
+				5823BFB91C58A6B100DEBD18 /* UIImage+FixOrientation.m */,
+				5823BFC01C58E59700DEBD18 /* FCameraViewController.h */,
+				5823BFC11C58E59700DEBD18 /* FCameraViewController.m */,
+				5823BFC21C58E59700DEBD18 /* FCameraViewController.xib */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		5861BD261C3CF0C200AE6B96 /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				5823BFB71C589EA900DEBD18 /* Camera */,
+				5823BFB61C589E9300DEBD18 /* Colors */,
+				5823BFB51C589E7400DEBD18 /* Rating */,
+				5823BFB41C589E5D00DEBD18 /* ImagePicker */,
 				58C9F95E1C4CB4F100EEA449 /* FImagePicker.h */,
 				58C9F95F1C4CB4F100EEA449 /* FImagePicker.m */,
 			);
@@ -364,6 +411,7 @@
 		ED0E7C001C3C3A43008DB644 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */,
 				58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */,
 				ED0E7C011C3C3A86008DB644 /* 1.jpg */,
 				ED0E7C021C3C3A86008DB644 /* 2.jpg */,
@@ -508,6 +556,7 @@
 				ED0E7C3E1C3C3A86008DB644 /* 7.jpg in Resources */,
 				ED0E7C681C3C3A86008DB644 /* 49.jpg in Resources */,
 				ED0E7C6B1C3C3A86008DB644 /* 52.jpg in Resources */,
+				5823BFC41C58E59700DEBD18 /* FCameraViewController.xib in Resources */,
 				ED0E7C3B1C3C3A86008DB644 /* 4.jpg in Resources */,
 				ED0E7C5D1C3C3A86008DB644 /* 38.jpg in Resources */,
 				ED0E7C671C3C3A86008DB644 /* 48.jpg in Resources */,
@@ -549,6 +598,7 @@
 				ED0E7C4E1C3C3A86008DB644 /* 23.jpg in Resources */,
 				ED0E7C3A1C3C3A86008DB644 /* 3.jpg in Resources */,
 				ED0E7C381C3C3A86008DB644 /* 1.jpg in Resources */,
+				5823BFBF1C58C0BA00DEBD18 /* button_record-512.png in Resources */,
 				ED0E7C611C3C3A86008DB644 /* 42.jpg in Resources */,
 				ED0E7C4B1C3C3A86008DB644 /* 20.jpg in Resources */,
 				ED0E7C631C3C3A86008DB644 /* 44.jpg in Resources */,
@@ -622,6 +672,7 @@
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				ED0660681C417C5400F8C8BC /* FImages.m in Sources */,
+				5823BFBC1C58A6B100DEBD18 /* UIImage+FixOrientation.m in Sources */,
 				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
 				58C9F4121C3A61F200594407 /* FItem.m in Sources */,
 				58C9F4191C3A6F7900594407 /* FlistTableViewCell.m in Sources */,
@@ -632,6 +683,7 @@
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 				5861BD321C3D26CE00AE6B96 /* FNextTableViewCell.m in Sources */,
+				5823BFC31C58E59700DEBD18 /* FCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

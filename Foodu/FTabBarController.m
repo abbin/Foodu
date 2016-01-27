@@ -10,6 +10,7 @@
 #import "UIColor+FColours.h"
 #import "FImagePicker.h"
 #include <Photos/Photos.h>
+#import "FCameraViewController.h"
 
 @interface FTabBarController ()
 
@@ -201,15 +202,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)pinButtonClicked:(UIButton *)sender {
     if ([PHPhotoLibrary authorizationStatus]==PHAuthorizationStatusAuthorized) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UINavigationController *vc = [storyboard instantiateViewControllerWithIdentifier:@"FImagePickerControllerNav"];
-        [self presentViewController:vc animated:YES completion:nil];
+        FCameraViewController *camera = [[FCameraViewController alloc]initWithNibName:@"FCameraViewController" bundle:[NSBundle mainBundle]];
+        [self presentViewController:camera animated:YES completion:nil];
     }
     else{
-
+        
     }
 }
 
