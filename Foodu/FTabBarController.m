@@ -203,13 +203,17 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-    if ([PHPhotoLibrary authorizationStatus]==PHAuthorizationStatusAuthorized) {
-        FCameraViewController *camera = [[FCameraViewController alloc]initWithNibName:@"FCameraViewController" bundle:[NSBundle mainBundle]];
-        [self presentViewController:camera animated:YES completion:nil];
-    }
-    else{
-        
-    }
+//    if ([PHPhotoLibrary authorizationStatus]==PHAuthorizationStatusAuthorized) {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    imagePickerController.showsCameraControls = YES;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+//    }
+//    else{
+//        
+//    }
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
