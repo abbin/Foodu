@@ -9,6 +9,9 @@
 #import "FSignUpViewController.h"
 
 @interface FSignUpViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *one;
+@property (weak, nonatomic) IBOutlet UIButton *two;
+@property (weak, nonatomic) IBOutlet UIButton *three;
 
 @end
 
@@ -16,6 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.one.layer.cornerRadius = 10; // this value vary as per your desire
+    self.one.clipsToBounds = YES;
+    
+    self.two.layer.cornerRadius = 10; // this value vary as per your desire
+    self.two.clipsToBounds = YES;
+    
+    self.three.layer.cornerRadius = 10; // this value vary as per your desire
+    self.three.clipsToBounds = YES;
     // Do any additional setup after loading the view.
 }
 

@@ -5,11 +5,8 @@
 
 target 'Foodu' do
 
-pod 'Parse'
-pod 'ParseUI'
-pod 'pop', '~> 1.0'
+pod 'KinveyKit'
 pod 'GoogleMaps'
-pod "UPStackMenu"
 
 end
 

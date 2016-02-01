@@ -23,11 +23,8 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "UIColor+FColours.h"
-#import "FUser.h"
 #import "FUserDefaults.h"
-#import "FRestaurants.h"
-#import "FImages.h"
-#import "FItem.h"
+#import <KinveyKit/KinveyKit.h>
 #endif
 
 

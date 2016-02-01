@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
+#import "FSignUpViewController.h"
+
 @import GoogleMaps;
 
 @interface AppDelegate ()
@@ -19,10 +20,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
-    [Parse setApplicationId:@"Ek7p6c9ec9QEjoqrIiR2rFpWjUai4BLOTgQRnt4s"
-                  clientKey:@"RlKnbRS6qyrtNML5ZVQETyOdbTWDHJxswLv6foal"];
-    if ([FUserDefaults isFirstLaunch]) {
-        
+
+    [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_-yZsjJoB6g"
+                                                 withAppSecret:@"71dd1dadf97e49858af335594c26172f"
+                                                  usingOptions:nil];
+    if ([FUserDefaults isFirstLaunch] || [KCSUser activeUser] == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FSignUpViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpViewController"];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = rootViewController;
+        [self.window makeKeyAndVisible];
     }
     else{
         

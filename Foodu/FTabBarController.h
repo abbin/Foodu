@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <pop/POP.h>
-#import "UPStackMenu.h"
 
-@interface FTabBarController : UITabBarController<UPStackMenuDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface FTabBarController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end

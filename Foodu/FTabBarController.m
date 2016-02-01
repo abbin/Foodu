@@ -8,9 +8,7 @@
 
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
-#import "FImagePicker.h"
 #include <Photos/Photos.h>
-#import "FCameraViewController.h"
 
 @interface FTabBarController ()
 
@@ -27,8 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *geoListImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *bookMarkImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
-
-@property (nonatomic,strong) FImagePicker *imagePicker;
 
 @end
 
@@ -51,144 +47,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    //[self dude];
-}
-
--(void)dude{
-    NSString *imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-    UIImage *img = [UIImage imageNamed:imageName];
-    NSData *imageData = UIImageJPEGRepresentation(img, 0.0);
-    PFFile *imageFile = [PFFile fileWithData:imageData];
-    
-    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-    img = [UIImage imageNamed:imageName];
-    imageData = UIImageJPEGRepresentation(img, 0.0);
-    PFFile *imageFile4 = [PFFile fileWithData:imageData];
-    
-    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-    img = [UIImage imageNamed:imageName];
-    imageData = UIImageJPEGRepresentation(img, 0.0);
-    PFFile *imageFile2 = [PFFile fileWithData:imageData];
-    
-    imageName = [NSString stringWithFormat:@"%d.jpg",(int)[self randomFloatBetween:1 and:55]];
-    img = [UIImage imageNamed:imageName];
-    imageData = UIImageJPEGRepresentation(img, 0.0);
-    PFFile *imageFile3 = [PFFile fileWithData:imageData];
-    
-    FImages *imageObj = [FImages object];
-    imageObj.itemImage = imageFile;
-    FImages *imageObj2 = [FImages object];
-    imageObj2.itemImage = imageFile2;
-    FImages *imageObj3 = [FImages object];
-    imageObj3.itemImage = imageFile3;
-    FImages *imageObj4 = [FImages object];
-    imageObj4.itemImage = imageFile4;
-    
-    
-    [imageObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"first susses");
-            [PFCloud callFunctionInBackground:@"sliceImages"
-                               withParameters:@{@"imgObjID": imageObj.objectId}
-                                        block:^(NSNumber *ratings, NSError *error) {
-                                            if (!error) {
-                                                NSLog(@"first Slice finished");
-                                            }
-                                        }];
-            [imageObj2 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
-                    NSLog(@"Second susses");
-                    [PFCloud callFunctionInBackground:@"sliceImages"
-                                       withParameters:@{@"imgObjID": imageObj2.objectId}
-                                                block:^(NSNumber *ratings, NSError *error) {
-                                                    if (!error) {
-                                                        NSLog(@"second Slice finished");
-                                                    }
-                                                }];
-                    [imageObj3 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                        if (succeeded) {
-                            NSLog(@"third susses");
-                            [PFCloud callFunctionInBackground:@"sliceImages"
-                                               withParameters:@{@"imgObjID": imageObj3.objectId}
-                                                        block:^(NSNumber *ratings, NSError *error) {
-                                                            if (!error) {
-                                                                NSLog(@"third Slice finished");
-                                                            }
-                                                        }];
-                            [imageObj4 saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                                if (succeeded) {
-                                    NSLog(@"final susses");
-                                    [PFCloud callFunctionInBackground:@"sliceImages"
-                                                       withParameters:@{@"imgObjID": imageObj4.objectId}
-                                                                block:^(NSNumber *ratings, NSError *error) {
-                                                                    if (!error) {
-                                                                        NSLog(@"final Slice finished");
-                                                                    }
-                                                                }];
-                                    float lat = [self randomFloatBetween:8 and:12];
-                                    float lon = [self randomFloatBetween:74 and:77];
-                                    CLGeocoder *ceo = [[CLGeocoder alloc]init];
-                                    CLLocation *loc = [[CLLocation alloc]initWithLatitude:lat longitude:lon]; //insert your coordinates
-                                    
-                                    [ceo reverseGeocodeLocation:loc
-                                              completionHandler:^(NSArray *placemarks, NSError *error) {
-                                                  CLPlacemark *placemark = [placemarks objectAtIndex:0];
-                                                  //String to hold address
-                                                  NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
-                                                  
-                                                  NSArray *imageArray = [NSArray arrayWithObjects:imageObj,imageObj2,imageObj3,imageObj4, nil];
-                                                  
-                                                  FItem *spotObj = [FItem object];
-                                                  spotObj.itemImageArray = imageArray;
-                                                  spotObj.itemTitle = @"Sample Title";
-                                                  spotObj.itemDescription = @"The Parse platform provides a complete backend solution for your mobile application. Our goal is to totally eliminate the need for writing server code or maintaining servers.";
-                                                  
-                                                  
-                                                  
-                                                  FRestaurants *restaurent = [FRestaurants object];
-                                                  restaurent.name = @"Balaji's Restaurent and Cafe";
-                                                  restaurent.location = [PFGeoPoint geoPointWithLatitude:lat longitude:lon];
-                                                  restaurent.address = locatedAt;
-                                                  
-                                                  
-                                                  spotObj.restaurent = restaurent;
-                                                  
-                                                  spotObj.itemRating = [NSNumber numberWithInt:(int)[self randomFloatBetween:0 and:5]];
-                                                  spotObj.itemPrice = [NSNumber numberWithInt:(int)[self randomFloatBetween:100 and:500]];
-                                                  
-                                                  [spotObj saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                                                      if (succeeded) {
-                                                          NSLog(@"Dude susses");
-                                                          [self dude];
-                                                      }
-                                                      else{
-                                                          NSLog(@"Final Failed");
-                                                      }
-                                                      
-                                                  }];
-                                              }
-                                     ];
-    
-                                }
-                                else{
-                                    NSLog(@"forth Failed");
-                                }
-                            }];
-                        }
-                        else{
-                            NSLog(@"Third Failed");
-                        }
-                    }];
-                }
-                else{
-                    NSLog(@"Second Failed");
-                }
-            }];
-        }
-        else{
-            NSLog(@"First Failed");
-        }
-    }];
 
 }
 
@@ -203,17 +61,6 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-//    if ([PHPhotoLibrary authorizationStatus]==PHAuthorizationStatusAuthorized) {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.delegate = self;
-    imagePickerController.showsCameraControls = YES;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-//    }
-//    else{
-//        
-//    }
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
