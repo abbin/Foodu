@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
+		581747111C60A19000834365 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 581747101C60A19000834365 /* Untitled.png */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		5823BFBF1C58C0BA00DEBD18 /* button_record-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */; };
+		5829598D1C60798500A5E5A3 /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5829598C1C60798500A5E5A3 /* videoplayback.mp4 */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
 		58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */; };
@@ -85,9 +87,11 @@
 /* Begin PBXFileReference section */
 		0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.release.xcconfig"; sourceTree = "<group>"; };
 		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
+		581747101C60A19000834365 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
 		5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record-512.png"; sourceTree = "<group>"; };
+		5829598C1C60798500A5E5A3 /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		58846B621C3E9230006CFBFB /* UIColor+FColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FColours.h"; sourceTree = "<group>"; };
@@ -329,6 +333,8 @@
 		ED0E7C001C3C3A43008DB644 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				5829598C1C60798500A5E5A3 /* videoplayback.mp4 */,
+				581747101C60A19000834365 /* Untitled.png */,
 				5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */,
 				58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */,
 				ED0E7C011C3C3A86008DB644 /* 1.jpg */,
@@ -470,6 +476,7 @@
 				ED0E7C5E1C3C3A86008DB644 /* 39.jpg in Resources */,
 				ED0E7C5C1C3C3A86008DB644 /* 37.jpg in Resources */,
 				ED0E7C511C3C3A86008DB644 /* 26.jpg in Resources */,
+				5829598D1C60798500A5E5A3 /* videoplayback.mp4 in Resources */,
 				ED0E7C591C3C3A86008DB644 /* 34.jpg in Resources */,
 				ED0E7C3E1C3C3A86008DB644 /* 7.jpg in Resources */,
 				ED0E7C681C3C3A86008DB644 /* 49.jpg in Resources */,
@@ -512,6 +519,7 @@
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
 				ED0E7C641C3C3A86008DB644 /* 45.jpg in Resources */,
 				ED0E7C4F1C3C3A86008DB644 /* 24.jpg in Resources */,
+				581747111C60A19000834365 /* Untitled.png in Resources */,
 				ED0E7C4E1C3C3A86008DB644 /* 23.jpg in Resources */,
 				ED0E7C3A1C3C3A86008DB644 /* 3.jpg in Resources */,
 				ED0E7C381C3C3A86008DB644 /* 1.jpg in Resources */,
