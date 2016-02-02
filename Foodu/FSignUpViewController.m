@@ -135,7 +135,7 @@
     [[AVAudioSession sharedInstance] setActive:YES error:&sessionError];
     
     //Set up player
-    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"videoplayback" ofType:@"mp4"]];
+    NSURL *movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Untitled" ofType:@"mov"]];
     AVAsset *avAsset = [AVAsset assetWithURL:movieURL];
     AVPlayerItem *avPlayerItem =[[AVPlayerItem alloc]initWithAsset:avAsset];
     self.avplayer = [[AVPlayer alloc]initWithPlayerItem:avPlayerItem];
