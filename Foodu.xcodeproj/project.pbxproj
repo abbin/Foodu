@@ -21,6 +21,7 @@
 		58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F01C3A403E00594407 /* Main.storyboard */; };
 		58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F31C3A403E00594407 /* Assets.xcassets */; };
 		58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F51C3A403E00594407 /* LaunchScreen.storyboard */; };
+		58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */; };
 		58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */; };
 		58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */; };
 		58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */; };
@@ -81,7 +82,6 @@
 		ED0E7C6E1C3C3A86008DB644 /* 55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C371C3C3A86008DB644 /* 55.jpg */; };
 		ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5888471C40F18900922C9A /* FUserDefaults.m */; };
 		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
-		EDE07C101C6111F0007C3DFC /* Untitled.mov in Resources */ = {isa = PBXBuildFile; fileRef = EDE07C0F1C6111F0007C3DFC /* Untitled.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +109,7 @@
 		58C9F3F61C3A403E00594407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58C9F3F81C3A403E00594407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyMovie.mp4; sourceTree = "<group>"; };
 		58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+UICollectionView_Convenience.h"; sourceTree = "<group>"; };
 		58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+UICollectionView_Convenience.m"; sourceTree = "<group>"; };
 		58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+NSIndexSet_Convenience.h"; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 		ED5888471C40F18900922C9A /* FUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUserDefaults.m; sourceTree = "<group>"; };
 		ED58884C1C410B2600922C9A /* FSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpViewController.h; sourceTree = "<group>"; };
 		ED58884D1C410B2600922C9A /* FSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpViewController.m; sourceTree = "<group>"; };
-		EDE07C0F1C6111F0007C3DFC /* Untitled.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Untitled.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,7 +398,7 @@
 		ED58884B1C410AE300922C9A /* First Launch */ = {
 			isa = PBXGroup;
 			children = (
-				EDE07C0F1C6111F0007C3DFC /* Untitled.mov */,
+				58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */,
 				ED58884C1C410B2600922C9A /* FSignUpViewController.h */,
 				ED58884D1C410B2600922C9A /* FSignUpViewController.m */,
 			);
@@ -472,7 +472,6 @@
 				ED0E7C6E1C3C3A86008DB644 /* 55.jpg in Resources */,
 				ED0E7C401C3C3A86008DB644 /* 9.jpg in Resources */,
 				ED0E7C3F1C3C3A86008DB644 /* 8.jpg in Resources */,
-				EDE07C101C6111F0007C3DFC /* Untitled.mov in Resources */,
 				ED0E7C651C3C3A86008DB644 /* 46.jpg in Resources */,
 				ED0E7C5E1C3C3A86008DB644 /* 39.jpg in Resources */,
 				ED0E7C5C1C3C3A86008DB644 /* 37.jpg in Resources */,
@@ -485,6 +484,7 @@
 				ED0E7C5D1C3C3A86008DB644 /* 38.jpg in Resources */,
 				ED0E7C671C3C3A86008DB644 /* 48.jpg in Resources */,
 				ED0E7C551C3C3A86008DB644 /* 30.jpg in Resources */,
+				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				ED0E7C541C3C3A86008DB644 /* 29.jpg in Resources */,
 				ED0E7C571C3C3A86008DB644 /* 32.jpg in Resources */,
 				ED0E7C601C3C3A86008DB644 /* 41.jpg in Resources */,

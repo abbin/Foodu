@@ -27,6 +27,7 @@
     if ([FUserDefaults isFirstLaunch] || [KCSUser activeUser] == nil) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpViewController"];
+        [rootViewController setFSignType:FSignUpView];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];

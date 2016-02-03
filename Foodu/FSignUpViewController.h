@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FSignUpViewController : UIViewController
+typedef NS_ENUM(NSInteger, FSignType) {
+    FSignUpView,
+    FSignInView
+};
+
+@interface FSignUpViewController : UIViewController<UITextFieldDelegate>
+
+@property(assign, nonatomic) FSignType FSignType;
+
 
 @end
