@@ -5,7 +5,7 @@
 
 target 'Foodu' do
 
-pod 'KinveyKit'
+pod 'KiiCloud', ‘2.4.1’
 pod 'GoogleMaps'
 
 end

@@ -12,19 +12,88 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05FAC4C36C264550B503821F3B1FF6F7 /* KiiMQTTFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiMQTTFields.h; path = KiiSDK.framework/Versions/A/Headers/KiiMQTTFields.h; sourceTree = "<group>"; };
+		0772BEC44DC43A7161AB54E251852142 /* KiiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiiSDK.framework; sourceTree = "<group>"; };
+		08E90FFD778E1747E5B7AC392EB89591 /* KiiEncryptedBucket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiEncryptedBucket.h; path = KiiSDK.framework/Versions/A/Headers/KiiEncryptedBucket.h; sourceTree = "<group>"; };
+		0B563692E37997CA50975814302DF58C /* KiiFileBucket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiFileBucket.h; path = KiiSDK.framework/Versions/A/Headers/KiiFileBucket.h; sourceTree = "<group>"; };
 		1395C427A920EA9B44DD20D75FFBF409 /* Pods-Foodu-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Foodu-resources.sh"; sourceTree = "<group>"; };
-		28DC479D7B5A2F8284BE101F1ADC4C04 /* libKinveyKit.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libKinveyKit.a; path = "KinveyKit-1.40.3/libKinveyKit.a"; sourceTree = "<group>"; };
+		149E480D675169FAB6384B23AC6FDB0E /* KiiRTransfer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRTransfer.h; path = KiiSDK.framework/Versions/A/Headers/KiiRTransfer.h; sourceTree = "<group>"; };
+		1F25D464B33C6109E3CC6B68D937868E /* KiiVariationSampler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiVariationSampler.h; path = KiiSDK.framework/Versions/A/Headers/KiiVariationSampler.h; sourceTree = "<group>"; };
+		24336C59AE90A4F224C4C6B74F0D0BFB /* KiiUploadTransferManaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiUploadTransferManaging.h; path = KiiSDK.framework/Versions/A/Headers/KiiUploadTransferManaging.h; sourceTree = "<group>"; };
+		26FFB90D4ABB0B7A8B44D7F391E64B3A /* KiiThingFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiThingFields.h; path = KiiSDK.framework/Versions/A/Headers/KiiThingFields.h; sourceTree = "<group>"; };
+		33D6302B79BF091E5C774A5F2A027550 /* KAGroupedResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAGroupedResult.h; path = KiiSDK.framework/Versions/A/Headers/KAGroupedResult.h; sourceTree = "<group>"; };
+		34E4E92478466ECEDDB8E6B0A196FB70 /* KiiIdentityDataBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiIdentityDataBuilder.h; path = KiiSDK.framework/Versions/A/Headers/KiiIdentityDataBuilder.h; sourceTree = "<group>"; };
+		38AB6695EAFB2551D12836893352D238 /* KiiListResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiListResult.h; path = KiiSDK.framework/Versions/A/Headers/KiiListResult.h; sourceTree = "<group>"; };
 		39F83281DD45BF6FA4CD5BCDE2817E12 /* Pods-Foodu-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Foodu-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3C8FAC6E0060600CF5014BEDC252F06E /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		3D91EE5985834FD61ABBB7496C3EFA7E /* KiiAnalytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiAnalytics.h; path = KiiSDK.framework/Versions/A/Headers/KiiAnalytics.h; sourceTree = "<group>"; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3E80AB7B4BCF90BFF1D3AC9FC9DFFD0E /* FileHolder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FileHolder.h; path = KiiSDK.framework/Versions/A/Headers/FileHolder.h; sourceTree = "<group>"; };
+		3E9A82CB522DD179F0DB6FDC3E986AAF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		40E4D56F8B0D89891FBA0B336B27F9A0 /* KiiRandomVariationSampler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRandomVariationSampler.h; path = KiiSDK.framework/Versions/A/Headers/KiiRandomVariationSampler.h; sourceTree = "<group>"; };
+		4278B069E44C6DF4C720B00BDACE19CC /* KiiServerCodeExecResult.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiServerCodeExecResult.h; path = KiiSDK.framework/Versions/A/Headers/KiiServerCodeExecResult.h; sourceTree = "<group>"; };
+		42F6D9BE9813CEE0504AF72295059B67 /* KiiPhotoColleRTransferManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiPhotoColleRTransferManager.h; path = KiiSDK.framework/Versions/A/Headers/KiiPhotoColleRTransferManager.h; sourceTree = "<group>"; };
+		430E89BADD9003ED2F348A82BEA35C23 /* KAResultQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAResultQuery.h; path = KiiSDK.framework/Versions/A/Headers/KAResultQuery.h; sourceTree = "<group>"; };
+		45AA5D454AC3B49390BA9DD0598DB33F /* KiiRTransferManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRTransferManager.h; path = KiiSDK.framework/Versions/A/Headers/KiiRTransferManager.h; sourceTree = "<group>"; };
 		46936E5C1EDC22CA82EFBA3E4985ECA2 /* Pods-Foodu-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Foodu-acknowledgements.plist"; sourceTree = "<group>"; };
+		48ABA93E7FC03B37BCD96E9BB1375D56 /* KAConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAConstants.h; path = KiiSDK.framework/Versions/A/Headers/KAConstants.h; sourceTree = "<group>"; };
+		49C1AC6D10E72D59366371C09E151CD4 /* KiiAPNSFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiAPNSFields.h; path = KiiSDK.framework/Versions/A/Headers/KiiAPNSFields.h; sourceTree = "<group>"; };
+		4C03972C1F97242975973B3F13D2F91B /* KiiDownloadTransferManaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiDownloadTransferManaging.h; path = KiiSDK.framework/Versions/A/Headers/KiiDownloadTransferManaging.h; sourceTree = "<group>"; };
+		50B4D584D510C6CA5046645D0212E333 /* KiiPhotoColleSocialConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiPhotoColleSocialConnect.h; path = KiiSDK.framework/Versions/A/Headers/KiiPhotoColleSocialConnect.h; sourceTree = "<group>"; };
+		52A574C3AA3E3A84D5F21A002D237076 /* KiiUserFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiUserFields.h; path = KiiSDK.framework/Versions/A/Headers/KiiUserFields.h; sourceTree = "<group>"; };
+		58C46DDD41F35A28140B86259831064D /* KiiAnonymousUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiAnonymousUser.h; path = KiiSDK.framework/Versions/A/Headers/KiiAnonymousUser.h; sourceTree = "<group>"; };
+		5AE4D9859A3D641B947280F5C7F66CA7 /* KiiResumableTransfer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiResumableTransfer.h; path = KiiSDK.framework/Versions/A/Headers/KiiResumableTransfer.h; sourceTree = "<group>"; };
+		5B7D727CB9D75057A1974CA3DE40BE64 /* KiiGeoPoint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiGeoPoint.h; path = KiiSDK.framework/Versions/A/Headers/KiiGeoPoint.h; sourceTree = "<group>"; };
+		5C001012DEF8D19C53E4D9A932EBF247 /* KiiBaseBucket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiBaseBucket.h; path = KiiSDK.framework/Versions/A/Headers/KiiBaseBucket.h; sourceTree = "<group>"; };
+		6281F53CCE4B84BB58CE3988E1680CC8 /* KiiUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiUser.h; path = KiiSDK.framework/Versions/A/Headers/KiiUser.h; sourceTree = "<group>"; };
+		62981F5C41A2FE746DAD9C47501F9151 /* KiiQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiQuery.h; path = KiiSDK.framework/Versions/A/Headers/KiiQuery.h; sourceTree = "<group>"; };
+		657B0EE3A848D7DCF98B506A80D0F4D5 /* KiiIllegalStateException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiIllegalStateException.h; path = KiiSDK.framework/Versions/A/Headers/KiiIllegalStateException.h; sourceTree = "<group>"; };
+		6AE06141C1B944D45AFFC6F285102F1E /* KiiRTransferManaging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRTransferManaging.h; path = KiiSDK.framework/Versions/A/Headers/KiiRTransferManaging.h; sourceTree = "<group>"; };
+		6DDB6A0719B92266D70CFD917BC8C7CE /* KiiFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiFile.h; path = KiiSDK.framework/Versions/A/Headers/KiiFile.h; sourceTree = "<group>"; };
+		6F663B0B40EC7E1517BD1E67F69580AF /* Kii.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kii.h; path = KiiSDK.framework/Versions/A/Headers/Kii.h; sourceTree = "<group>"; };
+		72D00162816CC2ECF0962F37D5FC2A46 /* KiiSocialConnect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiSocialConnect.h; path = KiiSDK.framework/Versions/A/Headers/KiiSocialConnect.h; sourceTree = "<group>"; };
 		7B7B09098A33243F868874D874A916DE /* Pods-Foodu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Foodu-dummy.m"; sourceTree = "<group>"; };
 		7D299653985546AD875A8F3EAD50BCAA /* Pods-Foodu-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Foodu-frameworks.sh"; sourceTree = "<group>"; };
+		7DF613549DFB3447C8AB3AE5E1257A0A /* KADateRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KADateRange.h; path = KiiSDK.framework/Versions/A/Headers/KADateRange.h; sourceTree = "<group>"; };
+		829653350DDAD110B44318EFDF0A7123 /* KiiSDK-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "KiiSDK-Bridging-Header.h"; path = "KiiSDK.framework/Versions/A/Headers/KiiSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		8BE3DF4158BC575215EC4F8A1E9683E3 /* KiiThingOwner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiThingOwner.h; path = KiiSDK.framework/Versions/A/Headers/KiiThingOwner.h; sourceTree = "<group>"; };
+		92B9A753DA829C85B27D12698ED595A0 /* KiiPushMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiPushMessage.h; path = KiiSDK.framework/Versions/A/Headers/KiiPushMessage.h; sourceTree = "<group>"; };
+		92D373FE447BC793668D6464C7B414EE /* KiiGCMFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiGCMFields.h; path = KiiSDK.framework/Versions/A/Headers/KiiGCMFields.h; sourceTree = "<group>"; };
 		974D8ECD81061B1FEC3B3C161F1B3832 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0B714B2B5CD4791DEC700003B7A524 /* KiiUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiUtilities.h; path = KiiSDK.framework/Versions/A/Headers/KiiUtilities.h; sourceTree = "<group>"; };
+		9C4F855D6F872D16DCB2290E7DF16034 /* KAFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAFilter.h; path = KiiSDK.framework/Versions/A/Headers/KAFilter.h; sourceTree = "<group>"; };
+		A8202823CAFD509AAB40AFCA8E1C1333 /* KiiDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiDownloader.h; path = KiiSDK.framework/Versions/A/Headers/KiiDownloader.h; sourceTree = "<group>"; };
+		A926CEAE9DBC1AD5F13EB66BB696B1C8 /* KiiPushSubscription.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiPushSubscription.h; path = KiiSDK.framework/Versions/A/Headers/KiiPushSubscription.h; sourceTree = "<group>"; };
+		ACEE92CB5686B263ACEEA03E45340CF8 /* KiiError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiError.h; path = KiiSDK.framework/Versions/A/Headers/KiiError.h; sourceTree = "<group>"; };
+		ADB3B62568B0E65C9D8DB1DF75630550 /* KiiFileRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiFileRequest.h; path = KiiSDK.framework/Versions/A/Headers/KiiFileRequest.h; sourceTree = "<group>"; };
+		AEE6DE77F117DD4BC1AD0C88FFF51215 /* KiiServerCodeEntryArgument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiServerCodeEntryArgument.h; path = KiiSDK.framework/Versions/A/Headers/KiiServerCodeEntryArgument.h; sourceTree = "<group>"; };
 		B2D74D2FBF370E2D925049A79AF3A0D7 /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
-		B3EEB4E8DEB866E06870B864B0104727 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		B5A43318EBFA0EE17566FC26FAC4B3DE /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		B68B67499CCDFDF74278CC81509B2693 /* KiiRTransferInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRTransferInfo.h; path = KiiSDK.framework/Versions/A/Headers/KiiRTransferInfo.h; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BF8EEE4DFD308100A69FA2B8E08E26C6 /* KiiClause.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiClause.h; path = KiiSDK.framework/Versions/A/Headers/KiiClause.h; sourceTree = "<group>"; };
+		C94E10F854EDCCF325C9A03CC103E30A /* KAGroupedSnapShot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAGroupedSnapShot.h; path = KiiSDK.framework/Versions/A/Headers/KAGroupedSnapShot.h; sourceTree = "<group>"; };
+		C9BD4028C68228EC5523DEBC9F6659C9 /* KiiBucket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiBucket.h; path = KiiSDK.framework/Versions/A/Headers/KiiBucket.h; sourceTree = "<group>"; };
+		CDB9DEB3D39D29F02FB8A59752286EE8 /* KiiAnyAuthenticatedUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiAnyAuthenticatedUser.h; path = KiiSDK.framework/Versions/A/Headers/KiiAnyAuthenticatedUser.h; sourceTree = "<group>"; };
+		CFFF7D9F20E16731344DC58BF8ADAD79 /* KAGetResultError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KAGetResultError.h; path = KiiSDK.framework/Versions/A/Headers/KAGetResultError.h; sourceTree = "<group>"; };
+		D008DAAAA2CDD89C51389AB0DFCF27C8 /* KiiTopic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiTopic.h; path = KiiSDK.framework/Versions/A/Headers/KiiTopic.h; sourceTree = "<group>"; };
 		D14A0282B50AF3A7F03EE89882042E15 /* Pods-Foodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Foodu.release.xcconfig"; sourceTree = "<group>"; };
+		D86DD1D345C69B78AF6BE08AEC0F559A /* KiiObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiObject.h; path = KiiSDK.framework/Versions/A/Headers/KiiObject.h; sourceTree = "<group>"; };
+		D8DE7E565E526C30F75ED4C30E3A7C76 /* KiiACLEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiACLEntry.h; path = KiiSDK.framework/Versions/A/Headers/KiiACLEntry.h; sourceTree = "<group>"; };
+		E0406A7FFF0509523483E2F3443388B7 /* KiiVariationSamplerByKiiUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiVariationSamplerByKiiUser.h; path = KiiSDK.framework/Versions/A/Headers/KiiVariationSamplerByKiiUser.h; sourceTree = "<group>"; };
+		E2EF4030D4EC803869CF8B3611BA879F /* KiiACL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiACL.h; path = KiiSDK.framework/Versions/A/Headers/KiiACL.h; sourceTree = "<group>"; };
+		E37D5A23CB686306E4C1832535D72D6E /* KiiCloudPhotoColle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiCloudPhotoColle.h; path = KiiSDK.framework/Versions/A/Headers/KiiCloudPhotoColle.h; sourceTree = "<group>"; };
+		E7759BEA414ED4DC737CB6E3FE4E2FCC /* KiiExperiment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiExperiment.h; path = KiiSDK.framework/Versions/A/Headers/KiiExperiment.h; sourceTree = "<group>"; };
+		E921BEA153BAE52FAD69954779783B02 /* KiiRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiRequest.h; path = KiiSDK.framework/Versions/A/Headers/KiiRequest.h; sourceTree = "<group>"; };
+		EA4C6CCDC6FAAB875FEF29AAADAE419D /* KiiPushInstallation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiPushInstallation.h; path = KiiSDK.framework/Versions/A/Headers/KiiPushInstallation.h; sourceTree = "<group>"; };
+		ED5F736725D9596E1E1F0F5DEA46AFCC /* KiiGroup.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiGroup.h; path = KiiSDK.framework/Versions/A/Headers/KiiGroup.h; sourceTree = "<group>"; };
+		F1E1BD170EC44BEAFCF6FB884F656FF3 /* KiiThing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiThing.h; path = KiiSDK.framework/Versions/A/Headers/KiiThing.h; sourceTree = "<group>"; };
+		F2D7339E9B49461B51ADA8E3696140A8 /* KiiConversionEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiConversionEvent.h; path = KiiSDK.framework/Versions/A/Headers/KiiConversionEvent.h; sourceTree = "<group>"; };
+		F803291F06C1A2B759F6DC738F77792D /* KiiBaseObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiBaseObject.h; path = KiiSDK.framework/Versions/A/Headers/KiiBaseObject.h; sourceTree = "<group>"; };
+		F98A2BEFAE9A410405EB9C4E74498C74 /* KiiUploader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiUploader.h; path = KiiSDK.framework/Versions/A/Headers/KiiUploader.h; sourceTree = "<group>"; };
+		F9AC55CE9CFBA717285C777E8D194BFD /* KiiVariation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiVariation.h; path = KiiSDK.framework/Versions/A/Headers/KiiVariation.h; sourceTree = "<group>"; };
+		FA8E87E90CFECCA4EBEB18ED2A2C7A23 /* KiiIdentityData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiIdentityData.h; path = KiiSDK.framework/Versions/A/Headers/KiiIdentityData.h; sourceTree = "<group>"; };
+		FB2FFEDA33DDA5BEDA34A3092A19FF24 /* KiiSocialAccountInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiSocialAccountInfo.h; path = KiiSDK.framework/Versions/A/Headers/KiiSocialAccountInfo.h; sourceTree = "<group>"; };
+		FE2F555FFE1263F212BAB5FEECA951D8 /* KiiServerCodeEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KiiServerCodeEntry.h; path = KiiSDK.framework/Versions/A/Headers/KiiServerCodeEntry.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,20 +108,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05FDD358A6A679D3032FB3A379392BB6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B5A43318EBFA0EE17566FC26FAC4B3DE /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		21EC95E0AF93704125F0794E991F78E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				974D8ECD81061B1FEC3B3C161F1B3832 /* libPods-Foodu.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		46E25DEB75E9E72BB1E12C51959AB369 /* KiiCloud */ = {
+			isa = PBXGroup;
+			children = (
+				3E80AB7B4BCF90BFF1D3AC9FC9DFFD0E /* FileHolder.h */,
+				48ABA93E7FC03B37BCD96E9BB1375D56 /* KAConstants.h */,
+				7DF613549DFB3447C8AB3AE5E1257A0A /* KADateRange.h */,
+				9C4F855D6F872D16DCB2290E7DF16034 /* KAFilter.h */,
+				CFFF7D9F20E16731344DC58BF8ADAD79 /* KAGetResultError.h */,
+				33D6302B79BF091E5C774A5F2A027550 /* KAGroupedResult.h */,
+				C94E10F854EDCCF325C9A03CC103E30A /* KAGroupedSnapShot.h */,
+				430E89BADD9003ED2F348A82BEA35C23 /* KAResultQuery.h */,
+				6F663B0B40EC7E1517BD1E67F69580AF /* Kii.h */,
+				E2EF4030D4EC803869CF8B3611BA879F /* KiiACL.h */,
+				D8DE7E565E526C30F75ED4C30E3A7C76 /* KiiACLEntry.h */,
+				3D91EE5985834FD61ABBB7496C3EFA7E /* KiiAnalytics.h */,
+				58C46DDD41F35A28140B86259831064D /* KiiAnonymousUser.h */,
+				CDB9DEB3D39D29F02FB8A59752286EE8 /* KiiAnyAuthenticatedUser.h */,
+				49C1AC6D10E72D59366371C09E151CD4 /* KiiAPNSFields.h */,
+				5C001012DEF8D19C53E4D9A932EBF247 /* KiiBaseBucket.h */,
+				F803291F06C1A2B759F6DC738F77792D /* KiiBaseObject.h */,
+				C9BD4028C68228EC5523DEBC9F6659C9 /* KiiBucket.h */,
+				BF8EEE4DFD308100A69FA2B8E08E26C6 /* KiiClause.h */,
+				E37D5A23CB686306E4C1832535D72D6E /* KiiCloudPhotoColle.h */,
+				F2D7339E9B49461B51ADA8E3696140A8 /* KiiConversionEvent.h */,
+				A8202823CAFD509AAB40AFCA8E1C1333 /* KiiDownloader.h */,
+				4C03972C1F97242975973B3F13D2F91B /* KiiDownloadTransferManaging.h */,
+				08E90FFD778E1747E5B7AC392EB89591 /* KiiEncryptedBucket.h */,
+				ACEE92CB5686B263ACEEA03E45340CF8 /* KiiError.h */,
+				E7759BEA414ED4DC737CB6E3FE4E2FCC /* KiiExperiment.h */,
+				6DDB6A0719B92266D70CFD917BC8C7CE /* KiiFile.h */,
+				0B563692E37997CA50975814302DF58C /* KiiFileBucket.h */,
+				ADB3B62568B0E65C9D8DB1DF75630550 /* KiiFileRequest.h */,
+				92D373FE447BC793668D6464C7B414EE /* KiiGCMFields.h */,
+				5B7D727CB9D75057A1974CA3DE40BE64 /* KiiGeoPoint.h */,
+				ED5F736725D9596E1E1F0F5DEA46AFCC /* KiiGroup.h */,
+				FA8E87E90CFECCA4EBEB18ED2A2C7A23 /* KiiIdentityData.h */,
+				34E4E92478466ECEDDB8E6B0A196FB70 /* KiiIdentityDataBuilder.h */,
+				657B0EE3A848D7DCF98B506A80D0F4D5 /* KiiIllegalStateException.h */,
+				38AB6695EAFB2551D12836893352D238 /* KiiListResult.h */,
+				05FAC4C36C264550B503821F3B1FF6F7 /* KiiMQTTFields.h */,
+				D86DD1D345C69B78AF6BE08AEC0F559A /* KiiObject.h */,
+				42F6D9BE9813CEE0504AF72295059B67 /* KiiPhotoColleRTransferManager.h */,
+				50B4D584D510C6CA5046645D0212E333 /* KiiPhotoColleSocialConnect.h */,
+				EA4C6CCDC6FAAB875FEF29AAADAE419D /* KiiPushInstallation.h */,
+				92B9A753DA829C85B27D12698ED595A0 /* KiiPushMessage.h */,
+				A926CEAE9DBC1AD5F13EB66BB696B1C8 /* KiiPushSubscription.h */,
+				62981F5C41A2FE746DAD9C47501F9151 /* KiiQuery.h */,
+				40E4D56F8B0D89891FBA0B336B27F9A0 /* KiiRandomVariationSampler.h */,
+				E921BEA153BAE52FAD69954779783B02 /* KiiRequest.h */,
+				5AE4D9859A3D641B947280F5C7F66CA7 /* KiiResumableTransfer.h */,
+				149E480D675169FAB6384B23AC6FDB0E /* KiiRTransfer.h */,
+				B68B67499CCDFDF74278CC81509B2693 /* KiiRTransferInfo.h */,
+				45AA5D454AC3B49390BA9DD0598DB33F /* KiiRTransferManager.h */,
+				6AE06141C1B944D45AFFC6F285102F1E /* KiiRTransferManaging.h */,
+				829653350DDAD110B44318EFDF0A7123 /* KiiSDK-Bridging-Header.h */,
+				FE2F555FFE1263F212BAB5FEECA951D8 /* KiiServerCodeEntry.h */,
+				AEE6DE77F117DD4BC1AD0C88FFF51215 /* KiiServerCodeEntryArgument.h */,
+				4278B069E44C6DF4C720B00BDACE19CC /* KiiServerCodeExecResult.h */,
+				FB2FFEDA33DDA5BEDA34A3092A19FF24 /* KiiSocialAccountInfo.h */,
+				72D00162816CC2ECF0962F37D5FC2A46 /* KiiSocialConnect.h */,
+				F1E1BD170EC44BEAFCF6FB884F656FF3 /* KiiThing.h */,
+				26FFB90D4ABB0B7A8B44D7F391E64B3A /* KiiThingFields.h */,
+				8BE3DF4158BC575215EC4F8A1E9683E3 /* KiiThingOwner.h */,
+				D008DAAAA2CDD89C51389AB0DFCF27C8 /* KiiTopic.h */,
+				F98A2BEFAE9A410405EB9C4E74498C74 /* KiiUploader.h */,
+				24336C59AE90A4F224C4C6B74F0D0BFB /* KiiUploadTransferManaging.h */,
+				6281F53CCE4B84BB58CE3988E1680CC8 /* KiiUser.h */,
+				52A574C3AA3E3A84D5F21A002D237076 /* KiiUserFields.h */,
+				9C0B714B2B5CD4791DEC700003B7A524 /* KiiUtilities.h */,
+				F9AC55CE9CFBA717285C777E8D194BFD /* KiiVariation.h */,
+				1F25D464B33C6109E3CC6B68D937868E /* KiiVariationSampler.h */,
+				E0406A7FFF0509523483E2F3443388B7 /* KiiVariationSamplerByKiiUser.h */,
+				A3B691386A0692A72B072B71F4C50D69 /* Frameworks */,
+			);
+			path = KiiCloud;
 			sourceTree = "<group>";
 		};
 		582E04DD0FF3A5D823B7CFA5A966649F /* Pods-Foodu */ = {
@@ -70,30 +208,21 @@
 			path = "Target Support Files/Pods-Foodu";
 			sourceTree = "<group>";
 		};
-		6C5405B8C7A4CA6559BD8F73385BDC74 /* KinveyKit */ = {
+		5849A6AB32580FE07F07258564370957 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				982AA0BF24EB3CD9FDE2414702A6B9CD /* Frameworks */,
-			);
-			path = KinveyKit;
-			sourceTree = "<group>";
-		};
-		73CC5700DDC7933B16A7B3BB319FAECD /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				C2B5025C67F83128CDC8DF30D76E1A85 /* Frameworks */,
-				05FDD358A6A679D3032FB3A379392BB6 /* Resources */,
+				9BDAE04EF61D95F8BA61A970017D35ED /* Frameworks */,
+				6C159EEA0A9639768727BDB1430E6029 /* Resources */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
-		74B23434399BCEE8222BB5BC444B04B2 /* Pods */ = {
+		6C159EEA0A9639768727BDB1430E6029 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				73CC5700DDC7933B16A7B3BB319FAECD /* GoogleMaps */,
-				6C5405B8C7A4CA6559BD8F73385BDC74 /* KinveyKit */,
+				3C8FAC6E0060600CF5014BEDC252F06E /* GoogleMaps.bundle */,
 			);
-			name = Pods;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -101,16 +230,24 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				74B23434399BCEE8222BB5BC444B04B2 /* Pods */,
+				B765222E58E4C845E757CC4497DDB253 /* Pods */,
 				21EC95E0AF93704125F0794E991F78E4 /* Products */,
 				A9C067937E647F36DA6B148921381280 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		982AA0BF24EB3CD9FDE2414702A6B9CD /* Frameworks */ = {
+		9BDAE04EF61D95F8BA61A970017D35ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				28DC479D7B5A2F8284BE101F1ADC4C04 /* libKinveyKit.a */,
+				3E9A82CB522DD179F0DB6FDC3E986AAF /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3B691386A0692A72B072B71F4C50D69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0772BEC44DC43A7161AB54E251852142 /* KiiSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +258,15 @@
 				582E04DD0FF3A5D823B7CFA5A966649F /* Pods-Foodu */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B765222E58E4C845E757CC4497DDB253 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5849A6AB32580FE07F07258564370957 /* GoogleMaps */,
+				46E25DEB75E9E72BB1E12C51959AB369 /* KiiCloud */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -137,14 +283,6 @@
 				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		C2B5025C67F83128CDC8DF30D76E1A85 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B3EEB4E8DEB866E06870B864B0104727 /* GoogleMaps.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

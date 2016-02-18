@@ -1,13 +1,13 @@
 PODS:
   - GoogleMaps (1.11.1)
-  - KinveyKit (1.40.3)
+  - KiiCloud (2.4.1)
 
 DEPENDENCIES:
   - GoogleMaps
-  - KinveyKit
+  - KiiCloud (= 2.4.1)
 
 SPEC CHECKSUMS:
   GoogleMaps: c947160008f414c66707a5ea60f35e92055c7670
-  KinveyKit: ae91781921d82aef4e08f450a4af0e6e9ee9abb8
+  KiiCloud: d6baecb83742527233403ff60ac291b773e6d3f9
 
 COCOAPODS: 0.39.0
