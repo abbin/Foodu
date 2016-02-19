@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "FSignUpViewController.h"
-
+#import "FSignUpOneViewController.h"
 @import GoogleMaps;
 
 @interface AppDelegate ()
@@ -33,7 +33,7 @@
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         snapShot.layer.opacity = 0;
-//        snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5);
+        snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5);
     } completion:^(BOOL finished) {
         [snapShot removeFromSuperview];
     }];
@@ -44,8 +44,8 @@
 
     if ([FUserDefaults isFirstLaunch]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FSignUpViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpViewController"];
-        [rootViewController setFSignType:FSignUpView];
+        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+//        [rootViewController setFSignType:FSignUpView];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];

@@ -80,6 +80,7 @@
 		ED0E7C6C1C3C3A86008DB644 /* 53.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C351C3C3A86008DB644 /* 53.jpg */; };
 		ED0E7C6D1C3C3A86008DB644 /* 54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C361C3C3A86008DB644 /* 54.jpg */; };
 		ED0E7C6E1C3C3A86008DB644 /* 55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C371C3C3A86008DB644 /* 55.jpg */; };
+		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5888471C40F18900922C9A /* FUserDefaults.m */; };
 		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,8 @@
 		ED0E7C351C3C3A86008DB644 /* 53.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 53.jpg; sourceTree = "<group>"; };
 		ED0E7C361C3C3A86008DB644 /* 54.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 54.jpg; sourceTree = "<group>"; };
 		ED0E7C371C3C3A86008DB644 /* 55.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 55.jpg; sourceTree = "<group>"; };
+		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
+		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
 		ED5888461C40F18900922C9A /* FUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUserDefaults.h; sourceTree = "<group>"; };
 		ED5888471C40F18900922C9A /* FUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUserDefaults.m; sourceTree = "<group>"; };
 		ED58884C1C410B2600922C9A /* FSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpViewController.h; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 				58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */,
 				ED58884C1C410B2600922C9A /* FSignUpViewController.h */,
 				ED58884D1C410B2600922C9A /* FSignUpViewController.m */,
+				ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */,
+				ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */,
 			);
 			name = "First Launch";
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 			files = (
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */,
+				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,

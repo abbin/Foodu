@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIButton *buttomButton;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 @property (weak, nonatomic) IBOutlet UIButton *signButton;
 @property (weak, nonatomic) IBOutlet UILabel *fuudLabel;
@@ -136,6 +137,7 @@
     }
     [self.signButton setTitle:@"Sign In" forState:UIControlStateNormal];
     self.orSignUpLabel.text = @"or Sign in with";
+    [self.buttomButton setTitle:@"Dont have an account? Sign Up" forState:UIControlStateNormal];
 }
 
 -(void)drawSignUpView{
@@ -214,6 +216,7 @@
     
     [self.signButton setTitle:@"Sign Up" forState:UIControlStateNormal];
     self.orSignUpLabel.text = @"or Sign Up with";
+    [self.buttomButton setTitle:@"Already have an account? Sign In" forState:UIControlStateNormal];
 }
 
 -(void)initVideoBackground{

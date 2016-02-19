@@ -36,6 +36,7 @@ NSString *const firstLaunchKey = @"firstLaunchKey";
     }
     
     KiiUser *user = [KiiUser userWithEmailAddress:email andPassword:password];
+    
     user.displayName = name;
     [user performRegistrationWithBlock:^(KiiUser *user, NSError *error) {
         if (error != nil) {
