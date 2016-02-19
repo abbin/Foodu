@@ -16,4 +16,6 @@ FOUNDATION_EXPORT NSString *const firstLaunchKey;
 
 +(void)didFinishFirstLaunch;
 
++(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(KiiUser *user))success failure:(void (^)(NSString *error))failure;
+
 @end

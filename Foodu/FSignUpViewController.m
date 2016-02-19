@@ -8,8 +8,12 @@
 
 #import "FSignUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AppDelegate.h"
+#import "FTabBarController.h"
+
 @interface FSignUpViewController ()
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) AVPlayer *avplayer;
 @property (weak, nonatomic) IBOutlet UIView *playerView;
 @property (weak, nonatomic) IBOutlet UIView *nameBackGround;
@@ -48,7 +52,7 @@
     [self initVideoBackground];
     
     if (self.FSignType == FSignUpView) {
-        [self drawTextFields];
+        [self drawSignUpView];
     }
     else{
         [self drawSignInView];
@@ -57,20 +61,19 @@
 }
 
 -(void)drawSignInView{
-    
     int buttonAndTextFieldHeight = 0;
     if (IS_IPHONE_5){
         [self.fuudLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Ultralight" size:70]];
         
-        self.adustmentNeeded = -65;
+        self.adustmentNeeded = 20;
         
         self.topConstrain.constant = 10;
         self.bottomConstrain.constant = 0;
         buttonAndTextFieldHeight = 40;
-        self.nameHeight.constant = buttonAndTextFieldHeight;
+        self.nameHeight.constant = 0;
         self.emailHeight.constant = buttonAndTextFieldHeight;
         self.passwordHeight.constant = buttonAndTextFieldHeight;
-        self.confirmPassHeight.constant = buttonAndTextFieldHeight;
+        self.confirmPassHeight.constant = 0;
         self.signButtonHeight.constant = buttonAndTextFieldHeight;
         self.facebookButtonHeight.constant = buttonAndTextFieldHeight;
     }
@@ -79,49 +82,63 @@
     }
     else if (IS_IPHONE_6Plus){
         [self.fuudLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Ultralight" size:90]];
-        self.adustmentNeeded = -45;
+        self.topConstrain.constant = 20;
+        self.bottomConstrain.constant = 10;
+        self.adustmentNeeded = 20;
         buttonAndTextFieldHeight = 60;
+        self.nameHeight.constant = 0;
+        self.emailHeight.constant = buttonAndTextFieldHeight;
+        self.passwordHeight.constant = buttonAndTextFieldHeight;
+        self.confirmPassHeight.constant = 0;
+        self.signButtonHeight.constant = buttonAndTextFieldHeight;
+        self.facebookButtonHeight.constant = buttonAndTextFieldHeight;
     }
     else{
+        self.topConstrain.constant = 20;
+        self.bottomConstrain.constant = 10;
+        self.adustmentNeeded = 20;  // 20 IS NO ADJUSTMENT
         buttonAndTextFieldHeight = 50;
-        self.adustmentNeeded = -45;
+        self.nameHeight.constant = 0;
+        self.emailHeight.constant = buttonAndTextFieldHeight;
+        self.passwordHeight.constant = buttonAndTextFieldHeight;
+        self.confirmPassHeight.constant = 0;
+        self.signButtonHeight.constant = buttonAndTextFieldHeight;
+        self.facebookButtonHeight.constant = buttonAndTextFieldHeight;
     }
     
     self.originalConstant = self.topConstrain.constant;
     
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.nameField.frame.size.width, 1.0f);
-    bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                     alpha:1.0f].CGColor;
-    [self.nameField.layer addSublayer:bottomBorder];
-    
-    CALayer *bottomBorder2 = [CALayer layer];
-    bottomBorder2.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.emailField.frame.size.width, 1.0f);
-    bottomBorder2.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.emailField.layer addSublayer:bottomBorder2];
-    
-    CALayer *bottomBorder3 = [CALayer layer];
-    bottomBorder3.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.passwordField.frame.size.width, 1.0f);
-    bottomBorder3.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.passwordField.layer addSublayer:bottomBorder3];
-    
-    CALayer *bottomBorder4 = [CALayer layer];
-    bottomBorder4.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.confirmPasswordField.frame.size.width, 1.0f);
-    bottomBorder4.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.confirmPasswordField.layer addSublayer:bottomBorder4];
+    if (self.emailField.layer.sublayers.count == 0) {
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.nameField.frame.size.width, 1.0f);
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                         alpha:1.0f].CGColor;
+        [self.nameField.layer addSublayer:bottomBorder];
+        
+        CALayer *bottomBorder2 = [CALayer layer];
+        bottomBorder2.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.emailField.frame.size.width, 1.0f);
+        bottomBorder2.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.emailField.layer addSublayer:bottomBorder2];
+        
+        CALayer *bottomBorder3 = [CALayer layer];
+        bottomBorder3.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.passwordField.frame.size.width, 1.0f);
+        bottomBorder3.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.passwordField.layer addSublayer:bottomBorder3];
+        
+        CALayer *bottomBorder4 = [CALayer layer];
+        bottomBorder4.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.confirmPasswordField.frame.size.width, 1.0f);
+        bottomBorder4.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.confirmPasswordField.layer addSublayer:bottomBorder4];
 
-    
-    self.nameHeight.constant = 0;
-    self.confirmPassHeight.constant = 0;
-    [self.signButton setTitle:@"Sign in" forState:UIControlStateNormal];
+    }
+    [self.signButton setTitle:@"Sign In" forState:UIControlStateNormal];
     self.orSignUpLabel.text = @"or Sign in with";
-    
 }
 
--(void)drawTextFields{
+-(void)drawSignUpView{
     int buttonAndTextFieldHeight = 0;
     if (IS_IPHONE_5){
         [self.fuudLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Ultralight" size:70]];
@@ -169,29 +186,34 @@
     
     self.originalConstant = self.topConstrain.constant;
     
-    CALayer *bottomBorder = [CALayer layer];
-    bottomBorder.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.nameField.frame.size.width, 1.0f);
-    bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                     alpha:1.0f].CGColor;
-    [self.nameField.layer addSublayer:bottomBorder];
+    if ((self.emailField.layer.sublayers.count == 0)) {
+        CALayer *bottomBorder = [CALayer layer];
+        bottomBorder.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.nameField.frame.size.width, 1.0f);
+        bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                         alpha:1.0f].CGColor;
+        [self.nameField.layer addSublayer:bottomBorder];
+        
+        CALayer *bottomBorder2 = [CALayer layer];
+        bottomBorder2.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.emailField.frame.size.width, 1.0f);
+        bottomBorder2.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.emailField.layer addSublayer:bottomBorder2];
+        
+        CALayer *bottomBorder3 = [CALayer layer];
+        bottomBorder3.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.passwordField.frame.size.width, 1.0f);
+        bottomBorder3.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.passwordField.layer addSublayer:bottomBorder3];
+        
+        CALayer *bottomBorder4 = [CALayer layer];
+        bottomBorder4.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.confirmPasswordField.frame.size.width, 1.0f);
+        bottomBorder4.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                          alpha:1.0f].CGColor;
+        [self.confirmPasswordField.layer addSublayer:bottomBorder4];
+    }
     
-    CALayer *bottomBorder2 = [CALayer layer];
-    bottomBorder2.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.emailField.frame.size.width, 1.0f);
-    bottomBorder2.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.emailField.layer addSublayer:bottomBorder2];
-    
-    CALayer *bottomBorder3 = [CALayer layer];
-    bottomBorder3.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.passwordField.frame.size.width, 1.0f);
-    bottomBorder3.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.passwordField.layer addSublayer:bottomBorder3];
-    
-    CALayer *bottomBorder4 = [CALayer layer];
-    bottomBorder4.frame = CGRectMake(0.0f, buttonAndTextFieldHeight-3, self.confirmPasswordField.frame.size.width, 1.0f);
-    bottomBorder4.backgroundColor = [UIColor colorWithWhite:1.0f
-                                                      alpha:1.0f].CGColor;
-    [self.confirmPasswordField.layer addSublayer:bottomBorder4];
+    [self.signButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+    self.orSignUpLabel.text = @"or Sign Up with";
 }
 
 -(void)initVideoBackground{
@@ -277,19 +299,43 @@
 - (IBAction)signButtonClicked:(UIButton *)sender {
     self.topConstrain.constant = self.originalConstant;
     [self.view endEditing:YES];
+    
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
         self.fuudLabel.alpha = 1;
         self.orSignUpLabel.alpha = 1;
         self.facebookButton.alpha = 1;
     } completion:nil];
+    
+    [self.activityIndicator startAnimating];
+    
+//    [FUserDefaults signUpUserWithName:self.nameField.text email:self.emailField.text password:self.confirmPasswordField.text success:^(KiiUser *user) {
+//        [self.activityIndicator stopAnimating];
+//    } failure:^(NSString *error) {
+//        [self.activityIndicator stopAnimating];
+//    }];
+    
 }
+
+-(BOOL)doesPasswordsMatch{
+    NSString *str1 = self.passwordField.text;
+    NSRange range = [str1 rangeOfString:self.confirmPasswordField.text];
+    
+    return YES;
+}
+
+- (IBAction)confirmPasswordDidChange:(UITextField *)sender {
+    [self doesPasswordsMatch];
+}
+
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     self.topConstrain.constant = self.adustmentNeeded;
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
-        self.fuudLabel.alpha = 0;
+        if (self.FSignType == FSignUpView) {
+            self.fuudLabel.alpha = 0;
+        }
         self.orSignUpLabel.alpha = 0;
         self.facebookButton.alpha = 0;
     } completion:nil];
@@ -299,7 +345,14 @@
 }
 
 - (IBAction)signInButtonClicked:(UIButton *)sender {
-    [self drawTextFields];
+    if (self.FSignType == FSignInView) {
+        self.FSignType = FSignUpView;
+        [self drawSignUpView];
+    }
+    else{
+        self.FSignType = FSignInView;
+        [self drawSignInView];
+    }
     [UIView animateWithDuration:0.3 animations:^{
         [self.view layoutIfNeeded];
     }];

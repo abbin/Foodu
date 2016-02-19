@@ -137,7 +137,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="cEV-rz-2XW">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="mG6-aj-TnQ" customClass="FTabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="FTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mG6-aj-TnQ" customClass="FTabBarController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" id="SnC-lB-TU8">
                         <autoresizingMask key="autoresizingMask"/>
@@ -289,7 +289,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-572" y="143"/>
+            <point key="canvasLocation" x="-853" y="158"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="xaH-We-Am2">
@@ -375,15 +375,15 @@
                                     <outlet property="delegate" destination="oH7-LL-oc4" id="zxf-63-ggL"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CONFIRM PASSWORD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecT-QV-8CL">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CONFIRM PASSWORD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecT-QV-8CL">
                                 <rect key="frame" x="30" y="320" width="545" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pIz-4b-GcW"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
@@ -391,6 +391,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="confirmPasswordDidChange:" destination="oH7-LL-oc4" eventType="editingChanged" id="5UP-Dt-AyQ"/>
                                     <outlet property="delegate" destination="oH7-LL-oc4" id="5TP-jl-glI"/>
                                 </connections>
                             </textField>
@@ -439,10 +440,14 @@
                                     <action selector="signInButtonClicked:" destination="oH7-LL-oc4" eventType="touchUpInside" id="zDS-zP-Gpr"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fNx-3m-yws">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IxI-cu-y9x" firstAttribute="leading" secondItem="gUN-hV-kGc" secondAttribute="leadingMargin" constant="10" id="21F-VI-cWh"/>
+                            <constraint firstItem="fNx-3m-yws" firstAttribute="centerX" secondItem="gUN-hV-kGc" secondAttribute="centerX" id="3eo-Mx-BEI"/>
                             <constraint firstItem="dDJ-qc-h1h" firstAttribute="top" secondItem="gUN-hV-kGc" secondAttribute="top" id="5zN-K3-xJe"/>
                             <constraint firstAttribute="bottom" secondItem="dDJ-qc-h1h" secondAttribute="bottom" id="8aZ-r7-Goa"/>
                             <constraint firstItem="Nlg-NJ-qmM" firstAttribute="leading" secondItem="gUN-hV-kGc" secondAttribute="leading" id="9Kv-In-1Ot"/>
@@ -454,6 +459,7 @@
                             <constraint firstItem="gkj-JI-Q1O" firstAttribute="top" secondItem="4Nk-S1-aM0" secondAttribute="bottom" constant="8" id="I1w-no-0cG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bho-3y-RmJ" secondAttribute="trailing" constant="5" id="Is0-DW-WHU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ecT-QV-8CL" secondAttribute="trailing" constant="5" id="Mau-0F-cpa"/>
+                            <constraint firstItem="fNx-3m-yws" firstAttribute="centerY" secondItem="gUN-hV-kGc" secondAttribute="centerY" id="NaG-ZJ-1Yd"/>
                             <constraint firstItem="U3J-NM-UWX" firstAttribute="leading" secondItem="gUN-hV-kGc" secondAttribute="leadingMargin" constant="10" id="NyF-4A-JOo"/>
                             <constraint firstItem="S5S-ul-GRR" firstAttribute="leading" secondItem="gUN-hV-kGc" secondAttribute="leadingMargin" constant="10" id="Xxl-dZ-SDR"/>
                             <constraint firstItem="773-cg-KfD" firstAttribute="top" secondItem="TKc-hZ-9ad" secondAttribute="bottom" constant="8" id="Zj0-Df-abP"/>
@@ -478,6 +484,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fNx-3m-yws" id="hiU-uC-c5b"/>
                         <outlet property="bottomConstrain" destination="wRT-KS-cYr" id="nnB-gh-mSW"/>
                         <outlet property="confirmPassHeight" destination="pIz-4b-GcW" id="NZc-uJ-NgA"/>
                         <outlet property="confirmPasswordField" destination="ecT-QV-8CL" id="QHC-sj-1SV"/>
@@ -536,7 +543,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MpJ-jy-G71" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-96" y="1142"/>
+            <point key="canvasLocation" x="214" y="1142"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="aMU-he-Zqu">
@@ -655,7 +662,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dic-ep-mY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="1148"/>
+            <point key="canvasLocation" x="1612" y="1194"/>
         </scene>
         <!--Item-->
         <scene sceneID="L2o-hQ-QJ9">
@@ -730,7 +737,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gvi-yh-WON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="1142"/>
+            <point key="canvasLocation" x="-226" y="1142"/>
         </scene>
     </scenes>
     <resources>

@@ -26,4 +26,25 @@ NSString *const firstLaunchKey = @"firstLaunchKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(KiiUser *user))success failure:(void (^)(NSString *error))failure{
+    
+    if (failure == nil) {
+        failure = ^(NSString *error){};
+    }
+    if (success == nil) {
+        success = ^(KiiUser *user){};
+    }
+    
+    KiiUser *user = [KiiUser userWithEmailAddress:email andPassword:password];
+    user.displayName = name;
+    [user performRegistrationWithBlock:^(KiiUser *user, NSError *error) {
+        if (error != nil) {
+            failure(error.description);
+        }
+        else{
+            success(user);
+        }
+    }];
+}
+
 @end

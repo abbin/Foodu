@@ -17,14 +17,32 @@
 
 @implementation AppDelegate
 
-
+- (void)changeRootViewController:(UIViewController*)viewController {
+    
+    if (!self.window.rootViewController) {
+        self.window.rootViewController = viewController;
+        return;
+    }
+    
+    UIView *snapShot = [self.window snapshotViewAfterScreenUpdates:YES];
+    
+    [viewController.view addSubview:snapShot];
+    
+    self.window.rootViewController = viewController;
+    
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        snapShot.layer.opacity = 0;
+//        snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5);
+    } completion:^(BOOL finished) {
+        [snapShot removeFromSuperview];
+    }];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
 
-    [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_-yZsjJoB6g"
-                                                 withAppSecret:@"71dd1dadf97e49858af335594c26172f"
-                                                  usingOptions:nil];
-    if ([FUserDefaults isFirstLaunch] || [KCSUser activeUser] == nil) {
+
+    if ([FUserDefaults isFirstLaunch]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpViewController"];
         [rootViewController setFSignType:FSignUpView];
