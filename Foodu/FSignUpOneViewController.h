@@ -13,8 +13,14 @@ typedef NS_ENUM(NSInteger, SignType) {
     SignInView
 };
 
+typedef NS_ENUM(NSInteger, SignUpScreen) {
+    SignUpOne,
+    SignUpTwo,
+    SignUpThree
+};
+
 @interface FSignUpOneViewController : UIViewController<UITextFieldDelegate>
 
 @property(assign, nonatomic) SignType signType;
-
+@property(assign, nonatomic) SignUpScreen signUpScreen;
 @end

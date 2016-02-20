@@ -40,7 +40,9 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
-
+    [Kii beginWithID:@"f66f401e"
+              andKey:@"20e3f278155cd0581e49d6c049341160"
+             andSite:kiiSiteSG];
 
     if ([FUserDefaults isFirstLaunch]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

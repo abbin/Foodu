@@ -22,6 +22,7 @@
 		58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F31C3A403E00594407 /* Assets.xcassets */; };
 		58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F51C3A403E00594407 /* LaunchScreen.storyboard */; };
 		58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */; };
+		58DF992E1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 58DF992D1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png */; };
 		58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */; };
 		58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */; };
 		58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */; };
@@ -111,6 +112,7 @@
 		58C9F3F81C3A403E00594407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58C9F4131C3A67A100594407 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyMovie.mp4; sourceTree = "<group>"; };
+		58DF992D1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "92-interface_-_backspace_back_arrow-128.png"; sourceTree = "<group>"; };
 		58ED132F1C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+UICollectionView_Convenience.h"; sourceTree = "<group>"; };
 		58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+UICollectionView_Convenience.m"; sourceTree = "<group>"; };
 		58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+NSIndexSet_Convenience.h"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		ED0E7C001C3C3A43008DB644 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				58DF992D1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png */,
 				581747101C60A19000834365 /* Untitled.png */,
 				5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */,
 				58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */,
@@ -520,6 +523,7 @@
 				ED0E7C5B1C3C3A86008DB644 /* 36.jpg in Resources */,
 				ED0E7C581C3C3A86008DB644 /* 33.jpg in Resources */,
 				ED0E7C6C1C3C3A86008DB644 /* 53.jpg in Resources */,
+				58DF992E1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png in Resources */,
 				ED0E7C4C1C3C3A86008DB644 /* 21.jpg in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
 				ED0E7C641C3C3A86008DB644 /* 45.jpg in Resources */,
@@ -721,6 +725,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -735,6 +740,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
