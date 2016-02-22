@@ -10,6 +10,7 @@
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		581747111C60A19000834365 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 581747101C60A19000834365 /* Untitled.png */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
+		582260BD1C7AE5A9002BD381 /* FKinveyTestObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */; };
 		5823BFBF1C58C0BA00DEBD18 /* button_record-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -92,6 +93,8 @@
 		581747101C60A19000834365 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
+		582260BB1C7AE5A9002BD381 /* FKinveyTestObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKinveyTestObj.h; sourceTree = "<group>"; };
+		582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKinveyTestObj.m; sourceTree = "<group>"; };
 		5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record-512.png"; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				ED5888461C40F18900922C9A /* FUserDefaults.h */,
 				ED5888471C40F18900922C9A /* FUserDefaults.m */,
+				582260BB1C7AE5A9002BD381 /* FKinveyTestObj.h */,
+				582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
+				582260BD1C7AE5A9002BD381 /* FKinveyTestObj.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,9 +729,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -738,9 +745,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

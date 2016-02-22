@@ -39,21 +39,36 @@
     }];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
+    
     [Kii beginWithID:@"f66f401e"
               andKey:@"20e3f278155cd0581e49d6c049341160"
              andSite:kiiSiteSG];
 
-    if ([FUserDefaults isFirstLaunch]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-//        [rootViewController setFSignType:FSignUpView];
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        self.window.rootViewController = rootViewController;
-        [self.window makeKeyAndVisible];
-    }
-    else{
-        
+
+//    if ([FUserDefaults isFirstLaunch]) {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+////        [rootViewController setFSignType:FSignUpView];
+//        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//        self.window.rootViewController = rootViewController;
+//        [self.window makeKeyAndVisible];
+//    }
+//    else{
+//        
+//    }
+    NSLog(@"%@",[NSDate date]);
+    if ([KiiUser currentUser] == nil) {
+
+        [KiiUser authenticateWithToken:@"19ICrOx1TP7_L-eeVSx2prOIN_f7HST1ZHm4h8sNcHY"
+                              andBlock:^(KiiUser *user, NSError *error) {
+                                  NSLog(@"%@",[NSDate date]);
+                                  if (error != nil) {
+                                      // Error handling
+                                      return;
+                                  }
+                              }];
     }
     return YES;
 }

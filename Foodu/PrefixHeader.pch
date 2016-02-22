@@ -21,6 +21,7 @@
 
 #ifdef __OBJC__
 #import <KiiSDK/Kii.h>
+#import <KinveyKit/KinveyKit.h>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "UIColor+FColours.h"

@@ -9,6 +9,7 @@
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
 #include <Photos/Photos.h>
+#import "FKinveyTestObj.h"
 
 @interface FTabBarController ()
 
@@ -26,12 +27,21 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bookMarkImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
+@property (nonatomic, retain) id<KCSStore> store;
+
 @end
 
 @implementation FTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    KCSCollection* collection = [KCSCollection collectionFromString:@"Updates" ofClass:[FKinveyTestObj class]];
+    _store = [KCSLinkedAppdataStore storeWithOptions:@{ KCSStoreKeyResource : collection,
+                                                                  KCSStoreKeyCachePolicy : @(KCSCachePolicyBoth),
+                                                                  KCSStoreKeyOfflineUpdateEnabled : @(YES)}];
+     [[KCSClient sharedClient] setOfflineDelegate:self];
+    
     self.tabBarView.frame = CGRectMake(0.0,
                                        self.view.frame.size.height - self.tabBarView.frame.size.height,
                                        [UIScreen mainScreen].bounds.size.width,
@@ -47,7 +57,52 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES
+                     completion:^ {
+                         
+                     }];
+}
 
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    
+    
+    KiiBucket *bucket = [Kii bucketWithName:@"mydata"];
+    
+    
+    KiiObject *object = [bucket createObject];
+    
+    [object setObject:[NSNumber numberWithLongLong:[[NSDate date] timeIntervalSince1970]] forKey:@"userDate"];
+    [object setObject:@"asd" forKey:@"feedText"];
+    [object setObject:[NSNumber numberWithBool:NO] forKey:@"likeStatus"];
+    [object setObject:[NSNumber numberWithBool:NO] forKey:@"dislikeStatus"];
+    [object setObject:[NSNumber numberWithInteger:0] forKey:@"feedVotes"];
+    
+    
+    NSData *imageData = nil;
+
+        imageData = [[NSData alloc] initWithData:UIImageJPEGRepresentation((chosenImage), 0.9)];
+        double imageSize = imageData.length;
+        
+        [object setObject:@"MyImage" forKey:@"attachedImg"];
+        [object setObject:[NSNumber numberWithDouble:imageSize] forKey:@"fileSize"];
+
+    [object saveWithBlock:^(KiiObject *object, NSError *error)
+     {
+
+                 [object uploadBodyWithData:imageData andContentType:@"image/jpg" andCompletion:^(KiiObject *obj, NSError *error)
+                  {
+                          
+                  }];
+
+     }];
 }
 
 - (float)randomFloatBetween:(float)smallNumber and:(float)bigNumber {

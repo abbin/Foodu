@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FTabBarController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface FTabBarController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,KCSOfflineUpdateDelegate>
 
 @end

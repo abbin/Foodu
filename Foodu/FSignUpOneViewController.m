@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.signUpScreen = SignUpOne;
     
     [self initVideoBackground];
@@ -342,7 +342,7 @@
         self.nextButton.layer.cornerRadius = 5;
         self.nextButton.layer.masksToBounds = YES;
         
-        self.whtIsYourNameLabel.text = @"What's your email?";
+        self.whtIsYourNameLabel.text = @"Now,\nWhat's your email?";
         self.nameLabel.placeholder = @"email";
         self.nameLabel.text = self.email;
         [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
