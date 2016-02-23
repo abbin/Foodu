@@ -10,7 +10,6 @@
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		581747111C60A19000834365 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = 581747101C60A19000834365 /* Untitled.png */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
-		582260BD1C7AE5A9002BD381 /* FKinveyTestObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */; };
 		5823BFBF1C58C0BA00DEBD18 /* button_record-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -26,6 +25,11 @@
 		58DF992E1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 58DF992D1C784B43007BE147 /* 92-interface_-_backspace_back_arrow-128.png */; };
 		58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */; };
 		58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */; };
+		58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CB71C7C2F3E005DE1CC /* FItem.m */; };
+		58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */; };
+		58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CBB1C7C2F3E005DE1CC /* FImages.m */; };
+		58F37CC11C7C3479005DE1CC /* FUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CC01C7C3479005DE1CC /* FUser.m */; };
+		58F37CC51C7C3E12005DE1CC /* FDKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CC41C7C3E12005DE1CC /* FDKeychain.m */; };
 		58F5A0461C48EDD700A20B56 /* lazy-load-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */; };
 		ED0E7C381C3C3A86008DB644 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C011C3C3A86008DB644 /* 1.jpg */; };
 		ED0E7C391C3C3A86008DB644 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C021C3C3A86008DB644 /* 2.jpg */; };
@@ -83,7 +87,6 @@
 		ED0E7C6D1C3C3A86008DB644 /* 54.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C361C3C3A86008DB644 /* 54.jpg */; };
 		ED0E7C6E1C3C3A86008DB644 /* 55.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ED0E7C371C3C3A86008DB644 /* 55.jpg */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
-		ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5888471C40F18900922C9A /* FUserDefaults.m */; };
 		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -93,8 +96,6 @@
 		581747101C60A19000834365 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
-		582260BB1C7AE5A9002BD381 /* FKinveyTestObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKinveyTestObj.h; sourceTree = "<group>"; };
-		582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKinveyTestObj.m; sourceTree = "<group>"; };
 		5823BFBE1C58C0BA00DEBD18 /* button_record-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_record-512.png"; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
@@ -120,6 +121,16 @@
 		58ED13301C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+UICollectionView_Convenience.m"; sourceTree = "<group>"; };
 		58ED13311C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+NSIndexSet_Convenience.h"; sourceTree = "<group>"; };
 		58ED13321C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+NSIndexSet_Convenience.m"; sourceTree = "<group>"; };
+		58F37CB61C7C2F3E005DE1CC /* FItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FItem.h; sourceTree = "<group>"; };
+		58F37CB71C7C2F3E005DE1CC /* FItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FItem.m; sourceTree = "<group>"; };
+		58F37CB81C7C2F3E005DE1CC /* FRestaurants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurants.h; sourceTree = "<group>"; };
+		58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurants.m; sourceTree = "<group>"; };
+		58F37CBA1C7C2F3E005DE1CC /* FImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImages.h; sourceTree = "<group>"; };
+		58F37CBB1C7C2F3E005DE1CC /* FImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImages.m; sourceTree = "<group>"; };
+		58F37CBF1C7C3479005DE1CC /* FUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUser.h; sourceTree = "<group>"; };
+		58F37CC01C7C3479005DE1CC /* FUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUser.m; sourceTree = "<group>"; };
+		58F37CC31C7C3E12005DE1CC /* FDKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDKeychain.h; sourceTree = "<group>"; };
+		58F37CC41C7C3E12005DE1CC /* FDKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDKeychain.m; sourceTree = "<group>"; };
 		58F5A0451C48EDD700A20B56 /* lazy-load-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lazy-load-placeholder.png"; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E7C011C3C3A86008DB644 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -179,8 +190,6 @@
 		ED0E7C371C3C3A86008DB644 /* 55.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 55.jpg; sourceTree = "<group>"; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
-		ED5888461C40F18900922C9A /* FUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUserDefaults.h; sourceTree = "<group>"; };
-		ED5888471C40F18900922C9A /* FUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUserDefaults.m; sourceTree = "<group>"; };
 		ED58884C1C410B2600922C9A /* FSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpViewController.h; sourceTree = "<group>"; };
 		ED58884D1C410B2600922C9A /* FSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,12 +333,34 @@
 		58C9F40C1C3A5F3200594407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ED5888461C40F18900922C9A /* FUserDefaults.h */,
-				ED5888471C40F18900922C9A /* FUserDefaults.m */,
-				582260BB1C7AE5A9002BD381 /* FKinveyTestObj.h */,
-				582260BC1C7AE5A9002BD381 /* FKinveyTestObj.m */,
+				58F37CC21C7C3DFA005DE1CC /* KeyChain */,
+				58F37CB51C7C2F2E005DE1CC /* Parse Objects */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		58F37CB51C7C2F2E005DE1CC /* Parse Objects */ = {
+			isa = PBXGroup;
+			children = (
+				58F37CBF1C7C3479005DE1CC /* FUser.h */,
+				58F37CC01C7C3479005DE1CC /* FUser.m */,
+				58F37CB61C7C2F3E005DE1CC /* FItem.h */,
+				58F37CB71C7C2F3E005DE1CC /* FItem.m */,
+				58F37CB81C7C2F3E005DE1CC /* FRestaurants.h */,
+				58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */,
+				58F37CBA1C7C2F3E005DE1CC /* FImages.h */,
+				58F37CBB1C7C2F3E005DE1CC /* FImages.m */,
+			);
+			name = "Parse Objects";
+			sourceTree = "<group>";
+		};
+		58F37CC21C7C3DFA005DE1CC /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				58F37CC31C7C3E12005DE1CC /* FDKeychain.h */,
+				58F37CC41C7C3E12005DE1CC /* FDKeychain.m */,
+			);
+			name = KeyChain;
 			sourceTree = "<group>";
 		};
 		CC5A19B8C644861B42B73FD7 /* Frameworks */ = {
@@ -602,17 +633,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
-				ED5888481C40F18900922C9A /* FUserDefaults.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
+				58F37CC11C7C3479005DE1CC /* FUser.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
+				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
+				58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
+				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
+				58F37CC51C7C3E12005DE1CC /* FDKeychain.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
-				582260BD1C7AE5A9002BD381 /* FKinveyTestObj.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

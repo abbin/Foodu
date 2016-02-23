@@ -8,7 +8,6 @@
 
 #import "FSignUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "AppDelegate.h"
 #import "FTabBarController.h"
 
 @interface FSignUpViewController ()

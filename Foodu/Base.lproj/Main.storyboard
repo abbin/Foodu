@@ -305,10 +305,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYZ-RQ-8R8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dN-Ac-RYW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dN-Ac-RYW">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pay-5t-PPr">
@@ -388,11 +390,8 @@
                             <constraint firstItem="pay-5t-PPr" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leadingMargin" id="Kew-JT-xzO"/>
                             <constraint firstItem="yHZ-eY-Euj" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leadingMargin" constant="-20" id="LEx-og-RGc"/>
                             <constraint firstItem="pay-5t-PPr" firstAttribute="top" secondItem="fg2-aD-9rc" secondAttribute="bottom" constant="50" id="Lpg-XS-ixN"/>
-                            <constraint firstItem="3dN-Ac-RYW" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="Pty-6k-gs4"/>
-                            <constraint firstItem="3dN-Ac-RYW" firstAttribute="top" secondItem="wKx-1v-2og" secondAttribute="top" id="aWl-SL-feP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="moJ-cM-Foh" secondAttribute="trailing" constant="20" id="bWQ-kL-Ddi"/>
                             <constraint firstItem="moJ-cM-Foh" firstAttribute="leading" secondItem="5CB-7S-7J8" secondAttribute="trailing" id="d6G-7f-jLh"/>
-                            <constraint firstAttribute="trailing" secondItem="3dN-Ac-RYW" secondAttribute="trailing" id="dJx-dx-kb4"/>
                             <constraint firstItem="moJ-cM-Foh" firstAttribute="height" secondItem="5CB-7S-7J8" secondAttribute="height" id="dvs-Eo-qTE"/>
                             <constraint firstAttribute="trailing" secondItem="sYZ-RQ-8R8" secondAttribute="trailing" id="jgn-Vh-l0r"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pay-5t-PPr" secondAttribute="trailing" constant="20" id="lDH-rh-8g8"/>
@@ -400,7 +399,6 @@
                             <constraint firstItem="moJ-cM-Foh" firstAttribute="centerY" secondItem="5CB-7S-7J8" secondAttribute="centerY" id="pu4-uI-5C8"/>
                             <constraint firstAttribute="bottom" secondItem="sYZ-RQ-8R8" secondAttribute="bottom" id="rHo-2y-sdC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jgg-3d-3bv" secondAttribute="trailing" constant="20" id="sxJ-ph-GLt"/>
-                            <constraint firstAttribute="bottom" secondItem="3dN-Ac-RYW" secondAttribute="bottom" id="u8P-3F-VnF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="487-mz-v7Z" secondAttribute="trailing" id="yU1-mZ-k9D"/>
                             <constraint firstItem="5CB-7S-7J8" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leadingMargin" constant="5" id="zwb-bL-7GM"/>
                         </constraints>
@@ -419,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ru1-Lc-6um" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1862" y="990"/>
+            <point key="canvasLocation" x="-1605" y="935"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="xaH-We-Am2">

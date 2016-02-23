@@ -8,6 +8,8 @@
 
 #import "FSignUpOneViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AppDelegate.h"
+#import "FTabBarController.h"
 
 @interface FSignUpOneViewController ()
 @property (weak, nonatomic) IBOutlet UIView *playerView;
@@ -226,10 +228,20 @@
 -(void)registerUser{
     if (self.name.length>0 && self.password.length>0 && [self NSStringIsValidEmail:self.email]) {
         [self.activityIndicator startAnimating];
-        [FUserDefaults signUpUserWithName:self.name email:self.email password:self.password success:^(KiiUser *user) {
-            [self.activityIndicator startAnimating];
+        [FUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+            [FUser didFinishFirstLaunch];
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+            [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
-            [self.activityIndicator startAnimating];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+
+            [alert addAction:actionOk];
+            [self presentViewController:alert animated:YES completion:nil];
         }];
     }
     else{
