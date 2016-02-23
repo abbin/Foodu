@@ -17,15 +17,24 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UILabel *whtIsYourNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *signInLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLabelHeight;
+@property (weak, nonatomic) IBOutlet UITextField *signInEmailLabel;
+@property (weak, nonatomic) IBOutlet UITextField *signInPasswordLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *showPasswordWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInEmailLabelHeight;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInPasswordHeight;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *signInView;
 
+@property (weak, nonatomic) IBOutlet UIView *signUpView;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;
 @property (weak, nonatomic) IBOutlet UIButton *passwordShow;
+@property (weak, nonatomic) IBOutlet UIButton *signChangeButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signChangeConstrain;
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 @end
@@ -43,8 +52,12 @@
         [self drawSignUpViewOneAnimated:NO];
     }
     else{
-        [self drawSignInView];
+        [self drawSignInViewAnimated:NO];
     }
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(keyboardNotScreen:) name:UIKeyboardWillHideNotification object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -57,11 +70,34 @@
     return YES;
 }
 
--(void)drawSignInView{
+-(void)keyboardNotScreen:(NSNotification *)notification
+{
+    self.signChangeConstrain.constant = 20;
+    [UIView animateWithDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+-(void)keyboardOnScreen:(NSNotification *)notification
+{
+    NSDictionary *info  = notification.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
     
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+    
+    self.signChangeConstrain.constant = keyboardFrame.size.height + 20;
+    [UIView animateWithDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.view layoutIfNeeded];
+    }];
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
     if (self.nameLabel.text.length>0) {
         self.nextButton.alpha = 1;
     }
@@ -187,7 +223,7 @@
             self.nameLabelHeight.constant = 55;
         }
         
-        if (self.nameLabel.layer.sublayers.count == 2) {
+        if (self.nameLabel.layer.sublayers.count <= 2) {
             CALayer *bottomBorder = [CALayer layer];
             bottomBorder.frame = CGRectMake(0.0f, self.nameLabelHeight.constant-3, self.nameLabel.frame.size.width, 1.0f);
             bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
@@ -297,7 +333,7 @@
     }
     
     [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        
+        self.signChangeButton.alpha = 0;
         self.whtIsYourNameLabel.alpha = 0;
         self.nameLabel.alpha = 0;
         self.nextButton.alpha = 0;
@@ -337,7 +373,7 @@
             self.nameLabelHeight.constant = 55;
         }
         
-        if (self.nameLabel.layer.sublayers.count == 2) {
+        if (self.nameLabel.layer.sublayers.count <= 2) {
             CALayer *bottomBorder = [CALayer layer];
             bottomBorder.frame = CGRectMake(0.0f, self.nameLabelHeight.constant-3, self.nameLabel.frame.size.width, 1.0f);
             bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
@@ -370,6 +406,85 @@
     }];
 }
 
+-(void)drawSignInViewAnimated:(BOOL)animated{
+    double time;
+    
+    if (animated) {
+        time = 0.2;
+    }
+    else{
+        time = 0;
+    }
+    
+    [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.signUpView.alpha = 0;
+        [self.signChangeButton setTitle:@"Dont have an account? Sign Up" forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
+        
+        NSString *fontname = @"";
+        if ([UIFont fontWithName:@".SFUIDisplay-Ultralight" size:10]) {
+            fontname = @".SFUIDisplay-Ultralight";
+        }
+        else{
+            fontname = @".HelveticaNeueInterface-UltraLightP2";
+        }
+        
+        if (IS_IPHONE_4s) {
+            self.signInLabel.font = [UIFont fontWithName:fontname size:34];
+            self.signInEmailLabel.font = [UIFont fontWithName:fontname size:19];
+            self.signInPasswordLabel.font = [UIFont fontWithName:fontname size:19];
+            self.signInEmailLabelHeight.constant = 44;
+            self.signInPasswordHeight.constant = 44;
+        }
+        else if (IS_IPHONE_5){
+            self.signInLabel.font = [UIFont fontWithName:fontname size:33];
+            self.signInEmailLabel.font = [UIFont fontWithName:fontname size:20];
+            self.signInPasswordLabel.font = [UIFont fontWithName:fontname size:20];
+            self.signInEmailLabelHeight.constant = 44;
+            self.signInPasswordHeight.constant = 44;
+        }
+        else if (IS_IPHONE_6){
+            self.signInLabel.font = [UIFont fontWithName:fontname size:41];
+            self.signInEmailLabel.font = [UIFont fontWithName:fontname size:25];
+            self.signInPasswordLabel.font = [UIFont fontWithName:fontname size:25];
+            self.signInEmailLabelHeight.constant = 50;
+            self.signInPasswordHeight.constant = 50;
+        }
+        else{
+            self.signInLabel.font = [UIFont fontWithName:fontname size:45];
+            self.signInEmailLabel.font = [UIFont fontWithName:fontname size:28];
+            self.signInPasswordLabel.font = [UIFont fontWithName:fontname size:28];
+            self.signInEmailLabelHeight.constant = 55;
+            self.signInPasswordHeight.constant = 55;
+        }
+        
+        if (self.signInEmailLabel.layer.sublayers.count <= 2) {
+            CALayer *bottomBorder = [CALayer layer];
+            bottomBorder.frame = CGRectMake(0.0f, self.signInEmailLabelHeight.constant-3, self.signInEmailLabel.frame.size.width, 1.0f);
+            bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                             alpha:1.0f].CGColor;
+            [self.signInEmailLabel.layer addSublayer:bottomBorder];
+            
+            CALayer *bottomBorder2 = [CALayer layer];
+            bottomBorder2.frame = CGRectMake(0.0f, self.signInPasswordHeight.constant-3, self.signInPasswordLabel.frame.size.width, 1.0f);
+            bottomBorder2.backgroundColor = [UIColor colorWithWhite:1.0f
+                                                              alpha:1.0f].CGColor;
+            [self.signInPasswordLabel.layer addSublayer:bottomBorder2];
+        }
+
+        
+        [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.signInView.alpha = 1;
+            self.signChangeButton.alpha = 1;
+        } completion:^(BOOL finished) {
+            [self.signInEmailLabel becomeFirstResponder];
+            self.signType = SignInView;
+            self.signUpScreen = SignUpOne;
+            
+        }];
+    }];
+}
+
 -(void)drawSignUpViewOneAnimated:(BOOL)animated{
     
     double time;
@@ -382,9 +497,11 @@
     }
     
     [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.signInView.alpha = 0;
         self.whtIsYourNameLabel.alpha = 0;
         self.nameLabel.alpha = 0;
         self.nextButton.alpha = 0;
+        [self.signChangeButton setTitle:@"Already have an account? Sign In" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         self.showPasswordWidth.constant = 0;
         [self.view layoutIfNeeded];
@@ -421,7 +538,7 @@
             self.nameLabelHeight.constant = 55;
         }
         
-        if (self.nameLabel.layer.sublayers.count == 2) {
+        if (self.nameLabel.layer.sublayers.count <= 2) {
             CALayer *bottomBorder = [CALayer layer];
             bottomBorder.frame = CGRectMake(0.0f, self.nameLabelHeight.constant-3, self.nameLabel.frame.size.width, 1.0f);
             bottomBorder.backgroundColor = [UIColor colorWithWhite:1.0f
@@ -446,8 +563,11 @@
         [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.whtIsYourNameLabel.alpha = 1;
             self.nameLabel.alpha = 1;
+            self.signUpView.alpha = 1;
+            self.signChangeButton.alpha = 1;
         } completion:^(BOOL finished) {
             [self.nameLabel becomeFirstResponder];
+            self.signType = SignUpView;
         }];
 
     }];
@@ -487,11 +607,6 @@
     
 }
 
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.view endEditing:YES];
-
-}
-
 
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -504,13 +619,23 @@
 {
     [super viewDidAppear:animated];
     [self.avplayer play];
-    [self.nameLabel becomeFirstResponder];
+    if (self.signType == SignInView) {
+        [self.signInEmailLabel becomeFirstResponder];
+    }
+    else{
+        [self.nameLabel becomeFirstResponder];
+    }
 }
 
 - (void)playerStartPlaying
 {
     [self.avplayer play];
-    [self.nameLabel becomeFirstResponder];
+    if (self.signType == SignInView) {
+        [self.signInEmailLabel becomeFirstResponder];
+    }
+    else{
+        [self.nameLabel becomeFirstResponder];
+    }
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
@@ -546,6 +671,16 @@
     [self.nameLabel endEditing:YES];
     [self.nameLabel setSecureTextEntry:NO];
     [self.nameLabel becomeFirstResponder];
+}
+- (IBAction)changeSignTypePressed:(UIButton *)sender {
+    if (self.signType == SignInView) {
+        [self.view endEditing:YES];
+        [self drawSignUpViewOneAnimated:YES];
+    }
+    else{
+        [self.view endEditing:YES];
+        [self drawSignInViewAnimated:YES];
+    }
 }
 
 @end

@@ -42,20 +42,20 @@
 
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
 
-    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        
-        configuration.applicationId = @"Ph3YlcRPtxvK4Y8yDAARLosc5lvu4ErH8XZm6aX7";
-        
-        configuration.clientKey = @"ccUN1ZcZrfcxrLVLtLqseB62htLPxxkAvr5DovNa";
-        
-        configuration.server = @"https://foodu.herokuapp.com/parse";
-        
-    }]];
+//    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+//        
+//        configuration.applicationId = @"Ph3YlcRPtxvK4Y8yDAARLosc5lvu4ErH8XZm6aX7";
+//        
+//        configuration.clientKey = @"ccUN1ZcZrfcxrLVLtLqseB62htLPxxkAvr5DovNa";
+//        
+//        configuration.server = @"https://foodu.herokuapp.com/parse";
+//        
+//    }]];
     
     if ([FUser isFirstLaunch]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-//        [rootViewController setFSignType:FSignUpView];
+        [rootViewController setSignType:SignInView];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
