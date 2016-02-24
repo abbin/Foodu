@@ -22,4 +22,6 @@ FOUNDATION_EXPORT NSString *const firstLaunchKey;
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
++(void)connectWithFacebook:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
+
 @end

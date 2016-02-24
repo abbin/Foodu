@@ -8,6 +8,7 @@
 
 #import "FUser.h"
 #import "FDKeychain.h"
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 
@@ -58,6 +59,23 @@ NSString *const keyChainServiceKey = @"comPaadamFooduService";
                                             failure(error.description);
                                         }
                                     }];
+    
+}
+
++(void)connectWithFacebook:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
+    //    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[@"public_profile", @"email", @"user_friends"];
+    
+    // Login PFUser using Facebook
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
 }
 
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{

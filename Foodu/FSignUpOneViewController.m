@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *signInPasswordLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *showPasswordWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInEmailLabelHeight;
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInPasswordHeight;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -32,9 +33,13 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *signInEmail;
+@property (strong, nonatomic) NSString *signInPassword;
 @property (weak, nonatomic) IBOutlet UIButton *passwordShow;
 @property (weak, nonatomic) IBOutlet UIButton *signChangeButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signChangeConstrain;
+@property (weak, nonatomic) IBOutlet UIButton *signUpWithEmailButton;
+@property (weak, nonatomic) IBOutlet UIButton *connectWithFacebookButton;
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 @end
@@ -44,6 +49,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.connectWithFacebookButton.layer.cornerRadius = 5;
+    self.connectWithFacebookButton.layer.masksToBounds = YES;
+    
+    self.signUpWithEmailButton.layer.cornerRadius = 5;
+    self.signUpWithEmailButton.layer.masksToBounds = YES;
+    
+    self.nextButton.layer.cornerRadius = 5;
+    self.nextButton.layer.masksToBounds = YES;
+    
+    self.signInButton.layer.cornerRadius = 5;
+    self.signInButton.layer.masksToBounds = YES;
+    
     self.signUpScreen = SignUpOne;
     
     [self initVideoBackground];
@@ -51,7 +68,7 @@
     if (self.signType == SignUpView) {
         [self drawSignUpViewOneAnimated:NO];
     }
-    else{
+    else if (self.signType == SignInView){
         [self drawSignInViewAnimated:NO];
     }
     
@@ -116,26 +133,33 @@
 }
 
 - (IBAction)nameLabelDidChangeEditing:(UITextField *)sender {
-    if (sender.text.length>0 && self.nextButton.alpha == 0) {
-        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.nextButton.alpha = 1;
-        } completion:^(BOOL finished) {
-            
-        }];
-    }
-    if (sender.text.length==0 && self.nextButton.alpha == 1) {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.nextButton.alpha = 0;
-        } completion:^(BOOL finished) {
-            
-        }];
-    }
+
     if (self.signUpScreen == SignUpTwo) {
-        if ([self NSStringIsValidEmail:self.nameLabel.text]) {
-            self.nextButton.alpha = 1;
+        if ([self NSStringIsValidEmail:self.nameLabel.text] && self.nextButton.alpha == 0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.alpha = 1;
+            }];
         }
-        else{
-            self.nextButton.alpha = 0;
+        if (![self NSStringIsValidEmail:self.nameLabel.text] && self.nextButton.alpha == 1) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.alpha = 0;
+            }];
+        }
+    }
+    else{
+        if (sender.text.length>0 && self.nextButton.alpha == 0) {
+            [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.nextButton.alpha = 1;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+        if (sender.text.length==0 && self.nextButton.alpha == 1) {
+            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.nextButton.alpha = 0;
+            } completion:^(BOOL finished) {
+                
+            }];
         }
     }
 }
@@ -237,9 +261,6 @@
             [self.passwordShow.layer addSublayer:bottomBorder2];
             
         }
-        
-        self.nextButton.layer.cornerRadius = 5;
-        self.nextButton.layer.masksToBounds = YES;
         
         self.whtIsYourNameLabel.text = @"You'll need a password";
         self.nameLabel.placeholder = @"password";
@@ -387,9 +408,6 @@
             [self.passwordShow.layer addSublayer:bottomBorder2];
         }
         
-        self.nextButton.layer.cornerRadius = 5;
-        self.nextButton.layer.masksToBounds = YES;
-        
         self.whtIsYourNameLabel.text = @"Now,\nWhat's your email?";
         self.nameLabel.placeholder = @"email";
         self.nameLabel.text = self.email;
@@ -501,7 +519,7 @@
         self.whtIsYourNameLabel.alpha = 0;
         self.nameLabel.alpha = 0;
         self.nextButton.alpha = 0;
-        [self.signChangeButton setTitle:@"Already have an account? Sign In" forState:UIControlStateNormal];
+        [self.signChangeButton setTitle:@"Have an account? Sign In" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         self.showPasswordWidth.constant = 0;
         [self.view layoutIfNeeded];
@@ -552,8 +570,6 @@
             [self.passwordShow.layer addSublayer:bottomBorder2];
         }
         
-        self.nextButton.layer.cornerRadius = 5;
-        self.nextButton.layer.masksToBounds = YES;
         
         self.whtIsYourNameLabel.text = @"Hi!\nWhat's your name?";
         self.nameLabel.placeholder = @"name";
@@ -622,7 +638,7 @@
     if (self.signType == SignInView) {
         [self.signInEmailLabel becomeFirstResponder];
     }
-    else{
+    else if (self.signType == SignUpView){
         [self.nameLabel becomeFirstResponder];
     }
 }
@@ -633,7 +649,7 @@
     if (self.signType == SignInView) {
         [self.signInEmailLabel becomeFirstResponder];
     }
-    else{
+    else if (self.signType == SignUpView){
         [self.nameLabel becomeFirstResponder];
     }
 }
@@ -680,6 +696,33 @@
     else{
         [self.view endEditing:YES];
         [self drawSignInViewAnimated:YES];
+    }
+}
+- (IBAction)signIn:(UIButton *)sender {
+    
+}
+- (IBAction)signinEmailFieldDidChange:(UITextField *)sender {
+    if ([self NSStringIsValidEmail:sender.text] && self.signInPasswordLabel.text.length>0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.signInButton.alpha = 1;
+        }];
+    }
+    if (![self NSStringIsValidEmail:sender.text] && self.signInPasswordLabel.text.length==0) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.signInButton.alpha = 0;
+        }];
+    }
+}
+- (IBAction)signInPasswordFieldDidChange:(UITextField *)sender {
+    if (sender.text.length>0 && [self NSStringIsValidEmail:self.signInEmailLabel.text]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.signInButton.alpha = 1;
+        }];
+    }
+    if (sender.text.length==0 || ![self NSStringIsValidEmail:self.signInEmailLabel.text]) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.signInButton.alpha = 0;
+        }];
     }
 }
 

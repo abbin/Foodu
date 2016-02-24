@@ -8,6 +8,11 @@ target 'Foodu' do
 pod 'GoogleMaps'
 pod 'Parse' 
 pod 'ParseUI'
+pod 'ParseFacebookUtilsV4'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+
 
 end
 

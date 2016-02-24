@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, SignType) {
     SignUpView,
-    SignInView
+    SignInView,
+    FacebookView
 };
 
 typedef NS_ENUM(NSInteger, SignUpScreen) {
