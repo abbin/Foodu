@@ -24,10 +24,12 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *showPasswordWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInEmailLabelHeight;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
+@property (weak, nonatomic) IBOutlet UIView *facebookButtonContainerView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInPasswordHeight;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIView *signInView;
+@property (weak, nonatomic) IBOutlet UIImageView *facebookImageView;
 
 @property (weak, nonatomic) IBOutlet UIView *signUpView;
 @property (strong, nonatomic) NSString *name;
@@ -49,8 +51,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.connectWithFacebookButton.layer.cornerRadius = 5;
-    self.connectWithFacebookButton.layer.masksToBounds = YES;
+    self.facebookButtonContainerView.layer.cornerRadius = 5;
+    self.facebookButtonContainerView.layer.masksToBounds = YES;
     
     self.signUpWithEmailButton.layer.cornerRadius = 5;
     self.signUpWithEmailButton.layer.masksToBounds = YES;

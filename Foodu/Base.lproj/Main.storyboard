@@ -488,8 +488,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FUUD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hx-5K-hWO">
-                                        <rect key="frame" x="239" y="50" width="123" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="50"/>
+                                        <rect key="frame" x="215" y="50" width="170" height="84"/>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="70"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -497,41 +497,63 @@
                                         <rect key="frame" x="217" y="562" width="166" height="30"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                         <state key="normal" title="Have an account? Log in">
-                                            <color key="titleColor" white="0.59964869966442957" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="0.85219169463087252" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="047-kz-6r7">
-                                        <rect key="frame" x="156" y="472" width="288" height="40"/>
+                                        <rect key="frame" x="90" y="415" width="420" height="47"/>
                                         <color key="backgroundColor" red="0.66274509803921566" green="0.094117647058823528" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="gFz-Uz-3p5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                         <state key="normal" title="Sign up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-E0-Pxj">
-                                        <rect key="frame" x="60" y="372" width="480" height="50"/>
-                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBl-OY-XKg">
+                                        <rect key="frame" x="38" y="333" width="525" height="52"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="faceBookLogo" translatesAutoresizingMaskIntoConstraints="NO" id="t6L-Df-PwR">
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="t6L-Df-PwR" secondAttribute="height" multiplier="1:1" id="R4Y-lv-d8n"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVf-E0-Pxj">
+                                                <rect key="frame" x="53" y="0.0" width="472" height="52"/>
+                                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Connect with Facebook">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="PaJ-JE-kgU"/>
+                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="leading" secondItem="iBl-OY-XKg" secondAttribute="leading" id="1av-E1-t4r"/>
+                                            <constraint firstAttribute="trailing" secondItem="bVf-E0-Pxj" secondAttribute="trailing" id="37z-h4-KNn"/>
+                                            <constraint firstItem="bVf-E0-Pxj" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="top" id="7O6-6d-dtE"/>
+                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="top" id="JAk-fV-HRV"/>
+                                            <constraint firstAttribute="bottom" secondItem="bVf-E0-Pxj" secondAttribute="bottom" id="Xhi-BI-dPK"/>
+                                            <constraint firstAttribute="bottom" secondItem="t6L-Df-PwR" secondAttribute="bottom" id="bM4-62-pkG"/>
+                                            <constraint firstItem="bVf-E0-Pxj" firstAttribute="leading" secondItem="t6L-Df-PwR" secondAttribute="trailing" constant="1" id="s0X-ZE-HbZ"/>
                                         </constraints>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                        <state key="normal" title="Connect with Facebook" image="camera">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="0hx-5K-hWO" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="3hy-vb-YTh"/>
+                                    <constraint firstItem="047-kz-6r7" firstAttribute="width" secondItem="0ON-Of-dnF" secondAttribute="width" multiplier="0.7" id="8TA-GI-WDe"/>
+                                    <constraint firstItem="dXw-00-5LN" firstAttribute="top" secondItem="047-kz-6r7" secondAttribute="bottom" constant="100" id="8Tk-W3-VeQ"/>
                                     <constraint firstAttribute="bottom" secondItem="dXw-00-5LN" secondAttribute="bottom" constant="8" id="8XG-qd-KMK"/>
                                     <constraint firstItem="0hx-5K-hWO" firstAttribute="top" secondItem="0ON-Of-dnF" secondAttribute="top" constant="50" id="AI9-dU-Uxc"/>
-                                    <constraint firstItem="047-kz-6r7" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="WBZ-8p-bmK"/>
-                                    <constraint firstItem="bVf-E0-Pxj" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="bVu-cP-dES"/>
-                                    <constraint firstItem="047-kz-6r7" firstAttribute="width" secondItem="bVf-E0-Pxj" secondAttribute="width" multiplier="0.6" id="dhL-Ft-7VZ"/>
-                                    <constraint firstItem="047-kz-6r7" firstAttribute="height" secondItem="bVf-E0-Pxj" secondAttribute="height" multiplier="0.8" id="gFf-O8-e7m"/>
-                                    <constraint firstItem="047-kz-6r7" firstAttribute="top" secondItem="bVf-E0-Pxj" secondAttribute="bottom" constant="50" id="lJA-de-ANp"/>
-                                    <constraint firstItem="dXw-00-5LN" firstAttribute="top" secondItem="047-kz-6r7" secondAttribute="bottom" constant="50" id="ofZ-0B-YB9"/>
-                                    <constraint firstItem="bVf-E0-Pxj" firstAttribute="width" secondItem="0ON-Of-dnF" secondAttribute="width" multiplier="0.8" id="w7C-tb-irj"/>
+                                    <constraint firstItem="iBl-OY-XKg" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="Eti-vm-JdY"/>
+                                    <constraint firstItem="047-kz-6r7" firstAttribute="width" secondItem="iBl-OY-XKg" secondAttribute="width" multiplier="0.8" id="ReT-h7-Mvm"/>
+                                    <constraint firstItem="047-kz-6r7" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="bottom" constant="30" id="Tcj-qY-3VT"/>
+                                    <constraint firstItem="047-kz-6r7" firstAttribute="height" secondItem="iBl-OY-XKg" secondAttribute="height" multiplier="0.9" id="ehx-Jc-5i2"/>
+                                    <constraint firstItem="047-kz-6r7" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="vT5-LW-PE9"/>
                                     <constraint firstItem="dXw-00-5LN" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="zG2-R8-1SY"/>
                                 </constraints>
                             </view>
@@ -572,6 +594,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="487-mz-v7Z" id="979-sh-SGd"/>
                         <outlet property="connectWithFacebookButton" destination="bVf-E0-Pxj" id="cJc-6G-Qbz"/>
+                        <outlet property="facebookButtonContainerView" destination="iBl-OY-XKg" id="qSQ-L1-uX7"/>
+                        <outlet property="facebookImageView" destination="t6L-Df-PwR" id="XVf-uq-Vhd"/>
                         <outlet property="gradientView" destination="3dN-Ac-RYW" id="rsO-kz-3TW"/>
                         <outlet property="nameLabel" destination="5CB-7S-7J8" id="B62-Vw-C4m"/>
                         <outlet property="nameLabelHeight" destination="fNO-mP-H3e" id="zIf-XX-0q1"/>
@@ -1049,7 +1073,7 @@
     </scenes>
     <resources>
         <image name="bookMarks" width="37" height="37"/>
-        <image name="camera" width="37" height="37"/>
+        <image name="faceBookLogo" width="228" height="228"/>
         <image name="geoList" width="37" height="37"/>
         <image name="homeSelected" width="50" height="50"/>
         <image name="pin" width="37" height="37"/>
