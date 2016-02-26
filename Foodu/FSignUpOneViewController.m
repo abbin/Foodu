@@ -41,7 +41,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *signChangeButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signChangeConstrain;
 @property (weak, nonatomic) IBOutlet UIButton *signUpWithEmailButton;
-@property (weak, nonatomic) IBOutlet UIButton *connectWithFacebookButton;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *onLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fuudLabel;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *loginVewChangeButton;
+@property (weak, nonatomic) IBOutlet UIView *facebookContainerView;
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 @end
@@ -72,6 +77,9 @@
     }
     else if (self.signType == SignInView){
         [self drawSignInViewAnimated:NO];
+    }
+    else{
+        [self drawfacebookPageAnimated:NO];
     }
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -287,21 +295,21 @@
 -(void)registerUser{
     if (self.name.length>0 && self.password.length>0 && [self NSStringIsValidEmail:self.email]) {
         [self.activityIndicator startAnimating];
-        [FUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
-            [FUser didFinishFirstLaunch];
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
-            [appDelegate changeRootViewController:rootViewController];
-        } failure:^(NSString *error) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-
-            [alert addAction:actionOk];
-            [self presentViewController:alert animated:YES completion:nil];
-        }];
+//        [FUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+//            [FUser didFinishFirstLaunch];
+//            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+//            [appDelegate changeRootViewController:rootViewController];
+//        } failure:^(NSString *error) {
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                
+//            }];
+//
+//            [alert addAction:actionOk];
+//            [self presentViewController:alert animated:YES completion:nil];
+//        }];
     }
     else{
         if (self.name<=0) {
@@ -426,6 +434,87 @@
     }];
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
+-(void)drawfacebookPageAnimated:(BOOL)animated{
+    double time;
+    
+    if (animated) {
+        time = 0.2;
+    }
+    else{
+        time = 0;
+    }
+    
+    [self.view endEditing:YES];
+    [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.signUpView.alpha = 0;
+        self.signInView.alpha = 0;
+        self.signChangeButton.alpha = 0;
+    } completion:^(BOOL finished) {
+        
+        NSString *fontname = @"";
+        NSString *fontTwo = @"";
+        NSString *textfont = @"";
+        if ([UIFont fontWithName:@".SFUIDisplay-Ultralight" size:10]) {
+            fontname = @".SFUIDisplay-Ultralight";
+            fontTwo = @".SFUIDisplay-Thin";
+            textfont = @".SFUIText-Light";
+        }
+        else{
+            fontTwo = @".HelveticaNeueInterface-Thin";
+            fontname = @".HelveticaNeueInterface-UltraLightP2";
+            textfont = @".HelveticaNeueInterface-UltraLightP2";
+        }
+        
+        if (IS_IPHONE_4s) {
+            self.welcomeLabel.font = [UIFont fontWithName:fontname size:44];
+            self.onLabel.font = [UIFont fontWithName:fontname size:44];
+            self.fuudLabel.font = [UIFont fontWithName:fontTwo size:44];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+            
+        }
+        else if (IS_IPHONE_5){
+            self.welcomeLabel.font = [UIFont fontWithName:fontname size:44];
+            self.onLabel.font = [UIFont fontWithName:fontname size:44];
+            self.fuudLabel.font = [UIFont fontWithName:fontTwo size:44];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+        }
+        else if (IS_IPHONE_6){
+            self.welcomeLabel.font = [UIFont fontWithName:fontname size:50];
+            self.onLabel.font = [UIFont fontWithName:fontname size:50];
+            self.fuudLabel.font = [UIFont fontWithName:fontTwo size:50];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            
+            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+        }
+        else{
+            self.welcomeLabel.font = [UIFont fontWithName:fontname size:56];
+            self.onLabel.font = [UIFont fontWithName:fontname size:56];
+            self.fuudLabel.font = [UIFont fontWithName:fontTwo size:56];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+        }
+        
+        [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.facebookContainerView.alpha = 1;
+        } completion:^(BOOL finished) {
+            self.signType = FacebookView;
+            self.signUpScreen = SignUpOne;
+            
+        }];
+    }];
+
+}
+
 -(void)drawSignInViewAnimated:(BOOL)animated{
     double time;
     
@@ -438,6 +527,7 @@
     
     [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.signUpView.alpha = 0;
+        self.facebookContainerView.alpha = 0;
         [self.signChangeButton setTitle:@"Dont have an account? Sign Up" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         
@@ -521,6 +611,7 @@
         self.whtIsYourNameLabel.alpha = 0;
         self.nameLabel.alpha = 0;
         self.nextButton.alpha = 0;
+        self.facebookContainerView.alpha = 0;
         [self.signChangeButton setTitle:@"Have an account? Sign In" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
         self.showPasswordWidth.constant = 0;
@@ -666,23 +757,28 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 - (IBAction)backButtonClicked:(UIButton *)sender {
-    switch (self.signUpScreen) {
-        case SignUpThree:
-            self.signUpScreen = SignUpTwo;
-            [self.nameLabel endEditing:YES];
-            [self drawSignUpTwoAnimated:YES];
-            break;
-        case SignUpTwo:
-            self.signUpScreen = SignUpOne;
-            [self.nameLabel endEditing:YES];
-            [self drawSignUpViewOneAnimated:YES];
-            break;
-        case SignUpOne:
-            //sender.hidden = YES;
-            break;
-            
-        default:
-            break;
+    if (self.signType == SignUpView) {
+        switch (self.signUpScreen) {
+            case SignUpThree:
+                self.signUpScreen = SignUpTwo;
+                [self.nameLabel endEditing:YES];
+                [self drawSignUpTwoAnimated:YES];
+                break;
+            case SignUpTwo:
+                self.signUpScreen = SignUpOne;
+                [self.nameLabel endEditing:YES];
+                [self drawSignUpViewOneAnimated:YES];
+                break;
+            case SignUpOne:
+                [self drawfacebookPageAnimated:YES];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else if (self.signType == SignInView){
+        [self drawfacebookPageAnimated:YES];
     }
 }
 - (IBAction)showPassword:(UIButton *)sender {
@@ -726,6 +822,12 @@
             self.signInButton.alpha = 0;
         }];
     }
+}
+- (IBAction)signUpWithEmailClicked:(UIButton *)sender {
+    [self drawSignUpViewOneAnimated:YES];
+}
+- (IBAction)changeToLoginView:(UIButton *)sender {
+    [self drawSignInViewAnimated:YES];
 }
 
 @end
