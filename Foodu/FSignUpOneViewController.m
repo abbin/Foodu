@@ -435,7 +435,9 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.view endEditing:YES];
+    if (IS_IPHONE_4s) {
+        [self.view endEditing:YES];
+    }
 }
 
 -(void)drawfacebookPageAnimated:(BOOL)animated{
@@ -482,9 +484,9 @@
             self.welcomeLabel.font = [UIFont fontWithName:fontname size:44];
             self.onLabel.font = [UIFont fontWithName:fontname size:44];
             self.fuudLabel.font = [UIFont fontWithName:fontTwo size:44];
-            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
-            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
-            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:19]];
+            [self.loginVewChangeButton.titleLabel setFont:[UIFont fontWithName:textfont size:10]];
         }
         else if (IS_IPHONE_6){
             self.welcomeLabel.font = [UIFont fontWithName:fontname size:50];
