@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -312,7 +312,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUR-UA-zhD">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUR-UA-zhD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pay-5t-PPr">
@@ -383,7 +383,7 @@
                                     <constraint firstItem="jgg-3d-3bv" firstAttribute="top" secondItem="moJ-cM-Foh" secondAttribute="bottom" constant="20" id="v5I-BE-GXg"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-Hw-a5W">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDi-Hw-a5W">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-AF-cDo">
@@ -462,33 +462,38 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHZ-eY-Euj">
-                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="4" y="0.0" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Uo1-TF-AIy"/>
-                                    <constraint firstAttribute="height" constant="30" id="vb4-08-LZc"/>
+                                    <constraint firstAttribute="width" constant="40" id="Uo1-TF-AIy"/>
+                                    <constraint firstAttribute="height" constant="40" id="vb4-08-LZc"/>
                                 </constraints>
+                                <state key="normal" image="back button"/>
                                 <connections>
-                                    <action selector="backButtonClicked:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="p9Y-VP-ZpL"/>
+                                    <action selector="goToPreviousScreen:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="Fh9-86-B7T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjP-Sx-Q2A">
-                                <rect key="frame" x="290" y="568" width="20" height="12"/>
+                                <rect key="frame" x="290" y="550" width="20" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kLW-o2-Plh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal">
                                     <color key="titleColor" white="0.84977978187919467" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeSignTypePressed:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="jVC-m4-u6s"/>
+                                    <action selector="switchSignInSignUpScreens:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="xyh-Ev-Qgw"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ON-Of-dnF">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ON-Of-dnF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXw-00-5LN">
-                                        <rect key="frame" x="217" y="555" width="166" height="30"/>
+                                        <rect key="frame" x="217" y="549" width="166" height="42"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                         <state key="normal" title="Have an account? Log in">
                                             <color key="titleColor" white="0.85219169463087252" alpha="1" colorSpace="calibratedWhite"/>
@@ -505,7 +510,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="signUpWithEmailClicked:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="iN8-2s-G2o"/>
+                                            <action selector="signUpWithEmail:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="hbY-Oj-MfC"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBl-OY-XKg">
@@ -525,6 +530,9 @@
                                                 <state key="normal" title="Connect with Facebook">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="connectWithFacebook:" destination="Zjg-o0-3Y8" eventType="touchUpInside" id="Rzm-tm-Hld"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -575,12 +583,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="047-kz-6r7" firstAttribute="width" secondItem="iBl-OY-XKg" secondAttribute="width" id="1Xo-Bx-IMJ"/>
+                                    <constraint firstItem="dXw-00-5LN" firstAttribute="height" secondItem="047-kz-6r7" secondAttribute="height" id="4cT-B8-8b7"/>
                                     <constraint firstItem="gPZ-FG-KKr" firstAttribute="centerY" secondItem="0ON-Of-dnF" secondAttribute="centerY" multiplier="0.9" id="7Vh-lB-SOY"/>
                                     <constraint firstItem="dXw-00-5LN" firstAttribute="centerY" secondItem="0ON-Of-dnF" secondAttribute="centerY" multiplier="1.9" id="83p-bx-jjL"/>
                                     <constraint firstItem="iBl-OY-XKg" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" id="Kxb-on-RgG"/>
                                     <constraint firstItem="047-kz-6r7" firstAttribute="height" secondItem="iBl-OY-XKg" secondAttribute="height" id="MXe-0X-Lpb"/>
                                     <constraint firstItem="gPZ-FG-KKr" firstAttribute="width" secondItem="0ON-Of-dnF" secondAttribute="width" multiplier="0.5" id="Onh-UJ-EZy"/>
-                                    <constraint firstItem="dXw-00-5LN" firstAttribute="top" secondItem="047-kz-6r7" secondAttribute="bottom" constant="20" id="Tfr-cR-6mE"/>
+                                    <constraint firstItem="dXw-00-5LN" firstAttribute="top" secondItem="047-kz-6r7" secondAttribute="bottom" constant="14" id="Tfr-cR-6mE"/>
                                     <constraint firstItem="047-kz-6r7" firstAttribute="width" secondItem="0ON-Of-dnF" secondAttribute="width" multiplier="0.9" id="UHp-0t-ivE"/>
                                     <constraint firstItem="gPZ-FG-KKr" firstAttribute="centerX" secondItem="0ON-Of-dnF" secondAttribute="centerX" constant="-8" id="VZB-Dv-Ret"/>
                                     <constraint firstItem="047-kz-6r7" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="bottom" constant="20" id="Xdp-tX-cqb"/>
@@ -594,6 +603,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sYZ-RQ-8R8" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="05Z-gS-uqy"/>
                             <constraint firstItem="0ON-Of-dnF" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="0dX-Lv-5eX"/>
@@ -603,8 +613,8 @@
                             <constraint firstAttribute="trailing" secondItem="0ON-Of-dnF" secondAttribute="trailing" id="Fzk-7D-K1s"/>
                             <constraint firstItem="0ON-Of-dnF" firstAttribute="top" secondItem="wKx-1v-2og" secondAttribute="top" id="KD3-YH-dBs"/>
                             <constraint firstItem="gUR-UA-zhD" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="Kel-VU-rzO"/>
-                            <constraint firstItem="yHZ-eY-Euj" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leadingMargin" constant="-20" id="LEx-og-RGc"/>
-                            <constraint firstItem="TdI-8K-Sdz" firstAttribute="top" secondItem="OjP-Sx-Q2A" secondAttribute="bottom" constant="20" id="LZT-j3-TAs"/>
+                            <constraint firstItem="yHZ-eY-Euj" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leadingMargin" constant="-16" id="LEx-og-RGc"/>
+                            <constraint firstItem="TdI-8K-Sdz" firstAttribute="top" secondItem="OjP-Sx-Q2A" secondAttribute="bottom" id="LZT-j3-TAs"/>
                             <constraint firstItem="CDi-Hw-a5W" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="M2f-ci-NBY"/>
                             <constraint firstItem="3dN-Ac-RYW" firstAttribute="leading" secondItem="wKx-1v-2og" secondAttribute="leading" id="Pty-6k-gs4"/>
                             <constraint firstAttribute="trailing" secondItem="CDi-Hw-a5W" secondAttribute="trailing" id="Z52-26-RIp"/>
@@ -625,28 +635,29 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="487-mz-v7Z" id="979-sh-SGd"/>
+                        <outlet property="backButton" destination="yHZ-eY-Euj" id="GI5-oJ-JAR"/>
+                        <outlet property="changeToLoginViewButton" destination="dXw-00-5LN" id="Upq-Ts-baG"/>
                         <outlet property="facebookButton" destination="bVf-E0-Pxj" id="EwA-pd-XXb"/>
                         <outlet property="facebookButtonContainerView" destination="iBl-OY-XKg" id="qSQ-L1-uX7"/>
                         <outlet property="facebookContainerView" destination="0ON-Of-dnF" id="UW6-tB-sRz"/>
                         <outlet property="facebookImageView" destination="t6L-Df-PwR" id="XVf-uq-Vhd"/>
                         <outlet property="fuudLabel" destination="0hx-5K-hWO" id="fT5-PX-YUM"/>
                         <outlet property="gradientView" destination="3dN-Ac-RYW" id="rsO-kz-3TW"/>
-                        <outlet property="loginVewChangeButton" destination="dXw-00-5LN" id="Bcu-bH-d17"/>
-                        <outlet property="nameLabel" destination="5CB-7S-7J8" id="B62-Vw-C4m"/>
                         <outlet property="nameLabelHeight" destination="fNO-mP-H3e" id="zIf-XX-0q1"/>
+                        <outlet property="nameTextField" destination="5CB-7S-7J8" id="6Z3-Xd-ygq"/>
                         <outlet property="nextButton" destination="jgg-3d-3bv" id="unT-FL-aDR"/>
                         <outlet property="onLabel" destination="dxQ-qg-h8i" id="4h5-3u-aQ0"/>
                         <outlet property="passwordShow" destination="moJ-cM-Foh" id="Hat-0A-Hrm"/>
                         <outlet property="playerView" destination="sYZ-RQ-8R8" id="JYJ-MI-hBT"/>
                         <outlet property="showPasswordWidth" destination="Sb4-NM-7xK" id="tWv-gU-wBU"/>
-                        <outlet property="signChangeButton" destination="OjP-Sx-Q2A" id="fzN-Iq-RNx"/>
                         <outlet property="signChangeConstrain" destination="LZT-j3-TAs" id="dIR-0O-gcl"/>
                         <outlet property="signInButton" destination="Ay6-HO-k1U" id="1cm-xS-enz"/>
-                        <outlet property="signInEmailLabel" destination="FIr-V2-tVh" id="J7J-Xy-mr1"/>
                         <outlet property="signInEmailLabelHeight" destination="6R3-FK-LLu" id="UXA-8h-4io"/>
+                        <outlet property="signInEmailTextField" destination="FIr-V2-tVh" id="s40-9M-e6x"/>
                         <outlet property="signInLabel" destination="0zx-AF-cDo" id="mkP-0E-ToB"/>
                         <outlet property="signInPasswordHeight" destination="h6x-yn-T4o" id="8mc-Zg-uux"/>
-                        <outlet property="signInPasswordLabel" destination="6YX-gV-Pox" id="5Ai-YZ-wXH"/>
+                        <outlet property="signInPasswordTextField" destination="6YX-gV-Pox" id="dkA-iH-qsj"/>
+                        <outlet property="signInSignUpSwitchButton" destination="OjP-Sx-Q2A" id="U1J-rh-6ly"/>
                         <outlet property="signInView" destination="CDi-Hw-a5W" id="w1o-9s-z8i"/>
                         <outlet property="signUpView" destination="gUR-UA-zhD" id="VCZ-n4-0RW"/>
                         <outlet property="signUpWithEmailButton" destination="047-kz-6r7" id="uXs-5w-otb"/>
@@ -1109,6 +1120,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back button" width="256" height="256"/>
         <image name="bookMarks" width="37" height="37"/>
         <image name="faceBookLogo" width="228" height="228"/>
         <image name="geoList" width="37" height="37"/>

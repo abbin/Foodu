@@ -8,12 +8,14 @@
 
 #import "FUser.h"
 #import "FDKeychain.h"
-#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 
 NSString *const keyChainEmailKey = @"comPaadamFooduUserEmail";
 NSString *const keyChainPasswordKey = @"comPaadamFooduUserEmail";
+NSString *const keyChainUserIdKey = @"comPaadamFooduUserId";
 NSString *const keyChainServiceKey = @"comPaadamFooduService";
 
 @implementation FUser
@@ -24,6 +26,17 @@ NSString *const keyChainServiceKey = @"comPaadamFooduService";
     }
     else{
         return YES;
+    }
+}
+
++(BOOL)isSessionValid{
+    NSError *keyChainError = nil;
+    NSString *userId = [FDKeychain itemForKey:keyChainUserIdKey forService:keyChainServiceKey error:&keyChainError];
+    if (userId.length>0) {
+        return YES;
+    }
+    else{
+        return NO;
     }
 }
 
@@ -62,20 +75,25 @@ NSString *const keyChainServiceKey = @"comPaadamFooduService";
     
 }
 
-+(void)connectWithFacebook:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
++(void)connectWithFacebookFromViewController:(UIViewController*)viewController success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     //    // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[@"public_profile", @"email", @"user_friends"];
+    NSArray *permissionsArray = @[@"public_profile"];
     
-    // Login PFUser using Facebook
-    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
-        if (!user) {
-            NSLog(@"Uh oh. The user cancelled the Facebook login.");
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in through Facebook!");
-        } else {
-            NSLog(@"User logged in through Facebook!");
-        }
-    }];
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    
+    [login
+     logInWithReadPermissions: permissionsArray
+     fromViewController:viewController
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"%@",[FBSDKProfile currentProfile].name);
+             ;
+         }
+     }];
 }
 
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -91,7 +109,7 @@ NSString *const keyChainServiceKey = @"comPaadamFooduService";
     user.password = password;
     user.email = email;
     user.username = email;
-    user[@"name"] = name;
+//    user[@"name"] = name;
     
     NSLocale *locale = [NSLocale currentLocale];
     NSString *countryCode = [locale objectForKey: NSLocaleCountryCode];
@@ -107,6 +125,7 @@ NSString *const keyChainServiceKey = @"comPaadamFooduService";
             NSError *keyChainError = nil;
             [FDKeychain saveItem:email forKey:keyChainEmailKey forService:keyChainServiceKey error:&keyChainError];
             [FDKeychain saveItem:password forKey:keyChainPasswordKey forService:keyChainServiceKey error:&keyChainError];
+            [FDKeychain saveItem:user.objectId forKey:keyChainUserIdKey forService:keyChainServiceKey error:&keyChainError];
             success(succeeded);
         }
         else

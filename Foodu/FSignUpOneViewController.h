@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, SignType) {
+typedef NS_ENUM(NSInteger, viewType) {
     SignUpView,
     SignInView,
     FacebookView
@@ -22,6 +22,6 @@ typedef NS_ENUM(NSInteger, SignUpScreen) {
 
 @interface FSignUpOneViewController : UIViewController<UITextFieldDelegate>
 
-@property(assign, nonatomic) SignType signType;
+@property(assign, nonatomic) viewType viewType;
 @property(assign, nonatomic) SignUpScreen signUpScreen;
 @end
