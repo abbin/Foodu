@@ -1,20 +1,31 @@
 //
-//  FUser.h
+//  FCurrentUser.h
 //  Foodu
 //
-//  Created by Abbin Varghese on 09/01/16.
+//  Created by Abbin Varghese on 28/02/16.
 //  Copyright © 2016 Paadam. All rights reserved.
 //
 
-#import <Parse/Parse.h>
+#import <Foundation/Foundation.h>
 
-@interface FUser : PFUser
+typedef NS_ENUM(NSInteger, UserType) {
+    FaceBookUser,
+    EmailUser
+};
 
-FOUNDATION_EXPORT NSString *const firstLaunchKey;
+@interface FCurrentUser : NSObject
+
+@property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSString *email;
+@property(nonatomic,assign) UserType userType;
+
++ (FCurrentUser*)sharedUser;
 
 +(BOOL)isFirstLaunch;
 
 +(void)didFinishFirstLaunch;
+
++(BOOL)isSessionValid;
 
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
@@ -23,7 +34,5 @@ FOUNDATION_EXPORT NSString *const firstLaunchKey;
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
 +(void)connectWithFacebookFromViewController:(UIViewController*)viewController success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
-
-+(BOOL)isSessionValid;
 
 @end

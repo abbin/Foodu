@@ -348,16 +348,66 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
-    [FUser connectWithFacebookFromViewController:self success:^(BOOL success) {
-        
+    [self.activityIndicator startAnimating];
+    [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+        [appDelegate changeRootViewController:rootViewController];
+        [self.activityIndicator stopAnimating];
     } failure:^(NSString *error) {
+        [self.activityIndicator stopAnimating];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
         
+        [alert addAction:actionOk];
+        [self presentViewController:alert animated:YES completion:nil];
     }];
 }
 
 - (IBAction)signIn:(UIButton *)sender {
-    
-    
+    self.signInEmail = self.signInEmailTextField.text;
+    self.signInPassword = self.signInPasswordTextField.text;
+    if ([self stringIsValidEmail:self.signInEmail] && self.signInPassword.length>0) {
+        [self.activityIndicator startAnimating];
+        [FCurrentUser logInUserWithEmail:self.signInEmail password:self.signInPassword success:^(BOOL success) {
+            [self.activityIndicator stopAnimating];
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+            [appDelegate changeRootViewController:rootViewController];
+
+        } failure:^(NSString *error) {
+            [self.activityIndicator stopAnimating];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:actionOk];
+            [self presentViewController:alert animated:YES completion:nil];
+
+        }];
+    }
+    else{
+        if ([self stringIsValidEmail:self.signInEmail] == NO) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Invalid email" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:actionOk];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Invalid password" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:actionOk];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
 }
 
 - (IBAction)signUpWithEmail:(UIButton *)sender {
@@ -819,8 +869,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
         [self.activityIndicator startAnimating];
-        [FUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
-            [FUser didFinishFirstLaunch];
+        [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
              FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];

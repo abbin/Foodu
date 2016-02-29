@@ -24,7 +24,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "UIColor+FColours.h"
-#import "FUser.h"
+#import "FCurrentUser.h"
 #import "FRestaurants.h"
 #import "FImages.h"
 #import "FItem.h"

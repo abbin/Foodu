@@ -10,7 +10,7 @@
 #import "FSignUpViewController.h"
 #import "FSignUpOneViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-//@import GoogleMaps;
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface AppDelegate ()
 
@@ -56,7 +56,7 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    if ([FUser isFirstLaunch]) {
+    if ([FCurrentUser isFirstLaunch]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
         [rootViewController setViewType:FacebookView];
@@ -64,7 +64,7 @@
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
-    else if ([FUser isSessionValid] == NO){
+    else if ([FCurrentUser isSessionValid] == NO){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
         [rootViewController setViewType:SignInView];

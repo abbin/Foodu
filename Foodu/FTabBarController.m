@@ -9,6 +9,8 @@
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
 #include <Photos/Photos.h>
+#import "AppDelegate.h"
+#import "FSignUpOneViewController.h"
 
 @interface FTabBarController ()
 
@@ -34,7 +36,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tabBarView.frame = CGRectMake(0.0,
                                        self.view.frame.size.height - self.tabBarView.frame.size.height,
                                        [UIScreen mainScreen].bounds.size.width,
@@ -59,6 +60,9 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
+    NSLog(@"%@",[FCurrentUser sharedUser].name);
+     NSLog(@"%@",[FCurrentUser sharedUser].email);
+    
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
@@ -117,6 +121,20 @@
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backView.center = self.profileButton.center;
     } completion:^(BOOL finished) {
+        
+        [FCurrentUser logOutCurrentUser:^(BOOL success) {
+            NSLog(@"Logged Out");
+            
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FSignUpOneViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+            [rootViewController setViewType:SignInView];
+            [appDelegate changeRootViewController:rootViewController];
+
+            
+        } failure:^(NSString *error) {
+            NSLog(@"%@",error);
+        }];
         
     }];
     
