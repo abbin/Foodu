@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 @interface FCurrentUser : NSObject
 
+@property(nonatomic,strong) PFGeoPoint *userlocation;
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *email;
 @property(nonatomic,assign) UserType userType;

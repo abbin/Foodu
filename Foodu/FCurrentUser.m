@@ -171,10 +171,38 @@ static FCurrentUser *shareduser = nil;
              if ([FBSDKAccessToken currentAccessToken]) {
                  [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,email,friends,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                      if (!error) {
+                         
+                         PFQuery *query = [PFUser query];
+                         [query whereKey:@"email" equalTo:[result objectForKey:@"email"]]; // find all the women
+                         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                             
+                             if (objects.count==0) {
+                                 
+                             }
+                             else{
+                                 [PFUser logInWithUsernameInBackground:[result objectForKey:@"email"] password:@""
+                                                                 block:^(PFUser *user, NSError *error) {
+                                                                     if (user) {
+                                                                         if ([FCurrentUser isFirstLaunch]) {
+                                                                             [FCurrentUser didFinishFirstLaunch];
+                                                                         }
+                                                                         success(YES);
+                                                                     } else {
+                                                                         NSString *errorString = [error userInfo][@"error"];
+                                                                         failure(errorString);
+                                                                     }
+                                                                 }];
+
+                             }
+                             
+                         }];
+                         
+                         
                          [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"email"] forKey:userEmailKey];
                          [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"name"] forKey:userNameKey];
                          [[NSUserDefaults standardUserDefaults] setObject:FaceBookUser forKey:userTypeKey];
                          [[NSUserDefaults standardUserDefaults] synchronize];
+                         
                          if ([FCurrentUser isFirstLaunch]) {
                              [FCurrentUser didFinishFirstLaunch];
                          }

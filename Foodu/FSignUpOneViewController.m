@@ -818,9 +818,9 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
             self.welcomeLabel.font = [UIFont fontWithName:fontname size:44];
             self.onLabel.font = [UIFont fontWithName:fontname size:44];
             self.fuudLabel.font = [UIFont fontWithName:fontTwo size:44];
-            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
-            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
-            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+            [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:textfont size:17]];
+            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:12]];
             
         }
         else if (IS_IPHONE_5){
@@ -828,24 +828,26 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
             self.onLabel.font = [UIFont fontWithName:fontname size:44];
             self.fuudLabel.font = [UIFont fontWithName:fontTwo size:44];
             [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
-            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:19]];
-            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:10]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:textfont size:17]];
+            
+            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:12]];
         }
         else if (IS_IPHONE_6){
             self.welcomeLabel.font = [UIFont fontWithName:fontname size:50];
             self.onLabel.font = [UIFont fontWithName:fontname size:50];
             self.fuudLabel.font = [UIFont fontWithName:fontTwo size:50];
             [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
-            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:textfont size:19]];
             
-            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
+            [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:13]];
         }
         else{
             self.welcomeLabel.font = [UIFont fontWithName:fontname size:56];
             self.onLabel.font = [UIFont fontWithName:fontname size:56];
             self.fuudLabel.font = [UIFont fontWithName:fontTwo size:56];
             [self.facebookButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
-            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:fontTwo size:25]];
+            [self.signUpWithEmailButton.titleLabel setFont:[UIFont fontWithName:textfont size:21]];
+            
             [self.changeToLoginViewButton.titleLabel setFont:[UIFont fontWithName:textfont size:15]];
         }
         
@@ -870,11 +872,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
         [self.activityIndicator startAnimating];
         [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+            [self.activityIndicator stopAnimating];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
              FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
+            [self.activityIndicator stopAnimating];
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
