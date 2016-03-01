@@ -10,12 +10,14 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
+#import "FLocationWarningViewController.h"
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userEmailKey = @"comPaadamFooduUserEmail";
 NSString *const userNameKey = @"comPaadamFooduUserName";
 NSString *const userTypeKey = @"comPaadamFooduUserType";
-
+NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 @implementation FCurrentUser
 
 static FCurrentUser *shareduser = nil;
@@ -33,6 +35,15 @@ static FCurrentUser *shareduser = nil;
 
 - (id)init {
     if (self = [super init]) {
+        
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        
+        [self.locationManager requestWhenInUseAuthorization];
+        
+        [_locationManager startUpdatingLocation];
+        
         if ([FBSDKAccessToken currentAccessToken]){
             self.email = [[NSUserDefaults standardUserDefaults] objectForKey:userEmailKey];
             self.name = [[NSUserDefaults standardUserDefaults] objectForKey:userNameKey];
@@ -76,6 +87,29 @@ static FCurrentUser *shareduser = nil;
     }
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [FCurrentUser sharedUser].userlocation = [PFGeoPoint geoPointWithLocation:[locations lastObject]];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([appDelegate.window.rootViewController.presentedViewController isKindOfClass:[FLocationWarningViewController class]]) {
+        [appDelegate.window.rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
+        FLocationWarningViewController *con = [[FLocationWarningViewController alloc]initWithNibName:@"FLocationWarningViewController" bundle:[NSBundle mainBundle]];
+        con.providesPresentationContextTransitionStyle = YES;
+        con.definesPresentationContext = YES;
+        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.window.rootViewController presentViewController:con animated:YES completion:^{
+            
+        }];
+    }
+}
+
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     
     if (failure == nil) {
@@ -96,6 +130,9 @@ static FCurrentUser *shareduser = nil;
             if ([FCurrentUser isFirstLaunch]) {
                 [FCurrentUser didFinishFirstLaunch];
             }
+            [FCurrentUser sharedUser].email = user.email;
+            [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+            [FCurrentUser sharedUser].userType = EmailUser;
             success(succeeded);
         }
         else
@@ -144,6 +181,9 @@ static FCurrentUser *shareduser = nil;
                                             if ([FCurrentUser isFirstLaunch]) {
                                                 [FCurrentUser didFinishFirstLaunch];
                                             }
+                                            [FCurrentUser sharedUser].email = user.email;
+                                            [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+                                            [FCurrentUser sharedUser].userType = EmailUser;
                                             success(YES);
                                         } else {
                                             NSString *errorString = [error userInfo][@"error"];
@@ -177,15 +217,42 @@ static FCurrentUser *shareduser = nil;
                          [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                              
                              if (objects.count==0) {
+                                 PFUser *user = [PFUser user];
+                                 user.password = userFacebookDefaultPassword;
+                                 user.email = [result objectForKey:@"email"];
+                                 user.username = [result objectForKey:@"email"];
+                                 user[@"name"] = [result objectForKey:@"name"];
+                                 user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
+                                 user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
                                  
+                                 [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                     if (!error) {   // Hooray! Let them use the app now.
+                                         if ([FCurrentUser isFirstLaunch]) {
+                                             [FCurrentUser didFinishFirstLaunch];
+                                         }
+                                         [FCurrentUser sharedUser].email = user.email;
+                                         [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+                                         [FCurrentUser sharedUser].userType = FaceBookUser;
+                                         success(succeeded);
+                                     }
+                                     else
+                                     {
+                                         NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+                                         failure(errorString);
+                                     }
+                                 }];
+
                              }
                              else{
-                                 [PFUser logInWithUsernameInBackground:[result objectForKey:@"email"] password:@""
+                                 [PFUser logInWithUsernameInBackground:[result objectForKey:@"email"] password:userFacebookDefaultPassword
                                                                  block:^(PFUser *user, NSError *error) {
                                                                      if (user) {
                                                                          if ([FCurrentUser isFirstLaunch]) {
                                                                              [FCurrentUser didFinishFirstLaunch];
                                                                          }
+                                                                         [FCurrentUser sharedUser].email = user.email;
+                                                                         [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+                                                                         [FCurrentUser sharedUser].userType = FaceBookUser;
                                                                          success(YES);
                                                                      } else {
                                                                          NSString *errorString = [error userInfo][@"error"];
@@ -196,17 +263,6 @@ static FCurrentUser *shareduser = nil;
                              }
                              
                          }];
-                         
-                         
-                         [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"email"] forKey:userEmailKey];
-                         [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"name"] forKey:userNameKey];
-                         [[NSUserDefaults standardUserDefaults] setObject:FaceBookUser forKey:userTypeKey];
-                         [[NSUserDefaults standardUserDefaults] synchronize];
-                         
-                         if ([FCurrentUser isFirstLaunch]) {
-                             [FCurrentUser didFinishFirstLaunch];
-                         }
-                         success(YES);
                      }
                  }];
              }

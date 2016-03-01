@@ -7,18 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 typedef NS_ENUM(NSInteger, UserType) {
     FaceBookUser,
     EmailUser
 };
 
-@interface FCurrentUser : NSObject
+@interface FCurrentUser : NSObject<CLLocationManagerDelegate>
 
 @property(nonatomic,strong) PFGeoPoint *userlocation;
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *email;
 @property(nonatomic,assign) UserType userType;
+
+@property(nonatomic,strong) CLLocationManager *locationManager;
 
 + (FCurrentUser*)sharedUser;
 

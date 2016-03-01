@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
 #import "FTabBarController.h"
+#import "FLocationWarningViewController.h"
 
 typedef NS_ENUM(NSInteger, animationTimeLine) {
     fadeOut,

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
+		5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810F3531C85BB090032E221 /* FLocationWarningViewController.m */; };
+		5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -33,6 +35,9 @@
 /* Begin PBXFileReference section */
 		0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.release.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.release.xcconfig"; sourceTree = "<group>"; };
 		3C3FBC2527F742A7ABA557AF /* Pods-Foodu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Foodu/Pods-Foodu.debug.xcconfig"; sourceTree = "<group>"; };
+		5810F3521C85BB090032E221 /* FLocationWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationWarningViewController.h; sourceTree = "<group>"; };
+		5810F3531C85BB090032E221 /* FLocationWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLocationWarningViewController.m; sourceTree = "<group>"; };
+		5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationWarningViewController.xib; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
@@ -192,6 +197,9 @@
 		58C9F3FE1C3A40B400594407 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5810F3521C85BB090032E221 /* FLocationWarningViewController.h */,
+				5810F3531C85BB090032E221 /* FLocationWarningViewController.m */,
+				5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */,
 				ED58884B1C410AE300922C9A /* First Launch */,
 				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
 			);
@@ -313,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
+				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
@@ -389,6 +398,7 @@
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
+				5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

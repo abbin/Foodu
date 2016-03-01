@@ -14,8 +14,6 @@
 
 @interface AppDelegate ()
 
-@property(nonatomic,strong) CLLocationManager *locationManager;
-
 @end
 
 @implementation AppDelegate
@@ -41,15 +39,6 @@
     }];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-        [self.locationManager requestWhenInUseAuthorization];
-    
-    [_locationManager startUpdatingLocation];
     
 //    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
 //        
@@ -83,32 +72,19 @@
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
-
+    
+    if ([FCurrentUser isFirstLaunch] == NO) {
+        [FCurrentUser sharedUser];
+    }
+    
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
-}
-
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *newLocation = [locations lastObject];
-    NSLog(@"%@", locations);
-    if ([FCurrentUser sharedUser] != nil) {
-        [FCurrentUser sharedUser].userlocation = [PFGeoPoint geoPointWithLocation:newLocation];
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"Cannot find the location.");
 }
 
 
@@ -123,9 +99,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    if([CLLocationManager authorizationStatus]!=kCLAuthorizationStatusAuthorizedWhenInUse){
-        
-    }
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
