@@ -215,9 +215,12 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (IBAction)nameLabelDidChangeEditing:(UITextField *)sender {
 
     if (self.signUpScreen == SignUpTwo) {
-        if ([self stringIsValidEmail:self.nameTextField.text] && self.nextButton.alpha == 0) {
+        if ([self stringIsValidEmail:self.nameTextField.text]) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.nextButton.alpha = 1;
+                self.nextButton.enabled = YES;
+                [self.nextButton setBackgroundColor:[UIColor PinRed]];
+                [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
             }];
         }
         if (![self stringIsValidEmail:self.nameTextField.text] && self.nextButton.alpha == 1) {
@@ -285,10 +288,26 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
                 self.name = self.nameTextField.text;
                 [self drawSignUpEmailScreenAnimated:YES];
                 break;
-            case SignUpTwo:
-                self.signUpScreen = SignUpThree;
-                self.email = self.nameTextField.text;
-                [self drawSignUpPasswordScreenAnimated:YES];
+            case SignUpTwo:{
+                [self.activityIndicator startAnimating];
+                self.nextButton.enabled = NO;
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                    if (objects.count == 0) {
+                        self.signUpScreen = SignUpThree;
+                        self.email = self.nameTextField.text;
+                        [self drawSignUpPasswordScreenAnimated:YES];
+                        [self.activityIndicator stopAnimating];
+                        self.nextButton.enabled = YES;
+                    }
+                    else{
+                        [self.nextButton setTitle:@"Email already registered" forState:UIControlStateNormal];
+                        [self.nextButton setBackgroundColor:[UIColor lightGrayColor]];
+                        [self.activityIndicator stopAnimating];
+                    }
+                }];
+            }
                 break;
             case SignUpThree:
                 self.password = self.nameTextField.text;

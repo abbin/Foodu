@@ -11,8 +11,12 @@
 #import "FSignUpOneViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "Reachability.h"
+#import "FInternetWarningViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic) Reachability *internetReachability;
 
 @end
 
@@ -38,6 +42,23 @@
         [snapShot removeFromSuperview];
     }];
 }
+
+- (void) reachabilityChanged:(NSNotification *)note{
+    Reachability* curReach = [note object];
+    if (curReach.currentReachabilityStatus == NotReachable) {
+        FInternetWarningViewController *con = [[FInternetWarningViewController alloc]initWithNibName:@"FInternetWarningViewController" bundle:[NSBundle mainBundle]];
+        con.providesPresentationContextTransitionStyle = YES;
+        con.definesPresentationContext = YES;
+        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self.window.rootViewController presentViewController:con animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        
+    }
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 //    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
@@ -49,6 +70,10 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
     
     [Parse setApplicationId:@"Ek7p6c9ec9QEjoqrIiR2rFpWjUai4BLOTgQRnt4s"
                   clientKey:@"RlKnbRS6qyrtNML5ZVQETyOdbTWDHJxswLv6foal"];

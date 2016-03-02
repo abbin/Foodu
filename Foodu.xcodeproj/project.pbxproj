@@ -10,6 +10,9 @@
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810F3531C85BB090032E221 /* FLocationWarningViewController.m */; };
 		5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */; };
+		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
+		581152DB1C871AAF00B592B6 /* FInternetWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D91C871AAF00B592B6 /* FInternetWarningViewController.m */; };
+		581152DC1C871AAF00B592B6 /* FInternetWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581152DA1C871AAF00B592B6 /* FInternetWarningViewController.xib */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -38,6 +41,11 @@
 		5810F3521C85BB090032E221 /* FLocationWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationWarningViewController.h; sourceTree = "<group>"; };
 		5810F3531C85BB090032E221 /* FLocationWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLocationWarningViewController.m; sourceTree = "<group>"; };
 		5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationWarningViewController.xib; sourceTree = "<group>"; };
+		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		581152D81C871AAF00B592B6 /* FInternetWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FInternetWarningViewController.h; sourceTree = "<group>"; };
+		581152D91C871AAF00B592B6 /* FInternetWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInternetWarningViewController.m; sourceTree = "<group>"; };
+		581152DA1C871AAF00B592B6 /* FInternetWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FInternetWarningViewController.xib; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
@@ -99,6 +107,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		581152D41C87190300B592B6 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				581152D51C87191600B592B6 /* Reachability.h */,
+				581152D61C87191600B592B6 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		582006CE1C3E280D00BD0FCD /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +159,7 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				581152D41C87190300B592B6 /* Reachability */,
 				5823BFB61C589E9300DEBD18 /* Colors */,
 				5823BFB51C589E7400DEBD18 /* Rating */,
 				5823BFB41C589E5D00DEBD18 /* ImagePicker */,
@@ -200,6 +218,9 @@
 				5810F3521C85BB090032E221 /* FLocationWarningViewController.h */,
 				5810F3531C85BB090032E221 /* FLocationWarningViewController.m */,
 				5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */,
+				581152D81C871AAF00B592B6 /* FInternetWarningViewController.h */,
+				581152D91C871AAF00B592B6 /* FInternetWarningViewController.m */,
+				581152DA1C871AAF00B592B6 /* FInternetWarningViewController.xib */,
 				ED58884B1C410AE300922C9A /* First Launch */,
 				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
 			);
@@ -323,6 +344,7 @@
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
+				581152DC1C871AAF00B592B6 /* FInternetWarningViewController.xib in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
@@ -386,6 +408,7 @@
 			files = (
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
+				581152DB1C871AAF00B592B6 /* FInternetWarningViewController.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
@@ -400,6 +423,7 @@
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
+				581152D71C87191600B592B6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
