@@ -12,11 +12,13 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Reachability.h"
-#import "FInternetWarningViewController.h"
+#import "FInternetWarningView.h"
+#import "FHUD.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic) Reachability *internetReachability;
+@property (nonatomic,strong) FHUD *hud;
 
 @end
 
@@ -46,16 +48,10 @@
 - (void) reachabilityChanged:(NSNotification *)note{
     Reachability* curReach = [note object];
     if (curReach.currentReachabilityStatus == NotReachable) {
-        FInternetWarningViewController *con = [[FInternetWarningViewController alloc]initWithNibName:@"FInternetWarningViewController" bundle:[NSBundle mainBundle]];
-        con.providesPresentationContextTransitionStyle = YES;
-        con.definesPresentationContext = YES;
-        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self.window.rootViewController presentViewController:con animated:YES completion:^{
-            
-        }];
+        [self.hud hideHUDWithText:@"Not Connected"];
     }
     else{
-        
+        [self.hud showHUDWithText:@"Connected"];
     }
 }
 
@@ -102,6 +98,11 @@
         [FCurrentUser sharedUser];
     }
     
+    self.hud = [[FHUD alloc]initWithView:self.window];
+    
+    if (self.internetReachability.currentReachabilityStatus == NotReachable) {
+        [self.hud showHUDWithText:@"Not Connected"];
+    }
     return YES;
 }
 

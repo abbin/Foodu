@@ -145,33 +145,28 @@ static FCurrentUser *shareduser = nil;
 
 +(void)logOutCurrentUser:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
 
-    if ([FCurrentUser sharedUser].userType == FaceBookUser) {
-        [[FBSDKLoginManager new] logOut];
-        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
-        [FCurrentUser resetSharedInstance];
-        success(YES);
-    }
-    else{
         if (failure == nil) {
             failure = ^(NSString *error){};
         }
         if (success == nil) {
             success = ^(BOOL success){};
         }
+    
         
         [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
             if (error == nil) {
                 NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
                 [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
                 [FCurrentUser resetSharedInstance];
+                if ([FCurrentUser sharedUser].userType == FaceBookUser) {
+                    [[FBSDKLoginManager new] logOut];
+                }
                 success(YES);
             }
             else{
                 failure(error.description);
             }
         }];
-    }
 }
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -197,6 +192,10 @@ static FCurrentUser *shareduser = nil;
     //    // Set permissions required from the facebook user account
     NSArray *permissionsArray = @[@"public_profile",@"email",@"user_friends"];
     
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [[FBSDKLoginManager new] logOut];
+    }
+    
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     
     [login
@@ -211,58 +210,63 @@ static FCurrentUser *shareduser = nil;
              if ([FBSDKAccessToken currentAccessToken]) {
                  [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,email,friends,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                      if (!error) {
-                         
-                         PFQuery *query = [PFUser query];
-                         [query whereKey:@"email" equalTo:[result objectForKey:@"email"]]; // find all the women
-                         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                         if ([result objectForKey:@"email"]) {
                              
-                             if (objects.count==0) {
-                                 PFUser *user = [PFUser user];
-                                 user.password = userFacebookDefaultPassword;
-                                 user.email = [result objectForKey:@"email"];
-                                 user.username = [result objectForKey:@"email"];
-                                 user[@"name"] = [result objectForKey:@"name"];
-                                 user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
-                                 user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
+                             PFQuery *query = [PFUser query];
+                             [query whereKey:@"email" equalTo:[result objectForKey:@"email"]]; // find all the women
+                             [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                                  
-                                 [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                     if (!error) {   // Hooray! Let them use the app now.
-                                         if ([FCurrentUser isFirstLaunch]) {
-                                             [FCurrentUser didFinishFirstLaunch];
+                                 if (objects.count==0) {
+                                     PFUser *user = [PFUser user];
+                                     user.password = userFacebookDefaultPassword;
+                                     user.email = [result objectForKey:@"email"];
+                                     user.username = [result objectForKey:@"email"];
+                                     user[@"name"] = [result objectForKey:@"name"];
+                                     user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
+                                     user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
+                                     
+                                     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                         if (!error) {   // Hooray! Let them use the app now.
+                                             if ([FCurrentUser isFirstLaunch]) {
+                                                 [FCurrentUser didFinishFirstLaunch];
+                                             }
+                                             [FCurrentUser sharedUser].email = user.email;
+                                             [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+                                             [FCurrentUser sharedUser].userType = FaceBookUser;
+                                             success(succeeded);
                                          }
-                                         [FCurrentUser sharedUser].email = user.email;
-                                         [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-                                         [FCurrentUser sharedUser].userType = FaceBookUser;
-                                         success(succeeded);
-                                     }
-                                     else
-                                     {
-                                         NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
-                                         failure(errorString);
-                                     }
-                                 }];
-
-                             }
-                             else{
-                                 [PFUser logInWithUsernameInBackground:[result objectForKey:@"email"] password:userFacebookDefaultPassword
-                                                                 block:^(PFUser *user, NSError *error) {
-                                                                     if (user) {
-                                                                         if ([FCurrentUser isFirstLaunch]) {
-                                                                             [FCurrentUser didFinishFirstLaunch];
+                                         else
+                                         {
+                                             NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+                                             failure(errorString);
+                                         }
+                                     }];
+                                     
+                                 }
+                                 else{
+                                     [PFUser logInWithUsernameInBackground:[result objectForKey:@"email"] password:userFacebookDefaultPassword
+                                                                     block:^(PFUser *user, NSError *error) {
+                                                                         if (user) {
+                                                                             if ([FCurrentUser isFirstLaunch]) {
+                                                                                 [FCurrentUser didFinishFirstLaunch];
+                                                                             }
+                                                                             [FCurrentUser sharedUser].email = user.email;
+                                                                             [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
+                                                                             [FCurrentUser sharedUser].userType = FaceBookUser;
+                                                                             success(YES);
+                                                                         } else {
+                                                                             NSString *errorString = [error userInfo][@"error"];
+                                                                             failure(errorString);
                                                                          }
-                                                                         [FCurrentUser sharedUser].email = user.email;
-                                                                         [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-                                                                         [FCurrentUser sharedUser].userType = FaceBookUser;
-                                                                         success(YES);
-                                                                     } else {
-                                                                         NSString *errorString = [error userInfo][@"error"];
-                                                                         failure(errorString);
-                                                                     }
-                                                                 }];
-
-                             }
-                             
-                         }];
+                                                                     }];
+                                     
+                                 }
+                                 
+                             }];
+                         }
+                         else{
+                             failure(@"Couldn't regester a new account. FUUD requires your email");
+                         }
                      }
                  }];
              }
