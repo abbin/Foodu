@@ -48,10 +48,11 @@
 - (void) reachabilityChanged:(NSNotification *)note{
     Reachability* curReach = [note object];
     if (curReach.currentReachabilityStatus == NotReachable) {
-        [self.hud hideHUDWithText:@"Not Connected"];
+        [self.hud showHUDWithText:@"Not Connected" backgroundColour:[UIColor blueColor]];
+        
     }
     else{
-        [self.hud showHUDWithText:@"Connected"];
+        [self.hud hideHUDWithText:@"Connected" backgroundColour:[UIColor blueColor] wait:2];
     }
 }
 
@@ -101,7 +102,7 @@
     self.hud = [[FHUD alloc]initWithView:self.window];
     
     if (self.internetReachability.currentReachabilityStatus == NotReachable) {
-        [self.hud showHUDWithText:@"Not Connected"];
+        [self.hud showHUDWithText:@"Not Connected" backgroundColour:[UIColor blueColor]];
     }
     return YES;
 }

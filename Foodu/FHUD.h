@@ -11,8 +11,8 @@
 @interface FHUD : UIView
 
 -(instancetype)initWithView:(UIView*)view;
--(void)showHUDWithText:(NSString*)text;
--(void)hideHUDWithText:(NSString*)text;
+-(void)showHUDWithText:(NSString*)text backgroundColour:(UIColor*)colour;
+-(void)hideHUDWithText:(NSString*)text backgroundColour:(UIColor*)colour wait:(NSInteger)time;
 
 @property(nonatomic,strong) UILabel *titleLabel;
 @end

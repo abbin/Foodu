@@ -14,7 +14,6 @@
     self = [super init];
     if (self) {
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 7, 0, 0)];
-        self.titleLabel.numberOfLines = 0;
         self.titleLabel.textColor = [UIColor whiteColor];
         
         NSString *textfont = @"";
@@ -31,25 +30,30 @@
                                 self.titleLabel.frame.size.width+50,
                                 self.titleLabel.frame.size.height+15);
         self.backgroundColor = [UIColor redColor];
-        self.layer.cornerRadius = self.frame.size.height/2;
-        self.layer.masksToBounds = YES;
         [self addSubview:self.titleLabel];
     }
     [view addSubview:self];
     return self;
 }
 
--(void)showHUDWithText:(NSString*)text{
+-(void)showHUDWithText:(NSString*)text backgroundColour:(UIColor*)colour{
     self.titleLabel.text = text;
     [self.titleLabel sizeToFit];
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                            self.titleLabel.frame.size.width+40,
+                            self.titleLabel.frame.size.height+14);
+    self.layer.cornerRadius = self.frame.size.height/2;
+    self.layer.masksToBounds = YES;
+    self.backgroundColor = colour;
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.center = CGPointMake(self.center.x-self.titleLabel.frame.size.width-15, self.center.y);
+        self.frame = CGRectMake(self.frame.origin.x-self.frame.size.width+20, self.frame.origin.y, self.titleLabel.frame.size.width+40, self.titleLabel.frame.size.height+14);
     } completion:^(BOOL finished) {
         
     }];
 }
 
--(void)hideHUDWithText:(NSString*)text{
+-(void)hideHUDWithText:(NSString*)text backgroundColour:(UIColor*)colour wait:(NSInteger)time{
     CATransition *animation = [CATransition animation];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.type = kCATransitionFade;
@@ -57,8 +61,22 @@
     [self.titleLabel.layer addAnimation:animation forKey:@"kCATransitionFade"];
     self.titleLabel.text = text;
     
-    [UIView animateWithDuration:0.3 delay:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.center = CGPointMake(self.center.x+self.titleLabel.frame.size.width+15, self.center.y);
+    [self.titleLabel sizeToFit];
+    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width-self.titleLabel.frame.size.width-20,
+                                self.frame.origin.y,
+                                self.titleLabel.frame.size.width+40,
+                                self.titleLabel.frame.size.height+14);
+        self.layer.cornerRadius = self.frame.size.height/2;
+        self.layer.masksToBounds = YES;
+        self.backgroundColor = colour;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    [UIView animateWithDuration:0.3 delay:time options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
     } completion:^(BOOL finished) {
         
     }];

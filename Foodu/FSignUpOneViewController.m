@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "FTabBarController.h"
 #import "FLocationWarningViewController.h"
+#import "FHUD.h"
 
 typedef NS_ENUM(NSInteger, animationTimeLine) {
     fadeOut,
@@ -83,12 +84,15 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 
+@property (nonatomic,strong) FHUD *hud;
 @end
 
 @implementation FSignUpOneViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.hud = [[FHUD alloc]initWithView:self.view];
     
     self.facebookButtonContainerView.layer.cornerRadius = 5;
     self.facebookButtonContainerView.layer.masksToBounds = YES;
@@ -289,7 +293,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
                 [self drawSignUpEmailScreenAnimated:YES];
                 break;
             case SignUpTwo:{
-                [self.activityIndicator startAnimating];
+                [self.hud showHUDWithText:@"Checking.." backgroundColour:[UIColor blueColor]];
                 self.nextButton.enabled = NO;
                 PFQuery *query = [PFUser query];
                 [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
@@ -298,13 +302,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
                         self.signUpScreen = SignUpThree;
                         self.email = self.nameTextField.text;
                         [self drawSignUpPasswordScreenAnimated:YES];
-                        [self.activityIndicator stopAnimating];
+                        [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
                         self.nextButton.enabled = YES;
                     }
                     else{
                         [self.nextButton setTitle:@"Email already registered" forState:UIControlStateNormal];
                         [self.nextButton setBackgroundColor:[UIColor lightGrayColor]];
-                        [self.activityIndicator stopAnimating];
+                        [self.hud hideHUDWithText:@":(" backgroundColour:[UIColor redColor] wait:2];
                     }
                 }];
             }
@@ -368,22 +372,15 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
-    [self.activityIndicator startAnimating];
+    [self.hud showHUDWithText:@"Connection with Facebook" backgroundColour:[UIColor blueColor]];
     [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         [appDelegate changeRootViewController:rootViewController];
-        [self.activityIndicator stopAnimating];
+        [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
     } failure:^(NSString *error) {
-        [self.activityIndicator stopAnimating];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        
-        [alert addAction:actionOk];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
     }];
 }
 
@@ -391,22 +388,16 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     self.signInEmail = self.signInEmailTextField.text;
     self.signInPassword = self.signInPasswordTextField.text;
     if ([self stringIsValidEmail:self.signInEmail] && self.signInPassword.length>0) {
-        [self.activityIndicator startAnimating];
+        [self.hud showHUDWithText:@"Signing in" backgroundColour:[UIColor blueColor]];
         [FCurrentUser logInUserWithEmail:self.signInEmail password:self.signInPassword success:^(BOOL success) {
-            [self.activityIndicator stopAnimating];
+            [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
 
         } failure:^(NSString *error) {
-            [self.activityIndicator stopAnimating];
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert addAction:actionOk];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
 
         }];
     }
@@ -890,22 +881,15 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)registerUser{
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
-        [self.activityIndicator startAnimating];
+        [self.hud showHUDWithText:@"Registering.." backgroundColour:[UIColor blueColor]];
         [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
-            [self.activityIndicator stopAnimating];
+            [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
              FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
-            [self.activityIndicator stopAnimating];
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:error preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-
-            [alert addAction:actionOk];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
         }];
     }
     else{
