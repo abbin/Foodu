@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "FTabBarController.h"
 #import "FLocationWarningViewController.h"
-#import "FHUD.h"
+#import "FAlertView.h"
 
 typedef NS_ENUM(NSInteger, animationTimeLine) {
     fadeOut,
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 
-@property (nonatomic,strong) FHUD *hud;
+@property (nonatomic,strong) FAlertView *hud;
 @end
 
 @implementation FSignUpOneViewController
@@ -92,7 +92,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.hud = [[FHUD alloc]initWithView:self.view];
+    self.hud = [[FAlertView alloc]initWithView:self.view];
     
     self.facebookButtonContainerView.layer.cornerRadius = 5;
     self.facebookButtonContainerView.layer.masksToBounds = YES;
@@ -293,7 +293,6 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
                 [self drawSignUpEmailScreenAnimated:YES];
                 break;
             case SignUpTwo:{
-                [self.hud showHUDWithText:@"Checking.." backgroundColour:[UIColor blueColor]];
                 self.nextButton.enabled = NO;
                 PFQuery *query = [PFUser query];
                 [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
@@ -302,13 +301,11 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
                         self.signUpScreen = SignUpThree;
                         self.email = self.nameTextField.text;
                         [self drawSignUpPasswordScreenAnimated:YES];
-                        [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
                         self.nextButton.enabled = YES;
                     }
                     else{
                         [self.nextButton setTitle:@"Email already registered" forState:UIControlStateNormal];
                         [self.nextButton setBackgroundColor:[UIColor lightGrayColor]];
-                        [self.hud hideHUDWithText:@":(" backgroundColour:[UIColor redColor] wait:2];
                     }
                 }];
             }
@@ -372,15 +369,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
-    [self.hud showHUDWithText:@"Connection with Facebook" backgroundColour:[UIColor blueColor]];
     [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         [appDelegate changeRootViewController:rootViewController];
-        [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
     } failure:^(NSString *error) {
-        [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
+        [self.hud showHUDWithText:error wait:5];
     }];
 }
 
@@ -388,16 +383,14 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     self.signInEmail = self.signInEmailTextField.text;
     self.signInPassword = self.signInPasswordTextField.text;
     if ([self stringIsValidEmail:self.signInEmail] && self.signInPassword.length>0) {
-        [self.hud showHUDWithText:@"Signing in" backgroundColour:[UIColor blueColor]];
         [FCurrentUser logInUserWithEmail:self.signInEmail password:self.signInPassword success:^(BOOL success) {
-            [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
 
         } failure:^(NSString *error) {
-            [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
+            [self.hud showHUDWithText:error wait:5];
 
         }];
     }
@@ -881,15 +874,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)registerUser{
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
-        [self.hud showHUDWithText:@"Registering.." backgroundColour:[UIColor blueColor]];
         [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
-            [self.hud hideHUDWithText:@":)" backgroundColour:[UIColor greenColor] wait:2];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
-            [self.hud hideHUDWithText:error backgroundColour:[UIColor redColor] wait:5];
+            [self.hud showHUDWithText:error wait:5];
         }];
     }
     else{

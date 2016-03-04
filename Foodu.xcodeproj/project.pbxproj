@@ -11,9 +11,9 @@
 		5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810F3531C85BB090032E221 /* FLocationWarningViewController.m */; };
 		5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */; };
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
+		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF61C88014D0039A067 /* FInternetWarningView.m */; };
-		5851CFFA1C880F3B0039A067 /* FHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF91C880F3B0039A067 /* FHUD.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
 		58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */; };
@@ -43,12 +43,12 @@
 		5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationWarningViewController.xib; sourceTree = "<group>"; };
 		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5812C4AB1C8976C00055A54B /* FAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAlertView.h; sourceTree = "<group>"; };
+		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
 		5851CFF51C88014D0039A067 /* FInternetWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FInternetWarningView.h; sourceTree = "<group>"; };
 		5851CFF61C88014D0039A067 /* FInternetWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInternetWarningView.m; sourceTree = "<group>"; };
-		5851CFF81C880F3B0039A067 /* FHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHUD.h; sourceTree = "<group>"; };
-		5851CFF91C880F3B0039A067 /* FHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHUD.m; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		58846B621C3E9230006CFBFB /* UIColor+FColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FColours.h"; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 				5810F3521C85BB090032E221 /* FLocationWarningViewController.h */,
 				5810F3531C85BB090032E221 /* FLocationWarningViewController.m */,
 				5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */,
-				5851CFF81C880F3B0039A067 /* FHUD.h */,
-				5851CFF91C880F3B0039A067 /* FHUD.m */,
+				5812C4AB1C8976C00055A54B /* FAlertView.h */,
+				5812C4AC1C8976C00055A54B /* FAlertView.m */,
 				5851CFF51C88014D0039A067 /* FInternetWarningView.h */,
 				5851CFF61C88014D0039A067 /* FInternetWarningView.m */,
 				ED58884B1C410AE300922C9A /* First Launch */,
@@ -411,13 +411,13 @@
 				5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
+				5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
-				5851CFFA1C880F3B0039A067 /* FHUD.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
 				58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,

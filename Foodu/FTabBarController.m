@@ -28,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bookMarkImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
-
 @end
 
 @implementation FTabBarController
@@ -51,6 +50,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+
 }
 
 

@@ -13,12 +13,12 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Reachability.h"
 #import "FInternetWarningView.h"
-#import "FHUD.h"
+#import "FAlertView.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic) Reachability *internetReachability;
-@property (nonatomic,strong) FHUD *hud;
+@property (nonatomic,strong) FAlertView *hud;
 
 @end
 
@@ -48,11 +48,10 @@
 - (void) reachabilityChanged:(NSNotification *)note{
     Reachability* curReach = [note object];
     if (curReach.currentReachabilityStatus == NotReachable) {
-        [self.hud showHUDWithText:@"Not Connected" backgroundColour:[UIColor blueColor]];
-        
+        [self.hud showHUDWithText:@"Not Connected" wait:0];
     }
     else{
-        [self.hud hideHUDWithText:@"Connected" backgroundColour:[UIColor blueColor] wait:2];
+        [self.hud hideHUDWithText:@"Connected" wait:2];
     }
 }
 
@@ -94,15 +93,22 @@
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
+    else{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+        [rootViewController setViewType:SignInView];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = rootViewController;
+        [self.window makeKeyAndVisible];
+    }
     
     if ([FCurrentUser isFirstLaunch] == NO) {
         [FCurrentUser sharedUser];
     }
     
-    self.hud = [[FHUD alloc]initWithView:self.window];
-    
-    if (self.internetReachability.currentReachabilityStatus == NotReachable) {
-        [self.hud showHUDWithText:@"Not Connected" backgroundColour:[UIColor blueColor]];
+    self.hud = [[FAlertView alloc]initWithView:self.window];
+    if (self.internetReachability.currentReachabilityStatus != NotReachable) {
+        [self.hud showHUDWithText:@"Not Connected" wait:0];
     }
     return YES;
 }
