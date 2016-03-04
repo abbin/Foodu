@@ -14,6 +14,7 @@
 #import "Reachability.h"
 #import "FInternetWarningView.h"
 #import "FAlertView.h"
+#import "FTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -37,6 +38,7 @@
     
     self.window.rootViewController = viewController;
     
+    self.hud = [[FAlertView alloc]initWithView:self.window];
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         snapShot.layer.opacity = 0;
@@ -95,8 +97,7 @@
     }
     else{
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-        [rootViewController setViewType:SignInView];
+        FTabBarController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
