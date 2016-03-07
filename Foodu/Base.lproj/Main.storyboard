@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -323,7 +323,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5CB-7S-7J8">
-                                        <rect key="frame" x="25" y="140" width="504" height="44"/>
+                                        <rect key="frame" x="25" y="140" width="519" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -343,7 +343,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgg-3d-3bv">
-                                        <rect key="frame" x="498" y="204" width="62" height="38"/>
+                                        <rect key="frame" x="513" y="204" width="62" height="38"/>
                                         <color key="backgroundColor" red="0.66274509803921566" green="0.094117647058823528" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="15"/>
                                         <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
@@ -355,7 +355,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moJ-cM-Foh">
-                                        <rect key="frame" x="529" y="140" width="31" height="44"/>
+                                        <rect key="frame" x="544" y="140" width="31" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="31" id="Sb4-NM-7xK"/>
                                             <constraint firstAttribute="height" constant="44" id="Wb8-KX-ZVw"/>
@@ -372,11 +372,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="moJ-cM-Foh" firstAttribute="leading" secondItem="5CB-7S-7J8" secondAttribute="trailing" id="23u-Av-rKc"/>
-                                    <constraint firstAttribute="trailing" secondItem="moJ-cM-Foh" secondAttribute="trailing" constant="40" id="6Qt-2m-Vfw"/>
+                                    <constraint firstAttribute="trailing" secondItem="moJ-cM-Foh" secondAttribute="trailing" constant="25" id="6Qt-2m-Vfw"/>
                                     <constraint firstItem="pay-5t-PPr" firstAttribute="leading" secondItem="gUR-UA-zhD" secondAttribute="leading" constant="15" id="XPs-Ba-PIN"/>
                                     <constraint firstItem="moJ-cM-Foh" firstAttribute="centerY" secondItem="5CB-7S-7J8" secondAttribute="centerY" id="YEt-38-rLS"/>
                                     <constraint firstItem="pay-5t-PPr" firstAttribute="top" secondItem="gUR-UA-zhD" secondAttribute="top" constant="50" id="aIw-WC-Hlc"/>
-                                    <constraint firstAttribute="trailing" secondItem="jgg-3d-3bv" secondAttribute="trailing" constant="40" id="cwX-nx-mcS"/>
+                                    <constraint firstAttribute="trailing" secondItem="jgg-3d-3bv" secondAttribute="trailing" constant="25" id="cwX-nx-mcS"/>
                                     <constraint firstItem="5CB-7S-7J8" firstAttribute="leading" secondItem="gUR-UA-zhD" secondAttribute="leading" constant="25" id="fv5-7V-9qm"/>
                                     <constraint firstAttribute="trailing" secondItem="pay-5t-PPr" secondAttribute="trailing" constant="35" id="jqd-yP-gtL"/>
                                     <constraint firstItem="5CB-7S-7J8" firstAttribute="top" secondItem="pay-5t-PPr" secondAttribute="bottom" constant="50" id="p8X-kl-ByO"/>

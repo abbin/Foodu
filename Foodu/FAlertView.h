@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FAlertView : UIVisualEffectView
+@interface FAlertView : UIView
 
--(instancetype)initWithView:(UIView*)view;
-
--(void)showHUDWithText:(NSString*)text wait:(NSInteger)time;
+-(void)showHUDOnView:(UIView*)view withText:(NSString*)text wait:(NSInteger)time;
 -(void)hideHUDWithText:(NSString*)text wait:(NSInteger)time;
-
-@property(nonatomic,strong) UILabel *titleLabel;
-
+-(void)showActivityIndicatorOnView:(UIView*)view;
+-(void)hideActivityIndicatorOnView;
++ (FAlertView*)sharedHUD;
 @end

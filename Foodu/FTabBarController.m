@@ -105,7 +105,7 @@
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.backView.center = self.bookMarkButton.center;
     } completion:^(BOOL finished) {
-        
+        [[FAlertView sharedHUD] showHUDOnView:self.view withText:@"Not Connected" wait:0];
     }];
     
     [self.bookMarkImageView setImage:[UIImage imageNamed:@"bookMarkSelected"]];

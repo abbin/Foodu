@@ -13,13 +13,11 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Reachability.h"
 #import "FInternetWarningView.h"
-#import "FAlertView.h"
-#import "FTabBarController.h"
+
 
 @interface AppDelegate ()
 
 @property (nonatomic) Reachability *internetReachability;
-@property (nonatomic,strong) FAlertView *hud;
 
 @end
 
@@ -38,11 +36,12 @@
     
     self.window.rootViewController = viewController;
     
-    self.hud = [[FAlertView alloc]initWithView:self.window];
-    
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         snapShot.layer.opacity = 0;
     } completion:^(BOOL finished) {
+        if (self.internetReachability.currentReachabilityStatus == NotReachable) {
+            [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"No Internet" wait:0];
+        }
         [snapShot removeFromSuperview];
     }];
 }
@@ -50,10 +49,10 @@
 - (void) reachabilityChanged:(NSNotification *)note{
     Reachability* curReach = [note object];
     if (curReach.currentReachabilityStatus == NotReachable) {
-        [self.hud showHUDWithText:@"Not Connected" wait:0];
+        [[FAlertView sharedHUD]  showHUDOnView:self.window.rootViewController.view withText:@"No Internet" wait:0];
     }
     else{
-        [self.hud hideHUDWithText:@"Connected" wait:2];
+        [[FAlertView sharedHUD] hideHUDWithText:@"Connected" wait:2];
     }
 }
 
@@ -95,21 +94,13 @@
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
-    else{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FTabBarController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-        self.window.rootViewController = rootViewController;
-        [self.window makeKeyAndVisible];
-    }
     
-    if ([FCurrentUser isFirstLaunch] == NO) {
+//    if ([FCurrentUser isFirstLaunch] == NO) {
         [FCurrentUser sharedUser];
-    }
+//    }
     
-    self.hud = [[FAlertView alloc]initWithView:self.window];
     if (self.internetReachability.currentReachabilityStatus != NotReachable) {
-        [self.hud showHUDWithText:@"Not Connected" wait:0];
+        [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"Not Connected" wait:0];
     }
     return YES;
 }

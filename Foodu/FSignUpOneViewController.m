@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "FTabBarController.h"
 #import "FLocationWarningViewController.h"
-#import "FAlertView.h"
 
 typedef NS_ENUM(NSInteger, animationTimeLine) {
     fadeOut,
@@ -91,8 +90,6 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.hud = [[FAlertView alloc]initWithView:self.view];
     
     self.facebookButtonContainerView.layer.cornerRadius = 5;
     self.facebookButtonContainerView.layer.masksToBounds = YES;
@@ -375,7 +372,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         [appDelegate changeRootViewController:rootViewController];
     } failure:^(NSString *error) {
-        [self.hud showHUDWithText:error wait:5];
+       // [self.hud showHUDWithText:error wait:5];
     }];
 }
 
@@ -390,7 +387,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
             [appDelegate changeRootViewController:rootViewController];
 
         } failure:^(NSString *error) {
-            [self.hud showHUDWithText:error wait:5];
+           // [self.hud showHUDWithText:error wait:5];
 
         }];
     }
@@ -880,7 +877,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
-            [self.hud showHUDWithText:error wait:5];
+           // [self.hud showHUDWithText:error wait:5];
         }];
     }
     else{
