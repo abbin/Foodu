@@ -116,18 +116,18 @@ static FAlertView *sharedHUD = nil;
         [view addSubview:self];
         
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.frame = CGRectMake(self.frame.origin.x-self.frame.size.width+20, self.frame.origin.y, self.titleLabel.frame.size.width+40, self.titleLabel.frame.size.height+14);
+            self.center = CGPointMake([UIScreen mainScreen].bounds.size.width-self.frame.size.width/2+20, self.center.y);
         } completion:^(BOOL finished) {
             self.shown = YES;
             if (time>0) {
-                [self hideHUDWithText:text wait:time];
+                [self performSelector:@selector(hideHUDWithText:wait:) withObject:nil afterDelay:time];
             }
         }];
     }
     else{
-        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideHUDWithText:wait:) object:nil];
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+            self.center = CGPointMake([UIScreen mainScreen].bounds.size.width+self.frame.size.width/2, self.center.y);
         } completion:^(BOOL finished) {
             self.shown = NO;
             [self removeFromSuperview];
@@ -142,7 +142,9 @@ static FAlertView *sharedHUD = nil;
     animation.type = kCATransitionFade;
     animation.duration = 0.3;
     [self.titleLabel.layer addAnimation:animation forKey:@"kCATransitionFade"];
-    self.titleLabel.text = text;
+    if (text) {
+        self.titleLabel.text = text;
+    }
     
     [self.titleLabel sizeToFit];
     
@@ -157,8 +159,12 @@ static FAlertView *sharedHUD = nil;
         
     }];
     
+    if (time > 100){
+        time = 0;
+    }
+    
     [UIView animateWithDuration:0.3 delay:time options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+        self.center = CGPointMake([UIScreen mainScreen].bounds.size.width+self.frame.size.width/2, self.center.y);
     } completion:^(BOOL finished) {
         self.shown = NO;
         [self removeFromSuperview];

@@ -137,7 +137,7 @@ static FCurrentUser *shareduser = nil;
         }
         else
         {
-            NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+            NSString *errorString = [[error userInfo][@"error"] capitalizedString];   // Show the errorString somewhere and let the user try again.
             failure(errorString);
         }
     }];
@@ -164,9 +164,22 @@ static FCurrentUser *shareduser = nil;
                 success(YES);
             }
             else{
-                failure(error.description);
+                NSString *errorString = [[error userInfo][@"error"] capitalizedString];
+                failure(errorString);
             }
         }];
+}
+
+- (void)callbackForSave:(NSNumber *)result error:(NSError *)error {
+    if ([result boolValue]) {
+        NSLog(@"Everything went fine!");
+    } else {
+        if ([error code] == kPFErrorConnectionFailed) {
+            NSLog(@"Uh oh, we couldn't even connect to the Parse Cloud!");
+        } else if (error) {
+            NSLog(@"Error: %@", [error userInfo][@"error"]);
+        }
+    }
 }
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -181,8 +194,15 @@ static FCurrentUser *shareduser = nil;
                                             [FCurrentUser sharedUser].userType = EmailUser;
                                             success(YES);
                                         } else {
-                                            NSString *errorString = [error userInfo][@"error"];
-                                            failure(errorString);
+                                            if ([error code] == 101) {
+                                                NSString *errorString = @"Incorrect email/password";
+                                                failure(errorString);
+                                            }
+                                            else{
+                                                NSString *errorString = [[error userInfo][@"error"] capitalizedString];
+                                            
+                                                failure(errorString);
+                                            }
                                         }
                                     }];
     
@@ -203,7 +223,7 @@ static FCurrentUser *shareduser = nil;
      fromViewController:viewController
      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
          if (error) {
-             failure(error.description);
+             failure(@"Failed to Sign in to Facebook");
          } else if (result.isCancelled) {
              failure(@"Facebook Sign In was canceled");
          } else {
@@ -237,7 +257,7 @@ static FCurrentUser *shareduser = nil;
                                          }
                                          else
                                          {
-                                             NSString *errorString = [error userInfo][@"error"];   // Show the errorString somewhere and let the user try again.
+                                            NSString *errorString = [[error userInfo][@"error"] capitalizedString];   // Show the errorString somewhere and let the user try again.
                                              failure(errorString);
                                          }
                                      }];
@@ -255,7 +275,7 @@ static FCurrentUser *shareduser = nil;
                                                                              [FCurrentUser sharedUser].userType = FaceBookUser;
                                                                              success(YES);
                                                                          } else {
-                                                                             NSString *errorString = [error userInfo][@"error"];
+                                                                             NSString *errorString = [[error userInfo][@"error"] capitalizedString];
                                                                              failure(errorString);
                                                                          }
                                                                      }];

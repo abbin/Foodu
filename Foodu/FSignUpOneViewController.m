@@ -12,6 +12,9 @@
 #import "FTabBarController.h"
 #import "FLocationWarningViewController.h"
 
+NSInteger const enabledTag = 1;
+NSInteger const disabledTag = 2;
+
 typedef NS_ENUM(NSInteger, animationTimeLine) {
     fadeOut,
     changeOver,
@@ -83,7 +86,6 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 
 @property (nonatomic, strong) AVPlayer *avplayer;
 
-@property (nonatomic,strong) FAlertView *hud;
 @end
 
 @implementation FSignUpOneViewController
@@ -161,6 +163,75 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 #pragma mark -
 #pragma mark KEYBORRD METHODS
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField.tag == 1) {  //NAME TEXTFIELD FROM SIGNUP VIEW
+        if (self.nextButton.tag == enabledTag) {
+            [self.nameTextField endEditing:YES];
+            if (self.nameTextField.text.length>0) {
+                switch (self.signUpScreen) {
+                    case SignUpOne:
+                        self.signUpScreen = SignUpTwo;
+                        self.name = self.nameTextField.text;
+                        [self drawSignUpEmailScreenAnimated:YES];
+                        break;
+                    case SignUpTwo:{
+                        [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+                        self.nextButton.enabled = NO;
+                        PFQuery *query = [PFUser query];
+                        [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
+                        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                            self.nextButton.enabled = YES;
+                            if (objects.count == 0) {
+                                [[FAlertView sharedHUD] hideActivityIndicatorOnView];
+                                self.signUpScreen = SignUpThree;
+                                self.email = self.nameTextField.text;
+                                [self drawSignUpPasswordScreenAnimated:YES];
+                                self.nextButton.tag = enabledTag;
+                            }
+                            else{
+                                [[FAlertView sharedHUD] showHUDOnView:self.view withText:@"Email already registered" wait:5];
+                                [self.nextButton setBackgroundColor:[UIColor lightTextColor]];
+                            }
+                        }];
+                    }
+                        break;
+                    case SignUpThree:
+                        self.password = self.nameTextField.text;
+                        [self registerUser];
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        else{
+            switch (self.signUpScreen) {
+                case SignUpOne:
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a name" wait:5];
+                    break;
+                case SignUpTwo:{
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a valid email" wait:5];
+                }
+                    break;
+                case SignUpThree:{
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a password" wait:5];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    else if (textField.tag == 2){  //EMAIL TEXTFIELD FROM SIGNIN VIEW
+        [self.signInPasswordTextField becomeFirstResponder];
+    }
+    else{  //PASSWORD TEXTFIELD FROM SIGNIN VIEW
+        [self signIn:nil];
+    }
+
+    return YES;
+}
+
 - (void)keyboardNotScreen:(NSNotification *)notification{
     
     self.signChangeConstrain.constant = 0;
@@ -191,19 +262,32 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         [self.view layoutIfNeeded];
     }];
     
-    if (self.nameTextField.text.length>0) {
-        self.nextButton.alpha = 1;
-    }
-    else{
-        self.nextButton.alpha = 0;
-    }
-    
     if (self.signUpScreen == SignUpTwo) {
         if ([self stringIsValidEmail:self.nameTextField.text]) {
-            self.nextButton.alpha = 1;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.backgroundColor = [UIColor PinRed];
+                self.nextButton.tag = enabledTag;
+            }];
         }
         else{
-            self.nextButton.alpha = 0;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.backgroundColor = [UIColor lightTextColor];
+                self.nextButton.tag = disabledTag;
+            }];
+        }
+    }
+    else{
+        if (self.nameTextField.text.length>0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.backgroundColor = [UIColor PinRed];
+                self.nextButton.tag = enabledTag;
+            }];
+        }
+        else{
+            [UIView animateWithDuration:0.3 animations:^{
+                self.nextButton.backgroundColor = [UIColor lightTextColor];
+                self.nextButton.tag = disabledTag;
+            }];
         }
     }
 }
@@ -218,29 +302,31 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     if (self.signUpScreen == SignUpTwo) {
         if ([self stringIsValidEmail:self.nameTextField.text]) {
             [UIView animateWithDuration:0.3 animations:^{
-                self.nextButton.alpha = 1;
-                self.nextButton.enabled = YES;
-                [self.nextButton setBackgroundColor:[UIColor PinRed]];
+                self.nextButton.backgroundColor = [UIColor PinRed];
+                self.nextButton.tag = enabledTag;
                 [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
             }];
         }
-        if (![self stringIsValidEmail:self.nameTextField.text] && self.nextButton.alpha == 1) {
+        if (![self stringIsValidEmail:self.nameTextField.text]) {
             [UIView animateWithDuration:0.3 animations:^{
-                self.nextButton.alpha = 0;
+                self.nextButton.backgroundColor = [UIColor lightTextColor];
+                self.nextButton.tag = disabledTag;
             }];
         }
     }
     else{
-        if (sender.text.length>0 && self.nextButton.alpha == 0) {
+        if (sender.text.length>0) {
             [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                self.nextButton.alpha = 1;
+                self.nextButton.backgroundColor = [UIColor PinRed];
+                self.nextButton.tag = enabledTag;
             } completion:^(BOOL finished) {
                 
             }];
         }
-        if (sender.text.length==0 && self.nextButton.alpha == 1) {
+        if (sender.text.length==0) {
             [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                self.nextButton.alpha = 0;
+                self.nextButton.backgroundColor = [UIColor lightTextColor];
+                self.nextButton.tag = disabledTag;
             } completion:^(BOOL finished) {
                 
             }];
@@ -253,12 +339,14 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
     if ([self stringIsValidEmail:sender.text] && self.signInPasswordTextField.text.length>0) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.signInButton.alpha = 1;
+            self.signInButton.backgroundColor = [UIColor PinRed];
+            self.signInButton.tag = enabledTag;
         }];
     }
     if (![self stringIsValidEmail:sender.text] && self.signInPasswordTextField.text.length==0) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.signInButton.alpha = 0;
+            self.signInButton.backgroundColor = [UIColor lightTextColor];
+            self.signInButton.tag = disabledTag;
         }];
     }
     
@@ -268,54 +356,76 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
     if (sender.text.length>0 && [self stringIsValidEmail:self.signInEmailTextField.text]) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.signInButton.alpha = 1;
+            self.signInButton.backgroundColor = [UIColor PinRed];
+            self.signInButton.tag = enabledTag;
         }];
     }
     if (sender.text.length==0 || ![self stringIsValidEmail:self.signInEmailTextField.text]) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.signInButton.alpha = 0;
+            self.signInButton.backgroundColor = [UIColor lightTextColor];
+            self.signInButton.tag = disabledTag;
         }];
     }
     
 }
 
 - (IBAction)nextClicked:(UIButton *)sender {
-    
-    [self.nameTextField endEditing:YES];
-    if (self.nameTextField.text.length>0) {
-        switch (self.signUpScreen) {
-            case SignUpOne:
-                self.signUpScreen = SignUpTwo;
-                self.name = self.nameTextField.text;
-                [self drawSignUpEmailScreenAnimated:YES];
-                break;
-            case SignUpTwo:{
-                self.nextButton.enabled = NO;
-                PFQuery *query = [PFUser query];
-                [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
-                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-                    if (objects.count == 0) {
-                        self.signUpScreen = SignUpThree;
-                        self.email = self.nameTextField.text;
-                        [self drawSignUpPasswordScreenAnimated:YES];
+    if (sender.tag == enabledTag) {
+        [self.nameTextField endEditing:YES];
+        if (self.nameTextField.text.length>0) {
+            switch (self.signUpScreen) {
+                case SignUpOne:
+                    self.signUpScreen = SignUpTwo;
+                    self.name = self.nameTextField.text;
+                    [self drawSignUpEmailScreenAnimated:YES];
+                    break;
+                case SignUpTwo:{
+                    [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+                    self.nextButton.enabled = NO;
+                    PFQuery *query = [PFUser query];
+                    [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
+                    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                         self.nextButton.enabled = YES;
-                    }
-                    else{
-                        [self.nextButton setTitle:@"Email already registered" forState:UIControlStateNormal];
-                        [self.nextButton setBackgroundColor:[UIColor lightGrayColor]];
-                    }
-                }];
+                        if (objects.count == 0) {
+                            [[FAlertView sharedHUD] hideActivityIndicatorOnView];
+                            self.signUpScreen = SignUpThree;
+                            self.email = self.nameTextField.text;
+                            [self drawSignUpPasswordScreenAnimated:YES];
+                            self.nextButton.tag = enabledTag;
+                        }
+                        else{
+                            [[FAlertView sharedHUD] showHUDOnView:self.view withText:@"Email already registered" wait:5];
+                            [self.nextButton setBackgroundColor:[UIColor lightTextColor]];
+                        }
+                    }];
+                }
+                    break;
+                case SignUpThree:
+                    self.password = self.nameTextField.text;
+                    [self registerUser];
+                    break;
+                default:
+                    break;
             }
-                break;
-            case SignUpThree:
-                self.password = self.nameTextField.text;
-                [self registerUser];
-                break;
-            default:
-                break;
         }
     }
-    
+    else{
+            switch (self.signUpScreen) {
+                case SignUpOne:
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a name" wait:5];
+                    break;
+                case SignUpTwo:{
+                   [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a valid email" wait:5];
+                }
+                    break;
+                case SignUpThree:{
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a password" wait:5];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
 }
 
 - (IBAction)goToPreviousScreen:(UIButton *)sender {
@@ -366,13 +476,15 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
+    [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
     [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
+        [[FAlertView sharedHUD] hideActivityIndicatorOnView];
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         [appDelegate changeRootViewController:rootViewController];
     } failure:^(NSString *error) {
-       // [self.hud showHUDWithText:error wait:5];
+        [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
     }];
 }
 
@@ -380,33 +492,27 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     self.signInEmail = self.signInEmailTextField.text;
     self.signInPassword = self.signInPasswordTextField.text;
     if ([self stringIsValidEmail:self.signInEmail] && self.signInPassword.length>0) {
+        [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+        self.signInButton.enabled = NO;
         [FCurrentUser logInUserWithEmail:self.signInEmail password:self.signInPassword success:^(BOOL success) {
+            self.signInButton.enabled = YES;
+            [[FAlertView sharedHUD] hideActivityIndicatorOnView];
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
 
         } failure:^(NSString *error) {
-           // [self.hud showHUDWithText:error wait:5];
-
+            self.signInButton.enabled = YES;
+            [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
         }];
     }
     else{
         if ([self stringIsValidEmail:self.signInEmail] == NO) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Invalid email" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert addAction:actionOk];
-            [self presentViewController:alert animated:YES completion:nil];
+            [[FAlertView sharedHUD] showHUDOnView:self.view withText:@"Enter a valid email" wait:5];
         }
         else{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Invalid password" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert addAction:actionOk];
-            [self presentViewController:alert animated:YES completion:nil];
+            [[FAlertView sharedHUD] showHUDOnView:self.view withText:@"Enter password" wait:5];
         }
     }
 }
@@ -460,8 +566,9 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         self.whtIsYourNameLabel.alpha = 0;
         self.nameTextField.alpha = 0;
         self.nextButton.alpha = 0;
-    } completion:^(BOOL finished) {
         
+    } completion:^(BOOL finished) {
+        self.nextButton.backgroundColor = [UIColor lightTextColor];
         [self.nameTextField setSecureTextEntry:YES];
         self.nameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         [self.nameTextField setKeyboardType:UIKeyboardTypeDefault];
@@ -518,7 +625,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         self.showPasswordWidth.constant = 31;
         [self.view layoutIfNeeded];
         [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
+            self.nextButton.alpha = 1;
             self.whtIsYourNameLabel.alpha = 1;
             self.nameTextField.alpha = 1;
         } completion:^(BOOL finished) {
@@ -546,7 +653,9 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         self.whtIsYourNameLabel.alpha = 0;
         self.nameTextField.alpha = 0;
         self.nextButton.alpha = 0;
+        
     } completion:^(BOOL finished) {
+        self.nextButton.backgroundColor = [UIColor lightTextColor];
         self.showPasswordWidth.constant = 0;
         [self.view layoutIfNeeded];
         [self.nameTextField setKeyboardType:UIKeyboardTypeEmailAddress];
@@ -604,6 +713,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         [UIView animateWithDuration:time delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.whtIsYourNameLabel.alpha = 1;
             self.nameTextField.alpha = 1;
+            self.nextButton.alpha = 1;
         } completion:^(BOOL finished) {
             
             [self.nameTextField becomeFirstResponder];
@@ -631,6 +741,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
         self.facebookContainerView.alpha = 0;
         [self.signInSignUpSwitchButton setTitle:@"Have an account? Sign In" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {
+        self.nextButton.backgroundColor = [UIColor lightTextColor];
         self.showPasswordWidth.constant = 0;
         [self.view layoutIfNeeded];
         [self.nameTextField setKeyboardType:UIKeyboardTypeDefault];
@@ -692,6 +803,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
             self.signUpView.alpha = 1;
             self.signInSignUpSwitchButton.alpha = 1;
             self.backButton.alpha = 1;
+             self.nextButton.alpha = 1;
         } completion:^(BOOL finished) {
             [self.nameTextField becomeFirstResponder];
             self.viewType = SignUpView;
@@ -871,13 +983,16 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)registerUser{
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
+        self.nextButton.enabled = NO;
         [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+            self.nextButton.enabled = YES;
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
             [appDelegate changeRootViewController:rootViewController];
         } failure:^(NSString *error) {
-           // [self.hud showHUDWithText:error wait:5];
+            self.nextButton.enabled = YES;
+           [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
         }];
     }
     else{

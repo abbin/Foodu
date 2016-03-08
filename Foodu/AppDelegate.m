@@ -99,7 +99,7 @@
         [FCurrentUser sharedUser];
 //    }
     
-    if (self.internetReachability.currentReachabilityStatus != NotReachable) {
+    if (self.internetReachability.currentReachabilityStatus == NotReachable) {
         [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"Not Connected" wait:0];
     }
     return YES;
