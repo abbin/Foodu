@@ -42,7 +42,7 @@
     
     CALayer *topBorder = [CALayer layer];
     topBorder.frame = CGRectMake(0.0f, 0.0f, self.tabBarView.frame.size.width, 0.3f);
-    topBorder.backgroundColor = [UIColor lightGrayColor].CGColor;
+    topBorder.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1].CGColor;
     [self.tabBarView.layer addSublayer:topBorder];
     [self.view addSubview:self.tabBarView];
     

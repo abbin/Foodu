@@ -2,17 +2,14 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "1s.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "school_online_pin_reminder-512 copy.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "3s.png",
       "scale" : "3x"
     }
   ],

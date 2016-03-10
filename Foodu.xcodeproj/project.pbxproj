@@ -43,6 +43,7 @@
 		58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08351C919CC500FC25D7 /* log_out-512.png */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
+		ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
 		ED58884C1C410B2600922C9A /* FSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpViewController.h; sourceTree = "<group>"; };
 		ED58884D1C410B2600922C9A /* FSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpViewController.m; sourceTree = "<group>"; };
+		ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delicious-Strawbery-Food-Wallpaper.png"; sourceTree = "<group>"; };
 		EDF8D1D31C82DCDF008C47DB /* FCurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCurrentUser.h; sourceTree = "<group>"; };
 		EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCurrentUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -299,6 +301,7 @@
 				58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */,
 				58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */,
 				58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */,
+				ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */,
 				58FD081F1C91708600FC25D7 /* FProfileViewController.h */,
 				58FD08201C91708600FC25D7 /* FProfileViewController.m */,
 				58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */,
@@ -392,6 +395,7 @@
 				58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */,
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
+				ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */,
 				58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */,
 				58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
