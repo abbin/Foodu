@@ -30,6 +30,17 @@
 		58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CB71C7C2F3E005DE1CC /* FItem.m */; };
 		58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */; };
 		58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CBB1C7C2F3E005DE1CC /* FImages.m */; };
+		58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08201C91708600FC25D7 /* FProfileViewController.m */; };
+		58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */; };
+		58FD08251C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */; };
+		58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */; };
+		58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */; };
+		58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD082B1C919B7900FC25D7 /* groups-512.png */; };
+		58FD082E1C919BBC00FC25D7 /* 19-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD082D1C919BBC00FC25D7 /* 19-512.png */; };
+		58FD08301C919C1600FC25D7 /* App_Store_S4-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD082F1C919C1600FC25D7 /* App_Store_S4-01.png */; };
+		58FD08321C919C6A00FC25D7 /* aami17-05-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08311C919C6A00FC25D7 /* aami17-05-512.png */; };
+		58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08331C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png */; };
+		58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08351C919CC500FC25D7 /* log_out-512.png */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED58884D1C410B2600922C9A /* FSignUpViewController.m */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
@@ -78,6 +89,19 @@
 		58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurants.m; sourceTree = "<group>"; };
 		58F37CBA1C7C2F3E005DE1CC /* FImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImages.h; sourceTree = "<group>"; };
 		58F37CBB1C7C2F3E005DE1CC /* FImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImages.m; sourceTree = "<group>"; };
+		58FD081F1C91708600FC25D7 /* FProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileViewController.h; sourceTree = "<group>"; };
+		58FD08201C91708600FC25D7 /* FProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileViewController.m; sourceTree = "<group>"; };
+		58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Delicious-Strawbery-Food-Wallpaper.jpg"; sourceTree = "<group>"; };
+		58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile_introduction_00_l-ron-hubbard.jpg"; sourceTree = "<group>"; };
+		58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileTableViewCell.h; sourceTree = "<group>"; };
+		58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileTableViewCell.m; sourceTree = "<group>"; };
+		58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1457633293_EditDocument.png; sourceTree = "<group>"; };
+		58FD082B1C919B7900FC25D7 /* groups-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "groups-512.png"; sourceTree = "<group>"; };
+		58FD082D1C919BBC00FC25D7 /* 19-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-512.png"; sourceTree = "<group>"; };
+		58FD082F1C919C1600FC25D7 /* App_Store_S4-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "App_Store_S4-01.png"; sourceTree = "<group>"; };
+		58FD08311C919C6A00FC25D7 /* aami17-05-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aami17-05-512.png"; sourceTree = "<group>"; };
+		58FD08331C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SEO_and_Internet_Marketing-96-512.png"; sourceTree = "<group>"; };
+		58FD08351C919CC500FC25D7 /* log_out-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out-512.png"; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
@@ -120,6 +144,7 @@
 		582006CE1C3E280D00BD0FCD /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
+				58FD081B1C9151C500FC25D7 /* Profile */,
 				582006CF1C3E421C00BD0FCD /* FTabBarController.h */,
 				582006D01C3E421C00BD0FCD /* FTabBarController.m */,
 			);
@@ -262,6 +287,26 @@
 			name = "Parse Objects";
 			sourceTree = "<group>";
 		};
+		58FD081B1C9151C500FC25D7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				58FD08351C919CC500FC25D7 /* log_out-512.png */,
+				58FD08331C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png */,
+				58FD08311C919C6A00FC25D7 /* aami17-05-512.png */,
+				58FD082F1C919C1600FC25D7 /* App_Store_S4-01.png */,
+				58FD082D1C919BBC00FC25D7 /* 19-512.png */,
+				58FD082B1C919B7900FC25D7 /* groups-512.png */,
+				58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */,
+				58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */,
+				58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */,
+				58FD081F1C91708600FC25D7 /* FProfileViewController.h */,
+				58FD08201C91708600FC25D7 /* FProfileViewController.m */,
+				58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */,
+				58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		CC5A19B8C644861B42B73FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,12 +388,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FD082E1C919BBC00FC25D7 /* 19-512.png in Resources */,
+				58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */,
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
+				58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */,
+				58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
+				58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */,
+				58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */,
+				58FD08251C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg in Resources */,
+				58FD08321C919C6A00FC25D7 /* aami17-05-512.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
+				58FD08301C919C1600FC25D7 /* App_Store_S4-01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */,
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
@@ -416,6 +471,7 @@
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				ED58884E1C410B2600922C9A /* FSignUpViewController.m in Sources */,
+				58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,

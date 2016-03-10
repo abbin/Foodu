@@ -14,9 +14,6 @@
 #import "FLocationWarningViewController.h"
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
-NSString *const userEmailKey = @"comPaadamFooduUserEmail";
-NSString *const userNameKey = @"comPaadamFooduUserName";
-NSString *const userTypeKey = @"comPaadamFooduUserType";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 @implementation FCurrentUser
 
@@ -35,7 +32,6 @@ static FCurrentUser *shareduser = nil;
 
 - (id)init {
     if (self = [super init]) {
-        
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -43,18 +39,10 @@ static FCurrentUser *shareduser = nil;
         [self.locationManager requestWhenInUseAuthorization];
         
         [_locationManager startUpdatingLocation];
-        
-        if ([FBSDKAccessToken currentAccessToken]){
-            self.email = [[NSUserDefaults standardUserDefaults] objectForKey:userEmailKey];
-            self.name = [[NSUserDefaults standardUserDefaults] objectForKey:userNameKey];
-            self.userType = FaceBookUser;
-        }
-        else{
-            if ([PFUser currentUser]) {
-                self.email = [PFUser currentUser].email;
-                self.name = [[PFUser currentUser] objectForKey:@"name"];
-                self.userType = EmailUser;
-            }
+        if ([PFUser currentUser]) {
+            self.email = [PFUser currentUser].email;
+            self.name = [[PFUser currentUser]valueForKey:@"name"];
+            self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
         }
     }
     return self;
@@ -76,10 +64,7 @@ static FCurrentUser *shareduser = nil;
 }
 
 +(BOOL)isSessionValid{
-    if ([FBSDKAccessToken currentAccessToken]) {
-        return YES;
-    }
-    else if ([PFUser currentUser]){
+    if ([PFUser currentUser]){
         return YES;
     }
     else{
@@ -124,6 +109,7 @@ static FCurrentUser *shareduser = nil;
     user.email = email;
     user.username = email;
     user[@"name"] = name;
+    user[@"userType"] = @(EmailUser);
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.
@@ -155,8 +141,6 @@ static FCurrentUser *shareduser = nil;
         
         [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
             if (error == nil) {
-                NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-                [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
                 [FCurrentUser resetSharedInstance];
                 if ([FCurrentUser sharedUser].userType == FaceBookUser) {
                     [[FBSDKLoginManager new] logOut];
@@ -168,18 +152,6 @@ static FCurrentUser *shareduser = nil;
                 failure(errorString);
             }
         }];
-}
-
-- (void)callbackForSave:(NSNumber *)result error:(NSError *)error {
-    if ([result boolValue]) {
-        NSLog(@"Everything went fine!");
-    } else {
-        if ([error code] == kPFErrorConnectionFailed) {
-            NSLog(@"Uh oh, we couldn't even connect to the Parse Cloud!");
-        } else if (error) {
-            NSLog(@"Error: %@", [error userInfo][@"error"]);
-        }
-    }
 }
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -225,7 +197,7 @@ static FCurrentUser *shareduser = nil;
          if (error) {
              failure(@"Failed to Sign in to Facebook");
          } else if (result.isCancelled) {
-             failure(@"Facebook Sign In was canceled");
+             failure(@"Facebook Sign in was canceled");
          } else {
              if ([FBSDKAccessToken currentAccessToken]) {
                  [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,email,friends,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
@@ -244,7 +216,15 @@ static FCurrentUser *shareduser = nil;
                                      user[@"name"] = [result objectForKey:@"name"];
                                      user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
                                      user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
-                                     
+                                     user[@"facebookId"] = [result objectForKey:@"id"];
+                                     NSString *url = [[[result objectForKey:@"picture"] objectForKey:@"data"] objectForKey:@"url"];
+                                     PFFile *image;
+                                     if (url.length>0) {
+                                        image = [PFFile fileWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+                                     }
+                                     if (image) {
+                                         user[@"profilePicture"] = image;
+                                     }
                                      [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                                          if (!error) {   // Hooray! Let them use the app now.
                                              if ([FCurrentUser isFirstLaunch]) {
@@ -285,7 +265,7 @@ static FCurrentUser *shareduser = nil;
                              }];
                          }
                          else{
-                             failure(@"Couldn't regester a new account. FUUD requires your email");
+                             failure(@"Couldn't regester a new account. Carte requires your email");
                          }
                      }
                  }];

@@ -10,8 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 typedef NS_ENUM(NSInteger, UserType) {
-    FaceBookUser,
-    EmailUser
+    FaceBookUser = 243123,
+    EmailUser = 413242
 };
 
 @interface FCurrentUser : NSObject<CLLocationManagerDelegate>
