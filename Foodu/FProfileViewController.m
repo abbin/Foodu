@@ -26,9 +26,6 @@
     self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, [UIScreen mainScreen].bounds.size.height/2);
     self.firstNameLabel.font = [UIFont fontWithName:@".SFUIDisplay-Ultralight" size:[UIScreen mainScreen].bounds.size.width/8];
     self.lastNameLabel.font = [UIFont fontWithName:@".SFUIDisplay-Ultralight" size:[UIScreen mainScreen].bounds.size.width/8];
-    [self.headerView layoutIfNeeded];
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2;
-    self.profileImageView.layer.masksToBounds = YES;
     
     // Do any additional setup after loading the view.
 }
