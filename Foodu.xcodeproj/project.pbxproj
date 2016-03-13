@@ -32,7 +32,6 @@
 		58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CBB1C7C2F3E005DE1CC /* FImages.m */; };
 		58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08201C91708600FC25D7 /* FProfileViewController.m */; };
 		58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */; };
-		58FD08251C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */; };
 		58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */; };
 		58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */; };
 		58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD082B1C919B7900FC25D7 /* groups-512.png */; };
@@ -93,7 +92,6 @@
 		58FD081F1C91708600FC25D7 /* FProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileViewController.h; sourceTree = "<group>"; };
 		58FD08201C91708600FC25D7 /* FProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileViewController.m; sourceTree = "<group>"; };
 		58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Delicious-Strawbery-Food-Wallpaper.jpg"; sourceTree = "<group>"; };
-		58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile_introduction_00_l-ron-hubbard.jpg"; sourceTree = "<group>"; };
 		58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileTableViewCell.h; sourceTree = "<group>"; };
 		58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileTableViewCell.m; sourceTree = "<group>"; };
 		58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1457633293_EditDocument.png; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				58FD082D1C919BBC00FC25D7 /* 19-512.png */,
 				58FD082B1C919B7900FC25D7 /* groups-512.png */,
 				58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */,
-				58FD08241C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg */,
 				58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */,
 				ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */,
 				58FD081F1C91708600FC25D7 /* FProfileViewController.h */,
@@ -402,7 +399,6 @@
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */,
 				58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */,
-				58FD08251C91759900FC25D7 /* profile_introduction_00_l-ron-hubbard.jpg in Resources */,
 				58FD08321C919C6A00FC25D7 /* aami17-05-512.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,

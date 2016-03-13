@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 @property(nonatomic,strong) NSString *name;
 @property(nonatomic,strong) NSString *email;
 @property(nonatomic,assign) UserType userType;
+@property(nonatomic,strong) PFFile *profilePicture;
 
 @property(nonatomic,strong) CLLocationManager *locationManager;
 
@@ -33,7 +34,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
-+(void)logOutCurrentUser:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success failure:(void (^)(NSString *error))failure;
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 

@@ -477,13 +477,19 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
     [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+    self.signUpWithEmailButton.enabled = NO;
+    self.facebookButton.enabled = NO;
     [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
+        self.signUpWithEmailButton.enabled = YES;
+        self.facebookButton.enabled = YES;
         [[FAlertView sharedHUD] hideActivityIndicatorOnView];
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
         [appDelegate changeRootViewController:rootViewController];
     } failure:^(NSString *error) {
+        self.signUpWithEmailButton.enabled = YES;
+        self.facebookButton.enabled = YES;
         [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
     }];
 }
@@ -984,7 +990,9 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
         self.nextButton.enabled = NO;
+        [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
         [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+            [[FAlertView sharedHUD]hideActivityIndicatorOnView];
             self.nextButton.enabled = YES;
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -1073,7 +1081,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     gradient.frame = [[UIScreen mainScreen] bounds];
     gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
-    
+    [self.avplayer play];
 }
 
 - (void)playerStartPlaying{

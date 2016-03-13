@@ -9,7 +9,6 @@
 #import "FCurrentUser.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "FLocationWarningViewController.h"
 
@@ -43,6 +42,7 @@ static FCurrentUser *shareduser = nil;
             self.email = [PFUser currentUser].email;
             self.name = [[PFUser currentUser]valueForKey:@"name"];
             self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
+            self.profilePicture = [[PFUser currentUser]valueForKey:@"profilePicture"];
         }
     }
     return self;
@@ -129,23 +129,28 @@ static FCurrentUser *shareduser = nil;
     }];
 }
 
-+(void)logOutCurrentUser:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
++(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success failure:(void (^)(NSString *error))failure{
 
         if (failure == nil) {
             failure = ^(NSString *error){};
         }
         if (success == nil) {
-            success = ^(BOOL success){};
+            success = ^(BOOL success, UserType userType){};
         }
     
         
         [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
             if (error == nil) {
-                [FCurrentUser resetSharedInstance];
                 if ([FCurrentUser sharedUser].userType == FaceBookUser) {
                     [[FBSDKLoginManager new] logOut];
+                    [FCurrentUser resetSharedInstance];
+                    success(YES,FaceBookUser);
                 }
-                success(YES);
+                else{
+                    [FCurrentUser resetSharedInstance];
+                    success(YES,EmailUser);
+                }
+
             }
             else{
                 NSString *errorString = [[error userInfo][@"error"] capitalizedString];
@@ -200,7 +205,7 @@ static FCurrentUser *shareduser = nil;
              failure(@"Facebook Sign in was canceled");
          } else {
              if ([FBSDKAccessToken currentAccessToken]) {
-                 [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,email,friends,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                 [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,first_name,last_name,email,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                      if (!error) {
                          if ([result objectForKey:@"email"]) {
                              
@@ -213,7 +218,7 @@ static FCurrentUser *shareduser = nil;
                                      user.password = userFacebookDefaultPassword;
                                      user.email = [result objectForKey:@"email"];
                                      user.username = [result objectForKey:@"email"];
-                                     user[@"name"] = [result objectForKey:@"name"];
+                                     user[@"name"] = [NSString stringWithFormat:@"%@ %@",[result objectForKey:@"first_name"],[result objectForKey:@"last_name"]];
                                      user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
                                      user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
                                      user[@"facebookId"] = [result objectForKey:@"id"];
@@ -253,6 +258,7 @@ static FCurrentUser *shareduser = nil;
                                                                              [FCurrentUser sharedUser].email = user.email;
                                                                              [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
                                                                              [FCurrentUser sharedUser].userType = FaceBookUser;
+                                                                             [FCurrentUser sharedUser].profilePicture = [user objectForKey:@"profilePicture"];
                                                                              success(YES);
                                                                          } else {
                                                                              NSString *errorString = [[error userInfo][@"error"] capitalizedString];
