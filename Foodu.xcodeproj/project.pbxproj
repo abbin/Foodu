@@ -13,6 +13,7 @@
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
+		58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 58504A591C96B6A000A7E406 /* IMG_0046.PNG */; };
 		5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF61C88014D0039A067 /* FInternetWarningView.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -58,6 +59,7 @@
 		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
+		58504A591C96B6A000A7E406 /* IMG_0046.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0046.PNG; sourceTree = "<group>"; };
 		5851CFF51C88014D0039A067 /* FInternetWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FInternetWarningView.h; sourceTree = "<group>"; };
 		5851CFF61C88014D0039A067 /* FInternetWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInternetWarningView.m; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		58FD081B1C9151C500FC25D7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				58504A591C96B6A000A7E406 /* IMG_0046.PNG */,
 				58FD08351C919CC500FC25D7 /* log_out-512.png */,
 				58FD08331C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png */,
 				58FD08311C919C6A00FC25D7 /* aami17-05-512.png */,
@@ -393,6 +396,7 @@
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
 				ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */,
+				58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */,
 				58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */,
 				58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,

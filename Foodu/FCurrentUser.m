@@ -142,7 +142,7 @@ static FCurrentUser *shareduser = nil;
         [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
             if (error == nil) {
                 if ([FCurrentUser sharedUser].userType == FaceBookUser) {
-                    [[FBSDKLoginManager new] logOut];
+                    //[[FBSDKLoginManager new] logOut];
                     [FCurrentUser resetSharedInstance];
                     success(YES,FaceBookUser);
                 }
@@ -189,11 +189,13 @@ static FCurrentUser *shareduser = nil;
     //    // Set permissions required from the facebook user account
     NSArray *permissionsArray = @[@"public_profile",@"email",@"user_friends"];
     
+    
     if ([FBSDKAccessToken currentAccessToken]) {
         [[FBSDKLoginManager new] logOut];
     }
     
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login setLoginBehavior:FBSDKLoginBehaviorSystemAccount];
     
     [login
      logInWithReadPermissions: permissionsArray

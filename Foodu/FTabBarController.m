@@ -50,7 +50,22 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-
+    if ([FCurrentUser isFirstLaunch]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+        [rootViewController setViewType:FacebookView];
+        [self presentViewController:rootViewController animated:YES completion:^{
+            
+        }];
+    }
+    else if ([FCurrentUser isSessionValid] == NO){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+        [rootViewController setViewType:FacebookView];
+        [self presentViewController:rootViewController animated:YES completion:^{
+            
+        }];
+    }
 }
 
 

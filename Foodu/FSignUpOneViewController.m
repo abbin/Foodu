@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "FTabBarController.h"
 #import "FLocationWarningViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 NSInteger const enabledTag = 1;
 NSInteger const disabledTag = 2;
@@ -110,13 +112,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     [self initVideoBackground];
     
     if (self.viewType == SignUpView) {
-        [self drawSignUpNameScreenAnimated:NO];
+        [self drawSignUpNameScreenAnimated:YES];
     }
     else if (self.viewType == SignInView){
-        [self drawSignInScreenAnimated:NO];
+        [self drawSignInScreenAnimated:YES];
     }
     else{
-        [self drawFacebookScreenAnimated:NO];
+        [self drawFacebookScreenAnimated:YES];
     }
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -1081,7 +1083,6 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     gradient.frame = [[UIScreen mainScreen] bounds];
     gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
-    [self.avplayer play];
 }
 
 - (void)playerStartPlaying{

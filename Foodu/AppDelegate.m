@@ -24,26 +24,11 @@
 @implementation AppDelegate
 
 - (void)changeRootViewController:(UIViewController*)viewController {
-    
-    if (!self.window.rootViewController) {
-        self.window.rootViewController = viewController;
-        return;
-    }
-    
-    UIView *snapShot = [self.window snapshotViewAfterScreenUpdates:YES];
-    
-    [viewController.view addSubview:snapShot];
-    
-    self.window.rootViewController = viewController;
-    
-    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        snapShot.layer.opacity = 0;
-    } completion:^(BOOL finished) {
-        if (self.internetReachability.currentReachabilityStatus == NotReachable) {
-            [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"No Internet" wait:0];
-        }
-        [snapShot removeFromSuperview];
-    }];
+    [UIView transitionWithView:self.window
+                      duration:5
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{ self.window.rootViewController = viewController; }
+                    completion:nil];
 }
 
 - (void) reachabilityChanged:(NSNotification *)note{
@@ -67,7 +52,7 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-    
+    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
