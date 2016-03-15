@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, indexPath) {
 
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *profilePhotoEditButton;
 
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
 @end
 
 @implementation FProfileViewController
@@ -60,6 +62,9 @@ typedef NS_ENUM(NSInteger, indexPath) {
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    if (self.selectedIndexPath) {
+        [self.profileTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,6 +119,7 @@ typedef NS_ENUM(NSInteger, indexPath) {
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.selectedIndexPath = indexPath;
     switch (indexPath.row) {
         case editProfile:{
             
@@ -140,29 +146,38 @@ typedef NS_ENUM(NSInteger, indexPath) {
         }
             break;
         case signOut:{
-            self.view.userInteractionEnabled = NO;
-            [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
-            [FCurrentUser logOutCurrentUser:^(BOOL success, UserType userType) {
-                
-                self.view.userInteractionEnabled = YES;
-                [[FAlertView sharedHUD]hideActivityIndicatorOnView];
-                
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-                
-                if (userType == FaceBookUser) {
-                    [rootViewController setViewType:FacebookView];
-                }
-                else{
-                    [rootViewController setViewType:SignInView];
-                }
-                [appDelegate changeRootViewController:rootViewController];
-                
-            } failure:^(NSString *error) {
-                self.view.userInteractionEnabled = YES;
-                [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Failed to SignOut. Please try again" wait:5];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *actionYes = [UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                self.view.userInteractionEnabled = NO;
+                [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+                [FCurrentUser logOutCurrentUser:^(BOOL success, UserType userType) {
+                    
+                    self.view.userInteractionEnabled = YES;
+                    [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+                    
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+                    
+                    if (userType == FaceBookUser) {
+                        [rootViewController setViewType:FacebookView];
+                    }
+                    else{
+                        [rootViewController setViewType:SignInView];
+                    }
+                    [appDelegate changeRootViewController:rootViewController];
+                    
+                } failure:^(NSString *error) {
+                    self.view.userInteractionEnabled = YES;
+                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Failed to SignOut. Please try again" wait:5];
+                }];
             }];
+            UIAlertAction *actionNo = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [self.profileTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+            }];
+            [alert addAction:actionYes];
+            [alert addAction:actionNo];
+            [self presentViewController:alert animated:YES completion:nil];
         }
             break;
             

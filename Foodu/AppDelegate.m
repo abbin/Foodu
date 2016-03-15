@@ -7,13 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "FSignUpViewController.h"
 #import "FSignUpOneViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "Reachability.h"
 #import "FInternetWarningView.h"
-
+#import "FFirstLaunchViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,11 +23,7 @@
 @implementation AppDelegate
 
 - (void)changeRootViewController:(UIViewController*)viewController {
-    [UIView transitionWithView:self.window
-                      duration:5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{ self.window.rootViewController = viewController; }
-                    completion:nil];
+    self.window.rootViewController = viewController;
 }
 
 - (void) reachabilityChanged:(NSNotification *)note{
@@ -52,7 +47,7 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-    [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];
@@ -64,9 +59,8 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     if ([FCurrentUser isFirstLaunch]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-        [rootViewController setViewType:FacebookView];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+        FFirstLaunchViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FFirstLaunchViewController"];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
@@ -80,10 +74,10 @@
         [self.window makeKeyAndVisible];
     }
     
-//    if ([FCurrentUser isFirstLaunch] == NO) {
+    if ([FCurrentUser isFirstLaunch] == NO) {
         [FCurrentUser sharedUser];
-//    }
-    
+    }
+
     if (self.internetReachability.currentReachabilityStatus == NotReachable) {
         [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"Not Connected" wait:0];
     }

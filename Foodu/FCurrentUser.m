@@ -130,33 +130,25 @@ static FCurrentUser *shareduser = nil;
 }
 
 +(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success failure:(void (^)(NSString *error))failure{
-
-        if (failure == nil) {
-            failure = ^(NSString *error){};
-        }
-        if (success == nil) {
-            success = ^(BOOL success, UserType userType){};
-        }
     
-        
-        [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-            if (error == nil) {
-                if ([FCurrentUser sharedUser].userType == FaceBookUser) {
-                    //[[FBSDKLoginManager new] logOut];
-                    [FCurrentUser resetSharedInstance];
-                    success(YES,FaceBookUser);
-                }
-                else{
-                    [FCurrentUser resetSharedInstance];
-                    success(YES,EmailUser);
-                }
-
-            }
-            else{
-                NSString *errorString = [[error userInfo][@"error"] capitalizedString];
-                failure(errorString);
-            }
-        }];
+    if (failure == nil) {
+        failure = ^(NSString *error){};
+    }
+    if (success == nil) {
+        success = ^(BOOL success, UserType userType){};
+    }
+    
+    [PFUser logOutInBackground];
+    
+    if ([FCurrentUser sharedUser].userType == FaceBookUser) {
+        [[FBSDKLoginManager new] logOut];
+        [FCurrentUser resetSharedInstance];
+        success(YES,FaceBookUser);
+    }
+    else{
+        [FCurrentUser resetSharedInstance];
+        success(YES,EmailUser);
+    }
 }
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{

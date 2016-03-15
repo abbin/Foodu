@@ -112,13 +112,13 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     [self initVideoBackground];
     
     if (self.viewType == SignUpView) {
-        [self drawSignUpNameScreenAnimated:YES];
+        [self drawSignUpNameScreenAnimated:NO];
     }
     else if (self.viewType == SignInView){
-        [self drawSignInScreenAnimated:YES];
+        [self drawSignInScreenAnimated:NO];
     }
     else{
-        [self drawFacebookScreenAnimated:YES];
+        [self drawFacebookScreenAnimated:NO];
     }
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];

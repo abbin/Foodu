@@ -28,20 +28,4 @@
     // Configure the view for the selected state
 }
 
-//-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-//}
-//
-//-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [UIView animateWithDuration:0.3 animations:^{
-//        self.backgroundColor = [UIColor clearColor];
-//    }];
-//}
-//
-//-(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [UIView animateWithDuration:0.3 animations:^{
-//        self.backgroundColor = [UIColor clearColor];
-//    }];
-//}
-
 @end
