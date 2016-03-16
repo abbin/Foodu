@@ -8,7 +8,7 @@
 
 #import "FFirstLaunchViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "FPageONEViewController.h"
+
 @interface FFirstLaunchViewController ()
 
 @property (nonatomic, strong) AVPlayer *avplayer;
@@ -29,6 +29,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
     FPageONEViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageONEViewController"];
+    rootViewController.delegate = self;
     [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
@@ -37,7 +38,6 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,6 +93,13 @@
     AVPlayerItem *p = [notification object];
     [p seekToTime:kCMTimeZero];
     
+}
+
+-(void)ONEClickedNext:(FPageONEViewController *)viewController{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FPageTWOViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTWOViewController"];
+    //rootViewController.delegate = self;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 

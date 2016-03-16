@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPageONEViewController.h"
+#import "FPageTWOViewController.h"
 
-@interface FFirstLaunchViewController : UIViewController
+@interface FFirstLaunchViewController : UIViewController<ONEDelegate>
 
 @end

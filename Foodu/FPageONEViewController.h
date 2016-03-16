@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class FPageONEViewController;
+@protocol ONEDelegate <NSObject>
+
+-(void)ONEClickedNext:(FPageONEViewController*)viewController;
+
+@end
+
 @interface FPageONEViewController : UIViewController
+
+@property(nonatomic,strong) id <ONEDelegate>delegate;
 
 @end

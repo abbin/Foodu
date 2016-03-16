@@ -22,6 +22,11 @@
 		5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF61C88014D0039A067 /* FInternetWarningView.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
+		58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A7271C99317900D62E24 /* FPageTWOViewController.m */; };
+		58A8A72B1C994E1C00D62E24 /* FPageOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A72A1C994E1C00D62E24 /* FPageOne.m */; };
+		58A8A72E1C994E2D00D62E24 /* FPageTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A72D1C994E2D00D62E24 /* FPageTwo.m */; };
+		58A8A7311C994E3D00D62E24 /* FPageThree.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A7301C994E3D00D62E24 /* FPageThree.m */; };
+		58A8A7371C99582500D62E24 /* FPageFour.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A7361C99582500D62E24 /* FPageFour.m */; };
 		58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */; };
 		58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */; };
 		58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26171C4FB2EA009AA930 /* FImagePickerController.m */; };
@@ -77,6 +82,16 @@
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		58846B621C3E9230006CFBFB /* UIColor+FColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FColours.h"; sourceTree = "<group>"; };
 		58846B631C3E9230006CFBFB /* UIColor+FColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FColours.m"; sourceTree = "<group>"; };
+		58A8A7261C99317900D62E24 /* FPageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageTWOViewController.h; sourceTree = "<group>"; };
+		58A8A7271C99317900D62E24 /* FPageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageTWOViewController.m; sourceTree = "<group>"; };
+		58A8A7291C994E1C00D62E24 /* FPageOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageOne.h; sourceTree = "<group>"; };
+		58A8A72A1C994E1C00D62E24 /* FPageOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageOne.m; sourceTree = "<group>"; };
+		58A8A72C1C994E2D00D62E24 /* FPageTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageTwo.h; sourceTree = "<group>"; };
+		58A8A72D1C994E2D00D62E24 /* FPageTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageTwo.m; sourceTree = "<group>"; };
+		58A8A72F1C994E3D00D62E24 /* FPageThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageThree.h; sourceTree = "<group>"; };
+		58A8A7301C994E3D00D62E24 /* FPageThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageThree.m; sourceTree = "<group>"; };
+		58A8A7351C99582500D62E24 /* FPageFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageFour.h; sourceTree = "<group>"; };
+		58A8A7361C99582500D62E24 /* FPageFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageFour.m; sourceTree = "<group>"; };
 		58AD26021C4F5385009AA930 /* FImagePickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePickerCollectionViewCell.h; sourceTree = "<group>"; };
 		58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePickerCollectionViewCell.m; sourceTree = "<group>"; };
 		58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePickerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -340,6 +355,16 @@
 				580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */,
 				580BF2C41C9835DC00F50499 /* FPageONEViewController.h */,
 				580BF2C51C9835DC00F50499 /* FPageONEViewController.m */,
+				58A8A7261C99317900D62E24 /* FPageTWOViewController.h */,
+				58A8A7271C99317900D62E24 /* FPageTWOViewController.m */,
+				58A8A7291C994E1C00D62E24 /* FPageOne.h */,
+				58A8A72A1C994E1C00D62E24 /* FPageOne.m */,
+				58A8A72C1C994E2D00D62E24 /* FPageTwo.h */,
+				58A8A72D1C994E2D00D62E24 /* FPageTwo.m */,
+				58A8A72F1C994E3D00D62E24 /* FPageThree.h */,
+				58A8A7301C994E3D00D62E24 /* FPageThree.m */,
+				58A8A7351C99582500D62E24 /* FPageFour.h */,
+				58A8A7361C99582500D62E24 /* FPageFour.m */,
 			);
 			name = "First Launch";
 			sourceTree = "<group>";
@@ -491,7 +516,11 @@
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
+				58A8A7371C99582500D62E24 /* FPageFour.m in Sources */,
 				58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */,
+				58A8A7311C994E3D00D62E24 /* FPageThree.m in Sources */,
+				58A8A72E1C994E2D00D62E24 /* FPageTwo.m in Sources */,
+				58A8A72B1C994E1C00D62E24 /* FPageOne.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
 				580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
@@ -503,6 +532,7 @@
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
+				58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */,
 				581152D71C87191600B592B6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

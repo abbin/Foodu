@@ -95,16 +95,16 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.facebookButtonContainerView.layer.cornerRadius = 5;
+    self.facebookButtonContainerView.layer.cornerRadius = self.facebookContainerView.frame.size.width/2;
     self.facebookButtonContainerView.layer.masksToBounds = YES;
     
-    self.signUpWithEmailButton.layer.cornerRadius = 5;
+    self.signUpWithEmailButton.layer.cornerRadius = self.signUpWithEmailButton.frame.size.width/2;
     self.signUpWithEmailButton.layer.masksToBounds = YES;
     
-    self.nextButton.layer.cornerRadius = 5;
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.size.width/2;
     self.nextButton.layer.masksToBounds = YES;
     
-    self.signInButton.layer.cornerRadius = 5;
+    self.signInButton.layer.cornerRadius = self.signInButton.frame.size.width/2;
     self.signInButton.layer.masksToBounds = YES;
     
     self.signUpScreen = SignUpOne;
