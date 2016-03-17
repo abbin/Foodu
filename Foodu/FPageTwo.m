@@ -11,6 +11,7 @@
 @interface FPageTwo ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrain;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -24,7 +25,7 @@
                                                                           [UIScreen mainScreen].bounds.size.height/8,
                                                                           width,
                                                                           height)];
-    imageview.backgroundColor = [UIColor grayColor];
+    imageview.backgroundColor = [UIColor lightTextColor];
     
     
     CAShapeLayer * maskLayer = [CAShapeLayer layer];
@@ -38,7 +39,31 @@
                                              selector:@selector(adustParallax:)
                                                  name:@"paralax"
                                                object:nil];
-    // Do any additional setup after loading the view.
+   
+    NSString *fontname = @"";
+    NSString *fontTwo = @"";
+    if ([UIFont fontWithName:@".SFUIDisplay-Thin" size:10]) {
+        fontname = @".SFUIDisplay-Thin";
+        fontTwo = @".SFUIDisplay-Light";
+    }
+    else{
+        fontTwo = @".HelveticaNeueInterface-Thin";
+        fontname = @".HelveticaNeueInterface-UltraLightP2";
+    }
+    
+    NSString *string = @"Every FUUD is great!\nWe sort them for you by Location";
+    NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:string];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/18]
+                  range:NSMakeRange(0, string.length)];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontTwo size:[UIScreen mainScreen].bounds.size.width/16]
+                  range:NSMakeRange(6, 5)];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontTwo size:[UIScreen mainScreen].bounds.size.width/16]
+                  range:NSMakeRange(45, 8)];
+    
+    self.label.attributedText = hogan;
 }
 
 - (void)didReceiveMemoryWarning {

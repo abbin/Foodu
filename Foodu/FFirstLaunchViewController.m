@@ -8,6 +8,7 @@
 
 #import "FFirstLaunchViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "FPageTHREEViewController.h"
 
 @interface FFirstLaunchViewController ()
 
@@ -98,8 +99,15 @@
 -(void)ONEClickedNext:(FPageONEViewController *)viewController{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
     FPageTWOViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTWOViewController"];
-    //rootViewController.delegate = self;
+    rootViewController.delegateObj = self;
     [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)TWOClickedNext:(FPageFour *)viewController{
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+//    FPageTHREEViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTHREEViewController"];
+////    rootViewController.delegateObj = self;
+//    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 

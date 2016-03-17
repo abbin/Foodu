@@ -10,7 +10,8 @@
 
 @interface FPageThree ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrain;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -24,7 +25,7 @@
                                                                           -10,
                                                                           width,
                                                                           height)];
-    imageview.backgroundColor = [UIColor redColor];
+    imageview.backgroundColor = [UIColor lightTextColor];
     
     
     CAShapeLayer * maskLayer = [CAShapeLayer layer];
@@ -38,7 +39,30 @@
                                              selector:@selector(adustParallax:)
                                                  name:@"paralax"
                                                object:nil];
-    // Do any additional setup after loading the view.
+    NSString *fontname = @"";
+    NSString *fontTwo = @"";
+    if ([UIFont fontWithName:@".SFUIDisplay-Thin" size:10]) {
+        fontname = @".SFUIDisplay-Thin";
+        fontTwo = @".SFUIDisplay-Light";
+    }
+    else{
+        fontTwo = @".HelveticaNeueInterface-Thin";
+        fontname = @".HelveticaNeueInterface-UltraLightP2";
+    }
+    
+    NSString *string = @"Found something new?\nDont eat alone. Let the others know. FUUD is always best shared";
+    NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:string];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/18]
+                  range:NSMakeRange(0, string.length)];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontTwo size:[UIScreen mainScreen].bounds.size.width/16]
+                  range:NSMakeRange(16, 3)];
+    [hogan addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:fontTwo size:[UIScreen mainScreen].bounds.size.width/16]
+                  range:NSMakeRange(58, 4)];
+    
+    self.label.attributedText = hogan;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +72,7 @@
 
 - (void) adustParallax:(NSNotification *) notification{
     CGPoint point = [self.view.superview convertPoint:self.view.frame.origin toView:nil];
-    self.label.constant = point.x;
+    self.constrain.constant = point.x;
 }
 
 @end

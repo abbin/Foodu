@@ -10,7 +10,10 @@
 
 @interface FPageOne ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *label;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrain;
+@property (weak, nonatomic) IBOutlet UILabel *joinLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fuudLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discoverLabel;
 
 @end
 
@@ -24,7 +27,7 @@
                                                                           [UIScreen mainScreen].bounds.size.height/8,
                                                                           width,
                                                                           height)];
-    imageview.backgroundColor = [UIColor redColor];
+    imageview.backgroundColor = [UIColor lightTextColor];
     
 
     CAShapeLayer * maskLayer = [CAShapeLayer layer];
@@ -38,6 +41,23 @@
                                              selector:@selector(adustParallax:)
                                                  name:@"paralax"
                                                object:nil];
+    
+    NSString *fontname = @"";
+    NSString *fontTwo = @"";
+    if ([UIFont fontWithName:@".SFUIDisplay-Thin" size:10]) {
+        fontname = @".SFUIDisplay-Thin";
+        fontTwo = @".SFUIDisplay-Light";
+    }
+    else{
+        fontTwo = @".HelveticaNeueInterface-Thin";
+        fontname = @".HelveticaNeueInterface-UltraLightP2";
+    }
+    
+        self.joinLabel.font = [UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/17];
+        self.discoverLabel.font = [UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/17];
+        self.fuudLabel.font = [UIFont fontWithName:fontTwo size:[UIScreen mainScreen].bounds.size.width/13];
+
+
     // Do any additional setup after loading the view.
 }
 
@@ -48,7 +68,7 @@
 
 - (void) adustParallax:(NSNotification *) notification{
     CGPoint point = [self.view.superview convertPoint:self.view.frame.origin toView:nil];
-    self.label.constant = point.x;
+    self.constrain.constant = point.x;
 }
 
 

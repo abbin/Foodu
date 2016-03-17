@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FFirstLaunchViewController.h"
+@class FFirstLaunchViewController;
 
 @interface FPageTWOViewController : UIViewController<UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate>
+
+@property (nonatomic ,strong) FFirstLaunchViewController *delegateObj;
 
 @end

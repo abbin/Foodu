@@ -85,7 +85,7 @@
         case 4:{
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
             FPageFour *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageFour"];
-            
+            rootViewController.delegate = self.delegateObj;
             return rootViewController;
         }
             break;
@@ -113,6 +113,7 @@
         case 3:{
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
             FPageFour *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageFour"];
+            rootViewController.delegate = self.delegateObj;
             return rootViewController;
         }
             break;
