@@ -25,18 +25,13 @@
     
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     filter.country = @"IND";
-    filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
+    filter.type = kGMSPlacesAutocompleteTypeFilterCity;
     
     self.fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:nil
                                                        filter:filter];
     self.fetcher.delegate = self;
     
-    [[GMSPlacesClient sharedClient] lookUpPlaceID:@"ChIJv8a-SlENCDsRkkGEpcqC1Qs" callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
-        NSLog(@"%f",result.coordinate.latitude);
-        NSLog(@"%f",result.coordinate.longitude);
-    }];
-    
-    [self.listTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
+   // [self.listTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -47,11 +42,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self.searchBar becomeFirstResponder];
     self.searchBarConstarin.constant = 8;
     [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        [self.searchBar becomeFirstResponder];
+        
     }];
 }
 
@@ -73,6 +69,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
     GMSAutocompletePrediction *prediction = [self.listArray objectAtIndex:indexPath.row];
     [[GMSPlacesClient sharedClient] lookUpPlaceID:prediction.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -84,13 +81,22 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellID" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellID"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCellID"];
+    }
     GMSAutocompletePrediction *prediction = [self.listArray objectAtIndex:indexPath.row];
-    cell.textLabel.attributedText = prediction.attributedFullText;
+    cell.textLabel.attributedText = prediction.attributedPrimaryText;
+    cell.detailTextLabel.attributedText = prediction.attributedSecondaryText;
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [UIScreen mainScreen].bounds.size.height/10;
 }
 
 -(void)setKeyboardOnSearchBar:(UISearchBar *)searchBar
