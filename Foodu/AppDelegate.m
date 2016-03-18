@@ -13,7 +13,7 @@
 #import "Reachability.h"
 #import "FInternetWarningView.h"
 #import "FFirstLaunchViewController.h"
-
+@import GoogleMaps;
 @interface AppDelegate ()
 
 @property (nonatomic) Reachability *internetReachability;
@@ -47,7 +47,9 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-
+    
+    [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     self.internetReachability = [Reachability reachabilityForInternetConnection];
     [self.internetReachability startNotifier];

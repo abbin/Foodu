@@ -17,6 +17,8 @@
 		5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810F3531C85BB090032E221 /* FLocationWarningViewController.m */; };
 		5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */; };
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
+		5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */; };
+		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 58504A591C96B6A000A7E406 /* IMG_0046.PNG */; };
@@ -74,6 +76,9 @@
 		5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationWarningViewController.xib; sourceTree = "<group>"; };
 		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		5812BB9A1C9BF13E00C22FDE /* FLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationPickerViewController.h; sourceTree = "<group>"; };
+		5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLocationPickerViewController.m; sourceTree = "<group>"; };
+		5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationPickerViewController.xib; sourceTree = "<group>"; };
 		5812C4AB1C8976C00055A54B /* FAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAlertView.h; sourceTree = "<group>"; };
 		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
@@ -170,6 +175,16 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		5812BB991C9BF11800C22FDE /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				5812BB9A1C9BF13E00C22FDE /* FLocationPickerViewController.h */,
+				5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */,
+				5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */,
+			);
+			name = LocationPicker;
+			sourceTree = "<group>";
+		};
 		582006CE1C3E280D00BD0FCD /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +229,7 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				5812BB991C9BF11800C22FDE /* LocationPicker */,
 				581152D41C87190300B592B6 /* Reachability */,
 				5823BFB61C589E9300DEBD18 /* Colors */,
 				5823BFB51C589E7400DEBD18 /* Rating */,
@@ -453,6 +469,7 @@
 				58FD08321C919C6A00FC25D7 /* aami17-05-512.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
+				5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */,
 				58FD08301C919C1600FC25D7 /* App_Store_S4-01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +532,7 @@
 				58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */,
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
 				5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */,
+				5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
 				5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */,
@@ -602,7 +620,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -641,7 +659,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -662,7 +680,7 @@
 				);
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -682,7 +700,7 @@
 				);
 				GCC_PREFIX_HEADER = Foodu/PrefixHeader.pch;
 				INFOPLIST_FILE = Foodu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

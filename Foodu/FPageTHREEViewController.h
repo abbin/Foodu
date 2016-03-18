@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleMaps;
 
-@interface FPageTHREEViewController : UIViewController
+@interface FPageTHREEViewController : UIViewController<GMSAutocompleteViewControllerDelegate>
 
 @end

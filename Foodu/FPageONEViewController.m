@@ -58,7 +58,7 @@
     }
     
     [self.GetStartedButton.titleLabel setFont:[UIFont fontWithName:textfont size:[UIScreen mainScreen].bounds.size.width/25]];
-    
+    [self.view layoutIfNeeded];
     self.GetStartedButton.layer.cornerRadius = self.GetStartedButton.frame.size.height/2;
     self.GetStartedButton.layer.masksToBounds = YES;
 

@@ -104,10 +104,10 @@
 }
 
 -(void)TWOClickedNext:(FPageFour *)viewController{
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
-//    FPageTHREEViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTHREEViewController"];
-////    rootViewController.delegateObj = self;
-//    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FPageTHREEViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTHREEViewController"];
+//    rootViewController.delegateObj = self;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 
