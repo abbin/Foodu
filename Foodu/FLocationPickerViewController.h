@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "FLocationObject.h"
+
+@class FLocationPickerViewController;
+
+@protocol FLocationPickerDelegate <NSObject>
+
+-(void)FLocationPicker:(FLocationPickerViewController*)picker didFinishPickingPlace:(FLocationObject*)location;
+
+@end
 
 @interface FLocationPickerViewController : UIViewController<UISearchBarDelegate,GMSAutocompleteFetcherDelegate,UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) id <FLocationPickerDelegate> delegate;
 
 @end

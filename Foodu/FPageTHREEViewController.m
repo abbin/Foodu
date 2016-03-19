@@ -7,7 +7,6 @@
 //
 
 #import "FPageTHREEViewController.h"
-#import "FLocationPickerViewController.h"
 
 @interface FPageTHREEViewController ()
 
@@ -21,6 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(locationManagerdidChangeAuthorizationStatus:)
+                                                 name:@"locationManagerdidChangeAuthorizationStatus"
+                                               object:nil];
     
     NSString *fontname = @"";
     NSString *fontTwo = @"";
@@ -57,47 +61,32 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)autoButtonClicked:(UIButton *)sender {
-    [FCurrentUser sharedUser];
+    [[FCurrentUser sharedUser] askForLocationPermision];
 }
 - (IBAction)manualButtonClicked:(UIButton *)sender {
-//    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
-//    acController.delegate = self;
-//    [self presentViewController:acController animated:YES completion:nil];
     FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+    picker.delegate = self;
     picker.providesPresentationContextTransitionStyle = YES;
     picker.definesPresentationContext = YES;
     picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-- (void)viewController:(GMSAutocompleteViewController *)viewController
-didAutocompleteWithPlace:(GMSPlace *)place {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // Do something with the selected place.
-    NSLog(@"Place name %@", place.name);
-    NSLog(@"Place address %@", place.formattedAddress);
-    NSLog(@"Place attributions %@", place.attributions.string);
+-(void)FLocationPicker:(FLocationPickerViewController *)picker didFinishPickingPlace:(FLocationObject *)location{
+    [FCurrentUser sharedUser].userlocation = location;
 }
 
-- (void)viewController:(GMSAutocompleteViewController *)viewController
-didFailAutocompleteWithError:(NSError *)error {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    // TODO: handle the error.
-    NSLog(@"Error: %@", [error description]);
+- (void) locationManagerdidChangeAuthorizationStatus:(NSNotification *) notification{
+    NSDictionary *dict = notification.userInfo;
+    if ([[dict objectForKey:@"CLAuthorizationStatus"] integerValue] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+            GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+            GMSPlace* place = likelihood.place;
+            FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:place];
+            [FCurrentUser sharedUser].userlocation = obj;
+        }];
+    }
 }
 
-- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

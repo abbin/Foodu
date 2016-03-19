@@ -31,21 +31,23 @@ static FCurrentUser *shareduser = nil;
 
 - (id)init {
     if (self = [super init]) {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-        
-        [self.locationManager requestWhenInUseAuthorization];
-        
-        [_locationManager startUpdatingLocation];
         if ([PFUser currentUser]) {
             self.email = [PFUser currentUser].email;
             self.name = [[PFUser currentUser]valueForKey:@"name"];
             self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
             self.profilePicture = [[PFUser currentUser]valueForKey:@"profilePicture"];
+            self.userlocation = [[PFUser currentUser]valueForKey:@"userlocation"];
         }
     }
     return self;
+}
+
++(void)askForLocationPermision{
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    
+    [locationManager requestWhenInUseAuthorization];
 }
 
 +(BOOL)isFirstLaunch{
@@ -72,27 +74,32 @@ static FCurrentUser *shareduser = nil;
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [FCurrentUser sharedUser].userlocation = [PFGeoPoint geoPointWithLocation:[locations lastObject]];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    if ([appDelegate.window.rootViewController.presentedViewController isKindOfClass:[FLocationWarningViewController class]]) {
-        [appDelegate.window.rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
-            
-        }];
-    }
-}
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    
+////    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+////    if ([appDelegate.window.rootViewController.presentedViewController isKindOfClass:[FLocationWarningViewController class]]) {
+////        [appDelegate.window.rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
+////            
+////        }];
+////    }
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+////    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
+////        FLocationWarningViewController *con = [[FLocationWarningViewController alloc]initWithNibName:@"FLocationWarningViewController" bundle:[NSBundle mainBundle]];
+////        con.providesPresentationContextTransitionStyle = YES;
+////        con.definesPresentationContext = YES;
+////        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+////        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+////        [appDelegate.window.rootViewController presentViewController:con animated:YES completion:^{
+////            
+////        }];
+////    }
+//}
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
-        FLocationWarningViewController *con = [[FLocationWarningViewController alloc]initWithNibName:@"FLocationWarningViewController" bundle:[NSBundle mainBundle]];
-        con.providesPresentationContextTransitionStyle = YES;
-        con.definesPresentationContext = YES;
-        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.window.rootViewController presentViewController:con animated:YES completion:^{
-            
-        }];
-    }
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    NSDictionary* userInfo = @{@"CLAuthorizationStatus": @(status)};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"locationManagerdidChangeAuthorizationStatus" object:self userInfo:userInfo];
 }
 
 +(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -110,6 +117,7 @@ static FCurrentUser *shareduser = nil;
     user.username = email;
     user[@"name"] = name;
     user[@"userType"] = @(EmailUser);
+    user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.

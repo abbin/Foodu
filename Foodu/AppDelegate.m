@@ -13,6 +13,7 @@
 #import "Reachability.h"
 #import "FInternetWarningView.h"
 #import "FFirstLaunchViewController.h"
+
 @import GoogleMaps;
 @interface AppDelegate ()
 
@@ -75,10 +76,6 @@
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
-    
-    if ([FCurrentUser isFirstLaunch] == NO) {
-        [FCurrentUser sharedUser];
-    }
 
     if (self.internetReachability.currentReachabilityStatus == NotReachable) {
         [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"Not Connected" wait:0];
@@ -109,6 +106,16 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    if ([FCurrentUser isFirstLaunch] == NO && [FCurrentUser isSessionValid] == YES) {
+        [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+            GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+            GMSPlace* place = likelihood.place;
+            FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:place];
+            [FCurrentUser sharedUser].userlocation = obj;
+        }];
+    }
+    
     [FBSDKAppEvents activateApp];
 
 }

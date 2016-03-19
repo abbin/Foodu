@@ -21,6 +21,7 @@
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
+		582973581C9D32D500AFCB82 /* FLocationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 582973571C9D32D500AFCB82 /* FLocationObject.m */; };
 		58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 58504A591C96B6A000A7E406 /* IMG_0046.PNG */; };
 		5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF61C88014D0039A067 /* FInternetWarningView.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
@@ -83,6 +84,8 @@
 		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
+		582973561C9D32D500AFCB82 /* FLocationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationObject.h; sourceTree = "<group>"; };
+		582973571C9D32D500AFCB82 /* FLocationObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLocationObject.m; sourceTree = "<group>"; };
 		58504A591C96B6A000A7E406 /* IMG_0046.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0046.PNG; sourceTree = "<group>"; };
 		5851CFF51C88014D0039A067 /* FInternetWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FInternetWarningView.h; sourceTree = "<group>"; };
 		5851CFF61C88014D0039A067 /* FInternetWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInternetWarningView.m; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */,
 				58F37CBA1C7C2F3E005DE1CC /* FImages.h */,
 				58F37CBB1C7C2F3E005DE1CC /* FImages.m */,
+				582973561C9D32D500AFCB82 /* FLocationObject.h */,
+				582973571C9D32D500AFCB82 /* FLocationObject.m */,
 			);
 			name = "Parse Objects";
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				58A8A72E1C994E2D00D62E24 /* FPageTwo.m in Sources */,
 				58A8A72B1C994E1C00D62E24 /* FPageOne.m in Sources */,
 				58ED13341C4CF8E00049F2C2 /* NSIndexSet+NSIndexSet_Convenience.m in Sources */,
+				582973581C9D32D500AFCB82 /* FLocationObject.m in Sources */,
 				580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,

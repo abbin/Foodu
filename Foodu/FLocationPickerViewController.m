@@ -25,7 +25,7 @@
     
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     filter.country = @"IND";
-    filter.type = kGMSPlacesAutocompleteTypeFilterCity;
+    filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
     
     self.fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:nil
                                                        filter:filter];
@@ -71,8 +71,31 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.view endEditing:YES];
     GMSAutocompletePrediction *prediction = [self.listArray objectAtIndex:indexPath.row];
+    
     [[GMSPlacesClient sharedClient] lookUpPlaceID:prediction.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (error) {
+            [[GMSPlacesClient sharedClient] lookUpPlaceID:prediction.placeID callback:^(GMSPlace * _Nullable result, NSError * _Nullable error) {
+                if (error) {
+                    
+                }
+                else{
+                    FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:result];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        if ([self.delegate respondsToSelector:@selector(FLocationPicker:didFinishPickingPlace:)]) {
+                            [self.delegate  FLocationPicker:self didFinishPickingPlace:obj];
+                        }
+                    }];
+                }
+            }];
+        }
+        else{
+            FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:result];
+            [self dismissViewControllerAnimated:YES completion:^{
+                if ([self.delegate respondsToSelector:@selector(FLocationPicker:didFinishPickingPlace:)]) {
+                    [self.delegate  FLocationPicker:self didFinishPickingPlace:obj];
+                }
+            }];
+        }
     }];
 }
 
@@ -124,7 +147,7 @@
 }
 
 - (void)didFailAutocompleteWithError:(NSError *)error {
-    NSLog(@"%@",[NSString stringWithFormat:@"%@", error.localizedDescription]);
+    
 }
 
 @end
