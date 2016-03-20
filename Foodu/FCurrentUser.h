@@ -16,11 +16,11 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 @interface FCurrentUser : NSObject<CLLocationManagerDelegate>
 
-@property(nonatomic,strong) FLocationObject *userlocation;
-@property(nonatomic,strong) NSString *name;
-@property(nonatomic,strong) NSString *email;
-@property(nonatomic,assign) UserType userType;
-@property(nonatomic,strong) PFFile *profilePicture;
+//@property(nonatomic,strong) NSMutableDictionary *userlocation;
+//@property(nonatomic,strong) NSString *name;
+//@property(nonatomic,strong) NSString *email;
+//@property(nonatomic,assign) UserType userType;
+//@property(nonatomic,strong) PFFile *profilePicture;
 
 + (FCurrentUser*)sharedUser;
 
@@ -38,6 +38,26 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 +(void)connectWithFacebookFromViewController:(UIViewController*)viewController success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
-+(void)askForLocationPermision;
+-(void)askForLocationPermision;
+
+-(NSString*)name;
+
+-(NSString*)email;
+
+-(NSMutableDictionary*)userlocation;
+
+-(UserType)userType;
+
+-(PFFile*)profilePicture;
+
+-(void)updateName:(NSString*)name;
+
+-(void)updateEmail:(NSString*)email;
+
+-(void)updateUserlocation:(NSMutableDictionary*)location;
+
+-(void)updateUserType:(UserType)userType;
+
+-(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
 @end

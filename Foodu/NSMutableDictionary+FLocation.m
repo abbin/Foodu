@@ -1,17 +1,17 @@
 //
-//  FLocationObject.m
+//  NSMutableDictionary+FLocation.m
 //  Foodu
 //
-//  Created by Abbin on 19/03/16.
+//  Created by Abbin Varghese on 20/03/16.
 //  Copyright © 2016 Paadam. All rights reserved.
 //
 
-#import "FLocationObject.h"
+#import "NSMutableDictionary+FLocation.h"
 
-@implementation FLocationObject
+@implementation NSMutableDictionary (FLocation)
 
 -(instancetype)initWithGMSPlace:(GMSPlace *)place{
-    self = [super init];
+    self = [self init];
     if (self != nil){
         [self setObject:place.placeID forKey:@"placeIDKey"];
         if (place.formattedAddress) {

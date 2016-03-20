@@ -79,7 +79,7 @@
                     
                 }
                 else{
-                    FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:result];
+                    NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:result];
                     [self dismissViewControllerAnimated:YES completion:^{
                         if ([self.delegate respondsToSelector:@selector(FLocationPicker:didFinishPickingPlace:)]) {
                             [self.delegate  FLocationPicker:self didFinishPickingPlace:obj];
@@ -89,7 +89,7 @@
             }];
         }
         else{
-            FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:result];
+            NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:result];
             [self dismissViewControllerAnimated:YES completion:^{
                 if ([self.delegate respondsToSelector:@selector(FLocationPicker:didFinishPickingPlace:)]) {
                     [self.delegate  FLocationPicker:self didFinishPickingPlace:obj];

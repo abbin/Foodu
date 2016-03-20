@@ -16,6 +16,10 @@ NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 @implementation FCurrentUser
 
+{
+    CLLocationManager *locationManager;
+}
+
 static FCurrentUser *shareduser = nil;
 
 + (FCurrentUser*)sharedUser {
@@ -31,23 +35,88 @@ static FCurrentUser *shareduser = nil;
 
 - (id)init {
     if (self = [super init]) {
-        if ([PFUser currentUser]) {
-            self.email = [PFUser currentUser].email;
-            self.name = [[PFUser currentUser]valueForKey:@"name"];
-            self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
-            self.profilePicture = [[PFUser currentUser]valueForKey:@"profilePicture"];
-            self.userlocation = [[PFUser currentUser]valueForKey:@"userlocation"];
-        }
+//        if ([PFUser currentUser]) {
+//            self.email = [PFUser currentUser].email;
+//            self.name = [[PFUser currentUser]valueForKey:@"name"];
+//            self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
+//            self.profilePicture = [[PFUser currentUser]valueForKey:@"profilePicture"];
+//            self.userlocation = [[PFUser currentUser]valueForKey:@"userlocation"];
+//        }
     }
     return self;
 }
 
-+(void)askForLocationPermision{
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+-(NSString*)name{
+    return [[PFUser currentUser]valueForKey:@"name"];
+}
+
+-(NSString*)email{
+    return [PFUser currentUser].email;
+}
+
+-(NSMutableDictionary*)userlocation{
+    return [[PFUser currentUser]valueForKey:@"userlocation"];
+}
+
+-(UserType)userType{
+    return [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
+}
+
+-(PFFile*)profilePicture{
+    return [[PFUser currentUser]valueForKey:@"profilePicture"];
+}
+
+
+
+-(void)updateName:(NSString*)name{
+    [PFUser currentUser][@"name"] = name;
+    [[PFUser currentUser] saveEventually];
+}
+
+-(void)updateEmail:(NSString*)email{
+    [PFUser currentUser].email = email;
+    [[PFUser currentUser] saveEventually];
+}
+
+-(void)updateUserlocation:(NSMutableDictionary*)location{
+    [PFUser currentUser][@"userlocation"] = location;
+    [[PFUser currentUser] saveEventually];
+}
+
+-(void)updateUserType:(UserType)userType{
+    [PFUser currentUser][@"userType"] = @(userType);
+    [[PFUser currentUser] saveEventually];
+}
+
+-(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
+    if (failure == nil) {
+        failure = ^(NSString *error){};
+    }
+    if (success == nil) {
+        success = ^(BOOL success){};
+    }
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+    PFFile *imageFile = [PFFile fileWithData:imageData];
+    [PFUser currentUser][@"profilePicture"] = imageFile;
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+            failure([error userInfo][@"error"]);
+        }
+        else{
+            success(YES);
+        }
+    }];
+}
+
+
+
+-(void)askForLocationPermision{
+    locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     
     [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
 }
 
 +(BOOL)isFirstLaunch{
@@ -124,9 +193,6 @@ static FCurrentUser *shareduser = nil;
             if ([FCurrentUser isFirstLaunch]) {
                 [FCurrentUser didFinishFirstLaunch];
             }
-            [FCurrentUser sharedUser].email = user.email;
-            [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-            [FCurrentUser sharedUser].userType = EmailUser;
             success(succeeded);
         }
         else
@@ -166,9 +232,6 @@ static FCurrentUser *shareduser = nil;
                                             if ([FCurrentUser isFirstLaunch]) {
                                                 [FCurrentUser didFinishFirstLaunch];
                                             }
-                                            [FCurrentUser sharedUser].email = user.email;
-                                            [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-                                            [FCurrentUser sharedUser].userType = EmailUser;
                                             success(YES);
                                         } else {
                                             if ([error code] == 101) {
@@ -237,9 +300,6 @@ static FCurrentUser *shareduser = nil;
                                              if ([FCurrentUser isFirstLaunch]) {
                                                  [FCurrentUser didFinishFirstLaunch];
                                              }
-                                             [FCurrentUser sharedUser].email = user.email;
-                                             [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-                                             [FCurrentUser sharedUser].userType = FaceBookUser;
                                              success(succeeded);
                                          }
                                          else
@@ -257,10 +317,6 @@ static FCurrentUser *shareduser = nil;
                                                                              if ([FCurrentUser isFirstLaunch]) {
                                                                                  [FCurrentUser didFinishFirstLaunch];
                                                                              }
-                                                                             [FCurrentUser sharedUser].email = user.email;
-                                                                             [FCurrentUser sharedUser].name = [user objectForKey:@"name"];
-                                                                             [FCurrentUser sharedUser].userType = FaceBookUser;
-                                                                             [FCurrentUser sharedUser].profilePicture = [user objectForKey:@"profilePicture"];
                                                                              success(YES);
                                                                          } else {
                                                                              NSString *errorString = [[error userInfo][@"error"] capitalizedString];

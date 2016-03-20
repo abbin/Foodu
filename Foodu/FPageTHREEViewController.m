@@ -72,18 +72,51 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
--(void)FLocationPicker:(FLocationPickerViewController *)picker didFinishPickingPlace:(FLocationObject *)location{
-    [FCurrentUser sharedUser].userlocation = location;
+-(void)FLocationPicker:(FLocationPickerViewController *)picker didFinishPickingPlace:(NSMutableDictionary *)location{
+    [[FCurrentUser sharedUser] updateUserlocation:location];
 }
 
 - (void) locationManagerdidChangeAuthorizationStatus:(NSNotification *) notification{
     NSDictionary *dict = notification.userInfo;
     if ([[dict objectForKey:@"CLAuthorizationStatus"] integerValue] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [self.autoButton setTitle:@"Detecting Location..." forState:UIControlStateNormal];
+        self.autoButton.enabled = NO;
+        self.manualButton.enabled = NO;
         [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
-            GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
-            GMSPlace* place = likelihood.place;
-            FLocationObject *obj = [[FLocationObject alloc]initWithGMSPlace:place];
-            [FCurrentUser sharedUser].userlocation = obj;
+            if (error == nil) {
+                GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                GMSPlace* place = likelihood.place;
+                NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                
+                
+                
+            }
+            else{
+                [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+                    if (error == nil) {
+                        GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                        GMSPlace* place = likelihood.place;
+                        NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                        
+                        
+                    }
+                    else{
+                        UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"Failed to get your current location" message:@"Try to manually select location" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+                            picker.delegate = self;
+                            picker.providesPresentationContextTransitionStyle = YES;
+                            picker.definesPresentationContext = YES;
+                            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                            [self presentViewController:picker animated:YES completion:nil];
+                        }];
+                        [alert addAction:ok];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                    
+                }];
+            }
+        
         }];
     }
 }
