@@ -9,6 +9,7 @@
 #import "FFirstLaunchViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "FPageTHREEViewController.h"
+#import "FSignUpOneViewController.h"
 
 @interface FFirstLaunchViewController ()
 
@@ -106,7 +107,38 @@
 -(void)TWOClickedNext:(FPageFour *)viewController{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
     FPageTHREEViewController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageTHREEViewController"];
-//    rootViewController.delegateObj = self;
+    rootViewController.delegate = self;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)THREEClickedNext:(FPageTHREEViewController *)viewController withLocation:(NSMutableDictionary *)location{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FPageFOURViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageFOURViewController"];
+    rootViewController.delegate = self;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)FPageFOURSwitchToEmailSignUp:(FPageFOURViewController *)controller withLocation:(NSMutableDictionary *)location{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FEmailSignUpNAMEViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpNAMEViewController"];
+    rootViewController.delegate = self;
+    rootViewController.location = location;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)SignUpNAMEClickedBack:(FEmailSignUpNAMEViewController *)controller{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FPageFOURViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageFOURViewController"];
+    rootViewController.delegate = self;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+}
+
+-(void)SignUpNAMEClickedNext:(FEmailSignUpNAMEViewController *)controller withLocation:(NSMutableDictionary *)location andName:(NSString *)name{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FEmailSignUpEMAILViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpEMAILViewController"];
+    //rootViewController.delegate = self;
+    rootViewController.location = location;
+    rootViewController.name = name;
     [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 

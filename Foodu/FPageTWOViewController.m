@@ -49,7 +49,7 @@
 
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat percentage = scrollView.contentOffset.x;
+  //  CGFloat percentage = scrollView.contentOffset.x;
   //  NSDictionary* userInfo = @{@"adustment": @(percentage)};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"paralax" object:self userInfo:nil];
 }

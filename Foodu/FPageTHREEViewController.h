@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "FLocationPickerViewController.h"
 
+@class FPageTHREEViewController;
 @import GoogleMaps;
+@protocol THREEDelegate <NSObject>
+
+-(void)THREEClickedNext:(FPageTHREEViewController*)viewController withLocation:(NSMutableDictionary*)location;
+
+@end
 
 @interface FPageTHREEViewController : UIViewController<FLocationPickerDelegate>
+
+@property (strong, nonatomic) id <THREEDelegate> delegate;
 
 @end

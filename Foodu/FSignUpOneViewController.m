@@ -10,19 +10,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
 #import "FTabBarController.h"
-#import "FLocationWarningViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 NSInteger const enabledTag = 1;
 NSInteger const disabledTag = 2;
-
-typedef NS_ENUM(NSInteger, animationTimeLine) {
-    fadeOut,
-    changeOver,
-    fadeIn,
-    finished
-};
 
 @interface FSignUpOneViewController ()
 
@@ -95,18 +87,6 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.facebookButtonContainerView.layer.cornerRadius = self.facebookContainerView.frame.size.width/2;
-    self.facebookButtonContainerView.layer.masksToBounds = YES;
-    
-    self.signUpWithEmailButton.layer.cornerRadius = self.signUpWithEmailButton.frame.size.width/2;
-    self.signUpWithEmailButton.layer.masksToBounds = YES;
-    
-    self.nextButton.layer.cornerRadius = self.nextButton.frame.size.width/2;
-    self.nextButton.layer.masksToBounds = YES;
-    
-    self.signInButton.layer.cornerRadius = self.signInButton.frame.size.width/2;
-    self.signInButton.layer.masksToBounds = YES;
-    
     self.signUpScreen = SignUpOne;
     
     [self initVideoBackground];
@@ -130,6 +110,21 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    self.facebookButtonContainerView.layer.cornerRadius = self.signUpWithEmailButton.frame.size.height/4;
+    self.facebookButtonContainerView.layer.masksToBounds = YES;
+    
+    self.signUpWithEmailButton.layer.cornerRadius = self.signUpWithEmailButton.frame.size.height/4;
+    self.signUpWithEmailButton.layer.masksToBounds = YES;
+    
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.size.height/4;
+    self.nextButton.layer.masksToBounds = YES;
+    
+    self.signInButton.layer.cornerRadius = self.signInButton.frame.size.height/4;
+    self.signInButton.layer.masksToBounds = YES;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -481,7 +476,7 @@ typedef NS_ENUM(NSInteger, animationTimeLine) {
     [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
     self.signUpWithEmailButton.enabled = NO;
     self.facebookButton.enabled = NO;
-    [FCurrentUser connectWithFacebookFromViewController:self success:^(BOOL success) {
+    [FCurrentUser connectWithFacebookFromViewController:self withLocation:nil success:^(BOOL success) {
         self.signUpWithEmailButton.enabled = YES;
         self.facebookButton.enabled = YES;
         [[FAlertView sharedHUD] hideActivityIndicatorOnView];

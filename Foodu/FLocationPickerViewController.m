@@ -14,6 +14,7 @@
 @property (strong, nonatomic) GMSAutocompleteFetcher *fetcher;
 @property (strong, nonatomic) NSArray *listArray;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -24,15 +25,14 @@
     [self setKeyboardOnSearchBar:self.searchBar];
     
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
-    filter.country = @"IND";
+    NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+    NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+    filter.country = countryCode;
     filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
     
     self.fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:nil
                                                        filter:filter];
     self.fetcher.delegate = self;
-    
-   // [self.listTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,12 +43,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.searchBar becomeFirstResponder];
-    self.searchBarConstarin.constant = 8;
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        
-    }];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -142,6 +136,12 @@
 }
 
 - (void)didAutocompleteWithPredictions:(NSArray *)predictions {
+    if (predictions.count>0) {
+        self.label.hidden = YES;
+    }
+    else{
+        self.label.hidden = NO;
+    }
     self.listArray = predictions;
     [self.listTableView reloadData];
 }

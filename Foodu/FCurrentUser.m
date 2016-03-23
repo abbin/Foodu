@@ -10,15 +10,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "AppDelegate.h"
-#import "FLocationWarningViewController.h"
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 @implementation FCurrentUser
 
-{
-    CLLocationManager *locationManager;
-}
+
 
 static FCurrentUser *shareduser = nil;
 
@@ -111,12 +108,12 @@ static FCurrentUser *shareduser = nil;
 
 
 -(void)askForLocationPermision{
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager startUpdatingLocation];
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
 }
 
 +(BOOL)isFirstLaunch{
@@ -248,7 +245,7 @@ static FCurrentUser *shareduser = nil;
     
 }
 
-+(void)connectWithFacebookFromViewController:(UIViewController*)viewController success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
++(void)connectWithFacebookFromViewController:(UIViewController*)viewController withLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     //    // Set permissions required from the facebook user account
     NSArray *permissionsArray = @[@"public_profile",@"email",@"user_friends"];
     
@@ -285,7 +282,7 @@ static FCurrentUser *shareduser = nil;
                                      user.username = [result objectForKey:@"email"];
                                      user[@"name"] = [NSString stringWithFormat:@"%@ %@",[result objectForKey:@"first_name"],[result objectForKey:@"last_name"]];
                                      user[@"userType"] = [NSNumber numberWithInteger:FaceBookUser];
-                                     user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
+                                     user[@"userlocation"] = location;
                                      user[@"facebookId"] = [result objectForKey:@"id"];
                                      NSString *url = [[[result objectForKey:@"picture"] objectForKey:@"data"] objectForKey:@"url"];
                                      PFFile *image;

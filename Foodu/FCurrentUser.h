@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 //@property(nonatomic,strong) NSString *name;
 //@property(nonatomic,strong) NSString *email;
 //@property(nonatomic,assign) UserType userType;
-//@property(nonatomic,strong) PFFile *profilePicture;
+@property(nonatomic,strong) CLLocationManager *locationManager;
 
 + (FCurrentUser*)sharedUser;
 
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 +(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
-+(void)connectWithFacebookFromViewController:(UIViewController*)viewController success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(void)connectWithFacebookFromViewController:(UIViewController*)viewController withLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
 -(void)askForLocationPermision;
 

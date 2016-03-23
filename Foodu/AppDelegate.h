@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -14,6 +15,8 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)changeRootViewController:(UIViewController*)viewController;
+
+@property (nonatomic) Reachability *internetReachability;
 
 @end
 

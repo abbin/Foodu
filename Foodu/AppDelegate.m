@@ -10,14 +10,10 @@
 #import "FSignUpOneViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "Reachability.h"
-#import "FInternetWarningView.h"
 #import "FFirstLaunchViewController.h"
 
 @import GoogleMaps;
 @interface AppDelegate ()
-
-@property (nonatomic) Reachability *internetReachability;
 
 @end
 
@@ -71,14 +67,14 @@
     else if ([FCurrentUser isSessionValid] == NO){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-        [rootViewController setViewType:SignInView];
+        [rootViewController setViewType:SignUpView];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
     }
 
     if (self.internetReachability.currentReachabilityStatus == NotReachable) {
-        [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"Not Connected" wait:0];
+        [[FAlertView sharedHUD] showHUDOnView:self.window.rootViewController.view withText:@"No internet" wait:0];
     }
     return YES;
 }

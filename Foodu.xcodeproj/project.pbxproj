@@ -14,15 +14,13 @@
 		580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */; };
 		580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */; };
 		580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C51C9835DC00F50499 /* FPageONEViewController.m */; };
-		5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5810F3531C85BB090032E221 /* FLocationWarningViewController.m */; };
-		5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */; };
+		580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */; };
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
 		5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */; };
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
 		58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 58504A591C96B6A000A7E406 /* IMG_0046.PNG */; };
-		5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5851CFF61C88014D0039A067 /* FInternetWarningView.m */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
 		58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A8A7271C99317900D62E24 /* FPageTWOViewController.m */; };
@@ -33,6 +31,9 @@
 		58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26031C4F5385009AA930 /* FImagePickerCollectionViewCell.m */; };
 		58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */; };
 		58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AD26171C4FB2EA009AA930 /* FImagePickerController.m */; };
+		58B429091C9FDE6F002FA774 /* FPageFOURViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B429081C9FDE6F002FA774 /* FPageFOURViewController.m */; };
+		58B4290B1C9FE9E1002FA774 /* Share_social-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B4290A1C9FE9E1002FA774 /* Share_social-512.png */; };
+		58B4290E1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B4290D1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m */; };
 		58C9F3E91C3A403E00594407 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3E81C3A403E00594407 /* main.m */; };
 		58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9F3EB1C3A403E00594407 /* AppDelegate.m */; };
 		58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58C9F3F01C3A403E00594407 /* Main.storyboard */; };
@@ -72,9 +73,8 @@
 		580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstLaunch.storyboard; sourceTree = "<group>"; };
 		580BF2C41C9835DC00F50499 /* FPageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageONEViewController.h; sourceTree = "<group>"; };
 		580BF2C51C9835DC00F50499 /* FPageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageONEViewController.m; sourceTree = "<group>"; };
-		5810F3521C85BB090032E221 /* FLocationWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationWarningViewController.h; sourceTree = "<group>"; };
-		5810F3531C85BB090032E221 /* FLocationWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLocationWarningViewController.m; sourceTree = "<group>"; };
-		5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationWarningViewController.xib; sourceTree = "<group>"; };
+		580C52F21CA1333B0029868F /* FEmailSignUpEMAILViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEmailSignUpEMAILViewController.h; sourceTree = "<group>"; };
+		580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEmailSignUpEMAILViewController.m; sourceTree = "<group>"; };
 		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5812BB9A1C9BF13E00C22FDE /* FLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationPickerViewController.h; sourceTree = "<group>"; };
@@ -85,8 +85,6 @@
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
 		58504A591C96B6A000A7E406 /* IMG_0046.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0046.PNG; sourceTree = "<group>"; };
-		5851CFF51C88014D0039A067 /* FInternetWarningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FInternetWarningView.h; sourceTree = "<group>"; };
-		5851CFF61C88014D0039A067 /* FInternetWarningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FInternetWarningView.m; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
 		58846B621C3E9230006CFBFB /* UIColor+FColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FColours.h"; sourceTree = "<group>"; };
@@ -106,6 +104,11 @@
 		58AD26041C4F5385009AA930 /* FImagePickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePickerCollectionViewCell.xib; sourceTree = "<group>"; };
 		58AD26161C4FB2EA009AA930 /* FImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePickerController.h; sourceTree = "<group>"; };
 		58AD26171C4FB2EA009AA930 /* FImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePickerController.m; sourceTree = "<group>"; };
+		58B429071C9FDE6F002FA774 /* FPageFOURViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageFOURViewController.h; sourceTree = "<group>"; };
+		58B429081C9FDE6F002FA774 /* FPageFOURViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageFOURViewController.m; sourceTree = "<group>"; };
+		58B4290A1C9FE9E1002FA774 /* Share_social-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Share_social-512.png"; sourceTree = "<group>"; };
+		58B4290C1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEmailSignUpNAMEViewController.h; sourceTree = "<group>"; };
+		58B4290D1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEmailSignUpNAMEViewController.m; sourceTree = "<group>"; };
 		58C9F3E41C3A403E00594407 /* Foodu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58C9F3E81C3A403E00594407 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58C9F3EA1C3A403E00594407 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				58B429021C9FD59B002FA774 /* Alert View */,
 				5812BB991C9BF11800C22FDE /* LocationPicker */,
 				581152D41C87190300B592B6 /* Reachability */,
 				5823BFB61C589E9300DEBD18 /* Colors */,
@@ -239,6 +243,56 @@
 				5823BFB41C589E5D00DEBD18 /* ImagePicker */,
 			);
 			name = Customs;
+			sourceTree = "<group>";
+		};
+		58B429021C9FD59B002FA774 /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				5812C4AB1C8976C00055A54B /* FAlertView.h */,
+				5812C4AC1C8976C00055A54B /* FAlertView.m */,
+			);
+			name = "Alert View";
+			sourceTree = "<group>";
+		};
+		58B429031C9FD682002FA774 /* SignIn and SignOut */ = {
+			isa = PBXGroup;
+			children = (
+				ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */,
+				ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */,
+			);
+			name = "SignIn and SignOut";
+			sourceTree = "<group>";
+		};
+		58B429041C9FD6B7002FA774 /* PageTWO Subs */ = {
+			isa = PBXGroup;
+			children = (
+				58A8A7291C994E1C00D62E24 /* FPageOne.h */,
+				58A8A72A1C994E1C00D62E24 /* FPageOne.m */,
+				58A8A72C1C994E2D00D62E24 /* FPageTwo.h */,
+				58A8A72D1C994E2D00D62E24 /* FPageTwo.m */,
+				58A8A72F1C994E3D00D62E24 /* FPageThree.h */,
+				58A8A7301C994E3D00D62E24 /* FPageThree.m */,
+				58A8A7351C99582500D62E24 /* FPageFour.h */,
+				58A8A7361C99582500D62E24 /* FPageFour.m */,
+			);
+			name = "PageTWO Subs";
+			sourceTree = "<group>";
+		};
+		58B429051C9FDDC7002FA774 /* Inner */ = {
+			isa = PBXGroup;
+			children = (
+				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
+			);
+			name = Inner;
+			sourceTree = "<group>";
+		};
+		58B429061C9FDDCE002FA774 /* Outer */ = {
+			isa = PBXGroup;
+			children = (
+				58B429031C9FD682002FA774 /* SignIn and SignOut */,
+				ED58884B1C410AE300922C9A /* First Launch */,
+			);
+			name = Outer;
 			sourceTree = "<group>";
 		};
 		58C9F3DB1C3A403E00594407 = {
@@ -290,15 +344,9 @@
 		58C9F3FE1C3A40B400594407 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5810F3521C85BB090032E221 /* FLocationWarningViewController.h */,
-				5810F3531C85BB090032E221 /* FLocationWarningViewController.m */,
-				5810F3541C85BB090032E221 /* FLocationWarningViewController.xib */,
-				5812C4AB1C8976C00055A54B /* FAlertView.h */,
-				5812C4AC1C8976C00055A54B /* FAlertView.m */,
-				5851CFF51C88014D0039A067 /* FInternetWarningView.h */,
-				5851CFF61C88014D0039A067 /* FInternetWarningView.m */,
-				ED58884B1C410AE300922C9A /* First Launch */,
-				582006CE1C3E280D00BD0FCD /* Tab Bar Controller */,
+				58B429061C9FDDCE002FA774 /* Outer */,
+				58B429051C9FDDC7002FA774 /* Inner */,
+				58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -372,25 +420,22 @@
 		ED58884B1C410AE300922C9A /* First Launch */ = {
 			isa = PBXGroup;
 			children = (
-				58CA7D1F1C61F00F0078E972 /* MyMovie.mp4 */,
-				ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */,
-				ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */,
 				580BF2BF1C98320800F50499 /* FFirstLaunchViewController.h */,
 				580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */,
 				580BF2C41C9835DC00F50499 /* FPageONEViewController.h */,
 				580BF2C51C9835DC00F50499 /* FPageONEViewController.m */,
 				58A8A7261C99317900D62E24 /* FPageTWOViewController.h */,
 				58A8A7271C99317900D62E24 /* FPageTWOViewController.m */,
+				58B429041C9FD6B7002FA774 /* PageTWO Subs */,
 				580023101C9ADEDA00A7AFB6 /* FPageTHREEViewController.h */,
 				580023111C9ADEDA00A7AFB6 /* FPageTHREEViewController.m */,
-				58A8A7291C994E1C00D62E24 /* FPageOne.h */,
-				58A8A72A1C994E1C00D62E24 /* FPageOne.m */,
-				58A8A72C1C994E2D00D62E24 /* FPageTwo.h */,
-				58A8A72D1C994E2D00D62E24 /* FPageTwo.m */,
-				58A8A72F1C994E3D00D62E24 /* FPageThree.h */,
-				58A8A7301C994E3D00D62E24 /* FPageThree.m */,
-				58A8A7351C99582500D62E24 /* FPageFour.h */,
-				58A8A7361C99582500D62E24 /* FPageFour.m */,
+				58B429071C9FDE6F002FA774 /* FPageFOURViewController.h */,
+				58B429081C9FDE6F002FA774 /* FPageFOURViewController.m */,
+				58B4290C1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.h */,
+				58B4290D1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m */,
+				580C52F21CA1333B0029868F /* FEmailSignUpEMAILViewController.h */,
+				580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */,
+				58B4290A1C9FE9E1002FA774 /* Share_social-512.png */,
 			);
 			name = "First Launch";
 			sourceTree = "<group>";
@@ -460,7 +505,6 @@
 				5803E47F1C97E9B1007E536F /* profile_picture_Girl_Look_avatar-512.png in Resources */,
 				58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */,
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
-				5810F3561C85BB090032E221 /* FLocationWarningViewController.xib in Resources */,
 				580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */,
 				ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */,
 				58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */,
@@ -470,6 +514,7 @@
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */,
 				5803E4801C97E9B1007E536F /* profile_picture_student_boyl_avatar-512.png in Resources */,
+				58B4290B1C9FE9E1002FA774 /* Share_social-512.png in Resources */,
 				58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */,
 				58FD08321C919C6A00FC25D7 /* aami17-05-512.png in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
@@ -536,7 +581,6 @@
 			files = (
 				58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */,
 				5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */,
-				5851CFF71C88014D0039A067 /* FInternetWarningView.m in Sources */,
 				5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
@@ -559,11 +603,13 @@
 				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */,
+				58B429091C9FDE6F002FA774 /* FPageFOURViewController.m in Sources */,
 				580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */,
-				5810F3551C85BB090032E221 /* FLocationWarningViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 				58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */,
+				58B4290E1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m in Sources */,
 				581152D71C87191600B592B6 /* Reachability.m in Sources */,
+				580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

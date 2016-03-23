@@ -72,7 +72,7 @@
     
     [self.nextButton.titleLabel setFont:[UIFont fontWithName:textfont size:[UIScreen mainScreen].bounds.size.width/25]];
     [self.view layoutIfNeeded];
-    self.nextButton.layer.cornerRadius = self.nextButton.frame.size.height/2;
+    self.nextButton.layer.cornerRadius = self.nextButton.frame.size.height/4;
     self.nextButton.layer.masksToBounds = YES;
 }
 

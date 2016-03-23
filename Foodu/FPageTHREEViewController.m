@@ -7,6 +7,7 @@
 //
 
 #import "FPageTHREEViewController.h"
+#import "AppDelegate.h"
 
 @interface FPageTHREEViewController ()
 
@@ -27,15 +28,15 @@
                                                object:nil];
     
     NSString *fontname = @"";
-    NSString *fontTwo = @"";
+    //NSString *fontTwo = @"";
     NSString *textfont = @"";
     if ([UIFont fontWithName:@".SFUIDisplay-Thin" size:10]) {
         fontname = @".SFUIDisplay-Thin";
-        fontTwo = @".SFUIDisplay-Light";
+       // fontTwo = @".SFUIDisplay-Light";
         textfont = @".SFUIText-Light";
     }
     else{
-        fontTwo = @".HelveticaNeueInterface-Thin";
+        //fontTwo = @".HelveticaNeueInterface-Thin";
         fontname = @".HelveticaNeueInterface-UltraLightP2";
         textfont = @".HelveticaNeueInterface-UltraLightP2";
     }
@@ -46,7 +47,7 @@
     
     [self.autoButton.titleLabel setFont:[UIFont fontWithName:textfont size:[UIScreen mainScreen].bounds.size.width/25]];
     [self.view layoutIfNeeded];
-    self.autoButton.layer.cornerRadius = self.autoButton.frame.size.height/2;
+    self.autoButton.layer.cornerRadius = self.autoButton.frame.size.height/4;
     self.autoButton.layer.masksToBounds = YES;
     
     
@@ -61,19 +62,45 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)autoButtonClicked:(UIButton *)sender {
-    [[FCurrentUser sharedUser] askForLocationPermision];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.internetReachability.currentReachabilityStatus != NotReachable) {
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Location not dectected" message:@"Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+            }];
+            [alert addAction:cancel];
+            [alert addAction:settings];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else{
+            [[FCurrentUser sharedUser]askForLocationPermision];
+        }
+    }
+    else{
+        [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Check your internet connection" wait:0];
+    }
 }
 - (IBAction)manualButtonClicked:(UIButton *)sender {
-    FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
-    picker.delegate = self;
-    picker.providesPresentationContextTransitionStyle = YES;
-    picker.definesPresentationContext = YES;
-    picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self presentViewController:picker animated:YES completion:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.internetReachability.currentReachabilityStatus != NotReachable) {
+        FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+        picker.delegate = self;
+        picker.providesPresentationContextTransitionStyle = YES;
+        picker.definesPresentationContext = YES;
+        picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+    else{
+        [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Check your internet connection" wait:0];
+    }
 }
 
 -(void)FLocationPicker:(FLocationPickerViewController *)picker didFinishPickingPlace:(NSMutableDictionary *)location{
-    [[FCurrentUser sharedUser] updateUserlocation:location];
+    if ([self.delegate respondsToSelector:@selector(THREEClickedNext:withLocation:)]) {
+        [self.delegate THREEClickedNext:self withLocation:location];
+    }
 }
 
 - (void) locationManagerdidChangeAuthorizationStatus:(NSNotification *) notification{
@@ -87,9 +114,9 @@
                 GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
                 GMSPlace* place = likelihood.place;
                 NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
-                
-                
-                
+                if ([self.delegate respondsToSelector:@selector(THREEClickedNext:withLocation:)]) {
+                    [self.delegate THREEClickedNext:self withLocation:obj];
+                }
             }
             else{
                 [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
@@ -97,8 +124,9 @@
                         GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
                         GMSPlace* place = likelihood.place;
                         NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
-                        
-                        
+                        if ([self.delegate respondsToSelector:@selector(THREEClickedNext:withLocation:)]) {
+                            [self.delegate THREEClickedNext:self withLocation:obj];
+                        }
                     }
                     else{
                         UIAlertController *alert =[UIAlertController alertControllerWithTitle:@"Failed to get your current location" message:@"Try to manually select location" preferredStyle:UIAlertControllerStyleAlert];

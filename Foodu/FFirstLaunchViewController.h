@@ -10,7 +10,11 @@
 #import "FPageONEViewController.h"
 #import "FPageTWOViewController.h"
 #import "FPageFour.h"
+#import "FPageTHREEViewController.h"
+#import "FPageFOURViewController.h"
+#import "FEmailSignUpNAMEViewController.h"
+#import "FEmailSignUpEMAILViewController.h"
 
-@interface FFirstLaunchViewController : UIViewController<ONEDelegate,TWODelegate>
+@interface FFirstLaunchViewController : UIViewController<ONEDelegate,TWODelegate,THREEDelegate,FOURDelegate,SignUpNAMEDelegate>
 
 @end
