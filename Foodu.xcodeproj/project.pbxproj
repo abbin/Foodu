@@ -20,6 +20,7 @@
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
 		582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582006D01C3E421C00BD0FCD /* FTabBarController.m */; };
+		5845C2C21CA91B370060E830 /* FEmailSignUpPASSWORDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5845C2C11CA91B370060E830 /* FEmailSignUpPASSWORDViewController.m */; };
 		58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 58504A591C96B6A000A7E406 /* IMG_0046.PNG */; };
 		5861BD291C3CF18300AE6B96 /* TPFloatRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */; };
 		58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 58846B631C3E9230006CFBFB /* UIColor+FColours.m */; };
@@ -84,6 +85,8 @@
 		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
 		582006CF1C3E421C00BD0FCD /* FTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTabBarController.h; sourceTree = "<group>"; };
 		582006D01C3E421C00BD0FCD /* FTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTabBarController.m; sourceTree = "<group>"; };
+		5845C2C01CA91B370060E830 /* FEmailSignUpPASSWORDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEmailSignUpPASSWORDViewController.h; sourceTree = "<group>"; };
+		5845C2C11CA91B370060E830 /* FEmailSignUpPASSWORDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEmailSignUpPASSWORDViewController.m; sourceTree = "<group>"; };
 		58504A591C96B6A000A7E406 /* IMG_0046.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0046.PNG; sourceTree = "<group>"; };
 		5861BD271C3CF18300AE6B96 /* TPFloatRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPFloatRatingView.h; sourceTree = "<group>"; };
 		5861BD281C3CF18300AE6B96 /* TPFloatRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPFloatRatingView.m; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				58B4290D1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m */,
 				580C52F21CA1333B0029868F /* FEmailSignUpEMAILViewController.h */,
 				580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */,
+				5845C2C01CA91B370060E830 /* FEmailSignUpPASSWORDViewController.h */,
+				5845C2C11CA91B370060E830 /* FEmailSignUpPASSWORDViewController.m */,
 				58B4290A1C9FE9E1002FA774 /* Share_social-512.png */,
 			);
 			name = "First Launch";
@@ -584,6 +589,7 @@
 				5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */,
 				EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */,
 				ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */,
+				5845C2C21CA91B370060E830 /* FEmailSignUpPASSWORDViewController.m in Sources */,
 				5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,

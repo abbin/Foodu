@@ -7,6 +7,7 @@
 //
 
 #import "FAlertView.h"
+#import "AppDelegate.h"
 
 @interface FAlertView ()
 
@@ -55,7 +56,12 @@ static FAlertView *sharedHUD = nil;
 }
 
 -(void)showActivityIndicatorOnView:(UIView*)view{
-
+    
+    if (view == nil) {
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        view = appDelegate.window;
+    }
+    
     if (self.shown == NO) {
         self.titleLabel.hidden = YES;
         [self.activityIndicator startAnimating];

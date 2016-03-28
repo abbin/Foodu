@@ -380,7 +380,7 @@ NSInteger const disabledTag = 2;
                     [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
                     self.nextButton.enabled = NO;
                     PFQuery *query = [PFUser query];
-                    [query whereKey:@"email" equalTo:self.nameTextField.text]; // find all the women
+                    [query whereKey:@"email" equalTo:self.nameTextField.text];
                     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                         self.nextButton.enabled = YES;
                         if (objects.count == 0) {
@@ -988,7 +988,7 @@ NSInteger const disabledTag = 2;
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
         self.nextButton.enabled = NO;
         [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
-        [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password success:^(BOOL success) {
+        [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:nil success:^(BOOL success) {
             [[FAlertView sharedHUD]hideActivityIndicatorOnView];
             self.nextButton.enabled = YES;
             AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

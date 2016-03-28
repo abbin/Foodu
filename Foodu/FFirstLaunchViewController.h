@@ -14,7 +14,8 @@
 #import "FPageFOURViewController.h"
 #import "FEmailSignUpNAMEViewController.h"
 #import "FEmailSignUpEMAILViewController.h"
+#import "FEmailSignUpPASSWORDViewController.h"
 
-@interface FFirstLaunchViewController : UIViewController<ONEDelegate,TWODelegate,THREEDelegate,FOURDelegate,SignUpNAMEDelegate>
+@interface FFirstLaunchViewController : UIViewController<ONEDelegate,TWODelegate,THREEDelegate,FOURDelegate,SignUpNAMEDelegate,SignUpEMAILDelegate,SignUpPASSWORDDelegate>
 
 @end

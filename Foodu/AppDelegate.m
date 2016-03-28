@@ -44,7 +44,7 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-    
+    [FBSDKLoginButton class];
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
@@ -67,7 +67,7 @@
     else if ([FCurrentUser isSessionValid] == NO){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-        [rootViewController setViewType:SignUpView];
+        [rootViewController setViewType:FacebookView];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];
@@ -103,7 +103,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-    if ([FCurrentUser isFirstLaunch] == NO && [FCurrentUser isSessionValid] == YES) {
+    if ([FCurrentUser isFirstLaunch] == NO && [FCurrentUser isSessionValid] == YES && [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
         [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
             GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
             GMSPlace* place = likelihood.place;

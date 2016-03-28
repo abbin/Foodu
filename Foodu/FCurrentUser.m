@@ -9,7 +9,6 @@
 #import "FCurrentUser.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "AppDelegate.h"
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
@@ -56,7 +55,7 @@ static FCurrentUser *shareduser = nil;
 }
 
 -(UserType)userType{
-    return [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
+    return [[[PFUser currentUser]objectForKey:@"userType"] integerValue];
 }
 
 -(PFFile*)profilePicture{
@@ -140,35 +139,12 @@ static FCurrentUser *shareduser = nil;
     }
 }
 
-//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-//    
-////    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-////    if ([appDelegate.window.rootViewController.presentedViewController isKindOfClass:[FLocationWarningViewController class]]) {
-////        [appDelegate.window.rootViewController.presentedViewController dismissViewControllerAnimated:YES completion:^{
-////            
-////        }];
-////    }
-//}
-//
-//- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-////    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusRestricted){
-////        FLocationWarningViewController *con = [[FLocationWarningViewController alloc]initWithNibName:@"FLocationWarningViewController" bundle:[NSBundle mainBundle]];
-////        con.providesPresentationContextTransitionStyle = YES;
-////        con.definesPresentationContext = YES;
-////        con.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-////        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-////        [appDelegate.window.rootViewController presentViewController:con animated:YES completion:^{
-////            
-////        }];
-////    }
-//}
-
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     NSDictionary* userInfo = @{@"CLAuthorizationStatus": @(status)};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"locationManagerdidChangeAuthorizationStatus" object:self userInfo:userInfo];
 }
 
-+(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
++(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password andLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     
     if (failure == nil) {
         failure = ^(NSString *error){};
@@ -183,7 +159,7 @@ static FCurrentUser *shareduser = nil;
     user.username = email;
     user[@"name"] = name;
     user[@"userType"] = @(EmailUser);
-    user[@"userlocation"] = [FCurrentUser sharedUser].userlocation;
+    user[@"userlocation"] = location;
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {   // Hooray! Let them use the app now.
@@ -209,14 +185,14 @@ static FCurrentUser *shareduser = nil;
         success = ^(BOOL success, UserType userType){};
     }
     
-    [PFUser logOutInBackground];
-    
-    if ([FCurrentUser sharedUser].userType == FaceBookUser) {
+    if ([[FCurrentUser sharedUser] userType] == FaceBookUser) {
+        [PFUser logOutInBackground];
         [[FBSDKLoginManager new] logOut];
         [FCurrentUser resetSharedInstance];
         success(YES,FaceBookUser);
     }
     else{
+        [PFUser logOutInBackground];
         [FCurrentUser resetSharedInstance];
         success(YES,EmailUser);
     }
@@ -326,7 +302,7 @@ static FCurrentUser *shareduser = nil;
                              }];
                          }
                          else{
-                             failure(@"Couldn't regester a new account. Carte requires your email");
+                             failure(@"Couldn't register a new account. Fuud requires your email");
                          }
                      }
                  }];

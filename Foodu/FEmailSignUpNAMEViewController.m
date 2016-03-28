@@ -14,6 +14,7 @@ NSInteger const disabledTag2 = 2;
 @interface FEmailSignUpNAMEViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *whtIsYourNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 @end
@@ -37,7 +38,15 @@ NSInteger const disabledTag2 = 2;
     
     self.nextButton.layer.cornerRadius = self.nextButton.frame.size.height/4;
     self.nextButton.layer.masksToBounds = YES;
-    self.nextButton.backgroundColor = [UIColor lightTextColor];
+    
+    
+    if (self.name) {
+        self.nameTextField.text = self.name;
+        self.nextButton.backgroundColor = [UIColor PinRed];
+    }
+    else{
+        self.nextButton.backgroundColor = [UIColor lightTextColor];
+    }
 }
 
 -(void)becomeActive{
@@ -73,17 +82,7 @@ NSInteger const disabledTag2 = 2;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if (textField.tag == enabledTag2) {
-        if (self.nameTextField.text>0) {
-            
-        }
-        else{
-            [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a name" wait:5];
-        }
-    }
-    else{
-        [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a name" wait:5];
-    }
+    [self nextClicked:self.nextButton];
     return YES;
 }
 

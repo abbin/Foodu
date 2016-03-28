@@ -115,6 +115,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
     FPageFOURViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FPageFOURViewController"];
     rootViewController.delegate = self;
+    rootViewController.location = location;
     [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
@@ -136,10 +137,39 @@
 -(void)SignUpNAMEClickedNext:(FEmailSignUpNAMEViewController *)controller withLocation:(NSMutableDictionary *)location andName:(NSString *)name{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
     FEmailSignUpEMAILViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpEMAILViewController"];
-    //rootViewController.delegate = self;
+    rootViewController.delegate = self;
     rootViewController.location = location;
     rootViewController.name = name;
     [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)SignUpEMAILClickedBack:(FEmailSignUpEMAILViewController *)controller withLocation:(NSMutableDictionary *)location andName:(NSString *)name{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FEmailSignUpNAMEViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpNAMEViewController"];
+    rootViewController.delegate = self;
+    rootViewController.location = location;
+    rootViewController.name = name;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+}
+
+-(void)SignUpEMAILClickedNext:(FEmailSignUpEMAILViewController *)controller withLocation:(NSMutableDictionary *)location name:(NSString *)name andEmail:(NSString *)email{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FEmailSignUpPASSWORDViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpPASSWORDViewController"];
+    rootViewController.delegate = self;
+    rootViewController.location = location;
+    rootViewController.name = name;
+    rootViewController.email = email;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+}
+
+-(void)SignUpPASSWORDClickedBack:(FEmailSignUpPASSWORDViewController *)controller withLocation:(NSMutableDictionary *)location name:(NSString *)name email:(NSString *)email{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FirstLaunch" bundle:nil];
+    FEmailSignUpEMAILViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FEmailSignUpEMAILViewController"];
+    rootViewController.delegate = self;
+    rootViewController.location = location;
+    rootViewController.name = name;
+    rootViewController.email = email;
+    [self.pageViewController setViewControllers:@[rootViewController] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
 }
 
 

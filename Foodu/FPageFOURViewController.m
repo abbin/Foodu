@@ -46,7 +46,7 @@
     [self.subjectLabel setFont:[UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/23]];
     [self.promiseLabel setFont:[UIFont fontWithName:fontname size:[UIScreen mainScreen].bounds.size.width/23]];
     
-    self.facebookContainerView.layer.cornerRadius = self.facebookContainerView.frame.size.height/4;
+    self.facebookContainerView.layer.cornerRadius = self.facebookContainerView.frame.size.height/16;
     self.facebookContainerView.layer.masksToBounds = YES;
     // Do any additional setup after loading the view.
 }

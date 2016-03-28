@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *location;
 
+@property (strong, nonatomic) NSString *name;
+
 @property (strong, nonatomic) id <SignUpNAMEDelegate> delegate;
 
 @end

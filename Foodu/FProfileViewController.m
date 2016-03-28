@@ -149,7 +149,7 @@ typedef NS_ENUM(NSInteger, indexPath) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
             UIAlertAction *actionYes = [UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 self.view.userInteractionEnabled = NO;
-                [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+                [[FAlertView sharedHUD] showActivityIndicatorOnView:nil];
                 [FCurrentUser logOutCurrentUser:^(BOOL success, UserType userType) {
                     
                     self.view.userInteractionEnabled = YES;

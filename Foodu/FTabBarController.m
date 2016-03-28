@@ -9,7 +9,6 @@
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
 #include <Photos/Photos.h>
-#import "AppDelegate.h"
 #import "FSignUpOneViewController.h"
 
 @interface FTabBarController ()

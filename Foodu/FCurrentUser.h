@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 +(BOOL)isSessionValid;
 
-+(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password andLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
 
 +(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success failure:(void (^)(NSString *error))failure;
 
