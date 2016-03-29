@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FLocationPickerViewController.h"
 
 typedef NS_ENUM(NSInteger, viewType) {
     SignUpView,
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSInteger, SignUpScreen) {
     SignUpThree
 };
 
-@interface FSignUpOneViewController : UIViewController<UITextFieldDelegate>
+@interface FSignUpOneViewController : UIViewController<UITextFieldDelegate,FLocationPickerDelegate>
 
 @property(assign, nonatomic) viewType viewType;
 @property(assign, nonatomic) SignUpScreen signUpScreen;

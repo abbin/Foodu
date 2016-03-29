@@ -51,13 +51,11 @@ typedef NS_ENUM(NSInteger, indexPath) {
     self.profilePhotoEditButton.layer.cornerRadius = self.profilePhotoEditButton.frame.size.height/2;
     self.profilePhotoEditButton.clipsToBounds = YES;
     
-    self.nameLabel.text = [FCurrentUser sharedUser].name;
+    self.nameLabel.text = [FCurrentUser name];
     self.profileImageView.image = [UIImage imageNamed:@""];
-    self.profileImageView.file = [FCurrentUser sharedUser].profilePicture;
+    self.profileImageView.file = [FCurrentUser profilePicture];
     [self.profileImageView loadInBackground];
-    
-//    self.profileImageView.image = [self convertImageToGrayScale:self.profileImageView.image];
-    // Do any additional setup after loading the view.
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{

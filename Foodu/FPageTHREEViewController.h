@@ -17,7 +17,7 @@
 
 @end
 
-@interface FPageTHREEViewController : UIViewController<FLocationPickerDelegate>
+@interface FPageTHREEViewController : UIViewController<FLocationPickerDelegate,CLLocationManagerDelegate>
 
 @property (strong, nonatomic) id <THREEDelegate> delegate;
 

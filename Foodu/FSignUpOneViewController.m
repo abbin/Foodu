@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+
 NSInteger const enabledTag = 1;
 NSInteger const disabledTag = 2;
 
@@ -297,6 +298,8 @@ NSInteger const disabledTag = 2;
 - (IBAction)nameLabelDidChangeEditing:(UITextField *)sender {
 
     if (self.signUpScreen == SignUpTwo) {
+        NSString *newString = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        self.nameTextField.text = newString;
         if ([self stringIsValidEmail:self.nameTextField.text]) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.nextButton.backgroundColor = [UIColor PinRed];
@@ -308,6 +311,26 @@ NSInteger const disabledTag = 2;
             [UIView animateWithDuration:0.3 animations:^{
                 self.nextButton.backgroundColor = [UIColor lightTextColor];
                 self.nextButton.tag = disabledTag;
+            }];
+        }
+    }
+    else if (self.signUpScreen == SignUpThree){
+        NSString *newString = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        self.nameTextField.text = newString;
+        if (sender.text.length>0) {
+            [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.nextButton.backgroundColor = [UIColor PinRed];
+                self.nextButton.tag = enabledTag;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }
+        if (sender.text.length==0) {
+            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.nextButton.backgroundColor = [UIColor lightTextColor];
+                self.nextButton.tag = disabledTag;
+            } completion:^(BOOL finished) {
+                
             }];
         }
     }
@@ -333,7 +356,8 @@ NSInteger const disabledTag = 2;
 }
 
 - (IBAction)signinEmailFieldDidChange:(UITextField *)sender {
-    
+    NSString *newString = [sender.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    sender.text = newString;
     if ([self stringIsValidEmail:sender.text] && self.signInPasswordTextField.text.length>0) {
         [UIView animateWithDuration:0.3 animations:^{
             self.signInButton.backgroundColor = [UIColor PinRed];
@@ -350,7 +374,8 @@ NSInteger const disabledTag = 2;
 }
 
 - (IBAction)signInPasswordFieldDidChange:(UITextField *)sender {
-    
+    NSString *newString = [sender.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    sender.text = newString;
     if (sender.text.length>0 && [self stringIsValidEmail:self.signInEmailTextField.text]) {
         [UIView animateWithDuration:0.3 animations:^{
             self.signInButton.backgroundColor = [UIColor PinRed];
@@ -373,7 +398,7 @@ NSInteger const disabledTag = 2;
             switch (self.signUpScreen) {
                 case SignUpOne:
                     self.signUpScreen = SignUpTwo;
-                    self.name = self.nameTextField.text;
+                    self.name = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                     [self drawSignUpEmailScreenAnimated:YES];
                     break;
                 case SignUpTwo:{
@@ -987,18 +1012,85 @@ NSInteger const disabledTag = 2;
     
     if (self.name.length>0 && self.password.length>0 && [self stringIsValidEmail:self.email]) {
         self.nextButton.enabled = NO;
-        [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
-        [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:nil success:^(BOOL success) {
-            [[FAlertView sharedHUD]hideActivityIndicatorOnView];
-            self.nextButton.enabled = YES;
-            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
-            [appDelegate changeRootViewController:rootViewController];
-        } failure:^(NSString *error) {
-            self.nextButton.enabled = YES;
-           [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
-        }];
+        
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+            
+            [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+                if (error == nil) {
+                    GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                    GMSPlace* place = likelihood.place;
+                    NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                    [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:obj success:^(BOOL success) {
+                        [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+                        self.nextButton.enabled = YES;
+                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                        FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+                        [appDelegate changeRootViewController:rootViewController];
+                    } failure:^(NSString *error) {
+                        self.nextButton.enabled = YES;
+                        [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+                    }];
+                }
+                else{
+                    [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+                        if (error == nil) {
+                            GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                            GMSPlace* place = likelihood.place;
+                            NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                            [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:obj success:^(BOOL success) {
+                                [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+                                self.nextButton.enabled = YES;
+                                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+                                [appDelegate changeRootViewController:rootViewController];
+                            } failure:^(NSString *error) {
+                                self.nextButton.enabled = YES;
+                                [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+                            }];
+                        }
+                        else{
+                            self.nextButton.enabled = YES;
+                            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"We couldn't get an accurate read on where you are. Try manually setting a location" preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+                                picker.delegate = self;
+                                picker.providesPresentationContextTransitionStyle = YES;
+                                picker.definesPresentationContext = YES;
+                                picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                                [self presentViewController:picker animated:YES completion:nil];
+                            }];
+
+                            [alert addAction:actionOk];
+                            [self presentViewController:alert animated:YES completion:nil];
+                        }
+                    }];
+                }
+            }];
+        }
+        else{
+            
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Location not detected" message:@"Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *Select = [UIAlertAction actionWithTitle:@"Select a location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.nextButton.enabled = YES;
+                FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+                picker.delegate = self;
+                picker.providesPresentationContextTransitionStyle = YES;
+                picker.definesPresentationContext = YES;
+                picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                [self presentViewController:picker animated:YES completion:nil];
+            }];
+            UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                self.nextButton.enabled = YES;
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+            }];
+            [alert addAction:Select];
+            [alert addAction:settings];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
     }
     else{
         if (self.name<=0) {
@@ -1040,6 +1132,21 @@ NSInteger const disabledTag = 2;
         }
     }
     
+}
+
+-(void)FLocationPicker:(FLocationPickerViewController*)picker didFinishPickingPlace:(NSMutableDictionary*)location{
+    [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+    [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:location success:^(BOOL success) {
+        [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+        self.nextButton.enabled = YES;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+        [appDelegate changeRootViewController:rootViewController];
+    } failure:^(NSString *error) {
+        self.nextButton.enabled = YES;
+        [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+    }];
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////

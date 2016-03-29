@@ -14,77 +14,58 @@
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
+
 @implementation FCurrentUser
 
-
-
-static FCurrentUser *shareduser = nil;
-
-+ (FCurrentUser*)sharedUser {
-    if (shareduser == nil) {
-        shareduser = [[FCurrentUser alloc] init];
-    }
-    return shareduser;
-}
-
-+ (void)resetSharedInstance {
-    shareduser = nil;
-}
-
-- (id)init {
-    if (self = [super init]) {
-//        if ([PFUser currentUser]) {
-//            self.email = [PFUser currentUser].email;
-//            self.name = [[PFUser currentUser]valueForKey:@"name"];
-//            self.userType = [[[PFUser currentUser]valueForKey:@"userType"] integerValue];
-//            self.profilePicture = [[PFUser currentUser]valueForKey:@"profilePicture"];
-//            self.userlocation = [[PFUser currentUser]valueForKey:@"userlocation"];
-//        }
-    }
-    return self;
-}
-
--(NSString*)name{
++(NSString*)name{
     return [[PFUser currentUser]valueForKey:@"name"];
 }
 
--(NSString*)email{
++(NSString*)email{
     return [PFUser currentUser].email;
 }
 
--(NSMutableDictionary*)userlocation{
++(NSMutableDictionary*)userlocation{
     return [[PFUser currentUser]valueForKey:@"userlocation"];
 }
 
--(UserType)userType{
++(UserType)userType{
     return [[[PFUser currentUser]objectForKey:@"userType"] integerValue];
 }
 
--(PFFile*)profilePicture{
++(NSString*)facebookID{
+    return [[PFUser currentUser]objectForKey:@"facebookId"];
+}
+
++(PFFile*)profilePicture{
     return [[PFUser currentUser]valueForKey:@"profilePicture"];
 }
 
--(void)updateName:(NSString*)name{
++(NSString*)userID{
+    return [PFUser currentUser].objectId;
+}
+
++(void)updateName:(NSString*)name{
     [PFUser currentUser][@"name"] = name;
     [[PFUser currentUser] saveEventually];
 }
 
--(void)updateEmail:(NSString*)email{
++(void)updateEmail:(NSString*)email{
     [PFUser currentUser].email = email;
     [[PFUser currentUser] saveEventually];
 }
 
--(void)updateUserlocation:(NSMutableDictionary*)location{
++(void)updateUserlocation:(NSMutableDictionary*)location{
     [PFUser currentUser][@"userlocation"] = location;
     [[PFUser currentUser] saveEventually];
 }
 
--(void)updateUserType:(UserType)userType{
++(void)updateUserType:(UserType)userType{
     [PFUser currentUser][@"userType"] = @(userType);
     [[PFUser currentUser] saveEventually];
 }
 
--(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
++(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     if (failure == nil) {
         failure = ^(NSString *error){};
     }
@@ -102,17 +83,6 @@ static FCurrentUser *shareduser = nil;
             success(YES);
         }
     }];
-}
-
-
-
--(void)askForLocationPermision{
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    
-    [_locationManager requestWhenInUseAuthorization];
-    [_locationManager startUpdatingLocation];
 }
 
 +(BOOL)isFirstLaunch{
@@ -139,7 +109,7 @@ static FCurrentUser *shareduser = nil;
     }
 }
 
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
++(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     NSDictionary* userInfo = @{@"CLAuthorizationStatus": @(status)};
     [[NSNotificationCenter defaultCenter]postNotificationName:@"locationManagerdidChangeAuthorizationStatus" object:self userInfo:userInfo];
 }
@@ -186,15 +156,13 @@ static FCurrentUser *shareduser = nil;
         success = ^(BOOL success, UserType userType){};
     }
     
-    if ([[FCurrentUser sharedUser] userType] == FaceBookUser) {
+    if ([FCurrentUser  userType] == FaceBookUser) {
         [PFUser logOutInBackground];
         [[FBSDKLoginManager new] logOut];
-        [FCurrentUser resetSharedInstance];
         success(YES,FaceBookUser);
     }
     else{
         [PFUser logOutInBackground];
-        [FCurrentUser resetSharedInstance];
         success(YES,EmailUser);
     }
 }
@@ -318,11 +286,9 @@ static FCurrentUser *shareduser = nil;
 }
 
 + (void)logUser {
-    // TODO: Use the current user's information
-    // You can call any combination of these three methods
-    [CrashlyticsKit setUserIdentifier:[PFUser currentUser].objectId];
-    [CrashlyticsKit setUserEmail:[FCurrentUser sharedUser].email];
-    [CrashlyticsKit setUserName:[FCurrentUser sharedUser].name];
+    [CrashlyticsKit setUserIdentifier:[FCurrentUser userID]];
+    [CrashlyticsKit setUserEmail:[FCurrentUser email]];
+    [CrashlyticsKit setUserName:[FCurrentUser name]];
 }
 
 

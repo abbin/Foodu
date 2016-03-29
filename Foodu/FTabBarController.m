@@ -58,8 +58,6 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-    NSLog(@"%@",[FCurrentUser sharedUser].name);
-     NSLog(@"%@",[FCurrentUser sharedUser].email);
     
 }
 

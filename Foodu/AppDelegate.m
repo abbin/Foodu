@@ -113,7 +113,7 @@
             GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
             GMSPlace* place = likelihood.place;
             NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
-            [[FCurrentUser sharedUser] updateUserlocation:obj];
+            [FCurrentUser  updateUserlocation:obj];
         }];
     }
     

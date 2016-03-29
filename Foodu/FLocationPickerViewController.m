@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray *listArray;
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setKeyboardOnSearchBar:self.searchBar];
-    
+    self.label.text = @"Start typing a location..";
     GMSAutocompleteFilter *filter = [[GMSAutocompleteFilter alloc] init];
     NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
     NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
@@ -50,6 +51,8 @@
 }
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    self.label.text = @"";
+    [self.activityIndicator startAnimating];
     [self.fetcher sourceTextHasChanged:searchText];
 }
 
@@ -136,18 +139,20 @@
 }
 
 - (void)didAutocompleteWithPredictions:(NSArray *)predictions {
+    [self.activityIndicator stopAnimating];
+
     if (predictions.count>0) {
-        self.label.hidden = YES;
+        self.label.text = @"";
     }
     else{
-        self.label.hidden = NO;
+        self.label.text = @"No results found";
     }
     self.listArray = predictions;
     [self.listTableView reloadData];
 }
 
 - (void)didFailAutocompleteWithError:(NSError *)error {
-    
+    self.label.text = @"No results found";
 }
 
 @end

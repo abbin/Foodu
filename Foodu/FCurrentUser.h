@@ -16,48 +16,68 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 @interface FCurrentUser : NSObject<CLLocationManagerDelegate>
 
-//@property(nonatomic,strong) NSMutableDictionary *userlocation;
-//@property(nonatomic,strong) NSString *name;
-//@property(nonatomic,strong) NSString *email;
-//@property(nonatomic,assign) UserType userType;
-@property(nonatomic,strong) CLLocationManager *locationManager;
-
-+ (FCurrentUser*)sharedUser;
-
 +(BOOL)isFirstLaunch;
 
 +(void)didFinishFirstLaunch;
 
 +(BOOL)isSessionValid;
 
-+(void)signUpUserWithName:(NSString*)name email:(NSString*)email password:(NSString*)password andLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(NSString*)name;
 
-+(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success failure:(void (^)(NSString *error))failure;
++(NSString*)email;
 
-+(void)logInUserWithEmail:(NSString*)email password:(NSString*)password success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(NSString*)userID;
 
-+(void)connectWithFacebookFromViewController:(UIViewController*)viewController withLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
++(NSString*)facebookID;
 
--(void)askForLocationPermision;
++(NSMutableDictionary*)userlocation;
 
--(NSString*)name;
++(UserType)userType;
 
--(NSString*)email;
++(PFFile*)profilePicture;
 
--(NSMutableDictionary*)userlocation;
+/////////////////////////////////////////////////////////////////////////////////////////////
 
--(UserType)userType;
+#pragma mark -
+#pragma mark WEBHOOKS
 
--(PFFile*)profilePicture;
++(void)signUpUserWithName:(NSString*)name
+                    email:(NSString*)email
+                 password:(NSString*)password
+              andLocation:(NSMutableDictionary*)location
+                  success:(void (^)(BOOL success))success
+                  failure:(void (^)(NSString *error))failure;
 
--(void)updateName:(NSString*)name;
++(void)logOutCurrentUser:(void (^)(BOOL success, UserType userType))success
+                 failure:(void (^)(NSString *error))failure;
 
--(void)updateEmail:(NSString*)email;
++(void)logInUserWithEmail:(NSString*)email
+                 password:(NSString*)password
+                  success:(void (^)(BOOL success))success
+                  failure:(void (^)(NSString *error))failure;
 
--(void)updateUserlocation:(NSMutableDictionary*)location;
++(void)connectWithFacebookFromViewController:(UIViewController*)viewController
+                                withLocation:(NSMutableDictionary*)location
+                                     success:(void (^)(BOOL success))success
+                                     failure:(void (^)(NSString *error))failure;
 
--(void)updateUserType:(UserType)userType;
+/////////////////////////////////////////////////////////////////////////////////////////////
 
--(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure;
+#pragma mark -
+#pragma mark SETTER METHODS
+
++(void)supdateProfilePicture:(UIImage*)image
+                     success:(void (^)(BOOL success))success
+                     failure:(void (^)(NSString *error))failure;
+
++(void)updateName:(NSString*)name;
+
++(void)updateEmail:(NSString*)email;
+
++(void)updateUserlocation:(NSMutableDictionary*)location;
+
++(void)updateUserType:(UserType)userType;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 @end

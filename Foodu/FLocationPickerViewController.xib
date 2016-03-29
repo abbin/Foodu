@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLocationPickerViewController">
             <connections>
+                <outlet property="activityIndicator" destination="TEn-pA-Zw8" id="Isw-LI-w80"/>
                 <outlet property="label" destination="9d1-l9-VIT" id="X8J-aw-MSe"/>
                 <outlet property="listTableView" destination="cOm-8D-vzE" id="M2y-zP-dam"/>
                 <outlet property="searchBar" destination="it9-bL-4gL" id="D0b-SE-BVq"/>
@@ -54,12 +55,15 @@
                                     <outlet property="delegate" destination="-1" id="Fpa-HD-GDw"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Huh?  (・_・)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d1-l9-VIT">
-                                <rect key="frame" x="258" y="232" width="84" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d1-l9-VIT">
+                                <rect key="frame" x="300" y="240" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="TEn-pA-Zw8">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="it9-bL-4gL" firstAttribute="leading" secondItem="NmS-2I-nJL" secondAttribute="leading" id="7Pp-xW-qow"/>
@@ -73,6 +77,8 @@
                             <constraint firstItem="3Yb-kT-GnF" firstAttribute="top" secondItem="NmS-2I-nJL" secondAttribute="top" constant="8" id="o45-hF-RHE"/>
                             <constraint firstItem="it9-bL-4gL" firstAttribute="top" secondItem="NmS-2I-nJL" secondAttribute="top" constant="8" id="q8j-8x-u07"/>
                             <constraint firstAttribute="trailing" secondItem="3Yb-kT-GnF" secondAttribute="trailing" id="s71-xo-qvy"/>
+                            <constraint firstItem="TEn-pA-Zw8" firstAttribute="centerX" secondItem="NmS-2I-nJL" secondAttribute="centerX" id="t79-BT-HgQ"/>
+                            <constraint firstItem="TEn-pA-Zw8" firstAttribute="centerY" secondItem="NmS-2I-nJL" secondAttribute="centerY" id="v7x-uD-d5V"/>
                         </constraints>
                     </view>
                     <blurEffect style="dark"/>
