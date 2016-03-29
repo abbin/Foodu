@@ -11,6 +11,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "FFirstLaunchViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @import GoogleMaps;
 @interface AppDelegate ()
@@ -44,6 +46,9 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
+    
+    [Fabric with:@[[Crashlytics class]]];
+    
     [FBSDKLoginButton class];
     [GMSServices provideAPIKey:@"AIzaSyBGtfOYOaK00zKdgHO0lDsvCsj0HCkD3u4"];
     

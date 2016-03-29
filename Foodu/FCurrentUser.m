@@ -9,6 +9,8 @@
 #import "FCurrentUser.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
@@ -61,8 +63,6 @@ static FCurrentUser *shareduser = nil;
 -(PFFile*)profilePicture{
     return [[PFUser currentUser]valueForKey:@"profilePicture"];
 }
-
-
 
 -(void)updateName:(NSString*)name{
     [PFUser currentUser][@"name"] = name;
@@ -166,6 +166,7 @@ static FCurrentUser *shareduser = nil;
             if ([FCurrentUser isFirstLaunch]) {
                 [FCurrentUser didFinishFirstLaunch];
             }
+            [self logUser];
             success(succeeded);
         }
         else
@@ -205,6 +206,7 @@ static FCurrentUser *shareduser = nil;
                                             if ([FCurrentUser isFirstLaunch]) {
                                                 [FCurrentUser didFinishFirstLaunch];
                                             }
+                                            [self logUser];
                                             success(YES);
                                         } else {
                                             if ([error code] == 101) {
@@ -220,6 +222,8 @@ static FCurrentUser *shareduser = nil;
                                     }];
     
 }
+
+
 
 +(void)connectWithFacebookFromViewController:(UIViewController*)viewController withLocation:(NSMutableDictionary*)location success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
     //    // Set permissions required from the facebook user account
@@ -273,6 +277,7 @@ static FCurrentUser *shareduser = nil;
                                              if ([FCurrentUser isFirstLaunch]) {
                                                  [FCurrentUser didFinishFirstLaunch];
                                              }
+                                             [self logUser];
                                              success(succeeded);
                                          }
                                          else
@@ -290,6 +295,7 @@ static FCurrentUser *shareduser = nil;
                                                                              if ([FCurrentUser isFirstLaunch]) {
                                                                                  [FCurrentUser didFinishFirstLaunch];
                                                                              }
+                                                                             [self logUser];
                                                                              success(YES);
                                                                          } else {
                                                                              NSString *errorString = [[error userInfo][@"error"] capitalizedString];
@@ -310,5 +316,14 @@ static FCurrentUser *shareduser = nil;
          }
      }];
 }
+
++ (void)logUser {
+    // TODO: Use the current user's information
+    // You can call any combination of these three methods
+    [CrashlyticsKit setUserIdentifier:[PFUser currentUser].objectId];
+    [CrashlyticsKit setUserEmail:[FCurrentUser sharedUser].email];
+    [CrashlyticsKit setUserName:[FCurrentUser sharedUser].name];
+}
+
 
 @end
