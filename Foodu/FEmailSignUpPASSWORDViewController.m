@@ -128,6 +128,10 @@ NSInteger const disabledTag4 = 2;
     }
 }
 - (IBAction)textFieldDidChangeEditing:(UITextField *)sender {
+    
+    NSString *newString = [sender.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    sender.text = newString;
+    
     if (sender.text.length>0) {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.nextButton.backgroundColor = [UIColor PinRed];

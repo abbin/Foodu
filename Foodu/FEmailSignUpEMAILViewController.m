@@ -120,6 +120,10 @@ NSInteger const disabledTag3 = 2;
 }
 
 - (IBAction)emailTextFieldDidChangeEditing:(UITextField *)sender {
+    
+    NSString *newString = [self.emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    self.emailTextField.text = newString;
+    
     if ([self stringIsValidEmail:self.emailTextField.text]) {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.nextButton.backgroundColor = [UIColor PinRed];

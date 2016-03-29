@@ -87,7 +87,8 @@ NSInteger const disabledTag2 = 2;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (self.nameTextField.text.length>0) {
+    NSString *newString = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (newString.length>0) {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.nextButton.backgroundColor = [UIColor PinRed];
             
@@ -106,14 +107,15 @@ NSInteger const disabledTag2 = 2;
 }
 
 - (IBAction)nameTextFieldDidChange:(UITextField *)sender {
-    if (sender.text.length>0) {
+    NSString *newString = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (newString.length>0) {
         [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.nextButton.backgroundColor = [UIColor PinRed];
         } completion:^(BOOL finished) {
             self.nextButton.tag = enabledTag2;
         }];
     }
-    if (sender.text.length==0) {
+    if (newString.length==0) {
         [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.nextButton.backgroundColor = [UIColor lightTextColor];
         } completion:^(BOOL finished) {
@@ -124,10 +126,11 @@ NSInteger const disabledTag2 = 2;
 }
 - (IBAction)nextClicked:(UIButton *)sender {
     if (sender.tag == enabledTag2) {
-        if (self.nameTextField.text.length>0){
+        NSString *newString = [self.nameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if (newString.length>0){
             [self.nameTextField endEditing:YES];
             if ([self.delegate respondsToSelector:@selector(SignUpNAMEClickedNext:withLocation:andName:)]) {
-                [self.delegate SignUpNAMEClickedNext:self withLocation:self.location andName:self.nameTextField.text];
+                [self.delegate SignUpNAMEClickedNext:self withLocation:self.location andName:newString];
             }
         }
         else{
