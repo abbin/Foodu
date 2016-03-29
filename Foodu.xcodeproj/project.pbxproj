@@ -47,7 +47,6 @@
 		58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CB91C7C2F3E005DE1CC /* FRestaurants.m */; };
 		58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CBB1C7C2F3E005DE1CC /* FImages.m */; };
 		58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08201C91708600FC25D7 /* FProfileViewController.m */; };
-		58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */; };
 		58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */; };
 		58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */; };
 		58FD082C1C919B7900FC25D7 /* groups-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD082B1C919B7900FC25D7 /* groups-512.png */; };
@@ -57,7 +56,6 @@
 		58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08331C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png */; };
 		58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FD08351C919CC500FC25D7 /* log_out-512.png */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
-		ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */ = {isa = PBXBuildFile; fileRef = ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */; };
 		EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB9FDEA1C9E711B00616681 /* NSMutableDictionary+FLocation.m */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
 /* End PBXBuildFile section */
@@ -134,7 +132,6 @@
 		58F37CBB1C7C2F3E005DE1CC /* FImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImages.m; sourceTree = "<group>"; };
 		58FD081F1C91708600FC25D7 /* FProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileViewController.h; sourceTree = "<group>"; };
 		58FD08201C91708600FC25D7 /* FProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileViewController.m; sourceTree = "<group>"; };
-		58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Delicious-Strawbery-Food-Wallpaper.jpg"; sourceTree = "<group>"; };
 		58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileTableViewCell.h; sourceTree = "<group>"; };
 		58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileTableViewCell.m; sourceTree = "<group>"; };
 		58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1457633293_EditDocument.png; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
-		ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Delicious-Strawbery-Food-Wallpaper.png"; sourceTree = "<group>"; };
 		EDB9FDE91C9E711B00616681 /* NSMutableDictionary+FLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+FLocation.h"; sourceTree = "<group>"; };
 		EDB9FDEA1C9E711B00616681 /* NSMutableDictionary+FLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+FLocation.m"; sourceTree = "<group>"; };
 		EDF8D1D31C82DCDF008C47DB /* FCurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCurrentUser.h; sourceTree = "<group>"; };
@@ -402,8 +398,6 @@
 				58FD082D1C919BBC00FC25D7 /* 19-512.png */,
 				58FD082B1C919B7900FC25D7 /* groups-512.png */,
 				58FD08291C919B3900FC25D7 /* 1457633293_EditDocument.png */,
-				58FD08221C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg */,
-				ED83C0861C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png */,
 				58FD081F1C91708600FC25D7 /* FProfileViewController.h */,
 				58FD08201C91708600FC25D7 /* FProfileViewController.m */,
 				58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */,
@@ -512,10 +506,8 @@
 				58FD08341C919C8800FC25D7 /* SEO_and_Internet_Marketing-96-512.png in Resources */,
 				58CA7D201C61F00F0078E972 /* MyMovie.mp4 in Resources */,
 				580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */,
-				ED83C0871C91D1D9002AE323 /* Delicious-Strawbery-Food-Wallpaper.png in Resources */,
 				58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */,
 				58FD08361C919CC500FC25D7 /* log_out-512.png in Resources */,
-				58FD08231C91733800FC25D7 /* Delicious-Strawbery-Food-Wallpaper.jpg in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58FD082A1C919B3900FC25D7 /* 1457633293_EditDocument.png in Resources */,

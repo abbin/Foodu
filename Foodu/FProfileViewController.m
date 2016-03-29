@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, indexPath) {
     self.profilePhotoEditButton.clipsToBounds = YES;
     
     self.nameLabel.text = [FCurrentUser name];
-    self.profileImageView.image = [UIImage imageNamed:@""];
+    self.profileImageView.image = [UIImage imageNamed:@"profilePlaceholder"];
     self.profileImageView.file = [FCurrentUser profilePicture];
     [self.profileImageView loadInBackground];
 
