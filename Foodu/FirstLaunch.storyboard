@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -766,10 +766,19 @@
                                     <action selector="getStartedClicked:" destination="0M7-BF-7Uj" eventType="touchUpInside" id="T6o-vH-irW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0Z-BW-HNI">
+                                <rect key="frame" x="20" y="588" width="560" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pPf-Lw-W5i" firstAttribute="top" secondItem="M0Z-BW-HNI" secondAttribute="bottom" id="9Ec-Vn-lgX"/>
                             <constraint firstItem="a9A-hl-hkf" firstAttribute="height" secondItem="3td-zu-UVi" secondAttribute="height" multiplier="0.07" id="CQB-xL-rCc"/>
+                            <constraint firstItem="M0Z-BW-HNI" firstAttribute="leading" secondItem="3td-zu-UVi" secondAttribute="leadingMargin" id="NLU-5t-vlk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M0Z-BW-HNI" secondAttribute="trailing" id="XQv-wh-LAz"/>
                             <constraint firstItem="cZB-eo-GEa" firstAttribute="width" secondItem="3td-zu-UVi" secondAttribute="width" multiplier="0.5" id="bYf-wo-Lc8"/>
                             <constraint firstItem="a9A-hl-hkf" firstAttribute="width" secondItem="3td-zu-UVi" secondAttribute="width" multiplier="0.8" id="bmV-qM-rQE"/>
                             <constraint firstItem="a9A-hl-hkf" firstAttribute="centerY" secondItem="3td-zu-UVi" secondAttribute="centerY" multiplier="2.1" id="mR6-En-FNc"/>
@@ -781,6 +790,7 @@
                     </view>
                     <connections>
                         <outlet property="GetStartedButton" destination="a9A-hl-hkf" id="fVV-n9-fN4"/>
+                        <outlet property="buildLabel" destination="M0Z-BW-HNI" id="NpR-ql-bCc"/>
                         <outlet property="fuudLabel" destination="ieJ-ja-P9V" id="5fB-9a-Uga"/>
                         <outlet property="getStartedY" destination="mR6-En-FNc" id="lTr-rP-HVM"/>
                         <outlet property="onLabel" destination="RDV-oF-cl1" id="CiM-ZG-G0q"/>

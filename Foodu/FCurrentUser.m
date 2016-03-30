@@ -14,6 +14,8 @@
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
+NSString *const lastEmailKey = @"lastEmailKey";
+NSString *const lastUserTypeKey = @"lastUserTypeKey";
 
 @implementation FCurrentUser
 
@@ -45,6 +47,14 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
     return [PFUser currentUser].objectId;
 }
 
++(NSString *)lastEmail{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:lastEmailKey];
+}
+
++(UserType)lastUserType{
+    return [[NSUserDefaults standardUserDefaults] integerForKey:lastUserTypeKey];
+}
+
 +(void)updateName:(NSString*)name{
     [PFUser currentUser][@"name"] = name;
     [[PFUser currentUser] saveEventually];
@@ -63,6 +73,16 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 +(void)updateUserType:(UserType)userType{
     [PFUser currentUser][@"userType"] = @(userType);
     [[PFUser currentUser] saveEventually];
+}
+
++(void)setlastEmail:(NSString *)email{
+    [[NSUserDefaults standardUserDefaults] setObject:email forKey:lastEmailKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++(void)setlastUserType:(UserType)userType{
+    [[NSUserDefaults standardUserDefaults] setInteger:userType forKey:lastUserTypeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(void)supdateProfilePicture:(UIImage*)image success:(void (^)(BOOL success))success failure:(void (^)(NSString *error))failure{
@@ -84,6 +104,8 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
         }
     }];
 }
+
+
 
 +(BOOL)isFirstLaunch{
     
@@ -136,6 +158,8 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
             if ([FCurrentUser isFirstLaunch]) {
                 [FCurrentUser didFinishFirstLaunch];
             }
+            [self setlastUserType:EmailUser];
+            [self setlastEmail:user.email];
             [self logUser];
             success(succeeded);
         }
@@ -174,6 +198,8 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
                                             if ([FCurrentUser isFirstLaunch]) {
                                                 [FCurrentUser didFinishFirstLaunch];
                                             }
+                                            [self setlastUserType:EmailUser];
+                                            [self setlastEmail:user.email];
                                             [self logUser];
                                             success(YES);
                                         } else {
@@ -245,6 +271,8 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
                                              if ([FCurrentUser isFirstLaunch]) {
                                                  [FCurrentUser didFinishFirstLaunch];
                                              }
+                                             [self setlastUserType:FaceBookUser];
+                                             [self setlastEmail:user.email];
                                              [self logUser];
                                              success(succeeded);
                                          }
@@ -263,6 +291,8 @@ NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
                                                                              if ([FCurrentUser isFirstLaunch]) {
                                                                                  [FCurrentUser didFinishFirstLaunch];
                                                                              }
+                                                                             [self setlastEmail:user.email];
+                                                                             [self setlastUserType:FaceBookUser];
                                                                              [self logUser];
                                                                              success(YES);
                                                                          } else {

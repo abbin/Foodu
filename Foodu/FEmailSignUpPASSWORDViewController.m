@@ -78,7 +78,7 @@ NSInteger const disabledTag4 = 2;
 
 - (IBAction)nextClicked:(UIButton *)sender {
     if (sender.tag == enabledTag4) {
-        if (self.passwordTextField.text.length>0){
+        if (self.passwordTextField.text.length>0 && self.name.length>0 && self.email.length >0 && self.location){
             [self.passwordTextField endEditing:YES];
             self.nextButton.enabled = NO;
             [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
@@ -96,7 +96,50 @@ NSInteger const disabledTag4 = 2;
 
         }
         else{
-            [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Enter a password" wait:5];
+            if (self.passwordTextField.text.length<=0){
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Your password seems to be invalid. Can you check if its correct?" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *settings = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:settings];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            else if (self.name.length<=0){
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Your name seems to be invalid. Wanna go back and check?" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:cancel];
+                [alert addAction:settings];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            else if (self.email.length<=0){
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Your email seems to be invalid. Wanna go back and check?" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:cancel];
+                [alert addAction:settings];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+            else{
+                UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"Your location seems to be invalid. Wanna go back and check?" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                [alert addAction:cancel];
+                [alert addAction:settings];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
         }
     }
     else{

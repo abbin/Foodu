@@ -46,7 +46,7 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-    
+    [[Fabric sharedSDK] setDebug: YES];
     [Fabric with:@[[Crashlytics class]]];
     
     [FBSDKLoginButton class];
@@ -72,7 +72,12 @@
     else if ([FCurrentUser isSessionValid] == NO){
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-        [rootViewController setViewType:FacebookView];
+        if ([FCurrentUser lastUserType] == EmailUser) {
+            [rootViewController setViewType:SignInView];
+        }
+        else{
+            [rootViewController setViewType:FacebookView];
+        }
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = rootViewController;
         [self.window makeKeyAndVisible];

@@ -17,6 +17,9 @@
 NSInteger const enabledTag = 1;
 NSInteger const disabledTag = 2;
 
+NSInteger const faceBookTag = 1;
+NSInteger const emailTag = 2;
+
 @interface FSignUpOneViewController ()
 
 #pragma mark -
@@ -498,22 +501,94 @@ NSInteger const disabledTag = 2;
     
 }
 - (IBAction)connectWithFacebook:(UIButton *)sender {
-    [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+    
     self.signUpWithEmailButton.enabled = NO;
     self.facebookButton.enabled = NO;
-    [FCurrentUser connectWithFacebookFromViewController:self withLocation:nil success:^(BOOL success) {
-        self.signUpWithEmailButton.enabled = YES;
-        self.facebookButton.enabled = YES;
-        [[FAlertView sharedHUD] hideActivityIndicatorOnView];
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
-        [appDelegate changeRootViewController:rootViewController];
-    } failure:^(NSString *error) {
-        self.signUpWithEmailButton.enabled = YES;
-        self.facebookButton.enabled = YES;
-        [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
-    }];
+    
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse){
+        [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
+        [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+            if (error == nil) {
+                GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                GMSPlace* place = likelihood.place;
+                NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                [FCurrentUser connectWithFacebookFromViewController:self withLocation:obj success:^(BOOL success) {
+                    self.signUpWithEmailButton.enabled = YES;
+                    self.facebookButton.enabled = YES;
+                    [[FAlertView sharedHUD] hideActivityIndicatorOnView];
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+                    [appDelegate changeRootViewController:rootViewController];
+                } failure:^(NSString *error) {
+                    self.signUpWithEmailButton.enabled = YES;
+                    self.facebookButton.enabled = YES;
+                    [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+                }];
+            }
+            else{
+                [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
+                    if (error == nil) {
+                        GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
+                        GMSPlace* place = likelihood.place;
+                        NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                        [FCurrentUser connectWithFacebookFromViewController:self withLocation:obj success:^(BOOL success) {
+                            self.signUpWithEmailButton.enabled = YES;
+                            self.facebookButton.enabled = YES;
+                            [[FAlertView sharedHUD] hideActivityIndicatorOnView];
+                            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+                            [appDelegate changeRootViewController:rootViewController];
+                        } failure:^(NSString *error) {
+                            self.signUpWithEmailButton.enabled = YES;
+                            self.facebookButton.enabled = YES;
+                            [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+                        }];
+                    }
+                    else{
+                        self.signUpWithEmailButton.enabled = YES;
+                        self.facebookButton.enabled = YES;
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Uh Oh!" message:@"We couldn't get an accurate read on where you are. Try manually setting a location" preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+                            picker.delegate = self;
+                            picker.tag = faceBookTag;
+                            picker.providesPresentationContextTransitionStyle = YES;
+                            picker.definesPresentationContext = YES;
+                            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                            [self presentViewController:picker animated:YES completion:nil];
+                        }];
+                        
+                        [alert addAction:actionOk];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                }];;
+            }
+        }];
+    }
+    else{
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Location not detected" message:@"Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *Select = [UIAlertAction actionWithTitle:@"Manually select a location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.nextButton.enabled = YES;
+            FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
+            picker.delegate = self;
+            picker.tag = faceBookTag;
+            picker.providesPresentationContextTransitionStyle = YES;
+            picker.definesPresentationContext = YES;
+            picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+            [self presentViewController:picker animated:YES completion:nil];
+        }];
+        UIAlertAction *settings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.nextButton.enabled = YES;
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        [alert addAction:Select];
+        [alert addAction:settings];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+
 }
 
 - (IBAction)signIn:(UIButton *)sender {
@@ -1057,6 +1132,7 @@ NSInteger const disabledTag = 2;
                             UIAlertAction *actionOk = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                                 FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
                                 picker.delegate = self;
+                                picker.tag = emailTag;
                                 picker.providesPresentationContextTransitionStyle = YES;
                                 picker.definesPresentationContext = YES;
                                 picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -1073,7 +1149,7 @@ NSInteger const disabledTag = 2;
         else{
             
             UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Location not detected" message:@"Location services are turned off on your device. Please go to settings and enable location services to use this feature or manually select a location." preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *Select = [UIAlertAction actionWithTitle:@"Select a location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *Select = [UIAlertAction actionWithTitle:@"Manually select a location" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 self.nextButton.enabled = YES;
                 FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
                 picker.delegate = self;
@@ -1136,17 +1212,34 @@ NSInteger const disabledTag = 2;
 
 -(void)FLocationPicker:(FLocationPickerViewController*)picker didFinishPickingPlace:(NSMutableDictionary*)location{
     [[FAlertView sharedHUD] showActivityIndicatorOnView:self.view];
-    [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:location success:^(BOOL success) {
-        [[FAlertView sharedHUD]hideActivityIndicatorOnView];
-        self.nextButton.enabled = YES;
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
-        [appDelegate changeRootViewController:rootViewController];
-    } failure:^(NSString *error) {
-        self.nextButton.enabled = YES;
-        [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
-    }];
+    if (picker.tag == emailTag) {
+        [FCurrentUser signUpUserWithName:self.name email:self.email password:self.password andLocation:location success:^(BOOL success) {
+            [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+            self.nextButton.enabled = YES;
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+            [appDelegate changeRootViewController:rootViewController];
+        } failure:^(NSString *error) {
+            self.nextButton.enabled = YES;
+            [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+        }];
+    }
+    else{
+        [FCurrentUser connectWithFacebookFromViewController:self withLocation:location success:^(BOOL success) {
+            self.signUpWithEmailButton.enabled = YES;
+            self.facebookButton.enabled = YES;
+            [[FAlertView sharedHUD] hideActivityIndicatorOnView];
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FTabBarController*rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FTabBarController"];
+            [appDelegate changeRootViewController:rootViewController];
+        } failure:^(NSString *error) {
+            self.signUpWithEmailButton.enabled = YES;
+            self.facebookButton.enabled = YES;
+            [[FAlertView sharedHUD] showHUDOnView:self.view withText:error wait:5];
+        }];
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////

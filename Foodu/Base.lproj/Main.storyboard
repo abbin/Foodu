@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Geo List Table View Controller-->
         <scene sceneID="GDq-mI-vGU">
             <objects>
-                <tableViewController storyboardIdentifier="FListViewController" id="JNF-YY-5jb" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FGeoListTableViewController" id="JNF-YY-5jb" customClass="FGeoListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="227" sectionHeaderHeight="28" sectionFooterHeight="28" id="IDZ-rz-56y">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlistTableViewCell" rowHeight="227" id="LTd-CM-gpw">
-                                <rect key="frame" x="0.0" y="92" width="600" height="227"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlistTableViewCell" rowHeight="227" id="LTd-CM-gpw" customClass="FGeoListTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="227"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LTd-CM-gpw" id="6yk-vX-p8G">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="227"/>
@@ -87,7 +88,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PFTableViewCell" rowHeight="60" id="tBD-x6-hnq">
-                                <rect key="frame" x="0.0" y="319" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="255" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tBD-x6-hnq" id="SXE-R0-z1Z">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -126,11 +127,17 @@
                         <connections>
                             <outlet property="dataSource" destination="JNF-YY-5jb" id="K2c-B2-apr"/>
                             <outlet property="delegate" destination="JNF-YY-5jb" id="Dmz-6y-adu"/>
+                            <outletCollection property="gestureRecognizers" destination="n8F-IF-H2R" appends="YES" id="HOJ-OS-9B3"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Eb2-yP-F2E"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKD-sW-bmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="n8F-IF-H2R">
+                    <connections>
+                        <action selector="didTapOnTableView:" destination="JNF-YY-5jb" id="K3y-uM-7zn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1100" y="-171"/>
         </scene>
@@ -518,7 +525,7 @@
                                         <rect key="frame" x="30" y="431" width="540" height="42"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="faceBookLogo" translatesAutoresizingMaskIntoConstraints="NO" id="t6L-Df-PwR">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                                                <rect key="frame" x="20" y="10" width="22" height="22"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="t6L-Df-PwR" secondAttribute="height" multiplier="1:1" id="g57-KL-OCQ"/>
@@ -536,13 +543,13 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="top" id="Dtf-Wm-xEv"/>
-                                            <constraint firstAttribute="bottom" secondItem="t6L-Df-PwR" secondAttribute="bottom" id="H1k-YP-uJC"/>
+                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="top" constant="10" id="Dtf-Wm-xEv"/>
+                                            <constraint firstAttribute="bottom" secondItem="t6L-Df-PwR" secondAttribute="bottom" constant="10" id="H1k-YP-uJC"/>
                                             <constraint firstAttribute="bottom" secondItem="bVf-E0-Pxj" secondAttribute="bottom" id="OhL-iJ-imV"/>
                                             <constraint firstItem="bVf-E0-Pxj" firstAttribute="top" secondItem="iBl-OY-XKg" secondAttribute="top" id="g0b-W2-wkw"/>
-                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="leading" secondItem="iBl-OY-XKg" secondAttribute="leading" id="nr3-zX-N77"/>
+                                            <constraint firstItem="t6L-Df-PwR" firstAttribute="leading" secondItem="iBl-OY-XKg" secondAttribute="leading" constant="20" id="nr3-zX-N77"/>
                                             <constraint firstItem="bVf-E0-Pxj" firstAttribute="leading" secondItem="t6L-Df-PwR" secondAttribute="trailing" constant="1" id="o7g-j9-eCg"/>
                                             <constraint firstAttribute="trailing" secondItem="bVf-E0-Pxj" secondAttribute="trailing" id="zy9-GK-9KK"/>
                                         </constraints>
@@ -745,7 +752,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="s9F-hY-y0A" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="N1K-nd-uAU"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="30v-Nd-sBU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="30v-Nd-sBU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *fuudLabel;
 @property (weak, nonatomic) IBOutlet UIButton *GetStartedButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *getStartedY;
+@property (weak, nonatomic) IBOutlet UILabel *buildLabel;
 
 @end
 
@@ -22,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    self.buildLabel.text = [NSString stringWithFormat:@"%@ (%@)",version,build];
     NSString *fontname = @"";
     NSString *fontTwo = @"";
     NSString *textfont = @"";

@@ -36,6 +36,10 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 +(PFFile*)profilePicture;
 
++(UserType)lastUserType;
+
++(NSString*)lastEmail;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma mark -
@@ -77,6 +81,10 @@ typedef NS_ENUM(NSInteger, UserType) {
 +(void)updateUserlocation:(NSMutableDictionary*)location;
 
 +(void)updateUserType:(UserType)userType;
+
++(void)setlastEmail:(NSString*)email;
+
++(void)setlastUserType:(UserType)userType;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

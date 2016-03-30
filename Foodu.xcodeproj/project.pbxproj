@@ -15,6 +15,9 @@
 		580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */; };
 		580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C51C9835DC00F50499 /* FPageONEViewController.m */; };
 		580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */; };
+		58114EC11CABC05700472735 /* FGeoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58114EC01CABC05700472735 /* FGeoListTableViewCell.m */; };
+		58114EC41CABC1F700472735 /* FGeoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58114EC31CABC1F700472735 /* FGeoListTableViewController.m */; };
+		58114EC71CABC70F00472735 /* PFNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58114EC61CABC70F00472735 /* PFNextTableViewCell.m */; };
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
 		5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */; };
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
@@ -74,6 +77,12 @@
 		580BF2C51C9835DC00F50499 /* FPageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageONEViewController.m; sourceTree = "<group>"; };
 		580C52F21CA1333B0029868F /* FEmailSignUpEMAILViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEmailSignUpEMAILViewController.h; sourceTree = "<group>"; };
 		580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEmailSignUpEMAILViewController.m; sourceTree = "<group>"; };
+		58114EBF1CABC05700472735 /* FGeoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGeoListTableViewCell.h; sourceTree = "<group>"; };
+		58114EC01CABC05700472735 /* FGeoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGeoListTableViewCell.m; sourceTree = "<group>"; };
+		58114EC21CABC1F700472735 /* FGeoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGeoListTableViewController.h; sourceTree = "<group>"; };
+		58114EC31CABC1F700472735 /* FGeoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGeoListTableViewController.m; sourceTree = "<group>"; };
+		58114EC51CABC70F00472735 /* PFNextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNextTableViewCell.h; sourceTree = "<group>"; };
+		58114EC61CABC70F00472735 /* PFNextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNextTableViewCell.m; sourceTree = "<group>"; };
 		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5812BB9A1C9BF13E00C22FDE /* FLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationPickerViewController.h; sourceTree = "<group>"; };
@@ -171,6 +180,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		58114EBA1CABBFA400472735 /* GeoList */ = {
+			isa = PBXGroup;
+			children = (
+				58114EC21CABC1F700472735 /* FGeoListTableViewController.h */,
+				58114EC31CABC1F700472735 /* FGeoListTableViewController.m */,
+				58114EBE1CABC03400472735 /* TableViewCell */,
+			);
+			name = GeoList;
+			sourceTree = "<group>";
+		};
+		58114EBE1CABC03400472735 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				58114EBF1CABC05700472735 /* FGeoListTableViewCell.h */,
+				58114EC01CABC05700472735 /* FGeoListTableViewCell.m */,
+				58114EC51CABC70F00472735 /* PFNextTableViewCell.h */,
+				58114EC61CABC70F00472735 /* PFNextTableViewCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		581152D41C87190300B592B6 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +223,7 @@
 		582006CE1C3E280D00BD0FCD /* Tab Bar Controller */ = {
 			isa = PBXGroup;
 			children = (
+				58114EBA1CABBFA400472735 /* GeoList */,
 				58FD081B1C9151C500FC25D7 /* Profile */,
 				582006CF1C3E421C00BD0FCD /* FTabBarController.h */,
 				582006D01C3E421C00BD0FCD /* FTabBarController.m */,
@@ -453,6 +484,7 @@
 				04D3899CD3985B4A417583C4 /* Embed Pods Frameworks */,
 				89D682C5B91EEB558184DC07 /* Copy Pods Resources */,
 				58C899971CAA82D20031E33B /* ShellScript */,
+				58114EB91CABB1C800472735 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -555,6 +587,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		58114EB91CABB1C800472735 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		58C899971CAA82D20031E33B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -609,12 +654,15 @@
 				580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
+				58114EC11CABC05700472735 /* FGeoListTableViewCell.m in Sources */,
 				58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */,
 				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
+				58114EC41CABC1F700472735 /* FGeoListTableViewController.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */,
+				58114EC71CABC70F00472735 /* PFNextTableViewCell.m in Sources */,
 				58B429091C9FDE6F002FA774 /* FPageFOURViewController.m in Sources */,
 				580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,

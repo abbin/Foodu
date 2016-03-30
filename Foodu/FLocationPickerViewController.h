@@ -21,4 +21,6 @@
 
 @property (strong, nonatomic) id <FLocationPickerDelegate> delegate;
 
+@property (assign, nonatomic) NSInteger tag;
+
 @end
