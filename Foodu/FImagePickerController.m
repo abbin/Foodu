@@ -42,7 +42,9 @@ static NSString * const reuseIdentifier = @"FImagePickerCollectionViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        
+    }];
     [self getAllPictures];
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;

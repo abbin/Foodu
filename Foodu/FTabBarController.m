@@ -8,8 +8,8 @@
 
 #import "FTabBarController.h"
 #import "UIColor+FColours.h"
-#include <Photos/Photos.h>
 #import "FSignUpOneViewController.h"
+#import "AAPLCameraViewController.h"
 
 @interface FTabBarController ()
 
@@ -58,7 +58,10 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-    
+    AAPLCameraViewController *rootViewController = [[AAPLCameraViewController alloc]initWithNibName:@"AAPLCameraViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:rootViewController animated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {

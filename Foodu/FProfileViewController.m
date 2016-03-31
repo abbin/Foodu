@@ -41,8 +41,7 @@ typedef NS_ENUM(NSInteger, indexPath) {
                                        self.headerView.frame.origin.y,
                                        self.headerView.frame.size.width,
                                        [UIScreen mainScreen].bounds.size.height/2);
-    
-    //self.nameLabel.font = [UIFont fontWithName:@".SFUIDisplay-light" size:[UIScreen mainScreen].bounds.size.width/15];
+
     [self.headerView layoutIfNeeded];
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2;
@@ -70,6 +69,11 @@ typedef NS_ENUM(NSInteger, indexPath) {
     // Dispose of any resources that can be recreated.
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma mark -
+#pragma mark UITABLEVIEW DELEGATE AND DATASOURE
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -80,39 +84,39 @@ typedef NS_ENUM(NSInteger, indexPath) {
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     FProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FProfileTableViewCell"];
-        switch (indexPath.row) {
-            case editProfile:
-                cell.titleLabel.text = @"Edit profile";
-                cell.sideImageView.image = [UIImage imageNamed:@"EditProfile"];
-                break;
-            case friendsList:
-                cell.titleLabel.text = @"Friends list";
-                cell.sideImageView.image = [UIImage imageNamed:@"FriendsList"];
-                break;
-            case findFriends:
-                cell.titleLabel.text = @"Find friends on Carte";
-                cell.sideImageView.image = [UIImage imageNamed:@"FindFriends"];
-                break;
-            case rateAppstore:
-                cell.titleLabel.text = @"Rate us on the App Store";
-                cell.sideImageView.image = [UIImage imageNamed:@"Appstore"];
-                break;
-            case feedBack:
-                cell.titleLabel.text = @"Send us a feedback";
-                cell.sideImageView.image = [UIImage imageNamed:@"FeedBack"];
-                break;
-            case about:
-                cell.titleLabel.text = @"About";
-                cell.sideImageView.image = [UIImage imageNamed:@"About"];
-                break;
-            case signOut:
-                cell.titleLabel.text = @"Sign out";
-                cell.sideImageView.image = [UIImage imageNamed:@"Logout"];
-                break;
-                
-            default:
-                break;
-        }
+    switch (indexPath.row) {
+        case editProfile:
+            cell.titleLabel.text = @"Edit profile";
+            cell.sideImageView.image = [UIImage imageNamed:@"EditProfile"];
+            break;
+        case friendsList:
+            cell.titleLabel.text = @"Friends list";
+            cell.sideImageView.image = [UIImage imageNamed:@"FriendsList"];
+            break;
+        case findFriends:
+            cell.titleLabel.text = @"Find friends on Carte";
+            cell.sideImageView.image = [UIImage imageNamed:@"FindFriends"];
+            break;
+        case rateAppstore:
+            cell.titleLabel.text = @"Rate us on the App Store";
+            cell.sideImageView.image = [UIImage imageNamed:@"Appstore"];
+            break;
+        case feedBack:
+            cell.titleLabel.text = @"Send us a feedback";
+            cell.sideImageView.image = [UIImage imageNamed:@"FeedBack"];
+            break;
+        case about:
+            cell.titleLabel.text = @"About";
+            cell.sideImageView.image = [UIImage imageNamed:@"About"];
+            break;
+        case signOut:
+            cell.titleLabel.text = @"Sign out";
+            cell.sideImageView.image = [UIImage imageNamed:@"Logout"];
+            break;
+            
+        default:
+            break;
+    }
     return cell;
 }
 
@@ -144,44 +148,48 @@ typedef NS_ENUM(NSInteger, indexPath) {
         }
             break;
         case signOut:{
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-            UIAlertAction *actionYes = [UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                self.view.userInteractionEnabled = NO;
-                [[FAlertView sharedHUD] showActivityIndicatorOnView:nil];
-                [FCurrentUser logOutCurrentUser:^(BOOL success, UserType userType) {
-                    
-                    self.view.userInteractionEnabled = YES;
-                    [[FAlertView sharedHUD]hideActivityIndicatorOnView];
-                    
-                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
-                    
-                    if (userType == FaceBookUser) {
-                        [rootViewController setViewType:FacebookView];
-                    }
-                    else{
-                        [rootViewController setViewType:SignInView];
-                    }
-                    [appDelegate changeRootViewController:rootViewController];
-                    
-                } failure:^(NSString *error) {
-                    self.view.userInteractionEnabled = YES;
-                    [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Failed to SignOut. Please try again" wait:5];
-                }];
-            }];
-            UIAlertAction *actionNo = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                [self.profileTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
-            }];
-            [alert addAction:actionYes];
-            [alert addAction:actionNo];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self signOut];
         }
             break;
             
         default:
             break;
     }
+}
+
+-(void)signOut{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *actionYes = [UIAlertAction actionWithTitle:@"Sign out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        self.view.userInteractionEnabled = NO;
+        [[FAlertView sharedHUD] showActivityIndicatorOnView:nil];
+        [FCurrentUser logOutCurrentUser:^(BOOL success, UserType userType) {
+            
+            self.view.userInteractionEnabled = YES;
+            [[FAlertView sharedHUD]hideActivityIndicatorOnView];
+            
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FSignUpOneViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"FSignUpOneViewController"];
+            
+            if (userType == FaceBookUser) {
+                [rootViewController setViewType:FacebookView];
+            }
+            else{
+                [rootViewController setViewType:SignInView];
+            }
+            [appDelegate changeRootViewController:rootViewController];
+            
+        } failure:^(NSString *error) {
+            self.view.userInteractionEnabled = YES;
+            [[FAlertView sharedHUD]showHUDOnView:self.view withText:@"Failed to SignOut. Please try again" wait:5];
+        }];
+    }];
+    UIAlertAction *actionNo = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.profileTableView deselectRowAtIndexPath:self.selectedIndexPath animated:YES];
+    }];
+    [alert addAction:actionYes];
+    [alert addAction:actionNo];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
