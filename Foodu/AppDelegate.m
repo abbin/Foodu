@@ -46,7 +46,6 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
-    [[Fabric sharedSDK] setDebug: YES];
     [Fabric with:@[[Crashlytics class]]];
     
     [FBSDKLoginButton class];
@@ -102,6 +101,9 @@
         [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
             GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
             GMSPlace* place = likelihood.place;
+            if (place == nil) {
+                NSLog(@"Place Nil");
+            }
             NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
             [FCurrentUser  updateUserlocation:obj];
         }];
