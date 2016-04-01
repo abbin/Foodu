@@ -103,9 +103,9 @@
             GMSPlace* place = likelihood.place;
             if (place == nil) {
                 NSLog(@"Place Nil");
+                NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
+                [FCurrentUser  updateUserlocation:obj];
             }
-            NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
-            [FCurrentUser  updateUserlocation:obj];
         }];
     }
     

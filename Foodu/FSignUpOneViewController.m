@@ -1153,6 +1153,7 @@ NSInteger const emailTag = 2;
                 self.nextButton.enabled = YES;
                 FLocationPickerViewController *picker = [[FLocationPickerViewController alloc]initWithNibName:@"FLocationPickerViewController" bundle:[NSBundle mainBundle]];
                 picker.delegate = self;
+                picker.tag = emailTag;
                 picker.providesPresentationContextTransitionStyle = YES;
                 picker.definesPresentationContext = YES;
                 picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
