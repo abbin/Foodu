@@ -46,11 +46,8 @@ static NSString * const reuseIdentifier = @"FImagePickerCollectionViewCell";
         
     }];
     [self getAllPictures];
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-            [self.collectionView registerNib:[UINib nibWithNibName:@"FImagePickerCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"FImagePickerCollectionViewCell"];
+
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FImagePickerCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"FImagePickerCollectionViewCell"];
     
     // Do any additional setup after loading the view.
 }
