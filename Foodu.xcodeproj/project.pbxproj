@@ -10,9 +10,6 @@
 		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580023111C9ADEDA00A7AFB6 /* FPageTHREEViewController.m */; };
 		5802DD791CAD13B0006D9CD7 /* IMG_0101.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5802DD781CAD13B0006D9CD7 /* IMG_0101.mp4 */; };
-		5802DD931CAD375C006D9CD7 /* AAPLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802DD901CAD375C006D9CD7 /* AAPLCameraViewController.m */; };
-		5802DD941CAD375C006D9CD7 /* AAPLPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802DD921CAD375C006D9CD7 /* AAPLPreviewView.m */; };
-		5802DD981CAD3925006D9CD7 /* AAPLCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5802DD971CAD3925006D9CD7 /* AAPLCameraViewController.xib */; };
 		580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */; };
 		580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */; };
 		580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C51C9835DC00F50499 /* FPageONEViewController.m */; };
@@ -51,6 +48,13 @@
 		58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F37CBB1C7C2F3E005DE1CC /* FImages.m */; };
 		58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08201C91708600FC25D7 /* FProfileViewController.m */; };
 		58FD08281C91825800FC25D7 /* FProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */; };
+		ED4224711CB0F1C700EF7091 /* AAPLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED42246E1CB0F1C700EF7091 /* AAPLCameraViewController.m */; };
+		ED4224721CB0F1C700EF7091 /* AAPLPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4224701CB0F1C700EF7091 /* AAPLPreviewView.m */; };
+		ED4224741CB0F1E100EF7091 /* AAPLCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4224731CB0F1E100EF7091 /* AAPLCameraViewController.xib */; };
+		ED4224D11CB13C3F00EF7091 /* NSIndexSet+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4224CE1CB13C3F00EF7091 /* NSIndexSet+Convenience.m */; };
+		ED4224D21CB13C3F00EF7091 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4224D01CB13C3F00EF7091 /* UICollectionView+Convenience.m */; };
+		ED4224D91CB13DD000EF7091 /* AAPLGridViewCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4224D71CB13DD000EF7091 /* AAPLGridViewCell2.m */; };
+		ED4224DA1CB13DD000EF7091 /* AAPLGridViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED4224D81CB13DD000EF7091 /* AAPLGridViewCell2.xib */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB9FDEA1C9E711B00616681 /* NSMutableDictionary+FLocation.m */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
@@ -62,11 +66,6 @@
 		580023101C9ADEDA00A7AFB6 /* FPageTHREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPageTHREEViewController.h; sourceTree = "<group>"; };
 		580023111C9ADEDA00A7AFB6 /* FPageTHREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageTHREEViewController.m; sourceTree = "<group>"; };
 		5802DD781CAD13B0006D9CD7 /* IMG_0101.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMG_0101.mp4; sourceTree = "<group>"; };
-		5802DD8F1CAD375C006D9CD7 /* AAPLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCameraViewController.h; sourceTree = "<group>"; };
-		5802DD901CAD375C006D9CD7 /* AAPLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCameraViewController.m; sourceTree = "<group>"; };
-		5802DD911CAD375C006D9CD7 /* AAPLPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPreviewView.h; sourceTree = "<group>"; };
-		5802DD921CAD375C006D9CD7 /* AAPLPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPreviewView.m; sourceTree = "<group>"; };
-		5802DD971CAD3925006D9CD7 /* AAPLCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAPLCameraViewController.xib; sourceTree = "<group>"; };
 		580BF2BF1C98320800F50499 /* FFirstLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFirstLaunchViewController.h; sourceTree = "<group>"; };
 		580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFirstLaunchViewController.m; sourceTree = "<group>"; };
 		580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstLaunch.storyboard; sourceTree = "<group>"; };
@@ -139,6 +138,18 @@
 		58FD08261C91825800FC25D7 /* FProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FProfileTableViewCell.h; sourceTree = "<group>"; };
 		58FD08271C91825800FC25D7 /* FProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FProfileTableViewCell.m; sourceTree = "<group>"; };
 		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED42246D1CB0F1C700EF7091 /* AAPLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCameraViewController.h; sourceTree = "<group>"; };
+		ED42246E1CB0F1C700EF7091 /* AAPLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCameraViewController.m; sourceTree = "<group>"; };
+		ED42246F1CB0F1C700EF7091 /* AAPLPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPreviewView.h; sourceTree = "<group>"; };
+		ED4224701CB0F1C700EF7091 /* AAPLPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPreviewView.m; sourceTree = "<group>"; };
+		ED4224731CB0F1E100EF7091 /* AAPLCameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAPLCameraViewController.xib; sourceTree = "<group>"; };
+		ED4224CD1CB13C3F00EF7091 /* NSIndexSet+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+Convenience.h"; sourceTree = "<group>"; };
+		ED4224CE1CB13C3F00EF7091 /* NSIndexSet+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+Convenience.m"; sourceTree = "<group>"; };
+		ED4224CF1CB13C3F00EF7091 /* UICollectionView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Convenience.h"; sourceTree = "<group>"; };
+		ED4224D01CB13C3F00EF7091 /* UICollectionView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Convenience.m"; sourceTree = "<group>"; };
+		ED4224D61CB13DD000EF7091 /* AAPLGridViewCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLGridViewCell2.h; sourceTree = "<group>"; };
+		ED4224D71CB13DD000EF7091 /* AAPLGridViewCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLGridViewCell2.m; sourceTree = "<group>"; };
+		ED4224D81CB13DD000EF7091 /* AAPLGridViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AAPLGridViewCell2.xib; sourceTree = "<group>"; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
 		EDB9FDE91C9E711B00616681 /* NSMutableDictionary+FLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+FLocation.h"; sourceTree = "<group>"; };
@@ -171,11 +182,18 @@
 		5802DD7A1CAD2099006D9CD7 /* Add Fuud */ = {
 			isa = PBXGroup;
 			children = (
-				5802DD8F1CAD375C006D9CD7 /* AAPLCameraViewController.h */,
-				5802DD901CAD375C006D9CD7 /* AAPLCameraViewController.m */,
-				5802DD971CAD3925006D9CD7 /* AAPLCameraViewController.xib */,
-				5802DD911CAD375C006D9CD7 /* AAPLPreviewView.h */,
-				5802DD921CAD375C006D9CD7 /* AAPLPreviewView.m */,
+				ED42246D1CB0F1C700EF7091 /* AAPLCameraViewController.h */,
+				ED42246E1CB0F1C700EF7091 /* AAPLCameraViewController.m */,
+				ED4224731CB0F1E100EF7091 /* AAPLCameraViewController.xib */,
+				ED42246F1CB0F1C700EF7091 /* AAPLPreviewView.h */,
+				ED4224701CB0F1C700EF7091 /* AAPLPreviewView.m */,
+				ED4224D61CB13DD000EF7091 /* AAPLGridViewCell2.h */,
+				ED4224D71CB13DD000EF7091 /* AAPLGridViewCell2.m */,
+				ED4224D81CB13DD000EF7091 /* AAPLGridViewCell2.xib */,
+				ED4224CD1CB13C3F00EF7091 /* NSIndexSet+Convenience.h */,
+				ED4224CE1CB13C3F00EF7091 /* NSIndexSet+Convenience.m */,
+				ED4224CF1CB13C3F00EF7091 /* UICollectionView+Convenience.h */,
+				ED4224D01CB13C3F00EF7091 /* UICollectionView+Convenience.m */,
 			);
 			name = "Add Fuud";
 			sourceTree = "<group>";
@@ -527,8 +545,9 @@
 				5802DD791CAD13B0006D9CD7 /* IMG_0101.mp4 in Resources */,
 				580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */,
 				58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */,
-				5802DD981CAD3925006D9CD7 /* AAPLCameraViewController.xib in Resources */,
+				ED4224741CB0F1E100EF7091 /* AAPLCameraViewController.xib in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
+				ED4224DA1CB13DD000EF7091 /* AAPLGridViewCell2.xib in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
@@ -584,14 +603,14 @@
 		};
 		58C899971CAA82D20031E33B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" fbc89322cf2106940723927a97672a75024b92d8 d4a399c0478c653cdac85f7ac89b92bbe428d53d8ea8e319ca358fb7bc1664ec";
 		};
@@ -626,7 +645,8 @@
 				5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
-				5802DD941CAD375C006D9CD7 /* AAPLPreviewView.m in Sources */,
+				ED4224721CB0F1C700EF7091 /* AAPLPreviewView.m in Sources */,
+				ED4224D21CB13C3F00EF7091 /* UICollectionView+Convenience.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				58A8A7371C99582500D62E24 /* FPageFour.m in Sources */,
 				58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */,
@@ -643,6 +663,7 @@
 				580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */,
 				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
 				58114EC41CABC1F700472735 /* FGeoListTableViewController.m in Sources */,
+				ED4224D11CB13C3F00EF7091 /* NSIndexSet+Convenience.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
 				EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */,
 				58114EC71CABC70F00472735 /* PFNextTableViewCell.m in Sources */,
@@ -650,10 +671,11 @@
 				580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 				58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */,
+				ED4224D91CB13DD000EF7091 /* AAPLGridViewCell2.m in Sources */,
 				58B4290E1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m in Sources */,
 				581152D71C87191600B592B6 /* Reachability.m in Sources */,
 				580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */,
-				5802DD931CAD375C006D9CD7 /* AAPLCameraViewController.m in Sources */,
+				ED4224711CB0F1C700EF7091 /* AAPLCameraViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

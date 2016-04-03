@@ -11,6 +11,7 @@
 #import "FSignUpOneViewController.h"
 #import "AAPLCameraViewController.h"
 #include <Photos/Photos.h>
+#import "FImagePickerController.h"
 
 @interface FTabBarController ()
 
@@ -59,18 +60,11 @@
 }
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
-    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        if (status == PHAuthorizationStatusAuthorized) {
-            AAPLCameraViewController *rootViewController = [[AAPLCameraViewController alloc]initWithNibName:@"AAPLCameraViewController" bundle:[NSBundle mainBundle]];
-            [self presentViewController:rootViewController animated:YES completion:^{
-                
-            }];
-        }
-        else{
-            
-        }
+     AAPLCameraViewController *rootViewController = [[AAPLCameraViewController alloc]initWithNibName:@"AAPLCameraViewController" bundle:[NSBundle mainBundle]];
+    [self presentViewController:rootViewController animated:YES completion:^{
+        
     }];
-
+    
 }
 
 - (IBAction)homeButtonClicked:(UIButton *)sender {
