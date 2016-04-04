@@ -283,7 +283,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
             [cell selectCellWithAnimation:NO forGallery:NO];
         }
         else{
-            [cell deSelectCellWithAnimation:NO];
+            [cell deSelectCellWithAnimation:NO forGallery:NO];
         }
         
         // Add a badge to the cell if the PHAsset represents a Live Photo.
@@ -310,10 +310,10 @@ static NSString * const CellReuseIdentifier = @"Cell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    AAPLGridViewCell2 *cell = (AAPLGridViewCell2*)[self.photoCollectionView cellForItemAtIndexPath:indexPath];
     if (self.galleryOn == NO) {
-        AAPLGridViewCell2 *cell = (AAPLGridViewCell2*)[self.photoCollectionView cellForItemAtIndexPath:indexPath];
         if ([[self.selectedIndex objectAtIndex:indexPath.row] boolValue]) {
-            [cell deSelectCellWithAnimation:YES];
+            [cell deSelectCellWithAnimation:YES forGallery:NO];
             [self.selectedIndex replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:NO]];
             [self.selectedImages removeObject:[self.assetsFetchResults objectAtIndex:indexPath.row]];
         }
@@ -351,6 +351,17 @@ static NSString * const CellReuseIdentifier = @"Cell";
                 self.dismissButton.tag = 0;
             }
         }
+
+    }
+    else{
+        
+        [cell deSelectCellWithAnimation:YES forGallery:YES];
+        
+        [self.takenPhotos removeObjectAtIndex:indexPath.row];
+        
+        [self.photoCollectionView performBatchUpdates:^{
+            [self.photoCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        } completion:nil];
 
     }
 }
@@ -859,9 +870,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
         }
             break;
         case 1:{
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-            }];
+            [self expandTapped:self.expandButoon];
         }
             break;
             
@@ -918,7 +927,9 @@ static NSString * const CellReuseIdentifier = @"Cell";
     [self.photoCollectionView performBatchUpdates:^{
         [self.photoCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
     } completion:nil];
-    [self.photoCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.takenPhotos.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    if (self.takenPhotos.count>0) {
+        [self.photoCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.takenPhotos.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer

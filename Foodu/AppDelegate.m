@@ -104,8 +104,7 @@
         [[GMSPlacesClient sharedClient] currentPlaceWithCallback:^(GMSPlaceLikelihoodList * _Nullable likelihoodList, NSError * _Nullable error) {
             GMSPlaceLikelihood *likelihood = [likelihoodList.likelihoods objectAtIndex:0];
             GMSPlace* place = likelihood.place;
-            if (place == nil) {
-                NSLog(@"Place Nil");
+            if (place != nil) {
                 NSMutableDictionary *obj = [[NSMutableDictionary alloc]initWithGMSPlace:place];
                 [FCurrentUser  updateUserlocation:obj];
             }

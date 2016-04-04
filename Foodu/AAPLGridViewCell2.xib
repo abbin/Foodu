@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -36,34 +36,34 @@
                             <constraint firstItem="slj-Mm-QAh" firstAttribute="centerX" secondItem="dO0-d8-4sB" secondAttribute="centerX" id="EJb-Yl-GFL"/>
                         </constraints>
                     </view>
-                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W4E-mo-4z6">
-                        <rect key="frame" x="100" y="7" width="27" height="27"/>
+                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black close" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-JH-ql8">
+                        <rect key="frame" x="47" y="47" width="41" height="41"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="W4E-mo-4z6" secondAttribute="height" multiplier="1:1" id="2dO-eY-41z"/>
+                            <constraint firstAttribute="width" secondItem="Eb5-JH-ql8" secondAttribute="height" multiplier="1:1" id="XFi-Om-oc0"/>
                         </constraints>
-                    </view>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="RTj-Nd-dPD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3Ny-VN-8kg"/>
-                <constraint firstItem="W4E-mo-4z6" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.2" id="3ul-Sc-r6t"/>
                 <constraint firstItem="dO0-d8-4sB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Ec-aJ-mLz"/>
                 <constraint firstAttribute="trailing" secondItem="dO0-d8-4sB" secondAttribute="trailing" id="8G1-yD-xdr"/>
                 <constraint firstAttribute="trailing" secondItem="RTj-Nd-dPD" secondAttribute="trailing" id="HV4-Ca-y4W"/>
-                <constraint firstItem="W4E-mo-4z6" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" multiplier="1.7" id="IZW-Ie-xJk"/>
-                <constraint firstItem="W4E-mo-4z6" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.3" id="RRg-za-Kq3"/>
+                <constraint firstItem="Eb5-JH-ql8" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.3" id="Lih-Ik-Ag3"/>
+                <constraint firstItem="Eb5-JH-ql8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="QzH-xh-iXd"/>
                 <constraint firstAttribute="bottom" secondItem="RTj-Nd-dPD" secondAttribute="bottom" id="fOl-pp-OcZ"/>
                 <constraint firstItem="dO0-d8-4sB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fcN-Om-JrG"/>
                 <constraint firstAttribute="bottom" secondItem="dO0-d8-4sB" secondAttribute="bottom" id="is3-P7-Pzh"/>
+                <constraint firstItem="Eb5-JH-ql8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mT2-pk-bQL"/>
                 <constraint firstItem="RTj-Nd-dPD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="npz-TX-RR0"/>
             </constraints>
             <size key="customSize" width="134" height="134"/>
             <connections>
                 <outlet property="blurView" destination="dO0-d8-4sB" id="Yjt-43-bXP"/>
-                <outlet property="galleryIcon" destination="W4E-mo-4z6" id="wYH-wx-wWN"/>
+                <outlet property="galleryIcon" destination="Eb5-JH-ql8" id="Yyl-YY-HQR"/>
                 <outlet property="iconImage" destination="slj-Mm-QAh" id="ock-2l-HnY"/>
                 <outlet property="imageView" destination="RTj-Nd-dPD" id="YBa-vW-h2K"/>
                 <outlet property="imageViewWidth" destination="4FI-8e-CHB" id="wvU-aE-Q5d"/>
@@ -72,6 +72,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="black close" width="37" height="37"/>
         <image name="check" width="50" height="50"/>
     </resources>
 </document>
