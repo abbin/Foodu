@@ -46,6 +46,9 @@
 //        configuration.server = @"https://foodu.herokuapp.com/parse";
 //        
 //    }]];
+    
+    
+    
     [Fabric with:@[[Crashlytics class]]];
     
     [FBSDKLoginButton class];

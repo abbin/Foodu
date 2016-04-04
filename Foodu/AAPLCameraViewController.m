@@ -52,11 +52,17 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 @property (nonatomic, strong) NSArray *sectionFetchResults;
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
 @property (nonatomic, strong) PHFetchResult *assetsFetchResults;
-
+@property (nonatomic, strong) NSMutableArray *selectedImages;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shutterButtonConstrain;
 @property CGRect previousPreheatRect;
+@property (weak, nonatomic) IBOutlet UIButton *expandButoon;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
 @property (nonatomic, strong) NSMutableArray *selectedIndex;
+@property (nonatomic, strong) NSMutableArray *takenPhotos;
+
+@property (assign, nonatomic) BOOL galleryOn;
 
 @end
 
@@ -77,6 +83,9 @@ static NSString * const CellReuseIdentifier = @"Cell";
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    self.takenPhotos = [[NSMutableArray alloc]init];
+    self.selectedImages = [[NSMutableArray alloc]init];
+    
     [self.photoCollectionView registerNib:[UINib nibWithNibName:@"AAPLGridViewCell2" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:CellReuseIdentifier];
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
     allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
@@ -239,8 +248,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
+    [super viewDidAppear:animated];    
     // Begin caching assets in and around collection view's visible rect.
     [self updateCachedAssets];
 }
@@ -248,73 +256,120 @@ static NSString * const CellReuseIdentifier = @"Cell";
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.assetsFetchResults.count;
+    if (self.galleryOn) {
+        return self.takenPhotos.count;
+    }
+    else{
+        return self.assetsFetchResults.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PHAsset *asset = self.assetsFetchResults[indexPath.item];
     
-    // Dequeue an AAPLGridViewCell.
     AAPLGridViewCell2 *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellReuseIdentifier forIndexPath:indexPath];
-    cell.representedAssetIdentifier = asset.localIdentifier;
     
-    
-    if ([[self.selectedIndex objectAtIndex:indexPath.row]boolValue]) {
-        [cell selectCellWithAnimation:NO];
+    if (self.galleryOn){
+        cell.thumbnailImage = [self.takenPhotos objectAtIndex:indexPath.row];
+        [cell selectCellWithAnimation:YES forGallery:YES];
     }
     else{
-        [cell deSelectCellWithAnimation:NO];
+        PHAsset *asset = self.assetsFetchResults[indexPath.item];
+        
+        // Dequeue an AAPLGridViewCell.
+        
+        cell.representedAssetIdentifier = asset.localIdentifier;
+        
+        if ([[self.selectedIndex objectAtIndex:indexPath.row]boolValue]) {
+            [cell selectCellWithAnimation:NO forGallery:NO];
+        }
+        else{
+            [cell deSelectCellWithAnimation:NO];
+        }
+        
+        // Add a badge to the cell if the PHAsset represents a Live Photo.
+        if (asset.mediaSubtypes & PHAssetMediaSubtypePhotoLive) {
+            // Add Badge Image to the cell to denote that the asset is a Live Photo.
+            UIImage *badge = [PHLivePhotoView livePhotoBadgeImageWithOptions:PHLivePhotoBadgeOptionsOverContent];
+            cell.livePhotoBadgeImage = badge;
+        }
+        
+        // Request an image for the asset from the PHCachingImageManager.
+        [self.imageManager requestImageForAsset:asset
+                                     targetSize:AssetGridThumbnailSize
+                                    contentMode:PHImageContentModeAspectFill
+                                        options:nil
+                                  resultHandler:^(UIImage *result, NSDictionary *info) {
+                                      // Set the cell's thumbnail image if it's still showing the same asset.
+                                      if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
+                                          cell.thumbnailImage = result;
+                                      }
+                                  }];
     }
-    
-    // Add a badge to the cell if the PHAsset represents a Live Photo.
-    if (asset.mediaSubtypes & PHAssetMediaSubtypePhotoLive) {
-        // Add Badge Image to the cell to denote that the asset is a Live Photo.
-        UIImage *badge = [PHLivePhotoView livePhotoBadgeImageWithOptions:PHLivePhotoBadgeOptionsOverContent];
-        cell.livePhotoBadgeImage = badge;
-    }
-    
-    // Request an image for the asset from the PHCachingImageManager.
-    [self.imageManager requestImageForAsset:asset
-                                 targetSize:AssetGridThumbnailSize
-                                contentMode:PHImageContentModeAspectFill
-                                    options:nil
-                              resultHandler:^(UIImage *result, NSDictionary *info) {
-                                  // Set the cell's thumbnail image if it's still showing the same asset.
-                                  if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
-                                      cell.thumbnailImage = result;
-                                  }
-                              }];
     
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    AAPLGridViewCell2 *cell = (AAPLGridViewCell2*)[self.photoCollectionView cellForItemAtIndexPath:indexPath];
-    if ([[self.selectedIndex objectAtIndex:indexPath.row] boolValue]) {
-        [cell deSelectCellWithAnimation:YES];
-        [self.selectedIndex replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:NO]];
-    }
-    else{
-        [cell selectCellWithAnimation:YES];
-        [self.selectedIndex replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
+    if (self.galleryOn == NO) {
+        AAPLGridViewCell2 *cell = (AAPLGridViewCell2*)[self.photoCollectionView cellForItemAtIndexPath:indexPath];
+        if ([[self.selectedIndex objectAtIndex:indexPath.row] boolValue]) {
+            [cell deSelectCellWithAnimation:YES];
+            [self.selectedIndex replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:NO]];
+            [self.selectedImages removeObject:[self.assetsFetchResults objectAtIndex:indexPath.row]];
+        }
+        else{
+            if (self.selectedImages.count<3) {
+                [cell selectCellWithAnimation:YES forGallery:NO];
+                [self.selectedImages addObject:[self.assetsFetchResults objectAtIndex:indexPath.row]];
+                [self.selectedIndex replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
+            }
+        }
+        
+        
+        if (self.expandButoon.tag != 0) {
+            if (self.selectedImages.count>0) {
+                [self.cameraButton setImage:[UIImage imageNamed:@"whiteCheck"] forState:UIControlStateNormal];
+                [self.dismissButton setTitle:@"Done" forState:UIControlStateNormal];
+                self.dismissButton.tag = 1;
+                self.cameraButton.tag = 2;
+            }
+            else{
+                [self.cameraButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+                [self.dismissButton setTitle:@"Cancel" forState:UIControlStateNormal];
+                self.dismissButton.tag = 0;
+                self.cameraButton.tag = 1;
+            }
+        }
+        
+        else{
+            if (self.selectedImages.count>0) {
+                [self.dismissButton setTitle:@"Done" forState:UIControlStateNormal];
+                self.dismissButton.tag = 1;
+            }
+            else{
+                [self.dismissButton setTitle:@"Cancel" forState:UIControlStateNormal];
+                self.dismissButton.tag = 0;
+            }
+        }
+
     }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(self.view.frame.size.height/6, self.view.frame.size.height/6);
+    return CGSizeMake(self.view.frame.size.width/3-4, self.view.frame.size.width/3-4 );
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 8, 0, 8); // top, left, bottom, right
+    return UIEdgeInsetsMake(0, 2, 0, 2); // top, left, bottom, right
 }
-
+//
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     return 0;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 8;
+    return 4;
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -466,7 +521,7 @@ static NSString * const CellReuseIdentifier = @"Cell";
 	[super viewWillAppear:animated];
     
     // Determine the size of the thumbnails to request from the PHCachingImageManager
-    CGFloat scale = [UIScreen mainScreen].scale*2;
+    CGFloat scale = [UIScreen mainScreen].scale;
     CGSize cellSize = ((UICollectionViewFlowLayout *)self.photoCollectionView.collectionViewLayout).itemSize;
     AssetGridThumbnailSize = CGSizeMake(cellSize.width * scale, cellSize.height * scale);
 
@@ -741,65 +796,85 @@ static NSString * const CellReuseIdentifier = @"Cell";
 	} );
 }
 
-- (IBAction)changeCamera:(id)sender
+- (IBAction)changeCamera:(UIButton*)sender
 {
-	self.cameraButton.enabled = NO;
-	self.recordButton.enabled = NO;
-	self.stillButton.enabled = NO;
+    switch (sender.tag) {
+        case 0:
+        {
+            self.cameraButton.enabled = NO;
+            self.recordButton.enabled = NO;
+            self.stillButton.enabled = NO;
+            
+            dispatch_async( self.sessionQueue, ^{
+                AVCaptureDevice *currentVideoDevice = self.videoDeviceInput.device;
+                AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
+                AVCaptureDevicePosition currentPosition = currentVideoDevice.position;
+                
+                switch ( currentPosition )
+                {
+                    case AVCaptureDevicePositionUnspecified:
+                    case AVCaptureDevicePositionFront:
+                        preferredPosition = AVCaptureDevicePositionBack;
+                        break;
+                    case AVCaptureDevicePositionBack:
+                        preferredPosition = AVCaptureDevicePositionFront;
+                        break;
+                }
+                
+                AVCaptureDevice *videoDevice = [AAPLCameraViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
+                AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
+                
+                [self.session beginConfiguration];
+                
+                // Remove the existing device input first, since using the front and back camera simultaneously is not supported.
+                [self.session removeInput:self.videoDeviceInput];
+                
+                if ( [self.session canAddInput:videoDeviceInput] ) {
+                    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
+                    
+                    [AAPLCameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
+                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
+                    
+                    [self.session addInput:videoDeviceInput];
+                    self.videoDeviceInput = videoDeviceInput;
+                }
+                else {
+                    [self.session addInput:self.videoDeviceInput];
+                }
+                
+                AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+                if ( connection.isVideoStabilizationSupported ) {
+                    connection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
+                }
+                
+                [self.session commitConfiguration];
+                
+                dispatch_async( dispatch_get_main_queue(), ^{
+                    self.cameraButton.enabled = YES;
+                    self.recordButton.enabled = YES;
+                    self.stillButton.enabled = YES;
+                } );
+            } );
 
-	dispatch_async( self.sessionQueue, ^{
-		AVCaptureDevice *currentVideoDevice = self.videoDeviceInput.device;
-		AVCaptureDevicePosition preferredPosition = AVCaptureDevicePositionUnspecified;
-		AVCaptureDevicePosition currentPosition = currentVideoDevice.position;
-
-		switch ( currentPosition )
-		{
-			case AVCaptureDevicePositionUnspecified:
-			case AVCaptureDevicePositionFront:
-				preferredPosition = AVCaptureDevicePositionBack;
-				break;
-			case AVCaptureDevicePositionBack:
-				preferredPosition = AVCaptureDevicePositionFront;
-				break;
-		}
-
-		AVCaptureDevice *videoDevice = [AAPLCameraViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:preferredPosition];
-		AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:nil];
-
-		[self.session beginConfiguration];
-
-		// Remove the existing device input first, since using the front and back camera simultaneously is not supported.
-		[self.session removeInput:self.videoDeviceInput];
-
-		if ( [self.session canAddInput:videoDeviceInput] ) {
-			[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureDeviceSubjectAreaDidChangeNotification object:currentVideoDevice];
-
-			[AAPLCameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:videoDevice];
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectAreaDidChange:) name:AVCaptureDeviceSubjectAreaDidChangeNotification object:videoDevice];
-
-			[self.session addInput:videoDeviceInput];
-			self.videoDeviceInput = videoDeviceInput;
-		}
-		else {
-			[self.session addInput:self.videoDeviceInput];
-		}
-
-		AVCaptureConnection *connection = [self.movieFileOutput connectionWithMediaType:AVMediaTypeVideo];
-		if ( connection.isVideoStabilizationSupported ) {
-			connection.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
-		}
-
-		[self.session commitConfiguration];
-
-		dispatch_async( dispatch_get_main_queue(), ^{
-			self.cameraButton.enabled = YES;
-			self.recordButton.enabled = YES;
-			self.stillButton.enabled = YES;
-		} );
-	} );
+        }
+            break;
+        case 1:{
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+        }
+            break;
+            
+        case 2:{
+            NSLog(@"Finished");
+        }
+            break;
+        default:
+            break;
+    }
 }
 
-- (IBAction)snapStillImage:(id)sender
+- (IBAction)snapStillImage:(UIButton*)sender
 {
 	dispatch_async( self.sessionQueue, ^{
 		AVCaptureConnection *connection = [self.stillImageOutput connectionWithMediaType:AVMediaTypeVideo];
@@ -816,52 +891,34 @@ static NSString * const CellReuseIdentifier = @"Cell";
 			if ( imageDataSampleBuffer ) {
 				// The sample buffer is not retained. Create image data before saving the still image to the photo library asynchronously.
 				NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-				[PHPhotoLibrary requestAuthorization:^( PHAuthorizationStatus status ) {
-					if ( status == PHAuthorizationStatusAuthorized ) {
-						// To preserve the metadata, we create an asset from the JPEG NSData representation.
-						// Note that creating an asset from a UIImage discards the metadata.
-						// In iOS 9, we can use -[PHAssetCreationRequest addResourceWithType:data:options].
-						// In iOS 8, we save the image to a temporary file and use +[PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:].
-						if ( [PHAssetCreationRequest class] ) {
-							[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-								[[PHAssetCreationRequest creationRequestForAsset] addResourceWithType:PHAssetResourceTypePhoto data:imageData options:nil];
-							} completionHandler:^( BOOL success, NSError *error ) {
-								if ( ! success ) {
-									NSLog( @"Error occurred while saving image to photo library: %@", error );
-								}
-							}];
-						}
-						else {
-							NSString *temporaryFileName = [NSProcessInfo processInfo].globallyUniqueString;
-							NSString *temporaryFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[temporaryFileName stringByAppendingPathExtension:@"jpg"]];
-							NSURL *temporaryFileURL = [NSURL fileURLWithPath:temporaryFilePath];
-
-							[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-								NSError *error = nil;
-								[imageData writeToURL:temporaryFileURL options:NSDataWritingAtomic error:&error];
-								if ( error ) {
-									NSLog( @"Error occured while writing image data to a temporary file: %@", error );
-								}
-								else {
-									[PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:temporaryFileURL];
-								}
-							} completionHandler:^( BOOL success, NSError *error ) {
-								if ( ! success ) {
-									NSLog( @"Error occurred while saving image to photo library: %@", error );
-								}
-
-								// Delete the temporary file.
-								[[NSFileManager defaultManager] removeItemAtURL:temporaryFileURL error:nil];
-							}];
-						}
-					}
-				}];
+                UIImage *image = [UIImage imageWithData:imageData];
+                
+                double y = image.size.height/15.15;
+                
+                CGRect rect = CGRectMake(y, 0, image.size.width, image.size.width);
+                
+                CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
+                // or use the UIImage wherever you like
+                CGImageRelease(imageRef);
+                [self.takenPhotos addObject:image];
+                [self switchGalleryOffAndSwitchToCameraGallery];
 			}
 			else {
 				NSLog( @"Could not capture still image: %@", error );
 			}
 		}];
 	} );
+}
+
+-(void)switchGalleryOffAndSwitchToCameraGallery{
+    self.galleryOn = YES;
+    self.expandButoon.enabled = NO;
+    [self.expandButoon setImage:nil forState:UIControlStateNormal];
+    [self.dismissButton setTitle:@"Done" forState:UIControlStateNormal];
+    [self.photoCollectionView performBatchUpdates:^{
+        [self.photoCollectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    } completion:nil];
+    [self.photoCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.takenPhotos.count-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
@@ -871,35 +928,68 @@ static NSString * const CellReuseIdentifier = @"Cell";
 }
 
 - (IBAction)dismissButtonClicked:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-}
-- (IBAction)expandTapped:(UIButton *)sender {
     if (sender.tag == 0) {
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        [self.photoCollectionView setCollectionViewLayout:flowLayout];
-        [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.collectionViewHeight.constant = [UIScreen mainScreen].bounds.size.height/1.8;
-            [self.view layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            sender.tag = 1;
+        [self dismissViewControllerAnimated:YES completion:^{
+            
         }];
     }
     else{
+        
+    }
+}
+- (IBAction)expandTapped:(UIButton *)sender {
+    if (sender.tag == 0) {
+        
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        [self.photoCollectionView setCollectionViewLayout:flowLayout];
+        
+        [sender setImage:[UIImage imageNamed:@"contractButton"] forState:UIControlStateNormal];
+        
+        [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.collectionViewHeight.constant = [UIScreen mainScreen].bounds.size.height/1.8;
+            self.shutterButtonConstrain.constant = -self.stillButton.frame.size.height;
+            [self.view layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            sender.tag = 1;
+
+        }];
+        
+        if (self.selectedImages.count>0) {
+            [self.cameraButton setImage:[UIImage imageNamed:@"whiteCheck"] forState:UIControlStateNormal];
+            self.cameraButton.tag = 2;
+        }
+        else{
+            [self.cameraButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+            self.cameraButton.tag = 1;
+        }
+    }
+    else{
+        
+        self.cameraButton.tag = 0;
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
         [self.photoCollectionView setCollectionViewLayout:flowLayout];
+        
+        [self.cameraButton setImage:[UIImage imageNamed:@"cameraSwitch"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:@"expandButton"] forState:UIControlStateNormal];
+        
         [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.collectionViewHeight.constant = 0;
+            self.shutterButtonConstrain.constant = 15;
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
             sender.tag = 0;
+
         }];
+
+            [self.cameraButton setImage:[UIImage imageNamed:@"cameraSwitch"] forState:UIControlStateNormal];
+            self.cameraButton.tag = 0;
     }
     
+    
 }
+
 #pragma mark File Output Recording Delegate
 
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections

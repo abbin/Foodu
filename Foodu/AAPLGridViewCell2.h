@@ -17,6 +17,6 @@
 
 -(void)deSelectCellWithAnimation:(BOOL)animation;
 
--(void)selectCellWithAnimation:(BOOL)animation;
+-(void)selectCellWithAnimation:(BOOL)animation forGallery:(BOOL)gallery;
 
 @end
