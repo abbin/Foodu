@@ -61,7 +61,9 @@
 
 - (IBAction)pinButtonClicked:(UIButton *)sender {
      AAPLCameraViewController *rootViewController = [[AAPLCameraViewController alloc]initWithNibName:@"AAPLCameraViewController" bundle:[NSBundle mainBundle]];
-    [self presentViewController:rootViewController animated:YES completion:^{
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:rootViewController];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:^{
         
     }];
     

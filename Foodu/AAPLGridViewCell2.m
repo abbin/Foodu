@@ -12,10 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIImageView *livePhotoBadgeImageView;
-@property (weak, nonatomic) IBOutlet UIView *blurView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewWidth;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImage;
-@property (weak, nonatomic) IBOutlet UIImageView *galleryIcon;
+@property (weak, nonatomic) IBOutlet UIView *badgeView;
 
 @end
 
@@ -42,67 +39,38 @@
     self.livePhotoBadgeImageView.image = livePhotoBadgeImage;
 }
 
--(void)deSelectCellWithAnimation:(BOOL)animation forGallery:(BOOL)gallery{
+-(void)deSelectCellWithAnimation:(BOOL)animation{
     double time;
     if (animation) {
-        time = 0.3;
-    }else{
-        time = 0.0;
-    }
-    
-    if (gallery) {
-        [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            [self.imageView setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
-            [self.galleryIcon setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
-        } completion:^(BOOL finished) {
-            self.cellSelected = NO;
-        }];
+        time = 0.2;
     }
     else{
-        [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.blurView.alpha = 0;
-            self.imageViewWidth.constant = 0;
-            [self.blurView layoutIfNeeded];
-            [self.imageView setTransform:CGAffineTransformMakeScale(1, 1)];
-            [self.blurView setTransform:CGAffineTransformMakeScale(1, 1)];
-        } completion:^(BOOL finished) {
-            self.cellSelected = NO;
-        }];
+        time = 0.0;
     }
-
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+        self.badgeView.alpha = 0;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
--(void)selectCellWithAnimation:(BOOL)animation forGallery:(BOOL)gallery{
+-(void)selectCellWithAnimation:(BOOL)animation{
     
     double time;
     if (animation) {
-        time = 0.3;
-    }else{
-        time = 0.0;
-    }
-    
-    if (gallery) {
-        [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.blurView.alpha = 0;
-            self.galleryIcon.alpha = 1;
-            [self.imageView setTransform:CGAffineTransformMakeScale(1, 1)];
-            [self.galleryIcon setTransform:CGAffineTransformMakeScale(1, 1)];
-            } completion:^(BOOL finished) {
-            self.cellSelected = YES;
-        }];
+        time = 0.2;
     }
     else{
-        [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.blurView.alpha = 1;
-            self.imageViewWidth.constant = self.blurView.frame.size.width/5;
-            [self.imageView setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
-            [self.blurView setTransform:CGAffineTransformMakeScale(0.9, 0.9)];
-            self.iconImage.image = [UIImage imageNamed:@"check"];
-            [self.blurView layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            self.cellSelected = YES;
-        }];
+        time = 0.0;
     }
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        self.badgeView.alpha = 1;
+    } completion:^(BOOL finished) {
+        
+    }];
+
 }
 
 

@@ -15,8 +15,8 @@
 @property (nonatomic, copy) NSString *representedAssetIdentifier;
 @property (assign, nonatomic) BOOL cellSelected;
 
--(void)deSelectCellWithAnimation:(BOOL)animation forGallery:(BOOL)gallery;
+-(void)deSelectCellWithAnimation:(BOOL)animation;
 
--(void)selectCellWithAnimation:(BOOL)animation forGallery:(BOOL)gallery;
+-(void)selectCellWithAnimation:(BOOL)animation;
 
 @end
