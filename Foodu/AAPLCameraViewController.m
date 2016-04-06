@@ -12,6 +12,7 @@ View controller for camera interface.
 #import "AAPLCameraViewController.h"
 #import "AAPLPreviewView.h"
 #import "FGalleryViewControllers.h"
+#import "FImagePreviewViewController.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * SessionRunningContext = &SessionRunningContext;
@@ -34,6 +35,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 @property (nonatomic, weak) IBOutlet UIButton *dismissButton;
 @property (nonatomic, weak) IBOutlet UIButton *galleryOrDoneButton;
 @property (weak, nonatomic) IBOutlet UILabel *shutterLabel;
+@property (weak, nonatomic) IBOutlet UIView *cameraControlsContainer;
 
 // Session management.
 @property (nonatomic) dispatch_queue_t sessionQueue;
@@ -47,6 +49,9 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 @property (nonatomic, getter=isSessionRunning) BOOL sessionRunning;
 @property (nonatomic) UIBackgroundTaskIdentifier backgroundRecordingID;
 @property (nonatomic) NSMutableArray *imageArray;
+
+@property (nonatomic, strong) AMPopTip *popTip;
+
 @end
 
 @implementation AAPLCameraViewController
@@ -55,6 +60,15 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 {
 	[super viewDidLoad];
     
+    self.popTip = [AMPopTip popTip];
+    self.popTip.shouldDismissOnTap = YES;
+    self.popTip.entranceAnimation = AMPopTipEntranceAnimationScale;
+    self.popTip.actionAnimation = AMPopTipActionAnimationFloat;
+    self.popTip.popoverColor = [UIColor whiteColor];
+    self.popTip.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+    self.popTip.dismissHandler = ^{
+        [FCurrentUser didFinishFirstCameraLaunch];
+    };
     self.imageArray = [[NSMutableArray alloc]init];
     
 	// Disable UI. The UI is enabled if and only if the session starts running.
@@ -260,6 +274,14 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 	[super viewDidDisappear:animated];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if(authStatus == AVAuthorizationStatusAuthorized && [FCurrentUser isFirstCameraLaunch]){
+        [self.popTip showText:@"Hold down to switch camera" direction:AMPopTipDirectionDown maxWidth:self.cameraControlsContainer.frame.size.width/2 inView:self.cameraControlsContainer fromFrame:self.stillButton.frame];
+    }
+}
+
 #pragma mark Orientation
 
 - (BOOL)shouldAutorotate
@@ -422,11 +444,20 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 }
 
 - (IBAction)gallerClicked:(UIButton *)sender {
-    FGalleryViewControllers *galler = [[FGalleryViewControllers alloc]initWithNibName:@"FGalleryViewControllers" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:galler animated:YES];
+    if (sender.tag == 0) {
+        FGalleryViewControllers *galler = [[FGalleryViewControllers alloc]initWithNibName:@"FGalleryViewControllers" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:galler animated:YES];
+    }
+    else{
+        FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
+        controller.imageArray = self.imageArray;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 - (IBAction)didLongPressStillButton:(UILongPressGestureRecognizer *)sender {
+    [self.popTip hide];
+    
     if (sender.state == UIGestureRecognizerStateBegan) {
             self.cameraButton.enabled = NO;
             self.recordButton.enabled = NO;
@@ -568,10 +599,22 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
                     if (self.imageArray.count<3) {
                         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                         UIImage *image = [UIImage imageWithData:imageData];
-                        [self.imageArray addObject:image];
+                        
+                        CGRect rect = CGRectMake(0, 0, image.size.width, image.size.width);
+                        
+                        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
+                        
+                        [self.imageArray addObject:[UIImage imageWithCGImage:imageRef scale:1 orientation:image.imageOrientation]];
+                        
+                        CGImageRelease(imageRef);
+                        
+                        [self.galleryOrDoneButton setImage:[UIImage imageNamed:@"whiteCheck"] forState:UIControlStateNormal];
+                        self.galleryOrDoneButton.tag = 1;
                         self.shutterLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.imageArray.count];
                         if (self.imageArray.count == 3) {
-                            NSLog(@"WENT TO NEXT SCREEN");
+                            FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
+                            controller.imageArray = self.imageArray;
+                            [self.navigationController pushViewController:controller animated:YES];
                         }
                     }
                 }

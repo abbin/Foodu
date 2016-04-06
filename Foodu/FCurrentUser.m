@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 
 NSString *const firstLaunchKey = @"firstLaunchKey";
+NSString *const firstCameraLaunchKey = @"firstCameraLaunchKey";
 NSString *const userFacebookDefaultPassword = @"comPaadamFooduFacebookPassword";
 NSString *const lastEmailKey = @"lastEmailKey";
 NSString *const lastUserTypeKey = @"lastUserTypeKey";
@@ -105,7 +106,20 @@ NSString *const lastUserTypeKey = @"lastUserTypeKey";
     }];
 }
 
++(BOOL)isFirstCameraLaunch{
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:firstCameraLaunchKey]) {
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
 
++(void)didFinishFirstCameraLaunch{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:firstCameraLaunchKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 +(BOOL)isFirstLaunch{
     

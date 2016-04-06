@@ -20,8 +20,10 @@
 #endif
 
 #ifdef __OBJC__
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <AMPopTip.h>
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "NSMutableDictionary+FLocation.h"

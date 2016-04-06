@@ -15,6 +15,6 @@ platform :ios, '8.1'
 pod 'GoogleMaps'
 pod 'Fabric'
 pod 'Crashlytics'
-
+pod 'AMPopTip'
 end
 

@@ -16,6 +16,10 @@ typedef NS_ENUM(NSInteger, UserType) {
 
 @interface FCurrentUser : NSObject<CLLocationManagerDelegate>
 
++(BOOL)isFirstCameraLaunch;
+
++(void)didFinishFirstCameraLaunch;
+
 +(BOOL)isFirstLaunch;
 
 +(void)didFinishFirstLaunch;

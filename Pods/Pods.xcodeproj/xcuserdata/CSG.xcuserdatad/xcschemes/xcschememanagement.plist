@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AMPopTip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,7 +47,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F549954A315E27D68E49AF7824C1E76</key>
+		<key>0A1EEBDFB3E64DCD535EDFACC8FE6F14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>343E7235EE6FD4708F43835088397C9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

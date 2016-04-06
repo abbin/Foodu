@@ -1,4 +1,5 @@
 PODS:
+  - AMPopTip (0.10.2)
   - Bolts (1.6.0):
     - Bolts/AppLinks (= 1.6.0)
     - Bolts/Tasks (= 1.6.0)
@@ -22,6 +23,7 @@ PODS:
     - Parse (~> 1.9)
 
 DEPENDENCIES:
+  - AMPopTip
   - Crashlytics
   - Fabric
   - FBSDKCoreKit
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - ParseUI
 
 SPEC CHECKSUMS:
+  AMPopTip: 0788a9452806049e3aa0d6d09324606fc41ea646
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7

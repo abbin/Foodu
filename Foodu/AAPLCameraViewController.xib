@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AAPLCameraViewController">
             <connections>
+                <outlet property="cameraControlsContainer" destination="bdK-9z-X4r" id="0Op-6g-LUg"/>
                 <outlet property="dismissButton" destination="ROn-5h-euN" id="FfD-oe-YRI"/>
                 <outlet property="galleryOrDoneButton" destination="DFI-1l-tCW" id="peT-fS-QFB"/>
                 <outlet property="previewView" destination="iNm-4n-baG" id="Uac-1x-a7y"/>
@@ -73,7 +74,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="DFI-1l-tCW" firstAttribute="height" secondItem="ROn-5h-euN" secondAttribute="height" id="10A-tY-AZl"/>
                         <constraint firstItem="7RS-fe-d6Y" firstAttribute="leading" secondItem="xsq-SM-rp7" secondAttribute="leading" constant="17" id="305-Vi-Jo6"/>
