@@ -52,7 +52,16 @@ CGSize AssetGridThumbnailSize;
         [self resetCachedAssets];
         [self.photoCollectionView reloadData];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(popViewControllerAnimated:)
+                                                 name:@"popViewControllerAnimated"
+                                               object:nil];
+    
+}
 
+- (void) popViewControllerAnimated:(NSNotification *) notification{
+    [self resetViewContoller];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +83,11 @@ CGSize AssetGridThumbnailSize;
         
     }];
 }
+
+
+
 - (IBAction)doneClicked:(UIButton *)sender {
+    [self.selectedImage removeAllObjects];
     for (PHAsset *asset in self.selectedPHAsset) {
         [self.imageManager requestImageDataForAsset:asset
                                             options:nil
@@ -85,7 +98,7 @@ CGSize AssetGridThumbnailSize;
                                           
                                           UIImage *image = [UIImage imageWithData:imageData];
                                           
-                                          [self.selectedImage addObject:[self imageByCroppingImage:image toSize:image.size]];
+                                          [self.selectedImage addObject:[self squareImageFromImage:image scaledToSize:1000]];
                                           
                                           if (self.selectedImage.count == self.selectedPHAsset.count) {
                                               FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
@@ -96,27 +109,45 @@ CGSize AssetGridThumbnailSize;
     }
 }
 
-- (UIImage *)imageByCroppingImage:(UIImage *)image toSize:(CGSize)size
-{
-    // not equivalent to image.size (which depends on the imageOrientation)!
-    double refWidth = CGImageGetWidth(image.CGImage);
-    double refHeight = CGImageGetHeight(image.CGImage);
+
+- (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
+    CGAffineTransform scaleTransform;
+    CGPoint origin;
     
-    double x = (refWidth - size.width) / 2.0;
-    double y = (refHeight - size.height) / 2.0;
+    if (image.size.width > image.size.height) {
+        CGFloat scaleRatio = newSize / image.size.height;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(-(image.size.width - image.size.height) / 2.0f, 0);
+    } else {
+        CGFloat scaleRatio = newSize / image.size.width;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(0, -(image.size.height - image.size.width) / 2.0f);
+    }
     
-    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
-    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    CGSize size = CGSizeMake(newSize, newSize);
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    } else {
+        UIGraphicsBeginImageContext(size);
+    }
     
-    UIImage *cropped = [UIImage imageWithCGImage:imageRef scale:0.0 orientation:image.imageOrientation];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextConcatCTM(context, scaleTransform);
     
-    CGImageRelease(imageRef);
+    [image drawAtPoint:origin];
     
-    return cropped;
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     // Determine the size of the thumbnails to request from the PHCachingImageManager
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize cellSize = ((UICollectionViewFlowLayout *)self.photoCollectionView.collectionViewLayout).itemSize;
@@ -211,6 +242,14 @@ CGSize AssetGridThumbnailSize;
         }
     }
 
+}
+
+-(void)resetViewContoller{
+    [self.selectedindexs removeAllObjects];
+    [self initSelectedIndexArrayWithCount:self.assetsFetchResults.count];
+    [self.selectedPHAsset removeAllObjects];
+    [self.selectedImage removeAllObjects];
+    [self.photoCollectionView reloadData];
 }
 
 -(void)initSelectedIndexArrayWithCount:(NSInteger)count{

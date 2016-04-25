@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class FEffectCollectionViewCell;
+@protocol FEffectCollectionViewCellDelegate <NSObject>
+
+-(void)FEffectCollectionViewCell:(FEffectCollectionViewCell*)viewController didRemoveImageAtIndex:(NSIndexPath*)indexPath;
+
+@end
+
 @interface FEffectCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIView *indicator;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) id <FEffectCollectionViewCellDelegate> delegate;
 
 -(void)pressCell;
 

@@ -10,11 +10,12 @@
 
 @implementation FEffectCollectionViewCell
 
-- (void)awakeFromNib {
+- (void)drawRect:(CGRect)rect{
     self.imageView.layer.cornerRadius = self.imageView.frame.size.height/64;
     self.imageView.layer.masksToBounds = YES;
-    self.indicator.layer.cornerRadius = self.indicator.frame.size.height/2;
-    self.indicator.layer.masksToBounds = YES;
+    self.closeButton.layer.cornerRadius = self.closeButton.frame.size.height/2;
+    self.closeButton.layer.masksToBounds = YES;
+    [self layoutIfNeeded];
 }
 
 -(void)pressCell{
@@ -27,6 +28,11 @@
             
         }];
     }];
+}
+- (IBAction)closeButtonClicked:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(FEffectCollectionViewCell:didRemoveImageAtIndex:)]) {
+        [self.delegate FEffectCollectionViewCell:self didRemoveImageAtIndex:self.indexPath];
+    }
 }
 
 @end

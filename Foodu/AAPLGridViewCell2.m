@@ -59,7 +59,7 @@
     
     double time;
     if (animation) {
-        time = 0.2;
+        time = 0.4;
     }
     else{
         time = 0.0;

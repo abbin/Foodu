@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FEffectsAddCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="166" height="166"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kN7-zH-uZQ">
+                        <rect key="frame" x="17" y="9" width="132" height="132"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6v4-0d-8LE">
+                                <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Vvb-JZ-oho"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6v4-0d-8LE" firstAttribute="height" secondItem="kN7-zH-uZQ" secondAttribute="height" id="5Dh-Bw-DNU"/>
+                            <constraint firstItem="6v4-0d-8LE" firstAttribute="centerY" secondItem="kN7-zH-uZQ" secondAttribute="centerY" id="BhX-tU-Xpm"/>
+                            <constraint firstItem="6v4-0d-8LE" firstAttribute="width" secondItem="kN7-zH-uZQ" secondAttribute="width" id="Hcb-wP-xRe"/>
+                            <constraint firstItem="6v4-0d-8LE" firstAttribute="centerX" secondItem="kN7-zH-uZQ" secondAttribute="centerX" id="rrD-8q-UOL"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kN7-zH-uZQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="38g-E2-42c"/>
+                <constraint firstItem="kN7-zH-uZQ" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="OE3-eN-3nc"/>
+                <constraint firstItem="kN7-zH-uZQ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.8" id="Vy7-et-ppN"/>
+                <constraint firstItem="kN7-zH-uZQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.9" id="zJI-6H-d4N"/>
+            </constraints>
+            <size key="customSize" width="178" height="166"/>
+            <connections>
+                <outlet property="containerView" destination="kN7-zH-uZQ" id="xmQ-X5-gl0"/>
+            </connections>
+            <point key="canvasLocation" x="413" y="338"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="close" width="37" height="37"/>
+    </resources>
+</document>

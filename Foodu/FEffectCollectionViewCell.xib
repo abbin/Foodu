@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -14,35 +15,42 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-gZ-6n8">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-gZ-6n8">
                         <rect key="frame" x="25" y="13" width="200" height="200"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="7w8-gZ-6n8" secondAttribute="height" multiplier="1:1" id="WwV-Xu-BF2"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-sg-qVe">
-                        <rect key="frame" x="45" y="223" width="160" height="4"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M8-Cl-tUK">
+                        <rect key="frame" x="182" y="6" width="50" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <state key="normal" image="black close"/>
+                        <connections>
+                            <action selector="closeButtonClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="DB5-e3-aRA"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="dvf-sg-qVe" firstAttribute="height" secondItem="7w8-gZ-6n8" secondAttribute="height" multiplier="0.02" id="1gJ-m1-ebd"/>
-                <constraint firstItem="dvf-sg-qVe" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="1.8" id="3sW-Li-hc7"/>
-                <constraint firstItem="dvf-sg-qVe" firstAttribute="width" secondItem="7w8-gZ-6n8" secondAttribute="width" multiplier="0.8" id="4s5-ox-Aid"/>
                 <constraint firstItem="7w8-gZ-6n8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="A4d-jv-MkD"/>
+                <constraint firstItem="2M8-Cl-tUK" firstAttribute="height" secondItem="7w8-gZ-6n8" secondAttribute="height" multiplier="0.25" id="CzH-Ki-u2K"/>
                 <constraint firstItem="7w8-gZ-6n8" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="Onh-Nf-XtE"/>
                 <constraint firstItem="7w8-gZ-6n8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.9" id="PCX-PT-3pZ"/>
-                <constraint firstItem="dvf-sg-qVe" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cwJ-fx-Ktk"/>
+                <constraint firstItem="2M8-Cl-tUK" firstAttribute="width" secondItem="7w8-gZ-6n8" secondAttribute="width" multiplier="0.25" id="TUm-UE-3XH"/>
+                <constraint firstItem="2M8-Cl-tUK" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" multiplier="1.65" id="cFK-DR-X44"/>
+                <constraint firstItem="2M8-Cl-tUK" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.25" id="iDS-dr-cik"/>
             </constraints>
             <connections>
+                <outlet property="closeButton" destination="2M8-Cl-tUK" id="i6L-jj-k4v"/>
                 <outlet property="imageView" destination="7w8-gZ-6n8" id="0oq-cu-gxD"/>
-                <outlet property="indicator" destination="dvf-sg-qVe" id="sQd-R5-AZp"/>
             </connections>
             <point key="canvasLocation" x="552" y="372"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="black close" width="37" height="37"/>
+    </resources>
 </document>

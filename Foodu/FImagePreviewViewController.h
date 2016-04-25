@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FEffectCollectionViewCell.h"
+#import "FEffectsAddCollectionViewCell.h"
 
-@interface FImagePreviewViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface FImagePreviewViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,FEffectCollectionViewCellDelegate,FEffectsAddCollectionViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *imageArray;
-
 @end

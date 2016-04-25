@@ -60,6 +60,11 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 {
 	[super viewDidLoad];
     
+    
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+
+    }];
+    
     self.popTip = [AMPopTip popTip];
     self.popTip.shouldDismissOnTap = YES;
     self.popTip.entranceAnimation = AMPopTipEntranceAnimationScale;
@@ -169,19 +174,19 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 			self.setupResult = AVCamSetupResultSessionConfigurationFailed;
 		}
 
-		AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
-		AVCaptureDeviceInput *audioDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
-
-		if ( ! audioDeviceInput ) {
-			NSLog( @"Could not create audio device input: %@", error );
-		}
-
-		if ( [self.session canAddInput:audioDeviceInput] ) {
-			[self.session addInput:audioDeviceInput];
-		}
-		else {
-			NSLog( @"Could not add audio device input to the session" );
-		}
+//		AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+//		AVCaptureDeviceInput *audioDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
+//
+//		if ( ! audioDeviceInput ) {
+//			NSLog( @"Could not create audio device input: %@", error );
+//		}
+//
+//		if ( [self.session canAddInput:audioDeviceInput] ) {
+//			[self.session addInput:audioDeviceInput];
+//		}
+//		else {
+//			NSLog( @"Could not add audio device input to the session" );
+//		}
 
 		AVCaptureMovieFileOutput *movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
 		if ( [self.session canAddOutput:movieFileOutput] ) {
@@ -210,6 +215,16 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 
 		[self.session commitConfiguration];
 	} );
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(popViewControllerAnimated:)
+                                                 name:@"popViewControllerAnimated"
+                                               object:nil];
+    
+}
+
+- (void) popViewControllerAnimated:(NSNotification *) notification{
+    [self resetViewContoller];
 }
 
 -(BOOL)prefersStatusBarHidden{
@@ -219,7 +234,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-
+    
 	dispatch_async( self.sessionQueue, ^{
 		switch ( self.setupResult )
 		{
@@ -600,13 +615,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
                         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                         UIImage *image = [UIImage imageWithData:imageData];
                         
-                        CGRect rect = CGRectMake(0, 0, image.size.width, image.size.width);
-                        
-                        CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
-                        
-                        [self.imageArray addObject:[UIImage imageWithCGImage:imageRef scale:1 orientation:image.imageOrientation]];
-                        
-                        CGImageRelease(imageRef);
+                        [self.imageArray addObject:[self squareImageFromImage:image scaledToSize:1000]];
                         
                         [self.galleryOrDoneButton setImage:[UIImage imageNamed:@"whiteCheck"] forState:UIControlStateNormal];
                         self.galleryOrDoneButton.tag = 1;
@@ -624,6 +633,48 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
             }];
         } );
     }
+}
+
+-(void)resetViewContoller{
+    [self.imageArray removeAllObjects];
+    [self.galleryOrDoneButton setImage:[UIImage imageNamed:@"gallery"] forState:UIControlStateNormal];
+    self.galleryOrDoneButton.tag = 0;
+    self.shutterLabel.text = @"";
+}
+
+- (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
+    CGAffineTransform scaleTransform;
+    CGPoint origin;
+    
+    if (image.size.width > image.size.height) {
+        CGFloat scaleRatio = newSize / image.size.height;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(0, 0);
+    } else {
+        CGFloat scaleRatio = newSize / image.size.width;
+        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
+        
+        origin = CGPointMake(0, 0);
+    }
+    
+    CGSize size = CGSizeMake(newSize, newSize);
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    } else {
+        UIGraphicsBeginImageContext(size);
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextConcatCTM(context, scaleTransform);
+    
+    [image drawAtPoint:origin];
+    
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
