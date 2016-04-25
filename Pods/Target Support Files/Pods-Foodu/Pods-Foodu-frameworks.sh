@@ -82,3 +82,24 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-Foodu/AMPopTip.framework"
+  install_framework "Pods-Foodu/Bolts.framework"
+  install_framework "Pods-Foodu/FBSDKCoreKit.framework"
+  install_framework "Pods-Foodu/FBSDKLoginKit.framework"
+  install_framework "Pods-Foodu/FBSDKShareKit.framework"
+  install_framework "Pods-Foodu/MBCircularProgressBar.framework"
+  install_framework "Pods-Foodu/Parse.framework"
+  install_framework "Pods-Foodu/ParseUI.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-Foodu/AMPopTip.framework"
+  install_framework "Pods-Foodu/Bolts.framework"
+  install_framework "Pods-Foodu/FBSDKCoreKit.framework"
+  install_framework "Pods-Foodu/FBSDKLoginKit.framework"
+  install_framework "Pods-Foodu/FBSDKShareKit.framework"
+  install_framework "Pods-Foodu/MBCircularProgressBar.framework"
+  install_framework "Pods-Foodu/Parse.framework"
+  install_framework "Pods-Foodu/ParseUI.framework"
+fi

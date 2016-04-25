@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */; };
 		580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580023111C9ADEDA00A7AFB6 /* FPageTHREEViewController.m */; };
 		5802DD791CAD13B0006D9CD7 /* IMG_0101.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5802DD781CAD13B0006D9CD7 /* IMG_0101.mp4 */; };
 		580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C01C98320800F50499 /* FFirstLaunchViewController.m */; };
@@ -66,6 +65,7 @@
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB9FDEA1C9E711B00616681 /* NSMutableDictionary+FLocation.m */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
+		F2F077FF876D58293F53CE00 /* Pods_Foodu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA53E09161CB15370B656D1E /* Pods_Foodu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,7 +169,7 @@
 		58FD8A5E1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FImagePreviewCollectionViewCell.h; sourceTree = "<group>"; };
 		58FD8A5F1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePreviewCollectionViewCell.m; sourceTree = "<group>"; };
 		58FD8A601CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePreviewCollectionViewCell.xib; sourceTree = "<group>"; };
-		CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA53E09161CB15370B656D1E /* Pods_Foodu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
 		EDB9FDE91C9E711B00616681 /* NSMutableDictionary+FLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+FLocation.h"; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				144BC0EE56B49D5FB5315F92 /* libPods-Foodu.a in Frameworks */,
+				F2F077FF876D58293F53CE00 /* Pods_Foodu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +506,7 @@
 		CC5A19B8C644861B42B73FD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCFAF6497C80E73F5B2BFCC8 /* libPods-Foodu.a */,
+				BA53E09161CB15370B656D1E /* Pods_Foodu.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -867,6 +867,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -887,6 +888,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Foodu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

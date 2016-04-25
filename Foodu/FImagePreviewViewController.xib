@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FImagePreviewViewController">
@@ -17,9 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="m3q-4Y-tdJ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
-                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="m3q-4Y-tdJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="m3q-4Y-tdJ" secondAttribute="height" multiplier="1:1" id="u6L-BD-M1s"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6dZ-tG-wV9">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -32,15 +35,18 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt0-9z-QKj">
-                    <rect key="frame" x="188" y="614" width="187" height="53"/>
+                    <rect key="frame" x="188" y="617" width="187" height="50"/>
                     <state key="normal" image="check"/>
                     <connections>
                         <action selector="checkButtonClicked:" destination="-1" eventType="touchUpInside" id="TId-rX-dOd"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eym-IO-6Mh">
-                    <rect key="frame" x="0.0" y="475" width="375" height="131"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eym-IO-6Mh">
+                    <rect key="frame" x="0.0" y="383" width="375" height="125"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eym-IO-6Mh" secondAttribute="height" multiplier="3:1" id="SaJ-Yc-x1v"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ml7-fB-tr2">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,31 +59,28 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiE-9W-dfg">
-                    <rect key="frame" x="0.0" y="614" width="188" height="53"/>
+                    <rect key="frame" x="0.0" y="617" width="188" height="50"/>
                     <state key="normal" image="black close"/>
                     <connections>
                         <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="WFc-DE-ek5"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
             <constraints>
-                <constraint firstItem="eym-IO-6Mh" firstAttribute="top" secondItem="m3q-4Y-tdJ" secondAttribute="bottom" constant="8" id="0uc-CZ-DxA"/>
-                <constraint firstItem="wt0-9z-QKj" firstAttribute="top" secondItem="eym-IO-6Mh" secondAttribute="bottom" constant="8" id="4lH-Jn-JQO"/>
-                <constraint firstAttribute="trailing" secondItem="eym-IO-6Mh" secondAttribute="trailing" id="B9c-gl-ni7"/>
-                <constraint firstItem="yiE-9W-dfg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Dxb-c5-YV7"/>
-                <constraint firstItem="wt0-9z-QKj" firstAttribute="leading" secondItem="yiE-9W-dfg" secondAttribute="trailing" id="Id5-A1-6yS"/>
-                <constraint firstAttribute="trailing" secondItem="m3q-4Y-tdJ" secondAttribute="trailing" id="KnF-4c-QUA"/>
-                <constraint firstItem="m3q-4Y-tdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Luu-HF-FgN"/>
-                <constraint firstItem="m3q-4Y-tdJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.7" id="McQ-iF-nMQ"/>
-                <constraint firstAttribute="bottom" secondItem="yiE-9W-dfg" secondAttribute="bottom" id="P09-mn-wIb"/>
-                <constraint firstItem="eym-IO-6Mh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="URE-bI-dqy"/>
-                <constraint firstItem="m3q-4Y-tdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WbX-VH-2CI"/>
-                <constraint firstAttribute="trailing" secondItem="wt0-9z-QKj" secondAttribute="trailing" id="b2j-k6-hHX"/>
-                <constraint firstItem="wt0-9z-QKj" firstAttribute="height" secondItem="yiE-9W-dfg" secondAttribute="height" id="bws-Qy-ddb"/>
-                <constraint firstAttribute="bottom" secondItem="wt0-9z-QKj" secondAttribute="bottom" id="heB-GP-QRQ"/>
-                <constraint firstItem="yiE-9W-dfg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.08" id="nbh-e8-Vo2"/>
-                <constraint firstItem="wt0-9z-QKj" firstAttribute="width" secondItem="yiE-9W-dfg" secondAttribute="width" id="rdh-6Z-fWT"/>
+                <constraint firstItem="m3q-4Y-tdJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="12v-bo-0vf"/>
+                <constraint firstItem="wt0-9z-QKj" firstAttribute="height" secondItem="yiE-9W-dfg" secondAttribute="height" id="6is-zy-NJ1"/>
+                <constraint firstAttribute="bottom" secondItem="wt0-9z-QKj" secondAttribute="bottom" id="9f5-mb-N6x"/>
+                <constraint firstAttribute="trailing" secondItem="wt0-9z-QKj" secondAttribute="trailing" id="EZM-4r-KWa"/>
+                <constraint firstItem="eym-IO-6Mh" firstAttribute="top" secondItem="m3q-4Y-tdJ" secondAttribute="bottom" constant="8" id="F6m-4j-Un8"/>
+                <constraint firstAttribute="trailing" secondItem="eym-IO-6Mh" secondAttribute="trailing" id="Ooe-1V-Qma"/>
+                <constraint firstItem="eym-IO-6Mh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QKT-DT-uF3"/>
+                <constraint firstItem="wt0-9z-QKj" firstAttribute="leading" secondItem="yiE-9W-dfg" secondAttribute="trailing" id="S1d-6h-yYO"/>
+                <constraint firstAttribute="trailing" secondItem="m3q-4Y-tdJ" secondAttribute="trailing" id="gx6-Cg-Lgk"/>
+                <constraint firstItem="wt0-9z-QKj" firstAttribute="width" secondItem="yiE-9W-dfg" secondAttribute="width" id="ilG-KI-iow"/>
+                <constraint firstAttribute="bottom" secondItem="yiE-9W-dfg" secondAttribute="bottom" id="khU-Oz-S7w"/>
+                <constraint firstItem="yiE-9W-dfg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pc4-4i-9Mf"/>
+                <constraint firstItem="m3q-4Y-tdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vau-R1-s5l"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="458.5" y="535.5"/>

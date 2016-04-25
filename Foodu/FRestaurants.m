@@ -7,7 +7,7 @@
 //
 
 #import "FRestaurants.h"
-#import <PFObject+Subclass.h>
+#import "PFObject+Subclass.h"
 
 @implementation FRestaurants
 

@@ -47,7 +47,7 @@
     else{
         time = 0.0;
     }
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
         self.badgeView.alpha = 0;
     } completion:^(BOOL finished) {
@@ -64,13 +64,26 @@
     else{
         time = 0.0;
     }
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.imageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
         self.badgeView.alpha = 1;
     } completion:^(BOOL finished) {
         
     }];
 
+}
+
+-(void)shakeCell{
+    CABasicAnimation *animation =
+    [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.05];
+    [animation setRepeatCount:3];
+    [animation setAutoreverses:YES];
+    [animation setFromValue:[NSValue valueWithCGPoint:
+                             CGPointMake([self.imageView center].x - 5.0f, [self.imageView center].y)]];
+    [animation setToValue:[NSValue valueWithCGPoint:
+                           CGPointMake([self.imageView center].x + 5.0f, [self.imageView center].y)]];
+    [[self.imageView layer] addAnimation:animation forKey:@"position"];
 }
 
 

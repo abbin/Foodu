@@ -10,12 +10,15 @@
 #import "NSIndexSet+Convenience.h"
 #import "UICollectionView+Convenience.h"
 #import "AAPLGridViewCell2.h"
+#import "FImagePreviewViewController.h"
 
 @interface FGalleryViewControllers ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
 @property (nonatomic, strong) NSArray *sectionFetchResults;
 @property (nonatomic, strong) NSMutableArray *selectedindexs;
+@property (nonatomic, strong) NSMutableArray *selectedPHAsset;
+@property (nonatomic, strong) NSMutableArray *selectedImage;
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
 @property (nonatomic, strong) PHFetchResult *assetsFetchResults;
 @property CGRect previousPreheatRect;
@@ -31,6 +34,8 @@ CGSize AssetGridThumbnailSize;
     [super viewDidLoad];
     
     self.selectedindexs = [[NSMutableArray alloc]init];
+    self.selectedPHAsset = [[NSMutableArray alloc]init];
+    self.selectedImage = [[NSMutableArray alloc]init];
     
     [self.photoCollectionView registerNib:[UINib nibWithNibName:@"AAPLGridViewCell2" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:reuseIdentifier];
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
@@ -68,6 +73,46 @@ CGSize AssetGridThumbnailSize;
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+- (IBAction)doneClicked:(UIButton *)sender {
+    for (PHAsset *asset in self.selectedPHAsset) {
+        [self.imageManager requestImageDataForAsset:asset
+                                            options:nil
+                                      resultHandler:^(NSData * _Nullable imageData,
+                                                      NSString * _Nullable dataUTI,
+                                                      UIImageOrientation orientation,
+                                                      NSDictionary * _Nullable info) {
+                                          
+                                          UIImage *image = [UIImage imageWithData:imageData];
+                                          
+                                          [self.selectedImage addObject:[self imageByCroppingImage:image toSize:image.size]];
+                                          
+                                          if (self.selectedImage.count == self.selectedPHAsset.count) {
+                                              FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
+                                              controller.imageArray = self.selectedImage;
+                                              [self.navigationController pushViewController:controller animated:YES];
+                                          }
+        }];
+    }
+}
+
+- (UIImage *)imageByCroppingImage:(UIImage *)image toSize:(CGSize)size
+{
+    // not equivalent to image.size (which depends on the imageOrientation)!
+    double refWidth = CGImageGetWidth(image.CGImage);
+    double refHeight = CGImageGetHeight(image.CGImage);
+    
+    double x = (refWidth - size.width) / 2.0;
+    double y = (refHeight - size.height) / 2.0;
+    
+    CGRect cropRect = CGRectMake(x, y, size.height, size.width);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    
+    UIImage *cropped = [UIImage imageWithCGImage:imageRef scale:0.0 orientation:image.imageOrientation];
+    
+    CGImageRelease(imageRef);
+    
+    return cropped;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -153,10 +198,17 @@ CGSize AssetGridThumbnailSize;
     if ([[self.selectedindexs objectAtIndex:indexPath.row] boolValue]) {
         [cell deSelectCellWithAnimation:YES];
         [self.selectedindexs replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:NO]];
+        [self.selectedPHAsset removeObject:[self.assetsFetchResults objectAtIndex:indexPath.row]];
     }
     else{
-        [cell selectCellWithAnimation:YES];
-        [self.selectedindexs replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
+        if (self.selectedPHAsset.count>=3) {
+            [cell shakeCell];
+        }
+        else{
+            [self.selectedindexs replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithBool:YES]];
+            [cell selectCellWithAnimation:YES];
+            [self.selectedPHAsset addObject:[self.assetsFetchResults objectAtIndex:indexPath.row]];
+        }
     }
 
 }

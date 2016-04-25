@@ -19,4 +19,6 @@
 
 -(void)selectCellWithAnimation:(BOOL)animation;
 
+-(void)shakeCell;
+
 @end

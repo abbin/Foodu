@@ -7,7 +7,7 @@
 //
 
 #import "FImages.h"
-#import <PFObject+Subclass.h>
+#import "PFObject+Subclass.h"
 
 @implementation FImages
 

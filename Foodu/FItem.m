@@ -7,7 +7,7 @@
 //
 
 #import "FItem.h"
-#import <PFObject+Subclass.h>
+#import "PFObject+Subclass.h"
 
 @implementation FItem
 

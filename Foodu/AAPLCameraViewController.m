@@ -234,8 +234,8 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 			case AVCamSetupResultCameraNotAuthorized:
 			{
 				dispatch_async( dispatch_get_main_queue(), ^{
-					NSString *message = NSLocalizedString( @"AVCam doesn't have permission to use the camera, please change privacy settings", @"Alert message when the user has denied access to the camera" );
-					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"AVCam" message:message preferredStyle:UIAlertControllerStyleAlert];
+					NSString *message = NSLocalizedString( @"Fuud doesn't have permission to use the camera, please change privacy settings", @"Alert message when the user has denied access to the camera" );
+					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fuud" message:message preferredStyle:UIAlertControllerStyleAlert];
 					UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
 					[alertController addAction:cancelAction];
 					// Provide quick access to Settings.
@@ -251,7 +251,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 			{
 				dispatch_async( dispatch_get_main_queue(), ^{
 					NSString *message = NSLocalizedString( @"Unable to capture media", @"Alert message when something goes wrong during capture session configuration" );
-					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"AVCam" message:message preferredStyle:UIAlertControllerStyleAlert];
+					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fuud" message:message preferredStyle:UIAlertControllerStyleAlert];
 					UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
 					[alertController addAction:cancelAction];
 					[self presentViewController:alertController animated:YES completion:nil];
@@ -528,7 +528,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 		if ( ! self.session.isRunning ) {
 			dispatch_async( dispatch_get_main_queue(), ^{
 				NSString *message = NSLocalizedString( @"Unable to resume", @"Alert message when unable to resume the session running" );
-				UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"AVCam" message:message preferredStyle:UIAlertControllerStyleAlert];
+				UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fuud" message:message preferredStyle:UIAlertControllerStyleAlert];
 				UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
 				[alertController addAction:cancelAction];
 				[self presentViewController:alertController animated:YES completion:nil];

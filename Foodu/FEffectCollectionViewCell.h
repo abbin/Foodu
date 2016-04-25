@@ -11,5 +11,8 @@
 @interface FEffectCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *indicator;
+
+-(void)pressCell;
 
 @end

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -15,24 +15,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7w8-gZ-6n8">
-                        <rect key="frame" x="13" y="13" width="225" height="225"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="25" y="13" width="200" height="200"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="7w8-gZ-6n8" secondAttribute="height" multiplier="1:1" id="WwV-Xu-BF2"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvf-sg-qVe">
+                        <rect key="frame" x="45" y="223" width="160" height="4"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="dvf-sg-qVe" firstAttribute="height" secondItem="7w8-gZ-6n8" secondAttribute="height" multiplier="0.02" id="1gJ-m1-ebd"/>
+                <constraint firstItem="dvf-sg-qVe" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="1.8" id="3sW-Li-hc7"/>
+                <constraint firstItem="dvf-sg-qVe" firstAttribute="width" secondItem="7w8-gZ-6n8" secondAttribute="width" multiplier="0.8" id="4s5-ox-Aid"/>
                 <constraint firstItem="7w8-gZ-6n8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="A4d-jv-MkD"/>
-                <constraint firstItem="7w8-gZ-6n8" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.9" id="Onh-Nf-XtE"/>
-                <constraint firstItem="7w8-gZ-6n8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="PCX-PT-3pZ"/>
+                <constraint firstItem="7w8-gZ-6n8" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.8" id="Onh-Nf-XtE"/>
+                <constraint firstItem="7w8-gZ-6n8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" multiplier="0.9" id="PCX-PT-3pZ"/>
+                <constraint firstItem="dvf-sg-qVe" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="cwJ-fx-Ktk"/>
             </constraints>
             <connections>
                 <outlet property="imageView" destination="7w8-gZ-6n8" id="0oq-cu-gxD"/>
+                <outlet property="indicator" destination="dvf-sg-qVe" id="sQd-R5-AZp"/>
             </connections>
+            <point key="canvasLocation" x="552" y="372"/>
         </collectionViewCell>
     </objects>
 </document>
