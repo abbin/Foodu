@@ -38,9 +38,9 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt0-9z-QKj">
-                    <rect key="frame" x="188" y="600" width="187" height="67"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="whiteCheck"/>
+                    <rect key="frame" x="188" y="623" width="187" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="check"/>
                     <connections>
                         <action selector="checkButtonClicked:" destination="-1" eventType="touchUpInside" id="TId-rX-dOd"/>
                     </connections>
@@ -63,9 +63,12 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiE-9W-dfg">
-                    <rect key="frame" x="0.0" y="600" width="188" height="67"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="close"/>
+                    <rect key="frame" x="0.0" y="623" width="188" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="MCB-Rw-qhU"/>
+                    </constraints>
+                    <state key="normal" image="black close"/>
                     <connections>
                         <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="WFc-DE-ek5"/>
                     </connections>
@@ -89,7 +92,6 @@
                 <constraint firstAttribute="trailing" secondItem="m3q-4Y-tdJ" secondAttribute="trailing" id="gx6-Cg-Lgk"/>
                 <constraint firstItem="Smj-zq-ypI" firstAttribute="centerX" secondItem="eym-IO-6Mh" secondAttribute="centerX" multiplier="0.33" id="mLL-dY-rlE"/>
                 <constraint firstItem="wt0-9z-QKj" firstAttribute="width" secondItem="yiE-9W-dfg" secondAttribute="width" id="nL0-Xs-zcE"/>
-                <constraint firstItem="yiE-9W-dfg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="rlW-Os-Ach"/>
                 <constraint firstItem="Smj-zq-ypI" firstAttribute="centerY" secondItem="eym-IO-6Mh" secondAttribute="centerY" multiplier="1.12" id="ugZ-24-hU1"/>
                 <constraint firstItem="m3q-4Y-tdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vau-R1-s5l"/>
                 <constraint firstItem="wt0-9z-QKj" firstAttribute="leading" secondItem="yiE-9W-dfg" secondAttribute="trailing" id="wdz-dj-0qI"/>
@@ -97,11 +99,11 @@
                 <constraint firstAttribute="bottom" secondItem="yiE-9W-dfg" secondAttribute="bottom" id="xbh-UM-EvE"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="458.5" y="535.5"/>
+            <point key="canvasLocation" x="690.5" y="535.5"/>
         </view>
     </objects>
     <resources>
-        <image name="close" width="37" height="37"/>
-        <image name="whiteCheck" width="37" height="37"/>
+        <image name="black close" width="37" height="37"/>
+        <image name="check" width="50" height="50"/>
     </resources>
 </document>

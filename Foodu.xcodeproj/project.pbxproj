@@ -20,6 +20,8 @@
 		5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */; };
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
 		5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812C4AC1C8976C00055A54B /* FAlertView.m */; };
+		581384C11CD0931D00DEE342 /* FItemDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581384BF1CD0931D00DEE342 /* FItemDetailsViewController.m */; };
+		581384C21CD0931D00DEE342 /* FItemDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581384C01CD0931D00DEE342 /* FItemDetailsViewController.xib */; };
 		5813897B1CB380A3007EF325 /* AAPLCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581389781CB380A3007EF325 /* AAPLCameraViewController.m */; };
 		5813897C1CB380A3007EF325 /* AAPLPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5813897A1CB380A3007EF325 /* AAPLPreviewView.m */; };
 		581389801CB381DF007EF325 /* AAPLCameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5813897F1CB381DF007EF325 /* AAPLCameraViewController.xib */; };
@@ -96,6 +98,9 @@
 		5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLocationPickerViewController.xib; sourceTree = "<group>"; };
 		5812C4AB1C8976C00055A54B /* FAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAlertView.h; sourceTree = "<group>"; };
 		5812C4AC1C8976C00055A54B /* FAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAlertView.m; sourceTree = "<group>"; };
+		581384BE1CD0931D00DEE342 /* FItemDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FItemDetailsViewController.h; sourceTree = "<group>"; };
+		581384BF1CD0931D00DEE342 /* FItemDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FItemDetailsViewController.m; sourceTree = "<group>"; };
+		581384C01CD0931D00DEE342 /* FItemDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FItemDetailsViewController.xib; sourceTree = "<group>"; };
 		581389771CB380A3007EF325 /* AAPLCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCameraViewController.h; sourceTree = "<group>"; };
 		581389781CB380A3007EF325 /* AAPLCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCameraViewController.m; sourceTree = "<group>"; };
 		581389791CB380A3007EF325 /* AAPLPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPreviewView.h; sourceTree = "<group>"; };
@@ -210,6 +215,7 @@
 				581389861CB3B781007EF325 /* Camera */,
 				581389871CB3B786007EF325 /* Gallery */,
 				58FD8A581CB4ED5A00DE51D2 /* Image Priview */,
+				581384BD1CD092DB00DEE342 /* Details */,
 			);
 			name = "Add Fuud";
 			sourceTree = "<group>";
@@ -252,6 +258,16 @@
 				5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */,
 			);
 			name = LocationPicker;
+			sourceTree = "<group>";
+		};
+		581384BD1CD092DB00DEE342 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				581384BE1CD0931D00DEE342 /* FItemDetailsViewController.h */,
+				581384BF1CD0931D00DEE342 /* FItemDetailsViewController.m */,
+				581384C01CD0931D00DEE342 /* FItemDetailsViewController.xib */,
+			);
+			name = Details;
 			sourceTree = "<group>";
 		};
 		581389861CB3B781007EF325 /* Camera */ = {
@@ -615,6 +631,7 @@
 				5813899A1CB3CD5D007EF325 /* FGalleryViewControllers.xib in Resources */,
 				58FD8A621CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib in Resources */,
 				58C9F3F71C3A403E00594407 /* LaunchScreen.storyboard in Resources */,
+				581384C21CD0931D00DEE342 /* FItemDetailsViewController.xib in Resources */,
 				58FD8A5D1CB4EDB200DE51D2 /* FImagePreviewViewController.xib in Resources */,
 				581389951CB3C433007EF325 /* AAPLGridViewCell2.xib in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
@@ -742,6 +759,7 @@
 				58FD8A5C1CB4EDB200DE51D2 /* FImagePreviewViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
 				58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */,
+				581384C11CD0931D00DEE342 /* FItemDetailsViewController.m in Sources */,
 				5813898C1CB3B7A5007EF325 /* NSIndexSet+Convenience.m in Sources */,
 				581389941CB3C433007EF325 /* AAPLGridViewCell2.m in Sources */,
 				58E304EB1CCE1E70001B1AFE /* FEffectsAddCollectionViewCell.m in Sources */,

@@ -12,7 +12,7 @@ View controller for camera interface.
 #import "AAPLCameraViewController.h"
 #import "AAPLPreviewView.h"
 #import "FGalleryViewControllers.h"
-#import "FImagePreviewViewController.h"
+#import "FItemDetailsViewController.h"
 
 static void * CapturingStillImageContext = &CapturingStillImageContext;
 static void * SessionRunningContext = &SessionRunningContext;
@@ -249,8 +249,8 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 			case AVCamSetupResultCameraNotAuthorized:
 			{
 				dispatch_async( dispatch_get_main_queue(), ^{
-					NSString *message = NSLocalizedString( @"Fuud doesn't have permission to use the camera, please change privacy settings", @"Alert message when the user has denied access to the camera" );
-					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Fuud" message:message preferredStyle:UIAlertControllerStyleAlert];
+					NSString *message = NSLocalizedString( @"Please go to settings and enable camera to use this feature or manually select from Photos Library.", @"Alert message when the user has denied access to the camera" );
+					UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No Camera access" message:message preferredStyle:UIAlertControllerStyleAlert];
 					UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
 					[alertController addAction:cancelAction];
 					// Provide quick access to Settings.
@@ -464,8 +464,8 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
         [self.navigationController pushViewController:galler animated:YES];
     }
     else{
-        FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
-        controller.imageArray = self.imageArray;
+        FItemDetailsViewController *controller = [[FItemDetailsViewController alloc]initWithNibName:@"FItemDetailsViewController" bundle:[NSBundle mainBundle]];
+        controller.selectedImage = self.imageArray;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
@@ -608,6 +608,7 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
             [AAPLCameraViewController setFlashMode:AVCaptureFlashModeAuto forDevice:self.videoDeviceInput.device];
             
             // Capture a still image.
+            UIDeviceOrientation orintation = [UIDevice currentDevice].orientation;
             [self.stillImageOutput captureStillImageAsynchronouslyFromConnection:connection completionHandler:^( CMSampleBufferRef imageDataSampleBuffer, NSError *error ) {
                 if ( imageDataSampleBuffer ) {
                     // The sample buffer is not retained. Create image data before saving the still image to the photo library asynchronously.
@@ -615,14 +616,14 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
                         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
                         UIImage *image = [UIImage imageWithData:imageData];
                         
-                        [self.imageArray addObject:[self squareImageFromImage:image scaledToSize:1000]];
+                        [self.imageArray addObject:[self correctOriantaion:image with:orintation]];
                         
                         [self.galleryOrDoneButton setImage:[UIImage imageNamed:@"whiteCheck"] forState:UIControlStateNormal];
                         self.galleryOrDoneButton.tag = 1;
                         self.shutterLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)self.imageArray.count];
                         if (self.imageArray.count == 3) {
-                            FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
-                            controller.imageArray = self.imageArray;
+                            FItemDetailsViewController *controller = [[FItemDetailsViewController alloc]initWithNibName:@"FItemDetailsViewController" bundle:[NSBundle mainBundle]];
+                            controller.selectedImage = self.imageArray;
                             [self.navigationController pushViewController:controller animated:YES];
                         }
                     }
@@ -635,46 +636,40 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
     }
 }
 
+-(UIImage*)correctOriantaion:(UIImage*)image with:(UIDeviceOrientation)oriantation{
+    switch (oriantation) {
+        case UIDeviceOrientationPortrait:
+            return [[UIImage alloc] initWithCGImage: image.CGImage
+                                              scale: 1.0
+                                        orientation: UIImageOrientationRight];
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            return [[UIImage alloc] initWithCGImage: image.CGImage
+                                              scale: 1.0
+                                        orientation: UIImageOrientationLeft];
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            return [[UIImage alloc] initWithCGImage: image.CGImage
+                                              scale: 1.0
+                                        orientation: UIImageOrientationUp];
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            return [[UIImage alloc] initWithCGImage: image.CGImage
+                                              scale: 1.0
+                                        orientation: UIImageOrientationDown];
+            break;
+            
+        default:
+            return image;
+            break;
+    }
+}
+
 -(void)resetViewContoller{
     [self.imageArray removeAllObjects];
     [self.galleryOrDoneButton setImage:[UIImage imageNamed:@"gallery"] forState:UIControlStateNormal];
     self.galleryOrDoneButton.tag = 0;
     self.shutterLabel.text = @"";
-}
-
-- (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
-    CGAffineTransform scaleTransform;
-    CGPoint origin;
-    
-    if (image.size.width > image.size.height) {
-        CGFloat scaleRatio = newSize / image.size.height;
-        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
-        
-        origin = CGPointMake(0, 0);
-    } else {
-        CGFloat scaleRatio = newSize / image.size.width;
-        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
-        
-        origin = CGPointMake(0, 0);
-    }
-    
-    CGSize size = CGSizeMake(newSize, newSize);
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
-    } else {
-        UIGraphicsBeginImageContext(size);
-    }
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextConcatCTM(context, scaleTransform);
-    
-    [image drawAtPoint:origin];
-    
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer

@@ -11,7 +11,14 @@
 @implementation FImagePreviewCollectionViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+}
+
+- (void)drawRect:(CGRect)rect{
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.height/64;
+    self.imageView.layer.masksToBounds = YES;
+    self.closeButton.layer.cornerRadius = self.closeButton.frame.size.height/2;
+    self.closeButton.layer.masksToBounds = YES;
 }
 
 @end

@@ -10,8 +10,7 @@
 #import "NSIndexSet+Convenience.h"
 #import "UICollectionView+Convenience.h"
 #import "AAPLGridViewCell2.h"
-#import "FImagePreviewViewController.h"
-
+#import "FItemDetailsViewController.h"
 @interface FGalleryViewControllers ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *photoCollectionView;
@@ -39,7 +38,7 @@ CGSize AssetGridThumbnailSize;
     
     [self.photoCollectionView registerNib:[UINib nibWithNibName:@"AAPLGridViewCell2" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:reuseIdentifier];
     PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
+    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
     allPhotosOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
     PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
     self.sectionFetchResults = @[allPhotos];
@@ -51,6 +50,18 @@ CGSize AssetGridThumbnailSize;
         self.imageManager = [[PHCachingImageManager alloc] init];
         [self resetCachedAssets];
         [self.photoCollectionView reloadData];
+    }
+    else if([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied){
+        NSString *message = NSLocalizedString( @"Please go to settings and enable Photo Library to use this feature", @"Alert message when the user has denied access to the camera" );
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No access" message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"OK", @"Alert OK button" ) style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+        // Provide quick access to Settings.
+        UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:NSLocalizedString( @"Settings", @"Alert button to open Settings" ) style:UIAlertActionStyleDefault handler:^( UIAlertAction *action ) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }];
+        [alertController addAction:settingsAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -98,51 +109,15 @@ CGSize AssetGridThumbnailSize;
                                           
                                           UIImage *image = [UIImage imageWithData:imageData];
                                           
-                                          [self.selectedImage addObject:[self squareImageFromImage:image scaledToSize:1000]];
+                                          [self.selectedImage addObject:image];
                                           
                                           if (self.selectedImage.count == self.selectedPHAsset.count) {
-                                              FImagePreviewViewController *controller = [[FImagePreviewViewController alloc]initWithNibName:@"FImagePreviewViewController" bundle:[NSBundle mainBundle]];
-                                              controller.imageArray = self.selectedImage;
+                                              FItemDetailsViewController *controller = [[FItemDetailsViewController alloc]initWithNibName:@"FItemDetailsViewController" bundle:[NSBundle mainBundle]];
+                                              controller.selectedImage = self.selectedImage;
                                               [self.navigationController pushViewController:controller animated:YES];
                                           }
         }];
     }
-}
-
-
-- (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
-    CGAffineTransform scaleTransform;
-    CGPoint origin;
-    
-    if (image.size.width > image.size.height) {
-        CGFloat scaleRatio = newSize / image.size.height;
-        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
-        
-        origin = CGPointMake(-(image.size.width - image.size.height) / 2.0f, 0);
-    } else {
-        CGFloat scaleRatio = newSize / image.size.width;
-        scaleTransform = CGAffineTransformMakeScale(scaleRatio, scaleRatio);
-        
-        origin = CGPointMake(0, -(image.size.height - image.size.width) / 2.0f);
-    }
-    
-    CGSize size = CGSizeMake(newSize, newSize);
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-        UIGraphicsBeginImageContextWithOptions(size, YES, 0);
-    } else {
-        UIGraphicsBeginImageContext(size);
-    }
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextConcatCTM(context, scaleTransform);
-    
-    [image drawAtPoint:origin];
-    
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 - (void)viewWillAppear:(BOOL)animated{

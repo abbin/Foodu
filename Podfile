@@ -16,6 +16,5 @@ pod 'GoogleMaps'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'AMPopTip'
-pod "MBCircularProgressBar"
 end
 

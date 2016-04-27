@@ -61,13 +61,6 @@
     }
 }
 
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//    for (UICollectionViewCell *cell in [self.photoCollectionView visibleCells]) {
-//        NSIndexPath *indexPath = [self.photoCollectionView indexPathForCell:cell];
-//        NSLog(@"%ld",(long)indexPath.row);
-//    }
-//}
-
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     double offset = scrollView.contentOffset.x;
     self.indicatorX.constant = offset/3;
@@ -169,7 +162,7 @@
 }
 
 - (IBAction)checkButtonClicked:(UIButton *)sender {
-    
+
 }
 
 - (UIImage *)squareImageFromImage:(UIImage *)image scaledToSize:(CGFloat)newSize {
