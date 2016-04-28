@@ -60,7 +60,6 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 {
 	[super viewDidLoad];
     
-    
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
 
     }];
@@ -291,9 +290,10 @@ typedef NS_ENUM( NSInteger, AVCamSetupResult ) {
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if(authStatus == AVAuthorizationStatusAuthorized && [FCurrentUser isFirstCameraLaunch]){
-        [self.popTip showText:@"Hold down to switch camera" direction:AMPopTipDirectionDown maxWidth:self.cameraControlsContainer.frame.size.width/2 inView:self.cameraControlsContainer fromFrame:self.stillButton.frame];
+        [self.popTip showText:@"Hold down to switch camera" direction:AMPopTipDirectionUp maxWidth:self.cameraControlsContainer.frame.size.width/2 inView:self.cameraControlsContainer fromFrame:self.stillButton.frame];
     }
 }
 

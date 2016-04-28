@@ -80,7 +80,7 @@
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = [[UIScreen mainScreen] bounds];
-    gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
+    gradient.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.2].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
 }
 

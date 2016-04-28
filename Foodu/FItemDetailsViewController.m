@@ -11,7 +11,11 @@
 
 @interface FItemDetailsViewController ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarBottomConstrain;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagePreviewCollection;
+@property (weak, nonatomic) IBOutlet UITextField *priceTextField;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *cellSizeArray;
 @end
 
@@ -19,30 +23,56 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(noticeHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
+    
     self.cellSizeArray = [NSMutableArray new];
     for (UIImage *image in self.selectedImage) {
-        [self.cellSizeArray addObject:[NSValue valueWithCGSize:CGSizeMake(image.size.width*self.imagePreviewCollection.frame.size.height/image.size.height, self.imagePreviewCollection.frame.size.height)]];
+        [self.cellSizeArray addObject:[NSValue valueWithCGSize:CGSizeMake(image.size.width*([UIScreen mainScreen].bounds.size.height/3.5)/image.size.height, ([UIScreen mainScreen].bounds.size.height/3.5))]];
     }
     [self.imagePreviewCollection registerNib:[UINib nibWithNibName:@"FImagePreviewCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"FImagePreviewCollectionViewCell"];
+    
+    self.priceTextField.text = [self currencySymbol];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    self.descriptionTextView.layer.cornerRadius = 5;
+    self.descriptionTextView.layer.masksToBounds = YES;
+    self.descriptionTextView.layer.borderWidth = 0.5f;
+    self.descriptionTextView.layer.borderColor = [[UIColor colorWithWhite:0.8 alpha:1] CGColor];
 }
 
 -(BOOL)prefersStatusBarHidden{
     return YES;
 }
 - (IBAction)dismissButtonClicked:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Are you sure?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"Yes, I'm sure" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [self.view endEditing:YES];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [controller addAction:yes];
+    [controller addAction:cancel];
+    [self presentViewController:controller animated:yes completion:nil];
+    
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.selectedImage.count;
 }
@@ -70,6 +100,53 @@
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 5;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
+-(void)noticeHideKeyboard:(NSNotification *)notification {
+    
+    self.toolBarBottomConstrain.constant = 0;
+    [UIView animateWithDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
+-(void)noticeShowKeyboard:(NSNotification *)notification {
+    
+    NSDictionary *info  = notification.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+    
+    self.toolBarBottomConstrain.constant = keyboardFrame.size.height;
+    [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
+        [self.scrollView setContentOffset:bottomOffset animated:YES];
+    }];
+}
+- (IBAction)textFieldDidChangeEditing:(UITextField *)sender {
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField.tag == 0) {
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
+
+-(NSString*)currencySymbol{
+    return [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
 }
 
 @end

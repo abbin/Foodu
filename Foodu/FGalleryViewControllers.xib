@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FGalleryViewControllers">
@@ -17,27 +17,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCH-J3-faK">
-                    <rect key="frame" x="8" y="8" width="60" height="60"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="UCH-J3-faK" secondAttribute="height" multiplier="1:1" id="qSy-l4-TVt"/>
-                    </constraints>
-                    <state key="normal" image="black close"/>
-                    <connections>
-                        <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="oXI-da-WyS"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8TY-0d-6fy">
-                    <rect key="frame" x="532" y="8" width="60" height="60"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" image="check"/>
-                    <connections>
-                        <action selector="doneClicked:" destination="-1" eventType="touchUpInside" id="oDP-6a-EUy"/>
-                    </connections>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WuX-kS-FIs">
-                    <rect key="frame" x="0.0" y="76" width="600" height="524"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RtJ-HE-iQy">
                         <size key="itemSize" width="50" height="50"/>
@@ -50,34 +31,58 @@
                         <outlet property="delegate" destination="-1" id="5bL-hx-P5V"/>
                     </connections>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cig-Xm-C89">
-                    <rect key="frame" x="76" y="28" width="448" height="20"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-Cx-rLT">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-at-tGB">
+                            <rect key="frame" x="0.0" y="0.0" width="84" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ahD-at-tGB" secondAttribute="height" multiplier="21:11" id="4EV-mX-LXU"/>
+                            </constraints>
+                            <state key="normal" image="close"/>
+                            <connections>
+                                <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="RCX-Zb-UIt"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKb-II-TJ1">
+                            <rect key="frame" x="516" y="0.0" width="84" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="wKb-II-TJ1" secondAttribute="height" multiplier="21:11" id="DKE-Qt-9w2"/>
+                            </constraints>
+                            <state key="normal" image="whiteCheck"/>
+                            <connections>
+                                <action selector="doneClicked:" destination="-1" eventType="touchUpInside" id="epZ-8a-dEH"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="03s-aJ-aVx"/>
+                        <constraint firstItem="ahD-at-tGB" firstAttribute="leading" secondItem="Jfd-Cx-rLT" secondAttribute="leading" id="Da3-wc-Xdv"/>
+                        <constraint firstAttribute="bottom" secondItem="wKb-II-TJ1" secondAttribute="bottom" id="SG9-EF-7oP"/>
+                        <constraint firstAttribute="bottom" secondItem="ahD-at-tGB" secondAttribute="bottom" id="gIp-Xf-KNv"/>
+                        <constraint firstAttribute="trailing" secondItem="wKb-II-TJ1" secondAttribute="trailing" id="ize-Rl-IFw"/>
+                        <constraint firstItem="ahD-at-tGB" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="rxN-5S-KWA"/>
+                        <constraint firstItem="wKb-II-TJ1" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="sci-fc-5pU"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="8TY-0d-6fy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="0aa-dN-x2B"/>
-                <constraint firstAttribute="trailing" secondItem="8TY-0d-6fy" secondAttribute="trailing" constant="8" id="5tJ-mw-zB4"/>
-                <constraint firstItem="UCH-J3-faK" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.1" id="7Ya-q3-pRe"/>
-                <constraint firstItem="cig-Xm-C89" firstAttribute="leading" secondItem="UCH-J3-faK" secondAttribute="trailing" constant="8" id="7ds-n2-3pA"/>
-                <constraint firstItem="UCH-J3-faK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="8gP-yJ-PWU"/>
-                <constraint firstAttribute="bottom" secondItem="WuX-kS-FIs" secondAttribute="bottom" id="9xo-qH-vlO"/>
-                <constraint firstItem="8TY-0d-6fy" firstAttribute="height" secondItem="UCH-J3-faK" secondAttribute="height" id="I6p-1T-iaV"/>
-                <constraint firstItem="WuX-kS-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rz8-9h-sA5"/>
-                <constraint firstItem="8TY-0d-6fy" firstAttribute="leading" secondItem="cig-Xm-C89" secondAttribute="trailing" constant="8" id="SN7-qy-oEi"/>
-                <constraint firstAttribute="trailing" secondItem="WuX-kS-FIs" secondAttribute="trailing" id="cSt-97-oE4"/>
-                <constraint firstItem="cig-Xm-C89" firstAttribute="centerY" secondItem="UCH-J3-faK" secondAttribute="centerY" id="doR-oI-iOH"/>
-                <constraint firstItem="UCH-J3-faK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ezL-Ge-6kh"/>
-                <constraint firstItem="WuX-kS-FIs" firstAttribute="top" secondItem="UCH-J3-faK" secondAttribute="bottom" constant="8" id="hxv-6w-2Xr"/>
-                <constraint firstItem="8TY-0d-6fy" firstAttribute="width" secondItem="UCH-J3-faK" secondAttribute="width" id="iaP-cM-gKB"/>
+                <constraint firstItem="Jfd-Cx-rLT" firstAttribute="top" secondItem="WuX-kS-FIs" secondAttribute="bottom" id="0Ca-0f-paO"/>
+                <constraint firstItem="Jfd-Cx-rLT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lak-hM-DT5"/>
+                <constraint firstAttribute="trailing" secondItem="WuX-kS-FIs" secondAttribute="trailing" id="Mnp-6w-Tlp"/>
+                <constraint firstAttribute="trailing" secondItem="Jfd-Cx-rLT" secondAttribute="trailing" id="Zcb-a5-Y9O"/>
+                <constraint firstItem="WuX-kS-FIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bjy-NC-IkR"/>
+                <constraint firstAttribute="bottom" secondItem="Jfd-Cx-rLT" secondAttribute="bottom" id="dDC-Vo-mVd"/>
+                <constraint firstItem="WuX-kS-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dh6-FM-W9c"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="black close" width="37" height="37"/>
-        <image name="check" width="50" height="50"/>
+        <image name="close" width="37" height="37"/>
+        <image name="whiteCheck" width="37" height="37"/>
     </resources>
 </document>

@@ -82,6 +82,7 @@ CGSize AssetGridThumbnailSize;
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     // Begin caching assets in and around collection view's visible rect.
     [self updateCachedAssets];
 }
