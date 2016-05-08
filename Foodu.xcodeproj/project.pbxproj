@@ -13,8 +13,6 @@
 		580BF2C31C98323F00F50499 /* FirstLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 580BF2C21C98323F00F50499 /* FirstLaunch.storyboard */; };
 		580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BF2C51C9835DC00F50499 /* FPageONEViewController.m */; };
 		580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */; };
-		58114EC11CABC05700472735 /* FGeoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58114EC01CABC05700472735 /* FGeoListTableViewCell.m */; };
-		58114EC41CABC1F700472735 /* FGeoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58114EC31CABC1F700472735 /* FGeoListTableViewController.m */; };
 		581152D71C87191600B592B6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 581152D61C87191600B592B6 /* Reachability.m */; };
 		5812BB9D1C9BF13E00C22FDE /* FLocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5812BB9B1C9BF13E00C22FDE /* FLocationPickerViewController.m */; };
 		5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5812BB9C1C9BF13E00C22FDE /* FLocationPickerViewController.xib */; };
@@ -65,6 +63,9 @@
 		58FD8A5D1CB4EDB200DE51D2 /* FImagePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FD8A5B1CB4EDB200DE51D2 /* FImagePreviewViewController.xib */; };
 		58FD8A611CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD8A5F1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m */; };
 		58FD8A621CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FD8A601CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib */; };
+		ED4403C71CDF69C900EDB503 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403C61CDF69C900EDB503 /* FListViewController.m */; };
+		ED4403CC1CDF69DA00EDB503 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403C91CDF69DA00EDB503 /* FlistTableViewCell.m */; };
+		ED4403CD1CDF69DA00EDB503 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403CB1CDF69DA00EDB503 /* FNextTableViewCell.m */; };
 		ED56C1DC1C7769260013FA71 /* FSignUpOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */; };
 		EDB9FDEB1C9E711B00616681 /* NSMutableDictionary+FLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB9FDEA1C9E711B00616681 /* NSMutableDictionary+FLocation.m */; };
 		EDF8D1D51C82DCDF008C47DB /* FCurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EDF8D1D41C82DCDF008C47DB /* FCurrentUser.m */; };
@@ -84,10 +85,6 @@
 		580BF2C51C9835DC00F50499 /* FPageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPageONEViewController.m; sourceTree = "<group>"; };
 		580C52F21CA1333B0029868F /* FEmailSignUpEMAILViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEmailSignUpEMAILViewController.h; sourceTree = "<group>"; };
 		580C52F31CA1333B0029868F /* FEmailSignUpEMAILViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEmailSignUpEMAILViewController.m; sourceTree = "<group>"; };
-		58114EBF1CABC05700472735 /* FGeoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGeoListTableViewCell.h; sourceTree = "<group>"; };
-		58114EC01CABC05700472735 /* FGeoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGeoListTableViewCell.m; sourceTree = "<group>"; };
-		58114EC21CABC1F700472735 /* FGeoListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGeoListTableViewController.h; sourceTree = "<group>"; };
-		58114EC31CABC1F700472735 /* FGeoListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGeoListTableViewController.m; sourceTree = "<group>"; };
 		581152D51C87191600B592B6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		581152D61C87191600B592B6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		5812BB9A1C9BF13E00C22FDE /* FLocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLocationPickerViewController.h; sourceTree = "<group>"; };
@@ -177,6 +174,12 @@
 		58FD8A5F1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePreviewCollectionViewCell.m; sourceTree = "<group>"; };
 		58FD8A601CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePreviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		BA53E09161CB15370B656D1E /* Pods_Foodu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED4403C51CDF69C900EDB503 /* FListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FListViewController.h; sourceTree = "<group>"; };
+		ED4403C61CDF69C900EDB503 /* FListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FListViewController.m; sourceTree = "<group>"; };
+		ED4403C81CDF69DA00EDB503 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
+		ED4403C91CDF69DA00EDB503 /* FlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlistTableViewCell.m; sourceTree = "<group>"; };
+		ED4403CA1CDF69DA00EDB503 /* FNextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FNextTableViewCell.h; sourceTree = "<group>"; };
+		ED4403CB1CDF69DA00EDB503 /* FNextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FNextTableViewCell.m; sourceTree = "<group>"; };
 		ED56C1DA1C7769260013FA71 /* FSignUpOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSignUpOneViewController.h; sourceTree = "<group>"; };
 		ED56C1DB1C7769260013FA71 /* FSignUpOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSignUpOneViewController.m; sourceTree = "<group>"; };
 		EDB9FDE91C9E711B00616681 /* NSMutableDictionary+FLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+FLocation.h"; sourceTree = "<group>"; };
@@ -220,20 +223,14 @@
 		58114EBA1CABBFA400472735 /* GeoList */ = {
 			isa = PBXGroup;
 			children = (
-				58114EC21CABC1F700472735 /* FGeoListTableViewController.h */,
-				58114EC31CABC1F700472735 /* FGeoListTableViewController.m */,
-				58114EBE1CABC03400472735 /* TableViewCell */,
+				ED4403C51CDF69C900EDB503 /* FListViewController.h */,
+				ED4403C61CDF69C900EDB503 /* FListViewController.m */,
+				ED4403C81CDF69DA00EDB503 /* FlistTableViewCell.h */,
+				ED4403C91CDF69DA00EDB503 /* FlistTableViewCell.m */,
+				ED4403CA1CDF69DA00EDB503 /* FNextTableViewCell.h */,
+				ED4403CB1CDF69DA00EDB503 /* FNextTableViewCell.m */,
 			);
 			name = GeoList;
-			sourceTree = "<group>";
-		};
-		58114EBE1CABC03400472735 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				58114EBF1CABC05700472735 /* FGeoListTableViewCell.h */,
-				58114EC01CABC05700472735 /* FGeoListTableViewCell.m */,
-			);
-			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 		581152D41C87190300B592B6 /* Reachability */ = {
@@ -730,6 +727,7 @@
 				5813897C1CB380A3007EF325 /* AAPLPreviewView.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				58A8A7371C99582500D62E24 /* FPageFour.m in Sources */,
+				ED4403C71CDF69C900EDB503 /* FListViewController.m in Sources */,
 				58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */,
 				58A8A7311C994E3D00D62E24 /* FPageThree.m in Sources */,
 				58A8A72E1C994E2D00D62E24 /* FPageTwo.m in Sources */,
@@ -738,12 +736,10 @@
 				580BF2C61C9835DC00F50499 /* FPageONEViewController.m in Sources */,
 				58F37CBE1C7C2F3E005DE1CC /* FImages.m in Sources */,
 				58AD26051C4F5385009AA930 /* FImagePickerCollectionViewCell.m in Sources */,
-				58114EC11CABC05700472735 /* FGeoListTableViewCell.m in Sources */,
 				58F37CBC1C7C2F3E005DE1CC /* FItem.m in Sources */,
 				58C9F3E91C3A403E00594407 /* main.m in Sources */,
 				580BF2C11C98320800F50499 /* FFirstLaunchViewController.m in Sources */,
 				58F37CBD1C7C2F3E005DE1CC /* FRestaurants.m in Sources */,
-				58114EC41CABC1F700472735 /* FGeoListTableViewController.m in Sources */,
 				58FD8A611CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m in Sources */,
 				582F20C91CB5128C004976FE /* FEffectCollectionViewCell.m in Sources */,
 				58ED13331C4CF8E00049F2C2 /* UICollectionView+UICollectionView_Convenience.m in Sources */,
@@ -752,8 +748,10 @@
 				580023121C9ADEDA00A7AFB6 /* FPageTHREEViewController.m in Sources */,
 				58FD8A5C1CB4EDB200DE51D2 /* FImagePreviewViewController.m in Sources */,
 				58AD26181C4FB2EA009AA930 /* FImagePickerController.m in Sources */,
+				ED4403CC1CDF69DA00EDB503 /* FlistTableViewCell.m in Sources */,
 				58A8A7281C99317900D62E24 /* FPageTWOViewController.m in Sources */,
 				581384C11CD0931D00DEE342 /* FItemDetailsViewController.m in Sources */,
+				ED4403CD1CDF69DA00EDB503 /* FNextTableViewCell.m in Sources */,
 				5813898C1CB3B7A5007EF325 /* NSIndexSet+Convenience.m in Sources */,
 				581389941CB3C433007EF325 /* AAPLGridViewCell2.m in Sources */,
 				58E304EB1CCE1E70001B1AFE /* FEffectsAddCollectionViewCell.m in Sources */,
