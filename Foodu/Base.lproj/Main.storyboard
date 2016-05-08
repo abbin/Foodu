@@ -944,78 +944,82 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlistTableViewCell" rowHeight="227" id="KFc-ka-tBA" customClass="FlistTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="227"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FlistTableViewCell" rowHeight="400" id="KFc-ka-tBA" customClass="FlistTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="600" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KFc-ka-tBA" id="d2y-SW-OgN">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="227"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-LC-2Me">
-                                            <rect key="frame" x="8" y="8" width="584" height="211"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="384"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-8i-hn3" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="435" height="211"/>
-                                                    <color key="backgroundColor" red="0.66274509800000003" green="0.094117647060000004" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="435" id="7qS-wL-AWA"/>
-                                                    </constraints>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-8i-hn3" customClass="PFImageView">
+                                                    <rect key="frame" x="88" y="10" width="408" height="315"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WILLINGDON ISLAND" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOG-MJ-uwr">
-                                                    <rect key="frame" x="443" y="37" width="133" height="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WILLINGDON ISLAND" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOG-MJ-uwr">
+                                                    <rect key="frame" x="88" y="362" width="408" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="lw9-A1-LxP"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="10"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tharavadu Buffet" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHU-v8-Tf5">
-                                                    <rect key="frame" x="443" y="8" width="133" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tharavadu Buffet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHU-v8-Tf5">
+                                                    <rect key="frame" x="88" y="333" width="278" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="fan-4B-YOB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjK-mW-edL" customClass="TPFloatRatingView">
-                                                    <rect key="frame" x="443" y="187" width="133" height="16"/>
+                                                    <rect key="frame" x="374" y="333" width="122" height="15"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="FjK-mW-edL" secondAttribute="height" multiplier="133:16" id="Bck-Ym-7te"/>
+                                                        <constraint firstAttribute="width" secondItem="FjK-mW-edL" secondAttribute="height" multiplier="122:15" id="v3i-NN-SlO"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="FjK-mW-edL" firstAttribute="leading" secondItem="efa-8i-hn3" secondAttribute="trailing" constant="8" id="0wQ-TR-t6F"/>
-                                                <constraint firstAttribute="bottom" secondItem="FjK-mW-edL" secondAttribute="bottom" constant="8" id="5zC-eb-YTD"/>
-                                                <constraint firstAttribute="trailing" secondItem="FjK-mW-edL" secondAttribute="trailing" constant="8" id="ADZ-8K-MhV"/>
-                                                <constraint firstItem="efa-8i-hn3" firstAttribute="leading" secondItem="UKL-LC-2Me" secondAttribute="leading" id="MJG-dd-hNp"/>
-                                                <constraint firstItem="fHU-v8-Tf5" firstAttribute="top" secondItem="UKL-LC-2Me" secondAttribute="top" constant="8" id="NiI-a3-aIy"/>
-                                                <constraint firstAttribute="trailing" secondItem="fHU-v8-Tf5" secondAttribute="trailing" constant="8" id="it7-WP-xKL"/>
-                                                <constraint firstAttribute="trailing" secondItem="KOG-MJ-uwr" secondAttribute="trailing" constant="8" id="kkx-fp-TBE"/>
-                                                <constraint firstItem="KOG-MJ-uwr" firstAttribute="leading" secondItem="efa-8i-hn3" secondAttribute="trailing" constant="8" id="ppK-q5-78h"/>
-                                                <constraint firstItem="efa-8i-hn3" firstAttribute="top" secondItem="UKL-LC-2Me" secondAttribute="top" id="uSo-52-skx"/>
-                                                <constraint firstAttribute="bottom" secondItem="efa-8i-hn3" secondAttribute="bottom" id="uyE-wm-5kd"/>
-                                                <constraint firstItem="fHU-v8-Tf5" firstAttribute="leading" secondItem="efa-8i-hn3" secondAttribute="trailing" constant="8" id="vID-Hk-k9b"/>
-                                                <constraint firstItem="KOG-MJ-uwr" firstAttribute="top" secondItem="fHU-v8-Tf5" secondAttribute="bottom" constant="8" id="xAA-3K-n8n"/>
+                                                <constraint firstItem="KOG-MJ-uwr" firstAttribute="top" secondItem="fHU-v8-Tf5" secondAttribute="bottom" constant="8" id="4MX-dQ-6cc"/>
+                                                <constraint firstItem="KOG-MJ-uwr" firstAttribute="leading" secondItem="fHU-v8-Tf5" secondAttribute="leading" id="Ag8-yR-4IP"/>
+                                                <constraint firstItem="FjK-mW-edL" firstAttribute="width" secondItem="efa-8i-hn3" secondAttribute="width" multiplier="0.3" id="Grv-q8-03S"/>
+                                                <constraint firstItem="fHU-v8-Tf5" firstAttribute="leading" secondItem="efa-8i-hn3" secondAttribute="leading" id="Gyl-D7-QVq"/>
+                                                <constraint firstItem="FjK-mW-edL" firstAttribute="trailing" secondItem="efa-8i-hn3" secondAttribute="trailing" id="SPW-vc-zFa"/>
+                                                <constraint firstItem="efa-8i-hn3" firstAttribute="top" secondItem="UKL-LC-2Me" secondAttribute="top" constant="10" id="Wgc-tQ-eFS"/>
+                                                <constraint firstItem="efa-8i-hn3" firstAttribute="width" secondItem="UKL-LC-2Me" secondAttribute="width" multiplier="0.7" id="ZD7-6q-9Tw"/>
+                                                <constraint firstItem="efa-8i-hn3" firstAttribute="centerX" secondItem="UKL-LC-2Me" secondAttribute="centerX" id="iBF-oq-J8J"/>
+                                                <constraint firstItem="KOG-MJ-uwr" firstAttribute="trailing" secondItem="efa-8i-hn3" secondAttribute="trailing" id="oWh-37-Ncr"/>
+                                                <constraint firstItem="FjK-mW-edL" firstAttribute="top" secondItem="efa-8i-hn3" secondAttribute="bottom" constant="8" id="qme-Gd-Jz2"/>
+                                                <constraint firstItem="fHU-v8-Tf5" firstAttribute="top" secondItem="efa-8i-hn3" secondAttribute="bottom" constant="8" id="t2z-Ot-LcU"/>
+                                                <constraint firstItem="FjK-mW-edL" firstAttribute="leading" secondItem="fHU-v8-Tf5" secondAttribute="trailing" constant="8" id="voK-Mf-LGb"/>
+                                                <constraint firstAttribute="bottom" secondItem="KOG-MJ-uwr" secondAttribute="bottom" constant="10" id="zSW-cO-bnY"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="top" secondItem="d2y-SW-OgN" secondAttribute="topMargin" id="5yh-cq-V2Y"/>
-                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="trailing" secondItem="d2y-SW-OgN" secondAttribute="trailingMargin" id="XVO-bB-O1v"/>
-                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="bottom" secondItem="d2y-SW-OgN" secondAttribute="bottomMargin" id="Z2R-Q6-Dby"/>
-                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="leading" secondItem="d2y-SW-OgN" secondAttribute="leadingMargin" id="d32-ds-ECR"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UKL-LC-2Me" secondAttribute="bottom" id="2GE-xM-2FF"/>
+                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="top" secondItem="d2y-SW-OgN" secondAttribute="topMargin" id="WIj-DK-rr3"/>
+                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="trailing" secondItem="d2y-SW-OgN" secondAttribute="trailingMargin" id="eQ8-KJ-ogx"/>
+                                        <constraint firstItem="UKL-LC-2Me" firstAttribute="leading" secondItem="d2y-SW-OgN" secondAttribute="leadingMargin" id="o8R-19-7mH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="constain" destination="iBF-oq-J8J" id="Abd-zI-KtI"/>
                                     <outlet property="containerView" destination="UKL-LC-2Me" id="gdQ-4o-cdE"/>
                                     <outlet property="itemImageView" destination="efa-8i-hn3" id="etZ-Vv-qSV"/>
-                                    <outlet property="itemImageViewWidth" destination="7qS-wL-AWA" id="8sP-lV-ndf"/>
                                     <outlet property="locationLabel" destination="KOG-MJ-uwr" id="c9c-da-S6h"/>
                                     <outlet property="ratingView" destination="FjK-mW-edL" id="0F8-G5-a02"/>
                                     <outlet property="titleLabel" destination="fHU-v8-Tf5" id="QTZ-xK-Rmw"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PFTableViewCell" rowHeight="60" id="RJI-lx-fYe" customClass="FNextTableViewCell">
-                                <rect key="frame" x="0.0" y="255" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="428" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RJI-lx-fYe" id="jvE-Xj-KPd">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>

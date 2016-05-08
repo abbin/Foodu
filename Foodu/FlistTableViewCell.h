@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet TPFloatRatingView *ratingView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *itemImageViewWidth;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constain;
 
 @end

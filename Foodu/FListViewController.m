@@ -82,6 +82,12 @@
     static NSString *cellIdentifier = @"FlistTableViewCell";
     
     FlistTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (indexPath.row%2) {
+        cell.constain.constant = [UIScreen mainScreen].bounds.size.width/10;
+    }
+    else{
+        cell.constain.constant = -[UIScreen mainScreen].bounds.size.width/10;
+    }
     NSDictionary *imageDict = object.itemImageArray[0];
     cell.itemImageView.file = [imageDict objectForKey:@"file"];
     cell.titleLabel.text = object.itemTitle;
@@ -115,7 +121,7 @@
         return 55;
     }
     else{
-        return [UIScreen mainScreen].bounds.size.height/4;
+        return [UIScreen mainScreen].bounds.size.width;
     }
 }
 
