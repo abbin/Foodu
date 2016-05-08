@@ -8,7 +8,6 @@
 
 #import "FGeoListTableViewController.h"
 #import "FGeoListTableViewCell.h"
-#import "PFNextTableViewCell.h"
 
 @interface FGeoListTableViewController ()
 
@@ -116,7 +115,6 @@
 - (PFQuery *)queryForTable {
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query includeKey:@"itemImageArray"];
     [query includeKey:@"restaurent"];
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
@@ -137,20 +135,6 @@
 //    cell.locationLabel.text = object.restaurent.address;
 //    cell.itemImageView.image = [UIImage imageNamed:@"loading"];
 //    [cell.itemImageView loadInBackground];
-    return cell;
-}
-
--(PFTableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath{
-    PFNextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFTableViewCell" forIndexPath:indexPath];
-//    cell.cellActivityIndicator.hidden = !self.loading;
-//    if (self.loading) {
-//        [cell.cellActivityIndicator startAnimating];
-//        cell.nextLabel.text = @"Loading...";
-//    }
-//    else{
-//        [cell.cellActivityIndicator stopAnimating];
-//        cell.nextLabel.text = @"Load More...";
-//    }
     return cell;
 }
 
