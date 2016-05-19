@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FGalleryViewControllers">
@@ -18,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WuX-kS-FIs">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RtJ-HE-iQy">
                         <size key="itemSize" width="50" height="50"/>
@@ -32,57 +30,66 @@
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-Cx-rLT">
-                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-at-tGB">
-                            <rect key="frame" x="0.0" y="0.0" width="84" height="44"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahD-at-tGB">
+                            <rect key="frame" x="0.0" y="0.0" width="245" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="ahD-at-tGB" secondAttribute="height" multiplier="21:11" id="4EV-mX-LXU"/>
-                            </constraints>
-                            <state key="normal" image="close"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="RCX-Zb-UIt"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKb-II-TJ1">
-                            <rect key="frame" x="516" y="0.0" width="84" height="44"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKb-II-TJ1">
+                            <rect key="frame" x="356" y="0.0" width="244" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="wKb-II-TJ1" secondAttribute="height" multiplier="21:11" id="DKE-Qt-9w2"/>
-                            </constraints>
-                            <state key="normal" image="whiteCheck"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                            <state key="normal" title="Next">
+                                <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
                                 <action selector="doneClicked:" destination="-1" eventType="touchUpInside" id="epZ-8a-dEH"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDh-Bb-ray">
+                            <rect key="frame" x="245" y="0.0" width="111" height="44"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <color key="textColor" white="0.29540687919463088" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="03s-aJ-aVx"/>
-                        <constraint firstItem="ahD-at-tGB" firstAttribute="leading" secondItem="Jfd-Cx-rLT" secondAttribute="leading" id="Da3-wc-Xdv"/>
-                        <constraint firstAttribute="bottom" secondItem="wKb-II-TJ1" secondAttribute="bottom" id="SG9-EF-7oP"/>
-                        <constraint firstAttribute="bottom" secondItem="ahD-at-tGB" secondAttribute="bottom" id="gIp-Xf-KNv"/>
-                        <constraint firstAttribute="trailing" secondItem="wKb-II-TJ1" secondAttribute="trailing" id="ize-Rl-IFw"/>
-                        <constraint firstItem="ahD-at-tGB" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="rxN-5S-KWA"/>
-                        <constraint firstItem="wKb-II-TJ1" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="sci-fc-5pU"/>
+                        <constraint firstAttribute="trailing" secondItem="wKb-II-TJ1" secondAttribute="trailing" id="1aC-MQ-PRF"/>
+                        <constraint firstItem="wKb-II-TJ1" firstAttribute="leading" secondItem="TDh-Bb-ray" secondAttribute="trailing" id="3Er-uf-ngU"/>
+                        <constraint firstItem="ahD-at-tGB" firstAttribute="leading" secondItem="Jfd-Cx-rLT" secondAttribute="leading" id="AzU-Aw-oMJ"/>
+                        <constraint firstAttribute="bottom" secondItem="ahD-at-tGB" secondAttribute="bottom" id="Cn4-1y-Y5R"/>
+                        <constraint firstItem="TDh-Bb-ray" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="Fcq-0A-Cg2"/>
+                        <constraint firstItem="wKb-II-TJ1" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="SRj-1m-Y1V"/>
+                        <constraint firstItem="ahD-at-tGB" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="top" id="Xoj-8M-3XU"/>
+                        <constraint firstAttribute="bottom" secondItem="TDh-Bb-ray" secondAttribute="bottom" id="cGv-5d-4cU"/>
+                        <constraint firstItem="wKb-II-TJ1" firstAttribute="width" secondItem="ahD-at-tGB" secondAttribute="width" id="cQE-UZ-VZh"/>
+                        <constraint firstItem="TDh-Bb-ray" firstAttribute="leading" secondItem="ahD-at-tGB" secondAttribute="trailing" id="dNK-lL-YEC"/>
+                        <constraint firstAttribute="bottom" secondItem="wKb-II-TJ1" secondAttribute="bottom" id="png-uF-wF4"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Jfd-Cx-rLT" firstAttribute="top" secondItem="WuX-kS-FIs" secondAttribute="bottom" id="0Ca-0f-paO"/>
                 <constraint firstItem="Jfd-Cx-rLT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lak-hM-DT5"/>
                 <constraint firstAttribute="trailing" secondItem="WuX-kS-FIs" secondAttribute="trailing" id="Mnp-6w-Tlp"/>
                 <constraint firstAttribute="trailing" secondItem="Jfd-Cx-rLT" secondAttribute="trailing" id="Zcb-a5-Y9O"/>
-                <constraint firstItem="WuX-kS-FIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bjy-NC-IkR"/>
-                <constraint firstAttribute="bottom" secondItem="Jfd-Cx-rLT" secondAttribute="bottom" id="dDC-Vo-mVd"/>
                 <constraint firstItem="WuX-kS-FIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dh6-FM-W9c"/>
+                <constraint firstItem="Jfd-Cx-rLT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jT3-dQ-xlk"/>
+                <constraint firstAttribute="bottom" secondItem="WuX-kS-FIs" secondAttribute="bottom" id="lza-W3-ODe"/>
+                <constraint firstItem="WuX-kS-FIs" firstAttribute="top" secondItem="Jfd-Cx-rLT" secondAttribute="bottom" id="prO-Gs-5Ft"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="close" width="37" height="37"/>
-        <image name="whiteCheck" width="37" height="37"/>
-    </resources>
 </document>

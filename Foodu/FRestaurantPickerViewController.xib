@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FRestaurantPickerViewController">
+            <connections>
+                <outlet property="activityIndicator" destination="bIP-LR-xi0" id="hlc-ZL-JYI"/>
+                <outlet property="restTableView" destination="cVQ-Ui-Uqw" id="uBB-8i-6wZ"/>
+                <outlet property="searchBar" destination="GFf-Av-we5" id="rv2-uy-5Cq"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYf-LS-Wg8">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NUs-Hf-Tnb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="name of the restaurant" translatesAutoresizingMaskIntoConstraints="NO" id="GFf-Av-we5">
+                                <rect key="frame" x="8" y="8" width="530" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cpd-Om-eac"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <connections>
+                                    <outlet property="delegate" destination="-1" id="kAc-Tp-TuL"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cVQ-Ui-Uqw">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="sb1-Lw-V9f"/>
+                                    <outlet property="delegate" destination="-1" id="XFB-tR-z1b"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="bIP-LR-xi0">
+                                <rect key="frame" x="290" y="200" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVr-Rn-fqe">
+                                <rect key="frame" x="548" y="8" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1W0-Bu-8CF"/>
+                                    <constraint firstAttribute="width" secondItem="JVr-Rn-fqe" secondAttribute="height" multiplier="1:1" id="y2t-7J-uiI"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="DismissArrow"/>
+                                <connections>
+                                    <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="G8D-up-Ke0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="cVQ-Ui-Uqw" firstAttribute="top" secondItem="GFf-Av-we5" secondAttribute="bottom" constant="8" id="7Ob-Yo-m4O"/>
+                            <constraint firstItem="GFf-Av-we5" firstAttribute="leading" secondItem="NUs-Hf-Tnb" secondAttribute="leading" constant="8" id="GiL-OD-jyC"/>
+                            <constraint firstAttribute="bottom" secondItem="cVQ-Ui-Uqw" secondAttribute="bottom" id="M3y-om-hXP"/>
+                            <constraint firstItem="GFf-Av-we5" firstAttribute="top" secondItem="NUs-Hf-Tnb" secondAttribute="top" constant="8" id="YQ8-vG-hRb"/>
+                            <constraint firstAttribute="trailing" secondItem="cVQ-Ui-Uqw" secondAttribute="trailing" id="ZXs-xo-uvG"/>
+                            <constraint firstItem="JVr-Rn-fqe" firstAttribute="top" secondItem="NUs-Hf-Tnb" secondAttribute="top" constant="8" id="e4g-r1-OWV"/>
+                            <constraint firstItem="bIP-LR-xi0" firstAttribute="centerY" secondItem="NUs-Hf-Tnb" secondAttribute="centerY" multiplier="0.7" id="eed-ug-0sE"/>
+                            <constraint firstItem="bIP-LR-xi0" firstAttribute="centerX" secondItem="NUs-Hf-Tnb" secondAttribute="centerX" id="ewF-yb-xyF"/>
+                            <constraint firstItem="JVr-Rn-fqe" firstAttribute="leading" secondItem="GFf-Av-we5" secondAttribute="trailing" constant="10" id="mEy-BC-9zz"/>
+                            <constraint firstItem="cVQ-Ui-Uqw" firstAttribute="leading" secondItem="NUs-Hf-Tnb" secondAttribute="leading" id="nyc-De-zd9"/>
+                            <constraint firstAttribute="trailing" secondItem="JVr-Rn-fqe" secondAttribute="trailing" constant="8" id="sOR-BB-wm7"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aYf-LS-Wg8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7t8-CM-VNZ"/>
+                <constraint firstAttribute="trailing" secondItem="aYf-LS-Wg8" secondAttribute="trailing" id="ITZ-Gp-GPe"/>
+                <constraint firstAttribute="bottom" secondItem="aYf-LS-Wg8" secondAttribute="bottom" id="J92-MD-Ozh"/>
+                <constraint firstItem="aYf-LS-Wg8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mxT-nI-iLr"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="DismissArrow" width="37" height="37"/>
+    </resources>
+</document>

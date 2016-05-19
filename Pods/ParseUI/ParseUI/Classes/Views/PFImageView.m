@@ -40,7 +40,13 @@
     NSURL *url = [NSURL URLWithString:self.file.url];
     UIImage *cachedImage = [[PFImageCache sharedCache] imageForURL:url];
     if (cachedImage) {
-        self.image = cachedImage;
+        
+        [UIView transitionWithView:self
+                          duration:0.2f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            self.image = cachedImage;
+                        } completion:NULL];
     }
 }
 
@@ -88,8 +94,12 @@
     if (url) {
         UIImage *cachedImage = [[PFImageCache sharedCache] imageForURL:url];
         if (cachedImage) {
-            self.image = cachedImage;
-
+            [UIView transitionWithView:self
+                              duration:0.2f
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{
+                                self.image = cachedImage;
+                            } completion:NULL];
             if (progressBlock) {
                 progressBlock(100);
             }
@@ -130,7 +140,12 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 // check if a latter issued loadInBackground has not replaced the file being loaded
                 if (file == _file) {
-                    self.image = image;
+                    [UIView transitionWithView:self
+                                      duration:0.2f
+                                       options:UIViewAnimationOptionTransitionCrossDissolve
+                                    animations:^{
+                                        self.image = image;
+                                    } completion:NULL];
                 }
 
                 if (completion) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mG6-aj-TnQ">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -954,12 +953,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKL-LC-2Me">
                                             <rect key="frame" x="8" y="8" width="584" height="384"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-8i-hn3" customClass="PFImageView">
-                                                    <rect key="frame" x="88" y="10" width="408" height="315"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="efa-8i-hn3" customClass="PFImageView">
+                                                    <rect key="frame" x="58" y="10" width="468" height="315"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WILLINGDON ISLAND" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOG-MJ-uwr">
-                                                    <rect key="frame" x="88" y="362" width="408" height="12"/>
+                                                    <rect key="frame" x="58" y="362" width="468" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="12" id="lw9-A1-LxP"/>
                                                     </constraints>
@@ -967,7 +966,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tharavadu Buffet" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHU-v8-Tf5">
-                                                    <rect key="frame" x="88" y="333" width="278" height="21"/>
+                                                    <rect key="frame" x="58" y="333" width="320" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="fan-4B-YOB"/>
                                                     </constraints>
@@ -975,7 +974,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FjK-mW-edL" customClass="TPFloatRatingView">
-                                                    <rect key="frame" x="374" y="333" width="122" height="15"/>
+                                                    <rect key="frame" x="386" y="333" width="140" height="17"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="FjK-mW-edL" secondAttribute="height" multiplier="122:15" id="v3i-NN-SlO"/>
@@ -990,7 +989,7 @@
                                                 <constraint firstItem="fHU-v8-Tf5" firstAttribute="leading" secondItem="efa-8i-hn3" secondAttribute="leading" id="Gyl-D7-QVq"/>
                                                 <constraint firstItem="FjK-mW-edL" firstAttribute="trailing" secondItem="efa-8i-hn3" secondAttribute="trailing" id="SPW-vc-zFa"/>
                                                 <constraint firstItem="efa-8i-hn3" firstAttribute="top" secondItem="UKL-LC-2Me" secondAttribute="top" constant="10" id="Wgc-tQ-eFS"/>
-                                                <constraint firstItem="efa-8i-hn3" firstAttribute="width" secondItem="UKL-LC-2Me" secondAttribute="width" multiplier="0.7" id="ZD7-6q-9Tw"/>
+                                                <constraint firstItem="efa-8i-hn3" firstAttribute="width" secondItem="UKL-LC-2Me" secondAttribute="width" multiplier="0.8" id="ZD7-6q-9Tw"/>
                                                 <constraint firstItem="efa-8i-hn3" firstAttribute="centerX" secondItem="UKL-LC-2Me" secondAttribute="centerX" id="iBF-oq-J8J"/>
                                                 <constraint firstItem="KOG-MJ-uwr" firstAttribute="trailing" secondItem="efa-8i-hn3" secondAttribute="trailing" id="oWh-37-Ncr"/>
                                                 <constraint firstItem="FjK-mW-edL" firstAttribute="top" secondItem="efa-8i-hn3" secondAttribute="bottom" constant="8" id="qme-Gd-Jz2"/>

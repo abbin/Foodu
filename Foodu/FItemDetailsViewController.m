@@ -8,22 +8,29 @@
 
 #import "FItemDetailsViewController.h"
 #import "FImagePreviewCollectionViewCell.h"
+#import "FRestaurentDetailsViewController.h"
 
 @interface FItemDetailsViewController ()
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarBottomConstrain;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstrain;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagePreviewCollection;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextField;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) NSMutableArray *cellSizeArray;
+@property (strong, nonatomic) FItem *item;
 @end
 
 @implementation FItemDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.item = [FItem object];
+    
+    self.descriptionTextView.inputAccessoryView = self.toolBar;
+    self.priceTextField.inputAccessoryView = self.toolBar;
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(noticeShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(noticeHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
@@ -69,7 +76,7 @@
     }];
     [controller addAction:yes];
     [controller addAction:cancel];
-    [self presentViewController:controller animated:yes completion:nil];
+    [self presentViewController:controller animated:YES completion:nil];
     
 }
 
@@ -107,9 +114,9 @@
 }
 
 -(void)noticeHideKeyboard:(NSNotification *)notification {
-    
-    self.toolBarBottomConstrain.constant = 0;
-    [UIView animateWithDuration:[notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
+    self.topConstrain.constant = 0;
+    NSDictionary *info  = notification.userInfo;
+    [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.view layoutIfNeeded];
     }];
 }
@@ -120,24 +127,32 @@
     NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
     CGRect rawFrame      = [value CGRectValue];
     CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
-    
-    self.toolBarBottomConstrain.constant = keyboardFrame.size.height;
+    self.topConstrain.constant = -keyboardFrame.size.height;
     [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
         [self.view layoutIfNeeded];
-    }];
-    [UIView animateWithDuration:[info[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        CGPoint bottomOffset = CGPointMake(0, self.scrollView.contentSize.height - self.scrollView.bounds.size.height);
-        [self.scrollView setContentOffset:bottomOffset animated:YES];
     }];
 }
 - (IBAction)textFieldDidChangeEditing:(UITextField *)sender {
     
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (range.location == 0 && range.length == 1) {
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (textField.tag == 0) {
+        FItemPickerViewController *picker = [[FItemPickerViewController alloc]initWithNibName:@"FItemPickerViewController" bundle:[NSBundle mainBundle]];
+        picker.delegate = self;
+        picker.providesPresentationContextTransitionStyle = YES;
+        picker.definesPresentationContext = YES;
+        picker.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [self presentViewController:picker animated:YES completion:nil];
         return NO;
     }
     else{
@@ -147,6 +162,42 @@
 
 -(NSString*)currencySymbol{
     return [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+}
+
+- (IBAction)doneClicked:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
+}
+
+-(void)FItemPicker:(FItemPickerViewController *)picker didFinishPickingItem:(id)item{
+    if ([item isKindOfClass:[NSString class]]) {
+        self.nameTextField.text = item;
+    }
+    else{
+        
+    }
+}
+- (IBAction)nextClciked:(UIButton *)sender {
+    if (self.nameTextField.text.length == 0) {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Uh oh!" message:@"Fill in the name of the dish" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    else if (self.priceTextField.text.length == 1){
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Uh oh!" message:@"Fill in the price of the dish" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [controller addAction:action];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    else{
+        FRestaurentDetailsViewController *picker = [[FRestaurentDetailsViewController alloc]initWithNibName:@"FRestaurentDetailsViewController" bundle:[NSBundle mainBundle]];
+        self.item.itemTitle = self.nameTextField.text;
+        self.item.itemPrice = [NSNumber numberWithInteger:[self.priceTextField.text integerValue]];
+        self.item.itemDescription = self.descriptionTextView.text;
+        picker.item = self.item;
+        [self.view endEditing:YES];
+        [self.navigationController pushViewController:picker animated:YES];
+    }
 }
 
 @end

@@ -63,6 +63,12 @@
 		58FD8A5D1CB4EDB200DE51D2 /* FImagePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FD8A5B1CB4EDB200DE51D2 /* FImagePreviewViewController.xib */; };
 		58FD8A611CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD8A5F1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m */; };
 		58FD8A621CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FD8A601CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib */; };
+		ED1F06491CED9E2E0003034A /* FItemPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1F06471CED9E2E0003034A /* FItemPickerViewController.m */; };
+		ED1F064A1CED9E2E0003034A /* FItemPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1F06481CED9E2E0003034A /* FItemPickerViewController.xib */; };
+		ED1F064F1CEDDAAD0003034A /* FRestaurentDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1F064D1CEDDAAD0003034A /* FRestaurentDetailsViewController.m */; };
+		ED1F06501CEDDAAD0003034A /* FRestaurentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1F064E1CEDDAAD0003034A /* FRestaurentDetailsViewController.xib */; };
+		ED1F06551CEDF4380003034A /* FRestaurantPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1F06531CEDF4380003034A /* FRestaurantPickerViewController.m */; };
+		ED1F06561CEDF4380003034A /* FRestaurantPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1F06541CEDF4380003034A /* FRestaurantPickerViewController.xib */; };
 		ED4403C71CDF69C900EDB503 /* FListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403C61CDF69C900EDB503 /* FListViewController.m */; };
 		ED4403CC1CDF69DA00EDB503 /* FlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403C91CDF69DA00EDB503 /* FlistTableViewCell.m */; };
 		ED4403CD1CDF69DA00EDB503 /* FNextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4403CB1CDF69DA00EDB503 /* FNextTableViewCell.m */; };
@@ -174,6 +180,15 @@
 		58FD8A5F1CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FImagePreviewCollectionViewCell.m; sourceTree = "<group>"; };
 		58FD8A601CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FImagePreviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		BA53E09161CB15370B656D1E /* Pods_Foodu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED1F06461CED9E2E0003034A /* FItemPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FItemPickerViewController.h; sourceTree = "<group>"; };
+		ED1F06471CED9E2E0003034A /* FItemPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FItemPickerViewController.m; sourceTree = "<group>"; };
+		ED1F06481CED9E2E0003034A /* FItemPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FItemPickerViewController.xib; sourceTree = "<group>"; };
+		ED1F064C1CEDDAAD0003034A /* FRestaurentDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurentDetailsViewController.h; sourceTree = "<group>"; };
+		ED1F064D1CEDDAAD0003034A /* FRestaurentDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurentDetailsViewController.m; sourceTree = "<group>"; };
+		ED1F064E1CEDDAAD0003034A /* FRestaurentDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FRestaurentDetailsViewController.xib; sourceTree = "<group>"; };
+		ED1F06521CEDF4380003034A /* FRestaurantPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRestaurantPickerViewController.h; sourceTree = "<group>"; };
+		ED1F06531CEDF4380003034A /* FRestaurantPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRestaurantPickerViewController.m; sourceTree = "<group>"; };
+		ED1F06541CEDF4380003034A /* FRestaurantPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FRestaurantPickerViewController.xib; sourceTree = "<group>"; };
 		ED4403C51CDF69C900EDB503 /* FListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FListViewController.h; sourceTree = "<group>"; };
 		ED4403C61CDF69C900EDB503 /* FListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FListViewController.m; sourceTree = "<group>"; };
 		ED4403C81CDF69DA00EDB503 /* FlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlistTableViewCell.h; sourceTree = "<group>"; };
@@ -216,6 +231,7 @@
 				581389871CB3B786007EF325 /* Gallery */,
 				58FD8A581CB4ED5A00DE51D2 /* Image Priview */,
 				581384BD1CD092DB00DEE342 /* Details */,
+				ED1F064B1CEDDA7D0003034A /* Restaurent Details */,
 			);
 			name = "Add Fuud";
 			sourceTree = "<group>";
@@ -337,6 +353,8 @@
 		5861BD261C3CF0C200AE6B96 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F06511CEDF40E0003034A /* RestaurantPicker */,
+				ED1F06451CED9DF60003034A /* ItemPicker */,
 				58B429021C9FD59B002FA774 /* Alert View */,
 				5812BB991C9BF11800C22FDE /* LocationPicker */,
 				581152D41C87190300B592B6 /* Reachability */,
@@ -527,6 +545,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED1F06451CED9DF60003034A /* ItemPicker */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F06461CED9E2E0003034A /* FItemPickerViewController.h */,
+				ED1F06471CED9E2E0003034A /* FItemPickerViewController.m */,
+				ED1F06481CED9E2E0003034A /* FItemPickerViewController.xib */,
+			);
+			name = ItemPicker;
+			sourceTree = "<group>";
+		};
+		ED1F064B1CEDDA7D0003034A /* Restaurent Details */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F064C1CEDDAAD0003034A /* FRestaurentDetailsViewController.h */,
+				ED1F064D1CEDDAAD0003034A /* FRestaurentDetailsViewController.m */,
+				ED1F064E1CEDDAAD0003034A /* FRestaurentDetailsViewController.xib */,
+			);
+			name = "Restaurent Details";
+			sourceTree = "<group>";
+		};
+		ED1F06511CEDF40E0003034A /* RestaurantPicker */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F06521CEDF4380003034A /* FRestaurantPickerViewController.h */,
+				ED1F06531CEDF4380003034A /* FRestaurantPickerViewController.m */,
+				ED1F06541CEDF4380003034A /* FRestaurantPickerViewController.xib */,
+			);
+			name = RestaurantPicker;
+			sourceTree = "<group>";
+		};
 		ED58884B1C410AE300922C9A /* First Launch */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,6 +636,7 @@
 				TargetAttributes = {
 					58C9F3E31C3A403E00594407 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = BZKHJ5BM3B;
 					};
 				};
 			};
@@ -619,6 +668,8 @@
 				582F20CA1CB5128C004976FE /* FEffectCollectionViewCell.xib in Resources */,
 				58E304EC1CCE1E70001B1AFE /* FEffectsAddCollectionViewCell.xib in Resources */,
 				58504A5A1C96B6A000A7E406 /* IMG_0046.PNG in Resources */,
+				ED1F06501CEDDAAD0003034A /* FRestaurentDetailsViewController.xib in Resources */,
+				ED1F06561CEDF4380003034A /* FRestaurantPickerViewController.xib in Resources */,
 				581389801CB381DF007EF325 /* AAPLCameraViewController.xib in Resources */,
 				5813899A1CB3CD5D007EF325 /* FGalleryViewControllers.xib in Resources */,
 				58FD8A621CB4FD3800DE51D2 /* FImagePreviewCollectionViewCell.xib in Resources */,
@@ -627,6 +678,7 @@
 				58FD8A5D1CB4EDB200DE51D2 /* FImagePreviewViewController.xib in Resources */,
 				581389951CB3C433007EF325 /* AAPLGridViewCell2.xib in Resources */,
 				58AD26061C4F5385009AA930 /* FImagePickerCollectionViewCell.xib in Resources */,
+				ED1F064A1CED9E2E0003034A /* FItemPickerViewController.xib in Resources */,
 				58C9F3F41C3A403E00594407 /* Assets.xcassets in Resources */,
 				58C9F3F21C3A403E00594407 /* Main.storyboard in Resources */,
 				5812BB9E1C9BF13E00C22FDE /* FLocationPickerViewController.xib in Resources */,
@@ -723,12 +775,14 @@
 				5813898D1CB3B7A5007EF325 /* UICollectionView+Convenience.m in Sources */,
 				5812C4AD1C8976C00055A54B /* FAlertView.m in Sources */,
 				58C9F3EC1C3A403E00594407 /* AppDelegate.m in Sources */,
+				ED1F064F1CEDDAAD0003034A /* FRestaurentDetailsViewController.m in Sources */,
 				58846B641C3E9230006CFBFB /* UIColor+FColours.m in Sources */,
 				5813897C1CB380A3007EF325 /* AAPLPreviewView.m in Sources */,
 				582006D11C3E421C00BD0FCD /* FTabBarController.m in Sources */,
 				58A8A7371C99582500D62E24 /* FPageFour.m in Sources */,
 				ED4403C71CDF69C900EDB503 /* FListViewController.m in Sources */,
 				58FD08211C91708600FC25D7 /* FProfileViewController.m in Sources */,
+				ED1F06551CEDF4380003034A /* FRestaurantPickerViewController.m in Sources */,
 				58A8A7311C994E3D00D62E24 /* FPageThree.m in Sources */,
 				58A8A72E1C994E2D00D62E24 /* FPageTwo.m in Sources */,
 				58A8A72B1C994E1C00D62E24 /* FPageOne.m in Sources */,
@@ -757,6 +811,7 @@
 				58E304EB1CCE1E70001B1AFE /* FEffectsAddCollectionViewCell.m in Sources */,
 				58B4290E1C9FFC22002FA774 /* FEmailSignUpNAMEViewController.m in Sources */,
 				581152D71C87191600B592B6 /* Reachability.m in Sources */,
+				ED1F06491CED9E2E0003034A /* FItemPickerViewController.m in Sources */,
 				580C52F41CA1333B0029868F /* FEmailSignUpEMAILViewController.m in Sources */,
 				581389991CB3CD5D007EF325 /* FGalleryViewControllers.m in Sources */,
 				5813897B1CB380A3007EF325 /* AAPLCameraViewController.m in Sources */,
@@ -825,7 +880,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "ff2b08c2-db07-4260-b4d6-0eb3cbe864f7";
+				PROVISIONING_PROFILE = "ea074bc5-44bd-447d-9674-6dfef0d6fda1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -848,8 +903,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Abbin Varghese (CSG35NJ58U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Abbin Varghese (CSG35NJ58U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Abbin Varghese (BZKHJ5BM3B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Abbin Varghese (BZKHJ5BM3B)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -864,7 +919,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "ff2b08c2-db07-4260-b4d6-0eb3cbe864f7";
+				PROVISIONING_PROFILE = "a7bdd5aa-ee0f-486b-aa48-5df2d3d0a871";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -890,7 +945,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Fuud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ff2b08c2-db07-4260-b4d6-0eb3cbe864f7";
+				PROVISIONING_PROFILE = "ea074bc5-44bd-447d-9674-6dfef0d6fda1";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -900,8 +955,8 @@
 			baseConfigurationReference = 0AE1ADD613B028C20C0E9482 /* Pods-Foodu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Abbin Varghese (CSG35NJ58U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Abbin Varghese (CSG35NJ58U)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Abbin Varghese (BZKHJ5BM3B)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Abbin Varghese (BZKHJ5BM3B)";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -913,7 +968,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Paadam.Fuud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ff2b08c2-db07-4260-b4d6-0eb3cbe864f7";
+				PROVISIONING_PROFILE = "a7bdd5aa-ee0f-486b-aa48-5df2d3d0a871";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

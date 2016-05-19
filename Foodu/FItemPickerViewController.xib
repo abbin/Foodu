@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FItemPickerViewController">
+            <connections>
+                <outlet property="avtivityIndicator" destination="wM6-DC-wyk" id="gpY-ll-2QL"/>
+                <outlet property="itemsTableView" destination="unz-F8-D0p" id="nvN-4F-3LM"/>
+                <outlet property="searchBar" destination="HKa-vB-e3m" id="6Dl-A0-5Ur"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF0-I6-2qe">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0lp-PZ-aVK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="name of the dish" translatesAutoresizingMaskIntoConstraints="NO" id="HKa-vB-e3m">
+                                <rect key="frame" x="8" y="8" width="530" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0Sk-PM-vwF"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <connections>
+                                    <outlet property="delegate" destination="-1" id="f5o-Jg-PD0"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Yp-pF-HQO">
+                                <rect key="frame" x="548" y="8" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0Yp-pF-HQO" secondAttribute="height" multiplier="1:1" id="Eiq-kT-aZf"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="DismissArrow"/>
+                                <connections>
+                                    <action selector="dismissButtonClicked:" destination="-1" eventType="touchUpInside" id="Jmn-ga-gLl"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="unz-F8-D0p">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="186-73-KxR"/>
+                                    <outlet property="delegate" destination="-1" id="lOj-Ce-Ddx"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="wM6-DC-wyk">
+                                <rect key="frame" x="290" y="200" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="HKa-vB-e3m" firstAttribute="top" secondItem="0lp-PZ-aVK" secondAttribute="top" constant="8" id="03V-Ap-jgM"/>
+                            <constraint firstItem="wM6-DC-wyk" firstAttribute="centerX" secondItem="0lp-PZ-aVK" secondAttribute="centerX" id="2vG-4L-Thy"/>
+                            <constraint firstItem="unz-F8-D0p" firstAttribute="leading" secondItem="0lp-PZ-aVK" secondAttribute="leading" id="9r5-54-tI4"/>
+                            <constraint firstItem="0Yp-pF-HQO" firstAttribute="height" secondItem="HKa-vB-e3m" secondAttribute="height" id="HTA-7y-7j9"/>
+                            <constraint firstItem="0Yp-pF-HQO" firstAttribute="top" secondItem="0lp-PZ-aVK" secondAttribute="top" constant="8" id="NML-KI-ISV"/>
+                            <constraint firstItem="HKa-vB-e3m" firstAttribute="leading" secondItem="0lp-PZ-aVK" secondAttribute="leading" constant="8" id="TZi-Xh-SjX"/>
+                            <constraint firstItem="0Yp-pF-HQO" firstAttribute="leading" secondItem="HKa-vB-e3m" secondAttribute="trailing" constant="10" id="Yfk-yN-sDe"/>
+                            <constraint firstItem="unz-F8-D0p" firstAttribute="top" secondItem="HKa-vB-e3m" secondAttribute="bottom" constant="8" id="h2I-rd-BAh"/>
+                            <constraint firstAttribute="trailing" secondItem="unz-F8-D0p" secondAttribute="trailing" id="isO-X5-dtZ"/>
+                            <constraint firstAttribute="trailing" secondItem="0Yp-pF-HQO" secondAttribute="trailing" constant="8" id="nes-fz-nVZ"/>
+                            <constraint firstItem="wM6-DC-wyk" firstAttribute="centerY" secondItem="0lp-PZ-aVK" secondAttribute="centerY" multiplier="0.7" id="qDH-Ra-Yk0"/>
+                            <constraint firstAttribute="bottom" secondItem="unz-F8-D0p" secondAttribute="bottom" id="x1d-gk-nW9"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="IF0-I6-2qe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="99O-KI-rO5"/>
+                <constraint firstAttribute="trailing" secondItem="IF0-I6-2qe" secondAttribute="trailing" id="Js9-qp-yHJ"/>
+                <constraint firstAttribute="bottom" secondItem="IF0-I6-2qe" secondAttribute="bottom" id="Qqt-2S-HfR"/>
+                <constraint firstItem="IF0-I6-2qe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gJh-sl-KRR"/>
+            </constraints>
+            <point key="canvasLocation" x="-61" y="384"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="DismissArrow" width="37" height="37"/>
+    </resources>
+</document>

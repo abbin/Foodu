@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FItemPickerViewController.h"
 
-@interface FItemDetailsViewController : UIViewController<UITextFieldDelegate>
+@interface FItemDetailsViewController : UIViewController<UITextFieldDelegate,FItemPickerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *selectedImage;
 

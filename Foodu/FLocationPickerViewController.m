@@ -30,7 +30,6 @@
     NSString *countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
     filter.country = countryCode;
     filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
-    
     self.fetcher = [[GMSAutocompleteFetcher alloc] initWithBounds:nil
                                                        filter:filter];
     self.fetcher.delegate = self;

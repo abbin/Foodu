@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -91,7 +91,7 @@
                 <constraint firstAttribute="bottom" secondItem="AEi-90-ePL" secondAttribute="bottom" id="Y0u-PU-mle"/>
                 <constraint firstItem="AEi-90-ePL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YxF-NN-W4e"/>
             </constraints>
-            <point key="canvasLocation" x="424" y="315"/>
+            <point key="canvasLocation" x="633" y="295"/>
         </view>
     </objects>
     <resources>
